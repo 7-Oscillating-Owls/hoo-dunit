@@ -1,7 +1,5 @@
 const path = require('path');
 
-
-
 module.exports = {
   entry: './client/src/index.jsx',
   output: {
@@ -19,10 +17,13 @@ module.exports = {
         use: {
           loader: 'babel-loader', // transpiles React from ES6 to ES5
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
-      }
-    ]
-  }
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 };
