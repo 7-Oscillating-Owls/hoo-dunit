@@ -1,4 +1,9 @@
+import { shallow, mount, render } from 'enzyme';
+import React from 'react';
 
-test('is always true', () => {
-  expect(true).toBe(true);
+import App from '.';
+
+test('App has only 1 element with className title', () => {
+  const wrapper = shallow(<App />);
+   expect(wrapper.find('.title').length).toBe(1);
 });
