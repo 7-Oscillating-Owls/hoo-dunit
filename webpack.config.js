@@ -16,9 +16,6 @@ module.exports = {
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader', // transpiles React from ES6 to ES5
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-          },
         },
       },
     ],
