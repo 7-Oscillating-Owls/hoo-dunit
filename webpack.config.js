@@ -1,5 +1,7 @@
 const path = require('path');
 
+const IS_PROD = process.env.NODE_ENV === 'production';
+
 module.exports = {
   entry: './client/src/index.jsx',
   output: {
@@ -7,7 +9,7 @@ module.exports = {
     filename: 'bundle.js',
   },
 
-  mode: 'development', // other option: production
+  mode: IS_PROD ? 'production' : 'development', // other option: production
 
   module: {
     rules: [
@@ -25,7 +27,9 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: IS_PROD || {
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              },
             },
           },
         ],
