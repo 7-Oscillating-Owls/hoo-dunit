@@ -6,8 +6,8 @@ const App = () => (
 
     <nav className={styles.nav}>
       <h1 className={styles.brandName}>Oscillating Owls</h1>
-      <form name="appSearch" className={styles.appSearch}>
-        <input type="search" className={styles.appSearchInput}></input>
+      <form name="appSearch" className={styles.searchForm}>
+        <input type="search" className={styles.searchInput}></input>
       </form>
     </nav>
     <h3 className={styles.announcement}><span className={styles.announcementAlert}>site-wide accouncement message!</span> -- sale / discount <span className={styles.announcementOffer}>offer</span> -- <span className={styles.announcementHighlight}>new product highlight</span></h3>
