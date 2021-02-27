@@ -18,6 +18,18 @@ module.exports = {
           loader: 'babel-loader', // transpiles React from ES6 to ES5
         },
       },
+      { // CSS Modules
+        test: /\.css$/i,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
