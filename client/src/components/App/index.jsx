@@ -1,6 +1,7 @@
 import React from 'react';
 
 import RelatedProducts from '../RelatedProducts';
+import QuestionsAndAnswers from '../QuestionsAndAnswers';
 import styles from './App.css';
 
 const App = () => (
@@ -23,7 +24,8 @@ const App = () => (
     <div className={styles.overview} />
     <RelatedProducts />
     <div className={styles.productReviews} />
-    <div className={styles.questionsAnswers} />
+    <div className={styles.QuestionsAndAnswers} />
+    <QuestionsAndAnswers />
 
   </div>
 );
