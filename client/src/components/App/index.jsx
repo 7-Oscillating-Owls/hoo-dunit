@@ -14,9 +14,9 @@ const App = () => (
     </nav>
     <h3 className={styles.announcement}>
       <span className={styles.announcementAlert}>site-wide accouncement message!</span>
-      -- sale / discount
+      <span> — sale / discount </span>
       <span className={styles.announcementOffer}>offer</span>
-      --
+      <span> — </span>
       <span className={styles.announcementHighlight}>new product highlight</span>
     </h3>
 
