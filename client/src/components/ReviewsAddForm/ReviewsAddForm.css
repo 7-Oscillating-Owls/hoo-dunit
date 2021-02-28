@@ -1,0 +1,12 @@
+.reviewsAddForm {
+  padding: 10px;
+  margin: 10px 5px;
+  overflow: scroll;
+}
+
+.addButton {
+  justify-content: space-around;
+  padding: 20px;
+  margin: 0 10px;
+  border: 2px solid gray;
+}
