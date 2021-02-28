@@ -2,6 +2,7 @@ import React from 'react';
 import RelatedProducts from '../RelatedProducts';
 import QuestionsAndAnswers from '../QuestionsAndAnswers';
 import Overview from '../Overview';
+import ReviewsList from '../ReviewsList';
 import styles from './App.css';
 
 const App = () => (
@@ -23,7 +24,7 @@ const App = () => (
 
     <Overview />
     <RelatedProducts />
-    <div className={styles.productReviews} />
+    <ReviewsList />
     <QuestionsAndAnswers />
 
   </div>
