@@ -24,7 +24,8 @@
     "identity-obj-proxy": "^3.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.1",

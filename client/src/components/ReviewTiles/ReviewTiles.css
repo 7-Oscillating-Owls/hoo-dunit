@@ -1,7 +1,11 @@
 .reviewTiles {
+  padding: 10px;
+  margin: 10px 5px;
   display: grid;
+  border: 1px solid gray;
   box-sizing: border-box;
   grid-gap: 20px;
-  justify-items: stretch;
-  align-items: stretch;
+  justify-items: left;
+  align-items: center;
+
 }
