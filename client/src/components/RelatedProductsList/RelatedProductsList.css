@@ -1,0 +1,29 @@
+.relatedProductsList {
+  box-sizing: border-box;
+  border: 1px dashed rgba(0, 0, 0, .1);
+  display: flex;
+  overflow-x: hidden;
+  position: relative;
+  padding-left: 50px;
+}
+
+
+.leftArrowSpacer {
+  box-sizing: border-box;
+  width: 30px;
+  border: 1px solid rgba(255, 0, 0, 0.1);
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.rightArrowSpacer {
+  box-sizing: border-box;
+  width: 30px;
+  border: 1px solid rgba(255, 0, 0, 0.1);
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
