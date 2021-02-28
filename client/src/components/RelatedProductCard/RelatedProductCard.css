@@ -1,5 +1,5 @@
 .relatedProductCard {
-  height: 350px;
+  height: 380px;
   width: 250px;
   border: 1px solid rgb(90, 90, 90);
   flex-grow: 0;
@@ -14,6 +14,7 @@
   background-color: rgb(220, 220, 220);
   height: 250px;
   margin-bottom: 6px;
+  object-fit: cover;
 }
 
 .productText {
@@ -22,6 +23,11 @@
   font-weight: 100;
   margin-left: 10px;
   padding-bottom: 4px;
+}
+
+.productLink {
+  text-decoration: none;
+  color:rgb(90, 90, 90);
 }
 
 .productCategory {
@@ -38,6 +44,14 @@
 .productPrice {
   composes: productText;
   padding: 6px 0;
+}
+
+.salePrice {
+  color: rgb(192, 0, 0);
+}
+
+.strikePrice {
+  text-decoration: line-through;
 }
 
 .starRating {
