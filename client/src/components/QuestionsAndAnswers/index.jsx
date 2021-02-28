@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './QuestionsAndAnswers.css';
+import Question from '../Question';
 
 const QuestionsAndAnswers = () => (
   <div className={styles.qa}>
     <div className={styles.searchBar}>SearchBar</div>
     <div className={styles.qaContainer}>
-      <div className={styles.questionList}>QuestionList</div>
+      <div className={styles.questionList}><Question /></div>
       <div className={styles.answerList}>AnswerList</div>
     </div>
     <div className={styles.buttonContainer}>
