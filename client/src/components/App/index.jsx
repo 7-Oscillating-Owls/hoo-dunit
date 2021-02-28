@@ -1,7 +1,7 @@
 import React from 'react';
-
 import RelatedProducts from '../RelatedProducts';
 import QuestionsAndAnswers from '../QuestionsAndAnswers';
+import Overview from '../Overview';
 import styles from './App.css';
 
 const App = () => (
@@ -21,10 +21,9 @@ const App = () => (
       <span className={styles.announcementHighlight}>new product highlight</span>
     </h3>
 
-    <div className={styles.overview} />
+    <Overview />
     <RelatedProducts />
     <div className={styles.productReviews} />
-    <div className={styles.QuestionsAndAnswers} />
     <QuestionsAndAnswers />
 
   </div>

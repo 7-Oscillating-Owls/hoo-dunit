@@ -1,0 +1,38 @@
+.overview {
+  display: grid;
+  box-sizing: border-box;
+  border: 1px solid black;
+  height: 500px;
+  width: 100%;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 5px;
+  grid-template-areas: "a b"
+                       "a c"
+                       "a d"
+                       "e e";
+}
+
+.imageGallery {
+  grid-area: a;
+  border: 1px solid black;
+}
+
+.productInformation {
+  grid-area: b;
+  border: 1px solid black;
+}
+
+.styleSelector {
+  grid-area: c;
+  border: 1px solid black;
+}
+
+.addToCart {
+  grid-area: d;
+  border: 1px solid black;
+}
+
+.productDescription {
+  grid-area: e;
+  border: 1px solid black;
+}
