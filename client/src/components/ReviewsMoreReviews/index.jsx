@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './ReviewsMoreReviews.css';
 
 const ReviewsMoreReviews = () => (
-  <div className={styles.reviewsMoreReviews}>
-    <div>Need to add tile components here</div>
+  <div className={styles.moreReviews}>
+    <button className={styles.moreButton} type="submit">More Reviews</button>
   </div>
 );
 

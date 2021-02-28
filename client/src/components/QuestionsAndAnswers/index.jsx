@@ -2,10 +2,14 @@ import React from 'react';
 import styles from './QuestionsAndAnswers.css';
 import Question from '../Question';
 import Answer from '../Answer';
+import Helpful from '../Helpful';
+import AddAnswer from '../AddAnswer';
 
 const QuestionsAndAnswers = () => (
   <div className={styles.qa}>
     <div className={styles.searchBar}>SearchBar</div>
+    <div className={styles.helpful}><Helpful /></div>
+    <div className={styles.addanswer}><AddAnswer /></div>
     <div className={styles.qaContainer}>
       <div className={styles.questionList}><Question /></div>
       <div className={styles.answerList}><Answer /></div>
