@@ -4,6 +4,7 @@ import Question from '../Question';
 import Answer from '../Answer';
 import Helpful from '../Helpful';
 import AddAnswer from '../AddAnswer';
+import ByUser from '../ByUser';
 
 const QuestionsAndAnswers = () => (
   <div className={styles.qa}>
@@ -12,6 +13,7 @@ const QuestionsAndAnswers = () => (
     <div className={styles.addanswer}><AddAnswer /></div>
     <div className={styles.qaContainer}>
       <div className={styles.questionList}><Question /></div>
+      <div className={styles.byuser}><ByUser /></div>
       <div className={styles.answerList}><Answer /></div>
     </div>
     <div className={styles.buttonContainer}>
