@@ -1,0 +1,7 @@
+.reviewTiles {
+  display: grid;
+  box-sizing: border-box;
+  grid-gap: 20px;
+  justify-items: stretch;
+  align-items: stretch;
+}
