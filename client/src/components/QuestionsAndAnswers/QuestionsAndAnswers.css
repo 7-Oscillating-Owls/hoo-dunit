@@ -1,0 +1,40 @@
+.qa {
+  border: 1px dotted red;
+  margin: 15px 7px;
+  padding: 7px;
+}
+
+.searchBar {
+  border: 1px solid black;
+  margin: 15px 7px;
+  padding: 7px;
+}
+.qaContainer {
+  border: 4px solid green;
+  margin: 15px 7px;
+}
+.questionList {
+  margin: 15px 10px;
+  padding: 7px;
+}
+.answerList {
+  margin: 15px 10px;
+  padding: 7px;
+}
+.buttonContainer {
+  display: flex;
+}
+
+.moreAnsweredQuestionsButton {
+  justify-content: space-around;
+  padding: 15px;
+  margin: 0 7px;
+  border: 2px solid blue;
+}
+.addAQuestionButton {
+  justify-content: space-around;
+  padding: 15px;
+  margin: 0 7px;
+  border: 2px solid aqua
+}
+
