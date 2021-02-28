@@ -1,0 +1,12 @@
+.answer {
+  display: flex;
+}
+
+
+.answer p {
+
+  font-size: 13px;
+  padding-top: 10px;
+  margin-left: 4px;
+
+}
