@@ -1,7 +1,22 @@
 .reviewsList {
   display: grid;
+  border: 1px solid gray;
   box-sizing: border-box;
   grid-gap: 20px;
   justify-items: stretch;
   align-items: stretch;
+  margin-left: 30px;
+  padding-left: 35px;
+}
+
+.ratingsAndReviewsTitle {
+  padding: 5px;
+  color: #808080;
+  font-weight: 500;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.starRating {
+
 }
