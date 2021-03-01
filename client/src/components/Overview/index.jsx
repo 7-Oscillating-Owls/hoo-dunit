@@ -16,9 +16,11 @@ class Overview extends React.Component {
   render() {
     const { allStyles } = this.state;
     let images;
+    let stockKeepingUnit;
     allStyles.forEach((style) => {
       if (style['default?'] === true) {
         images = style.photos;
+        stockKeepingUnit = style.skus;
       }
     });
 
@@ -27,7 +29,7 @@ class Overview extends React.Component {
         <div className={styles.imageGallery}><ImageGallery images={images} /></div>
         <div className={styles.productInformation}>Product information</div>
         <div className={styles.styleSelector}>Style Selector</div>
-        <div className={styles.addToCart}><Cart /></div>
+        <div className={styles.addToCart}><Cart skus={stockKeepingUnit} /></div>
         <div className={styles.productDescription}>Product Description</div>
       </div>
     );
