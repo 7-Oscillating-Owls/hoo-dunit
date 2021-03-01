@@ -5,7 +5,7 @@ const styles = {
           "style_id": 70540,
           "name": "Forest Green & Black",
           "original_price": "140.00",
-          "sale_price": null,
+          "sale_price": 20,
           "default?": true,
           "photos": [
               {
