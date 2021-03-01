@@ -47,12 +47,12 @@ class ImageGallery extends React.Component {
     const { images } = this.props;
     return (
       <section className={styles.carousel}>
-        <button type="button" className="left-arrow" onClick={this.previousSlide}>left</button>
-        <button type="button" className="right-arrow" onClick={this.nextSlide}>right</button>
-        <div>
+        <button data-testid="leftArrow-click" type="button" className="left-arrow" onClick={this.previousSlide}>left</button>
+        <button data-testid="rightArrow-click" type="button" className="right-arrow" onClick={this.nextSlide}>right</button>
+        <div className="image-items">
           {
             images.map((item, index) => (
-              <div key={item.id}>
+              <div key="1">
                 {index === current && <img className={styles.styleImage} src={item.url} alt="style" />}
               </div>
             ))
@@ -65,7 +65,7 @@ class ImageGallery extends React.Component {
 }
 
 ImageGallery.propTypes = {
-  images: PropTypes.arrayOf().isRequired,
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ImageGallery;
