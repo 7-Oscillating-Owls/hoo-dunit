@@ -8,10 +8,11 @@ const ReviewTiles = ({ review }) => {
     rating, reviewer_name, date, summary, body, helpfulness,
   } = review;
   const monthOptions = ['January ', 'February ', 'March ', 'April ', 'May ', 'June ', 'July ', 'August ', 'September ', 'October ', 'November ', 'December '];
-  const monthNumber = new Date(date).getMonth();
+  const newDate = new Date(date);
+  const monthNumber = newDate.getMonth();
   const month = monthOptions[monthNumber];
-  const day = new Date(date).getDate();
-  const year = new Date(date).getFullYear();
+  const day = newDate.getDate();
+  const year = newDate.getFullYear();
   const formattedDate = `${month} ${day}, ${year}`;
   return (
     <div className={styles.reviewTiles}>
