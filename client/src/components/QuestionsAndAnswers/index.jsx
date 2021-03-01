@@ -10,8 +10,11 @@ import AnswerHelpful from '../AnswerHelpful';
 import ByUser from '../ByUser';
 import Report from '../Report';
 
+import QATitle from '../QATitle';
 const QuestionsAndAnswers = () => (
+
   <div className={styles.qa}>
+    <div classNames={styles.qatitle}><QATitle /></div>
     <div className={styles.searchBar}>SearchBar</div>
     <div className={styles.helpful}><Helpful /></div>
     <div className={styles.addanswer}><AddAnswer /></div>
