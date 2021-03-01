@@ -21,10 +21,17 @@ class QuestionModal extends React.Component {
         />
         <input
           type="text"
-          value='nickname'
+          value="nickname"
           placeholder="Example: jackson11!"
         />
+        <input
+          type="email"
+          value="email"
+          placeholder="enter email"
+        />
+        <small>For authentication reasons, you will not be emailed</small>
       </form>
+      <button>Submit</button>
 
     );
   }
