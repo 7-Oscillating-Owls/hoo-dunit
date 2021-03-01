@@ -86,13 +86,13 @@ class ReviewsAddForm extends React.Component {
           <small>For privacy reasons, please do not use your full name or email as username</small>
 
           <h4>Review Summary:</h4>
-          <textarea className={styles.summaryText} onChange={this.handleSummaryTextChange} type="text" name="reviewSummary" value={this.state.reviewSummary} placeholder="Example: Best purchase ever!" maxlength="60" />
+          <textarea className={styles.summaryText} onChange={this.handleSummaryTextChange} type="text" name="reviewSummary" value={this.state.reviewSummary} placeholder="Example: Best purchase ever!" maxLength="60" />
           <div>
             <small>Character Count: {this.state.summaryTextCount} of 60</small>
           </div>
 
           <h4>Review Description:</h4>
-          <textarea className="descriptionText" onChange={this.handleDescriptionTextChange} type="text" name="reviewBody" value={this.state.reviewBody} placeholder="Why did you like or dislike the product?" required minlength="50" maxLength="1000" />
+          <textarea className="descriptionText" onChange={this.handleDescriptionTextChange} type="text" name="reviewBody" value={this.state.reviewBody} placeholder="Why did you like or dislike the product?" required minLength="50" maxLength="1000" />
           <div>
             <small>Remaining Characters: {this.state.descriptionTextCount}</small>
           </div>
