@@ -33,7 +33,7 @@ class Cart extends React.Component {
     const skuIds = Object.keys(skus);
     const filteredQuantity = Object.values(skus).filter((sku) => sku.size === selectedSize)
       .map((sku) => sku.quantity);
-    const displayQuantity = Array.from(new Array(filteredQuantity[0]),(x, i) => i + 1);
+    const displayQuantity = Array.from(new Array(filteredQuantity[0]), (x, i) => i + 1);
 
     return (
       <div className={styles.selectContainer}>
