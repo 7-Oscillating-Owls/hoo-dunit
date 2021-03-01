@@ -13,21 +13,21 @@ class QuestionModal extends React.Component {
 
   render() {
     return (
-      <div>
-      <form className="questionModalForm">
+      <div className="questionModalForm">
+      <form className="modalform">
         <input
           type="text"
-          value="question"
+          name="question"
           placeholder="Enter your question"
         />
         <input
           type="text"
-          value="nickname"
+          name="nickname"
           placeholder="Example: jackson11!"
         />
         <input
           type="email"
-          value="email"
+          name="email"
           placeholder="enter email"
         />
         <small>For authentication reasons, you will not be emailed</small>

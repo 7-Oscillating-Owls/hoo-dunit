@@ -11,3 +11,9 @@
   box-sizing: border-box;
   transition: all .3 ease-out;
 }
+
+.modalform {
+  display: flex;
+  flex-direction: column;
+  background-color: green;
+}
