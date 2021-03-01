@@ -11,14 +11,29 @@ class ReviewsList extends React.Component {
     this.state = {
       reviewsList: [],
       reviewCount: reviewsData.results.length,
+      overallRating: 5,
     };
+    this.getOverallRating = this.getOverallRating.bind(this);
+  }
+
+  componentDidMount() {
+    this.getOverallRating();
+  }
+
+  getOverallRating() {
+    let ratingTotal = 0;
+    reviewsData.results.forEach((review) => {
+      ratingTotal += review.rating;
+    });
+    const averageRating = ratingTotal / (this.state.reviewCount);
+    this.setState({ overallRating: averageRating });
   }
 
   render() {
     return (
       <div className={styles.reviewsList}>
         <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
-        <div className={styles.starRating}>5</div>
+        <div className={styles.starRating}>{this.state.overallRating}</div>
         <div className={styles.recommendOverview}>100% of reviewers recommend this product</div>
         <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
         <div>
