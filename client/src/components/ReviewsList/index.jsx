@@ -9,7 +9,8 @@ class ReviewsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewsList: []
+      reviewsList: [],
+      reviewCount: reviewsData.results.length,
     };
   }
 
@@ -17,9 +18,9 @@ class ReviewsList extends React.Component {
     return (
       <div className={styles.reviewsList}>
         <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
-        <div className={styles.starRating}>3.5</div>
+        <div className={styles.starRating}>5</div>
         <div className={styles.recommendOverview}>100% of reviewers recommend this product</div>
-        <div className={styles.totalReviews}>2 reviews</div>
+        <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
         <div>
           {
             // eslint-disable-next-line array-callback-return
