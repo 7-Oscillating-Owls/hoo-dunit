@@ -5,8 +5,7 @@
   grid-gap: 20px;
   justify-items: stretch;
   align-items: stretch;
-  margin-left: 30px;
-  padding-left: 35px;
+  padding: 35px;
 }
 
 .ratingsAndReviewsTitle {
@@ -18,5 +17,13 @@
 }
 
 .starRating {
+  padding-left: 20px;
+}
 
+.recommendOverview {
+  padding-left: 20px;
+}
+
+.totalReviews {
+  padding-left: 20px;
 }

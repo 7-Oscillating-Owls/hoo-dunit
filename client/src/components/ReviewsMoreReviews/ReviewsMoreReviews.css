@@ -1,11 +1,9 @@
 .moreReviews {
-  padding: 10px;
-  margin: 10px 5px;
-  overflow: scroll;
+  justify-content: center;
 }
 
 .moreButton {
-  justify-content: space-around;
+  justify-content: center;
   padding: 20px;
   margin: 0 10px;
   border: 2px solid gray;

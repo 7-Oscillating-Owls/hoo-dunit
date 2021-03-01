@@ -10,3 +10,38 @@
   margin: 0 10px;
   border: 2px solid gray;
 }
+
+input {
+  padding: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+.emailInput {
+  width: 250px;
+	height: 20px;
+	border: 3px solid #cccccc;
+}
+
+.usernameInput {
+  width: 250px;
+	height: 20px;
+	border: 3px solid #cccccc;
+}
+
+textarea {
+  width: 350px;
+	height: 100px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+.summaryText {
+  height: 50px;
+}
+
+.fileInput {
+  margin: 10px 0px 30px 10px;
+}
