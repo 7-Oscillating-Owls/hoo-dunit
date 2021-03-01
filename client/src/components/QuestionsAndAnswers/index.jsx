@@ -22,11 +22,14 @@ const QuestionsAndAnswers = () => (
         <div className={styles.helpful}><Helpful /></div>
         <div className={styles.addanswer}><AddAnswer /></div>
       </div>
-      <div className={styles.byuser}><ByUser /></div>
+
       <div className={styles.answerList}>
         <Answer />
-        <div className={styles.answerhelpful}><AnswerHelpful /></div>
-        <div className={styles.report}><Report /></div>
+        <div className={styles.answerhelpfulcontainer}>
+          <div className={styles.byuser}><ByUser /></div>
+          <div className={styles.answerhelpful}><AnswerHelpful /></div>
+          <div className={styles.report}><Report /></div>
+        </div>
       </div>
       <div className={styles.qaContainer}>
         <div className={styles.questionList}>
@@ -37,8 +40,11 @@ const QuestionsAndAnswers = () => (
       </div>
       <div className={styles.answerList}>
         <Answer />
-        <div className={styles.answerhelpful}><AnswerHelpful /></div>
-        <div className={styles.report}><Report /></div>
+        <div className={styles.answerhelpfulcontainer}>
+          <div className={styles.byuser}><ByUser /></div>
+          <div className={styles.answerhelpful}><AnswerHelpful /></div>
+          <div className={styles.report}><Report /></div>
+        </div>
       </div>
       <div className={styles.loadmoreanswers}><LoadMoreAnswers /></div>
     </div>

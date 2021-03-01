@@ -11,7 +11,13 @@
 
 }
 
-
+.answerhelpfulcontainer {
+  display: flex;
+  justify-content: space-around;
+}
+.byuser {
+  margin: 15px 7px;
+}
 
 .buttonContainer {
   display: flex;
