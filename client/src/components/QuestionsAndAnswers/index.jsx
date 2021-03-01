@@ -13,7 +13,7 @@ import QATitle from '../QATitle';
 const QuestionsAndAnswers = () => (
 
   <div className={styles.qa}>
-    <div classNames={styles.qatitle}><QATitle /></div>
+    <div className={styles.qatitle}><QATitle /></div>
     <div className={styles.searchBar}>SearchBar</div>
 
     <div className={styles.qaContainer}>
