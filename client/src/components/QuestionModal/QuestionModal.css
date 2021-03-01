@@ -1,4 +1,5 @@
 .questionModalForm {
+  height: 90%;
   position: fixed;
   z-index: 500;
   background-color: white;
@@ -7,7 +8,7 @@
   box-shadow: 1px 1px 1px black;
   padding: 16px;
   left: 15%;
-  top: 30%;
+  top: 1%;
   box-sizing: border-box;
   transition: all .3 ease-out;
 }
@@ -15,5 +16,5 @@
 .modalform {
   display: flex;
   flex-direction: column;
-  background-color: green;
+
 }

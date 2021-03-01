@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './QuestionModal.css';
 
 class QuestionModal extends React.Component {
   constructor(props) {
@@ -13,8 +14,8 @@ class QuestionModal extends React.Component {
 
   render() {
     return (
-      <div className="questionModalForm">
-      <form className="modalform">
+      <div className={styles.questionModalForm}>
+      <form className={styles.modalform}>
         <input
           type="text"
           name="question"
