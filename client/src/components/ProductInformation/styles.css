@@ -1,10 +1,12 @@
 .productInfo {
-
+  display: grid;
+  grid-template-rows: 1fr auto
 }
 
 .ratings {
   display: flex;
   position: relative;
+  box-sizing: border-box;
   border: 1px black;
 }
 
@@ -19,4 +21,12 @@
 .price {
   font-size: 18px;
   font-weight: 700;
+}
+
+.originalPrice {
+  text-decoration: line-through;
+}
+
+.salePrice {
+  color: red;
 }
