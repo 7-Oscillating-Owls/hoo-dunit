@@ -9,6 +9,7 @@ import ByUser from '../ByUser';
 import Report from '../Report';
 import LoadMoreAnswers from '../LoadMoreAnswers';
 import QATitle from '../QATitle';
+import AddAQuestion from '../AddAQuestion';
 
 const QuestionsAndAnswers = () => (
 
@@ -50,7 +51,7 @@ const QuestionsAndAnswers = () => (
     </div>
     <div className={styles.buttonContainer}>
       <div className={styles.moreAnsweredQuestionsButton}>More Answered Questions</div>
-      <div className={styles.addAQuestionButton}>Add A Question</div>
+      <div className={styles.addAQuestionButton}><AddAQuestion /></div>
     </div>
   </div>
 );

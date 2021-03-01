@@ -31,9 +31,13 @@
 }
 .addAQuestionButton {
   justify-content: space-around;
-  padding: 15px;
+  padding: 7px;
   margin: 0 7px;
-  border: 2px solid aqua
+
+}
+.addAQuestionButton button {
+  padding: 17px;
+  background-color: white;
 }
 
 .questionList {
