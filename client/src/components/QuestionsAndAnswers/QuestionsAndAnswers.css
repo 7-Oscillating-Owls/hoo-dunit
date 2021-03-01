@@ -30,3 +30,26 @@
   border: 2px solid aqua
 }
 
+.questionList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.answerList {
+
+
+}
+
+.answerhelpful {
+  margin: 17px 7px;
+}
+
+.report {
+  margin: 17px 7px;
+}
+.loadmoreanswers {
+  margin-left: 10px;
+  font-size: 14px;
+  padding: 7px;
+  border: none;
+}
