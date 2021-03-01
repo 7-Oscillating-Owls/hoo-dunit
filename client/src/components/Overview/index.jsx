@@ -20,12 +20,14 @@ class Overview extends React.Component {
     const { allStyles } = this.state;
 
     let images;
-    let stockKeepingUnit;
     let originalPrice;
     let salePrice;
+    let stockKeepingUnit;
+    let styleId;
 
     allStyles.forEach((style) => {
       if (style['default?'] === true) {
+        styleId = style.style_id;
         images = style.photos;
         stockKeepingUnit = style.skus;
         originalPrice = style.original_price;
@@ -44,7 +46,7 @@ class Overview extends React.Component {
           />
         </div>
         <div className={styles.styleSelector}><StyleSelector allStyles={allStyles} /></div>
-        <div className={styles.addToCart}><Cart skus={stockKeepingUnit} /></div>
+        <div className={styles.addToCart}><Cart skus={stockKeepingUnit} styleId={styleId} /></div>
         <div className={styles.productDescription}>Product Description</div>
       </div>
     );
