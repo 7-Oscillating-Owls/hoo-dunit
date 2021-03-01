@@ -34,9 +34,9 @@ class ReviewsAddForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <h2>Write New Review</h2>
           <h4>Overall Rating:</h4>
-          <input onChange={this.handleChange} type="text" name="overallRating" value={this.state.overallRating} placeholder="Rating: 1 - 5" />
+          <input onChange={this.handleChange} type="number" name="overallRating" value={this.state.overallRating} placeholder="Rating: 1 - 5" />
           <h4>What is your email?</h4>
-          <input onChange={this.handleChange} type="text" name="email" value={this.state.email} placeholder="Example: abc@123.com" />
+          <input onChange={this.handleChange} type="email" name="email" value={this.state.email} placeholder="Example: abc@123.com" />
           <h4>What is your username?</h4>
           <p>For privacy reasons, do not use your full name or email address as username</p>
           <input onChange={this.handleChange} type="text" name="reviewUsername" value={this.state.reviewUsername} placeholder="Example: monica927" />
@@ -50,7 +50,7 @@ class ReviewsAddForm extends React.Component {
           <input onChange={this.handleChange} type="text" name="recommendProduct" value={this.state.recommendProduct} placeholder="Product Recommendation" />
           <h4>Photos:</h4>
           <p>Upload Your Photos</p>
-          <button className={styles.addButton} type="submit">Add Review</button>
+          <button className={styles.addButton} onClick={() => {}} type="button">Add Review</button>
         </form>
       </div>
     );
