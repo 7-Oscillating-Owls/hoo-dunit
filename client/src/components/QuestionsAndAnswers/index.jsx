@@ -4,7 +4,10 @@ import Question from '../Question';
 import Answer from '../Answer';
 import Helpful from '../Helpful';
 import AddAnswer from '../AddAnswer';
+
+import AnswerHelpful from '../AnswerHelpful';
 import ByUser from '../ByUser';
+
 
 const QuestionsAndAnswers = () => (
   <div className={styles.qa}>
@@ -15,6 +18,7 @@ const QuestionsAndAnswers = () => (
       <div className={styles.questionList}><Question /></div>
       <div className={styles.byuser}><ByUser /></div>
       <div className={styles.answerList}><Answer /></div>
+      <div className={styles.answerhelpful}><AnswerHelpful /></div>
     </div>
     <div className={styles.buttonContainer}>
       <div className={styles.moreAnsweredQuestionsButton}>More Answered Questions</div>
