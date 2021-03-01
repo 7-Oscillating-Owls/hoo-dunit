@@ -19,7 +19,6 @@ class RelatedProductsList extends Component {
 
   scrollLeft() {
     const { position } = this.state;
-    console.log('scroll left', position);
     this.setState({
       position: Math.max(0, position - 1),
     });
@@ -29,7 +28,6 @@ class RelatedProductsList extends Component {
     const { position } = this.state;
     // eslint-disable-next-line react/prop-types
     const { relatedProducts } = this.props;
-
     this.setState({
       position: Math.min(relatedProducts.length, position + 1),
     });
@@ -88,7 +86,7 @@ class RelatedProductsList extends Component {
         </div>
       </div>
     );
-  };
+  }
 }
 // RelatedProductsList.propTypes = {
 //   relatedProducts: PropTypes.arrayOf().isRequired,

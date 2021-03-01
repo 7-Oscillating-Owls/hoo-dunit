@@ -13,6 +13,7 @@
 }
 
 .leftArrowSpacer {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
   border: 1px solid rgba(255, 0, 0, 0.1);
   bottom: 0;
   box-sizing: border-box;
@@ -28,14 +29,15 @@
 }
 
 .rightArrowSpacer {
-  border: 1px solid rgba(255, 0, 0, 0.1);
+  background: linear-gradient(-90deg, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0));
+  /* border: 1px solid rgba(255, 0, 0, 0.1); */
   bottom: 0;
   box-sizing: border-box;
   display: flex;
   position: absolute;
   right: 0;
   top: 0;
-  width: 30px;
+  width: 60px;
 }
 
 .rightArrowSpacer:hover {
@@ -47,6 +49,11 @@
   border: none;
   z-index: 2;
 }
+
+.scrollButton:hover {
+  /* color: white; */
+}
+
 .scrollButton:focus {
   outline: none;
 }
