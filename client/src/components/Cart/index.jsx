@@ -10,8 +10,8 @@ const Cart = ({ skus }) => {
         <select name="size">
           <option value="">SELECT A SIZE</option>
           {
-            sizes.map((item, index) => (
-              <option key={index + skus[item].size + skus[item].quantity} value={skus[item].size}>{skus[item].size}</option>
+            sizes.map((item) => (
+              <option key={item + skus[item]} value={skus[item].size}>{skus[item].size}</option>
             ))
           }
         </select>
