@@ -13,21 +13,30 @@ class ReviewsList extends React.Component {
       reviewsList: [],
       reviewCount: reviewsData.results.length,
       overallRating: 5,
+      recommendPercent: 0,
     };
-    this.getOverallRating = this.getOverallRating.bind(this);
+    this.getOverallView = this.getOverallView.bind(this);
   }
 
   componentDidMount() {
-    this.getOverallRating();
+    this.getOverallView();
   }
 
-  getOverallRating() {
+  getOverallView() {
     let ratingTotal = 0;
+    let recommendTotal = 0;
+    // const recommended = `${(recommendTotal / (this.state.reviewCount)) * 100}%`;
     reviewsData.results.forEach((review) => {
       ratingTotal += review.rating;
+      console.log(review.recommend);
+      if (review.recommend === true) {
+        recommendTotal += 1;
+        console.log(recommendTotal);
+      }
     });
     const averageRating = ratingTotal / (this.state.reviewCount);
-    this.setState({ overallRating: averageRating });
+    const recommended = `${(recommendTotal / 4) * 100}%`;
+    this.setState({ overallRating: averageRating, recommendPercent: recommended });
   }
 
   render() {
@@ -44,7 +53,7 @@ class ReviewsList extends React.Component {
             [...Array(2)].map((star, index) => <FaRegStar size={30} key={index} />)
           }
         </div>
-        <div className={styles.recommendOverview}>100% of reviewers recommend this product</div>
+        <div className={styles.recommendOverview}>{this.state.recommendPercent} of reviewers recommend this product</div>
         <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
         <div>
           {
