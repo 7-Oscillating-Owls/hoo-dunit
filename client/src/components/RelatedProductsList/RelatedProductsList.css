@@ -7,23 +7,46 @@
   padding-left: 50px;
 }
 
+.carousel {
+  display: flex;
+  position: relative;
+}
 
 .leftArrowSpacer {
-  box-sizing: border-box;
-  width: 30px;
   border: 1px solid rgba(255, 0, 0, 0.1);
-  position: absolute;
-  left: 0;
-  top: 0;
   bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 30px;
+}
+
+.leftArrowSpacer:hover {
+  background-color: rgba(255, 0, 0, 0.1);
 }
 
 .rightArrowSpacer {
-  box-sizing: border-box;
-  width: 30px;
   border: 1px solid rgba(255, 0, 0, 0.1);
+  bottom: 0;
+  box-sizing: border-box;
+  display: flex;
   position: absolute;
   right: 0;
   top: 0;
-  bottom: 0;
+  width: 30px;
+}
+
+.rightArrowSpacer:hover {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.scrollButton {
+  background: none;
+  border: none;
+  z-index: 2;
+}
+.scrollButton:focus {
+  outline: none;
 }

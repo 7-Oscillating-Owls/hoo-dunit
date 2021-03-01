@@ -2,26 +2,35 @@ import React from 'react';
 
 import RelatedProductsList from '../RelatedProductsList';
 import {
-  relatedProductsDetails,
-  stylesByProductId,
+  // getProducts,
+  getDetailForProduct,
+  getRelatedProducts,
+  // relatedProductsDetails,
+  getStylesForProduct,
 } from '../../../../data/products';
 
 import styles from './RelatedProducts.css';
 
-const RelatedProducts = () => (
-  <section className={styles.relatedProducts}>
-    <h3 className={styles.listTitle}>Related Products</h3>
-    <RelatedProductsList
-      relatedProducts={relatedProductsDetails}
-      stylesByProductId={stylesByProductId}
-    />
+const RelatedProducts = () => {
+  const productId = '14807';
+  const relatedProductIds = getRelatedProducts(productId);
+  const relatedProductsDetails = relatedProductIds.map((id) => getDetailForProduct(id));
 
-    <h3 className={styles.listTitle}>Your Outfit</h3>
-    <RelatedProductsList
-      relatedProducts={relatedProductsDetails}
-      stylesByProductId={stylesByProductId}
-    />
-  </section>
-);
+  return (
+    <section className={styles.relatedProducts}>
+      <h3 className={styles.listTitle}>Related Products</h3>
+      <RelatedProductsList
+        relatedProducts={relatedProductsDetails}
+        stylesByProductId={getStylesForProduct}
+      />
+
+      <h3 className={styles.listTitle}>Your Outfit</h3>
+      <RelatedProductsList
+        relatedProducts={relatedProductsDetails}
+        stylesByProductId={getStylesForProduct}
+      />
+    </section>
+  );
+}
 
 export default RelatedProducts;
