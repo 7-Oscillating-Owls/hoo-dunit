@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(2,20 );
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.item {
+  border: 1px solid black;
+  border-radius: 50%;
+  display: inline-block;
+  object-fit: cover;
+
+}
