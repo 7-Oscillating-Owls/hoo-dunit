@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import styles from './RelatedProductCard.css';
 
@@ -8,7 +8,7 @@ const RelatedProductCard = ({
   name,
   category,
   description,
-  defaultStyle,
+  defaultStyle
 }) => {
   let productPrice;
   let priceStyle;
@@ -44,12 +44,12 @@ const RelatedProductCard = ({
   );
 };
 
-RelatedProductCard.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  defaultStyle: PropTypes.objectOf().isRequired,
-};
+// RelatedProductCard.propTypes = {
+//   id: PropTypes.number.isRequired,
+//   name: PropTypes.string.isRequired,
+//   category: PropTypes.string.isRequired,
+//   description: PropTypes.string.isRequired,
+//   defaultStyle: PropTypes.objectOf().isRequired,
+// };
 
 export default RelatedProductCard;

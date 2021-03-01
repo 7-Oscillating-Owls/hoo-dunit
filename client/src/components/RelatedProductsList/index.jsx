@@ -25,14 +25,16 @@ const RelatedProductsList = ({ relatedProducts, stylesByProductId }) => {
       name={name}
       category={category}
       features={features}
-      defaultStyle={stylesByProductId[id][0]}
+      defaultStyle={stylesByProductId(id).results[0]}
     />
   ));
 
   return (
     <div className={styles.relatedProductsList}>
       <div className={styles.leftArrowSpacer} />
-      {cardsComponenets}
+      <div className={styles.carousel}>
+        {cardsComponenets}
+      </div>
       <div className={styles.rightArrowSpacer} />
     </div>
   );
