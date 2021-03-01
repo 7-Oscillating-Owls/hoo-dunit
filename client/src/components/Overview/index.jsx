@@ -5,6 +5,7 @@ import productInfo from '../../../../data/productInfo';
 import ImageGallery from '../ImageGallery';
 import ProductInformation from '../ProductInformation';
 import Cart from '../Cart';
+import StyleSelector from '../StyleSelector';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class Overview extends React.Component {
             salePrice={salePrice}
           />
         </div>
-        <div className={styles.styleSelector}>Style Selector</div>
+        <div className={styles.styleSelector}><StyleSelector images={images} /></div>
         <div className={styles.addToCart}><Cart skus={stockKeepingUnit} /></div>
         <div className={styles.productDescription}>Product Description</div>
       </div>
