@@ -9,6 +9,7 @@ import AddAnswer from '../AddAnswer';
 import AnswerHelpful from '../AnswerHelpful';
 import ByUser from '../ByUser';
 import Report from '../Report';
+import LoadMoreAnswers from '../LoadMoreAnswers';
 
 const QuestionsAndAnswers = () => (
   <div className={styles.qa}>
@@ -21,6 +22,7 @@ const QuestionsAndAnswers = () => (
       <div className={styles.answerList}><Answer /></div>
       <div className={styles.answerhelpful}><AnswerHelpful /></div>
       <div className={styles.report}><Report /></div>
+      <div className={styles.loadmoreanswers}><LoadMoreAnswers /></div>
     </div>
     <div className={styles.buttonContainer}>
       <div className={styles.moreAnsweredQuestionsButton}>More Answered Questions</div>
