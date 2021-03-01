@@ -1,5 +1,5 @@
 import React from 'react';
-
+import QuestionModal from '../QuestionModal';
 class AddAQuestion extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +10,10 @@ class AddAQuestion extends React.Component {
 
   render() {
     return (
-      <button className="questionButton" type="button">ADD A QUESTION + </button>
+      <div>
+        <button className="questionButton" type="button">ADD A QUESTION + </button>
+        {this.state.showModal ? <QuestionModal /> : null}
+      </div>
     );
   }
 }

@@ -13,6 +13,7 @@ class QuestionModal extends React.Component {
 
   render() {
     return (
+      <div>
       <form className="questionModalForm">
         <input
           type="text"
@@ -31,8 +32,8 @@ class QuestionModal extends React.Component {
         />
         <small>For authentication reasons, you will not be emailed</small>
       </form>
-      <button>Submit</button>
-
+        <button type="button">Submit</button>
+      </div>
     );
   }
 }
