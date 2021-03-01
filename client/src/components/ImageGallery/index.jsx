@@ -52,11 +52,11 @@ class ImageGallery extends React.Component {
         <div className="image-items">
           {
             images.map((item, index) => (
-              <div key="1">
+              <div key={item.url}>
                 {index === current && <img className={styles.styleImage} src={item.url} alt="style" />}
               </div>
             ))
-          }
+}
         </div>
 
       </section>
