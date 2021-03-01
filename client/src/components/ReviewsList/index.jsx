@@ -3,6 +3,7 @@ import ReviewTiles from '../ReviewTiles';
 import ReviewsAddForm from '../ReviewsAddForm';
 import ReviewsMoreReviews from '../ReviewsMoreReviews';
 import reviewsData from '../../../../data/reviews';
+import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
 import styles from './ReviewsList.css';
 
 class ReviewsList extends React.Component {
@@ -33,7 +34,16 @@ class ReviewsList extends React.Component {
     return (
       <div className={styles.reviewsList}>
         <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
-        <div className={styles.starRating}>{this.state.overallRating}</div>
+        <div className={styles.overallRating}>{this.state.overallRating}</div>
+        <div className={styles.starRating}>
+          {
+            [...Array(2)].map((star, index) => <FaStar size={30} key={index} />)
+          }
+          <FaStarHalfAlt size={30} />
+          {
+            [...Array(2)].map((star, index) => <FaRegStar size={30} key={index} />)
+          }
+        </div>
         <div className={styles.recommendOverview}>100% of reviewers recommend this product</div>
         <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
         <div>

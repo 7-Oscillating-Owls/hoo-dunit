@@ -16,8 +16,16 @@
   text-transform: uppercase;
 }
 
+.overallRating {
+  padding-left: 20px;
+  font-size: 70px;
+  font-weight: 700;
+  color: #6E6E6E;
+}
+
 .starRating {
   padding-left: 20px;
+  color: #525252;
 }
 
 .recommendOverview {
