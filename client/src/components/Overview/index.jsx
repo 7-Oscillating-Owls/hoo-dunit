@@ -43,7 +43,7 @@ class Overview extends React.Component {
             salePrice={salePrice}
           />
         </div>
-        <div className={styles.styleSelector}><StyleSelector images={images} /></div>
+        <div className={styles.styleSelector}><StyleSelector allStyles={allStyles} /></div>
         <div className={styles.addToCart}><Cart skus={stockKeepingUnit} /></div>
         <div className={styles.productDescription}>Product Description</div>
       </div>
