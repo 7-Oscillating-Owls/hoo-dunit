@@ -12,7 +12,7 @@ const ReviewTiles = ({ review }) => {
       {/* <div>{rating}</div> */}
       <div>
         {
-          [...Array(5)].map((star) => <FaStar size={10} />)
+          [...Array(5)].map((star, index) => <FaStar size={10} key={index} />)
         }
       </div>
       <div>{reviewer_name}</div>
@@ -22,10 +22,8 @@ const ReviewTiles = ({ review }) => {
       <div>
         Helpfulness? Yes (
         {helpfulness}
-        )
+        ) | Report
       </div>
-      <div> | </div>
-      <div>Report</div>
     </div>
   );
 };
