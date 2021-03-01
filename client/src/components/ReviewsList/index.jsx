@@ -1,9 +1,9 @@
 import React from 'react';
+import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
 import ReviewTiles from '../ReviewTiles';
 import ReviewsAddForm from '../ReviewsAddForm';
 import ReviewsMoreReviews from '../ReviewsMoreReviews';
 import reviewsData from '../../../../data/reviews';
-import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
 import styles from './ReviewsList.css';
 
 class ReviewsList extends React.Component {
@@ -28,10 +28,8 @@ class ReviewsList extends React.Component {
     // const recommended = `${(recommendTotal / (this.state.reviewCount)) * 100}%`;
     reviewsData.results.forEach((review) => {
       ratingTotal += review.rating;
-      console.log(review.recommend);
       if (review.recommend === true) {
         recommendTotal += 1;
-        console.log(recommendTotal);
       }
     });
     const averageRating = ratingTotal / (this.state.reviewCount);
@@ -53,8 +51,14 @@ class ReviewsList extends React.Component {
             [...Array(2)].map((star, index) => <FaRegStar size={30} key={index} />)
           }
         </div>
-        <div className={styles.recommendOverview}>{this.state.recommendPercent} of reviewers recommend this product</div>
-        <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
+        <div className={styles.recommendOverview}>{this.state.recommendPercent}
+          {' '}
+          of reviewers recommend this product
+        </div>
+        <div className={styles.totalReviews}>{this.state.reviewCount}
+          {' '}
+          Reviews
+        </div>
         <div>
           {
             // eslint-disable-next-line array-callback-return
