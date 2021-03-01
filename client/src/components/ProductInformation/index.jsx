@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.css'
 
-const ProductInformation = () => (
+const ProductInformation = ({productInfo, }) => (
   <div className={styles.productInfo}>
     <div className={styles.ratings}>Star Ratings</div>
     <div className={styles.category}>Category</div>
