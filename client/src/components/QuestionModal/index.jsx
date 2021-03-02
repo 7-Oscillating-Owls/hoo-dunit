@@ -40,7 +40,7 @@ class QuestionModal extends React.Component {
           />
           <small>For authentication reasons, you will not be emailed</small>
         </form>
-        <button type="button" onClick={this.handleSubmitClick}>Submit</button>
+        <button type="button" onClick={this.handleSubmitClick} className={styles.buttonModalForm}>Submit</button>
       </div>
     );
   }

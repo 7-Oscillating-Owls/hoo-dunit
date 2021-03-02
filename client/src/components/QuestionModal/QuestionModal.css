@@ -13,6 +13,8 @@
   transition: all .3 ease-out;
 }
 
+
+
 .modalform {
   display: flex;
   flex-direction: column;
@@ -27,3 +29,4 @@
 .emailfield {
   padding: 25px;
 }
+
