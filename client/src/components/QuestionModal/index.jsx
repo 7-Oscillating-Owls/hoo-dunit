@@ -8,11 +8,9 @@ class QuestionModal extends React.Component {
       question: '',
       nickname: '',
       email: '',
-      errors: {
-        question: '',
-        nickname: '',
-        email: ''
-      }
+      questionError: '',
+      nicknameError: '',
+      emailError: ''
 
     };
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
@@ -44,21 +42,21 @@ class QuestionModal extends React.Component {
             placeholder="Enter your question"
             maxLength="1000"
           />
-          <small>please enter a question</small>
+          <small>{this.state.questionError}</small>
           <input
             type="text"
             name="nickname"
             placeholder="Example: jackson11!"
             maxLength="60"
           />
-          <small>please enter a nickname</small>
+          <small>{this.state.nickname}</small>
           <input
             type="email"
             name="email"
             placeholder="enter email"
             maxLength="60"
           />
-          <small>please enter email in correct format</small>
+          <small>{this.state.emailError}</small>
           <small>For authentication reasons, you will not be emailed</small>
         </form>
         <button type="button" onClick={this.handleSubmitClick} className={styles.buttonModalForm}>Submit</button>
