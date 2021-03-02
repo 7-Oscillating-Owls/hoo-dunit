@@ -14,40 +14,52 @@ class Overview extends React.Component {
 
     this.state = {
       allStyles: dummyData.results,
+      selectedStyleId: 0,
     };
+
+    this.getSelectedStyleId = this.getSelectedStyleId.bind(this);
+  }
+
+  getSelectedStyleId(selectedStyleId) {
+    this.setState({
+      selectedStyleId,
+    });
   }
 
   render() {
-    const { allStyles } = this.state;
-
-    let images;
-    let originalPrice;
-    let salePrice;
-    let stockKeepingUnit;
-    let styleId;
+    const { allStyles, selectedStyleId } = this.state;
+    let filteredStyle;
 
     allStyles.forEach((style) => {
-      if (style['default?'] === true) {
-        styleId = style.style_id;
-        images = style.photos;
-        stockKeepingUnit = style.skus;
-        originalPrice = style.original_price;
-        salePrice = style.sale_price;
+      if (selectedStyleId && style.style_id === selectedStyleId) {
+        filteredStyle = style;
+      } else if (style['default?'] === true) {
+        filteredStyle = style;
       }
     });
 
     return (
       <div className={styles.overview}>
-        <div className={styles.imageGallery}><ImageGallery images={images} /></div>
+        <div className={styles.imageGallery}><ImageGallery images={filteredStyle.photos} /></div>
         <div className={styles.productInformation}>
           <ProductInformation
             productInfo={productInfo}
-            originalPrice={originalPrice}
-            salePrice={salePrice}
+            originalPrice={filteredStyle.original_price}
+            salePrice={filteredStyle.sale_price}
           />
         </div>
-        <div className={styles.styleSelector}><StyleSelector allStyles={allStyles} /></div>
-        <div className={styles.addToCart}><Cart skus={stockKeepingUnit} styleId={styleId} /></div>
+        <div className={styles.styleSelector}>
+          <StyleSelector
+            allStyles={allStyles}
+            getSelectedStyleId={this.getSelectedStyleId}
+          />
+        </div>
+        <div className={styles.addToCart}>
+          <Cart
+            skus={filteredStyle.skus}
+            styleId={filteredStyle.style_id}
+          />
+        </div>
         <div className={styles.productDescription}>
           <ProductDescription
             description={productInfo.description}
