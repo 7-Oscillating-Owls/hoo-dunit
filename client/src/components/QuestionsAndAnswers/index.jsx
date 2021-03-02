@@ -55,7 +55,6 @@ const QuestionsAndAnswers = () => (
       <div className={styles.addAQuestionButton}><AddAQuestion /></div>
 
     </div>
-    <QuestionModal />
   </div>
 );
 
