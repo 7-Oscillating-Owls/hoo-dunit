@@ -6,7 +6,7 @@ const ProductDescription = ({ description, features }) => (
   <div>
     <div>{description}</div>
     {features.map((feature) => (
-      <div>
+      <div key={feature.value}>
         <BsCheck size={15} />
         {feature.value}
       </div>
