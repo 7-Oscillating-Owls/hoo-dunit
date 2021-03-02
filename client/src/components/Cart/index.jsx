@@ -9,7 +9,6 @@ class Cart extends React.Component {
     this.state = {
       selectedSize: '',
       selectedQuantity: 0,
-      selectedStyleId: styleId,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -23,8 +22,9 @@ class Cart extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { selectedSize, selectedQuantity, selectedStyleId } = this.state;
-    console.log(`Added to Cart: Style ID ${selectedStyleId}, Size ${selectedSize} Quantity ${selectedQuantity}`);
+    const { selectedSize, selectedQuantity } = this.state;
+    const { styleId } = this.props;
+    console.log(`Added to Cart: Style ID ${styleId}, Size ${selectedSize} Quantity ${selectedQuantity}`);
   }
 
   render() {

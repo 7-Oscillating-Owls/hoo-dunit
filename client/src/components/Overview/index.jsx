@@ -57,7 +57,7 @@ class Overview extends React.Component {
         <div className={styles.addToCart}>
           <Cart
             skus={filteredStyle.skus}
-            styleId={filteredStyle.style_id}
+            styleId={selectedStyleId}
           />
         </div>
         <div className={styles.productDescription}>
