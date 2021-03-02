@@ -1,4 +1,4 @@
-.qa {
+/* .qa {
   border: 1px dotted red;
   margin: 15px 7px;
   padding: 7px;
@@ -61,4 +61,15 @@
   font-size: 14px;
   padding: 7px;
   border: none;
+} */
+
+.questionContainer {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.helpfulContainer {
+  display: flex;
+  justify-content: space-around;
 }

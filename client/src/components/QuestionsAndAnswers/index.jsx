@@ -19,9 +19,9 @@ const QuestionsAndAnswers = () => (
   <div className={styles.searchContainer}>
     <SearchBar />
   </div>
-  <div>
+  <div className={styles.questionContainer}>
     <Question />
-    <div>
+    <div className={styles.helpfulContainer}>
       <Helpful />
       <AddAnswer />
     </div>
