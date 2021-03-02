@@ -35,10 +35,11 @@ class QuestionModal extends React.Component {
             placeholder="Example: jackson11!"
             maxLength="60"
           />
-          <input
+          <textarea
             type="email"
             name="email"
             placeholder="enter email"
+            maxLength="60"
           />
           <small>For authentication reasons, you will not be emailed</small>
         </form>
