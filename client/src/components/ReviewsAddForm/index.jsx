@@ -16,7 +16,7 @@ class ReviewsAddForm extends React.Component {
       quality: '',
       length: '',
       fit: '',
-      recommend: '',
+      recommended: true,
       summaryTextCount: 0,
       descriptionTextCount: 1000,
       uploadedFile: '',
@@ -24,6 +24,7 @@ class ReviewsAddForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSummaryTextChange = this.handleSummaryTextChange.bind(this);
     this.handleDescriptionTextChange = this.handleDescriptionTextChange.bind(this);
+    this.handleFileUpload = this.handleFileUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -34,7 +35,6 @@ class ReviewsAddForm extends React.Component {
 
   handleSummaryTextChange(event) {
     const summaryEventChange = event.target.value;
-    console.log(summaryEventChange, summaryEventChange.length);
     this.setState({ summaryTextCount: summaryEventChange.length });
     this.setState({ reviewSummary: summaryEventChange });
   }
@@ -51,9 +51,7 @@ class ReviewsAddForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // Need to have function that adds reviews to a tile and adds to list - function passed as props
-    // this.addReview(this.state.______);
-    // Need to reset state);
+    this.props.addReview(this.state);
   }
 
   render() {
@@ -185,9 +183,9 @@ class ReviewsAddForm extends React.Component {
 
           <h4>Do you recommend this product?</h4>
           <div onChange={this.handleChange}>
-            <input type="radio" id="yes" name="recommend" value="yes" />
+            <input type="radio" id="yes" name="recommended" value="true" />
             <label htmlFor="yes">Yes </label>
-            <input type="radio" id="no" name="recommend" value="no" />
+            <input type="radio" id="no" name="recommended" value="false" />
             <label htmlFor="no">No </label>
           </div>
 
@@ -196,7 +194,7 @@ class ReviewsAddForm extends React.Component {
           <div>
             <input className={styles.fileInput} type="file" id="uploadedFile" onChange={this.handleFileUpload} />
           </div>
-          <button className={styles.addButton} onClick={() => {}} type="button">Add Review</button>
+          <button className={styles.addButton} type="submit">AddReview</button>
         </form>
       </div>
     );
