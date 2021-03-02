@@ -26,6 +26,14 @@ const QuestionsAndAnswers = () => (
       <AddAnswer />
     </div>
   </div>
+  <div className={styles.answerContainer}>
+  <Answer />
+  <div className={styles.byUserContainer}>
+    <ByUser />
+    <AnswerHelpful />
+    <Report />
+  </div>
+  </div>
   </div>
 
 );
