@@ -51,8 +51,8 @@ class Cart extends React.Component {
           <select name="selectedQuantity" value={selectedQuantity} onChange={this.handleChange}>
             <option value="">-</option>
             {
-              displayQuantity && displayQuantity.map((item, index) => (
-                <option key={item} value={index}>{index}</option>
+              displayQuantity && displayQuantity.map((item) => (
+                <option key={item} value={item}>{item}</option>
               ))
             }
           </select>
