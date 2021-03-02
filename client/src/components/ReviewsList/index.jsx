@@ -79,6 +79,14 @@ class ReviewsList extends React.Component {
           <ReviewsAverageOverviewStars ratings={this.state.overallRating} />
         </div>
         <div className={styles.recommendOverview}>{this.state.recommendPercent} of reviewers recommend this product</div>
+        <div>Star Distribution: </div>
+        <div>
+          <div>5 Stars: </div>
+          <div>4 Stars: </div>
+          <div>3 Stars: </div>
+          <div>2 Stars: </div>
+          <div>1 Stars: </div>
+        </div>
         <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
         <div>
           {
