@@ -23,10 +23,11 @@ class QuestionModal extends React.Component {
     return (
       <div className={styles.questionModalForm}>
         <form className={styles.modalform}>
-          <input
+          <textarea
             type="text"
             name="question"
             placeholder="Enter your question"
+            maxLength="1000"
           />
           <input
             type="text"
