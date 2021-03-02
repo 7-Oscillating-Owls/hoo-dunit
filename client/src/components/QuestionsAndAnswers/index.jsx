@@ -34,6 +34,21 @@ const QuestionsAndAnswers = () => (
     <Report />
   </div>
   </div>
+  <div className={styles.questionContainer}>
+    <Question />
+    <div className={styles.helpfulContainer}>
+      <Helpful />
+      <AddAnswer />
+    </div>
+  </div>
+  <div className={styles.answerContainer}>
+  <Answer />
+  <div className={styles.byUserContainer}>
+    <ByUser />
+    <AnswerHelpful />
+    <Report />
+  </div>
+  </div>
   </div>
 
 );
