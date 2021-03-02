@@ -8,7 +8,7 @@ class QuestionModal extends React.Component {
       question: '',
       nickname: '',
       email: '',
-      questionError: '',
+      questionError: null,
       nicknameError: '',
       emailError: ''
 
@@ -16,17 +16,25 @@ class QuestionModal extends React.Component {
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
     this.validate = this.validate.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
   validate() {
-    console.log('validating')
     { this.state.question.length < 1 ? this.setState({ questionError: "Please enter a question" }) : null }
+
+  }
+
+  closeModal() {
+    {this.state.questionError ? this.props.modalclose() : null}
   }
 
   handleSubmitClick(event) {
     event.preventDefault();
     this.validate()
   //  this.props.modalclose();
+  this.closeModal()
   }
+
+
 
   handleOnChange(event) {
     this.setState({ [event.target.name]: event.target.value });
