@@ -7,7 +7,8 @@ class QuestionModal extends React.Component {
     this.state = {
       question: '',
       nickname: '',
-      email: ''
+      email: '',
+      errors: {}
 
     };
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
