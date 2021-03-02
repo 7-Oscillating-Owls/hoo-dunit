@@ -16,7 +16,9 @@ class AddAQuestion extends React.Component {
     this.setState({showModal: true });
   }
 
-
+  handleModalClose () {
+    this.setState({showModal: false});
+  }
 
   render() {
     return (
