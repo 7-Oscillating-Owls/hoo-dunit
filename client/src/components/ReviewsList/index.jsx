@@ -51,14 +51,8 @@ class ReviewsList extends React.Component {
             [...Array(2)].map((star, index) => <FaRegStar size={30} key={index} />)
           }
         </div>
-        <div className={styles.recommendOverview}>{this.state.recommendPercent}
-          {' '}
-          of reviewers recommend this product
-        </div>
-        <div className={styles.totalReviews}>{this.state.reviewCount}
-          {' '}
-          Reviews
-        </div>
+        <div className={styles.recommendOverview}>{this.state.recommendPercent} of reviewers recommend this product</div>
+        <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
         <div>
           {
             // eslint-disable-next-line array-callback-return
