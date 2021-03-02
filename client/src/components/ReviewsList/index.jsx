@@ -1,8 +1,10 @@
+/* eslint-disable no-console */
 import React from 'react';
 import ReviewsAverageOverviewStars from '../ReviewsAverageOverviewStars';
 import ReviewRatingDistribution from '../ReviewRatingDistribution';
 import ReviewTiles from '../ReviewTiles';
 import ReviewsAddForm from '../ReviewsAddForm';
+import ReviewAddFormModal from '../ReviewAddFormModal';
 import ReviewsMoreReviews from '../ReviewsMoreReviews';
 import reviewsData from '../../../../data/reviews';
 import styles from './ReviewsList.css';
@@ -25,6 +27,8 @@ class ReviewsList extends React.Component {
     this.getOverallView = this.getOverallView.bind(this);
     this.addReview = this.addReview.bind(this);
     this.getIndividualStarTotal = this.getIndividualStarTotal.bind(this);
+    this.openAddReviewModal = this.openAddReviewModal.bind(this);
+    this.getMoreReviews = this.getMoreReviews.bind(this);
   }
 
   componentDidMount() {
@@ -83,7 +87,6 @@ class ReviewsList extends React.Component {
     this.setState({ oneStarTotal: fiveStarCount });
   }
 
-  // eslint-disable-next-line class-methods-use-this
   addReview(formData) {
     const reviewObject = {
       rating: formData.overallRating,
@@ -110,6 +113,18 @@ class ReviewsList extends React.Component {
     console.log('Review Added!');
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  openAddReviewModal() {
+    // Open review modal
+    console.log('Add Revew clicked');
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  getMoreReviews() {
+    // Display two more reviews
+    console.log('More Reviews clicked');
+  }
+
   render() {
     return (
       <div className={styles.reviewsList}>
@@ -130,7 +145,8 @@ class ReviewsList extends React.Component {
           }
         </div>
         <ReviewsAddForm addReview={this.addReview} />
-        <ReviewsMoreReviews />
+        <ReviewAddFormModal />
+        <ReviewsMoreReviews openAddReviewModal={this.openAddReviewModal} getMoreReviews={this.getMoreReviews} />
       </div>
     );
   }

@@ -61,8 +61,9 @@ class ReviewsAddForm extends React.Component {
           <h2>Write New Review</h2>
 
           <h4>Overall Rating:</h4>
-          <div onChange={this.handleChange}>
-            <input type="radio" id="overallRating1" name="overallRating" value="1" />
+          <small>Reqired</small>
+          <div onChange={this.handleChange} required>
+            <input type="radio" id="overallRating1" name="overallRating" value="1" required/>
             <label htmlFor="overallRating1"> 1 - Poor </label>
             <input type="radio" id="overallRating2" name="overallRating" value="2" />
             <label htmlFor="overallRating2"> 2 - Fair </label>
@@ -194,7 +195,7 @@ class ReviewsAddForm extends React.Component {
           <div>
             <input className={styles.fileInput} type="file" id="uploadedFile" onChange={this.handleFileUpload} />
           </div>
-          <button className={styles.addButton} type="submit">AddReview</button>
+          <button className={styles.addButton} type="submit">Submit Review</button>
         </form>
       </div>
     );
