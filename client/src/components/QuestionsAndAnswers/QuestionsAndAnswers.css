@@ -74,3 +74,8 @@
   justify-content: space-between;
 
 }
+
+.answerContainer {
+  display: flex;
+  flex-direction: column;
+}
