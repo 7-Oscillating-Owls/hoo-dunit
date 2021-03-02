@@ -1,5 +1,6 @@
 import React from 'react';
 import ReviewsAverageOverviewStars from '../ReviewsAverageOverviewStars';
+import ReviewRatingDistribution from '../ReviewRatingDistribution';
 import ReviewTiles from '../ReviewTiles';
 import ReviewsAddForm from '../ReviewsAddForm';
 import ReviewsMoreReviews from '../ReviewsMoreReviews';
@@ -14,10 +15,16 @@ class ReviewsList extends React.Component {
       reviewCount: reviewsData.results.length,
       overallRating: 0,
       recommendPercent: 0,
+      fiveStarTotal: 0,
+      fourStarTotal: 0,
+      threeStarTotal: 0,
+      twoStarTotal: 0,
+      oneStarTotal: 0,
     };
     this.getReviews = this.getReviews.bind(this);
     this.getOverallView = this.getOverallView.bind(this);
     this.addReview = this.addReview.bind(this);
+    this.getIndividualStarTotal = this.getIndividualStarTotal.bind(this);
   }
 
   componentDidMount() {
@@ -26,7 +33,8 @@ class ReviewsList extends React.Component {
   }
 
   getReviews() {
-    this.setState({ reviewsData });
+    this.setState({ reviewsList: reviewsData });
+    this.setState({ reviewCount: reviewsData.results.length });
   }
 
   getOverallView() {
@@ -41,6 +49,38 @@ class ReviewsList extends React.Component {
     const averageRating = ratingTotal / (this.state.reviewCount);
     const recommended = `${((recommendTotal / 4).toFixed(2)) * 100}%`;
     this.setState({ overallRating: averageRating, recommendPercent: recommended });
+  }
+
+  getIndividualStarTotal() {
+    const fiveStarCount = 1;
+    const fourStarCount = 1;
+    const threeStarCount = 1;
+    const twoStarCount = 1;
+    const oneStarCount = 1;
+
+    reviewsData.results.forEach((review, index) => {
+      const individualStarRating = reviewsData.results[index]['rating'];
+      if (individualStarRating === 5) {
+        fiveStarCount += 1;
+      }
+      if (individualStarRating === 4) {
+        fourStarCount += 1;
+      }
+      if (individualStarRating === 3) {
+        threeStarCount += 1;
+      }
+      if (individualStarRating === 2) {
+        twoStarCount += 1;
+      }
+      if (individualStarRating === 1) {
+        oneStarCount += 1;
+      }
+    });
+    this.setState({ fiveStarTotal: fiveStarCount });
+    this.setState({ fourStarTotal: fourStarCount });
+    this.setState({ threeStarTotal: threeStarCount });
+    this.setState({ twoStarTotal: twoStarCount });
+    this.setState({ oneStarTotal: fiveStarCount });
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -79,6 +119,8 @@ class ReviewsList extends React.Component {
           <ReviewsAverageOverviewStars ratings={this.state.overallRating} />
         </div>
         <div className={styles.recommendOverview}>{this.state.recommendPercent} of reviewers recommend this product</div>
+        <div className={styles.ratingDistribution}>Star Distribution: </div>
+        <ReviewRatingDistribution fiveStarTotal={this.state.fiveStarTotal} fourStarTotal={this.state.fourStarTotal} threeStarTotal={this.state.threeStarTotal} twoStarTotal={this.state.twoStarTotal} oneStarTotal={this.state.oneStarTotal} />
         <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
         <div>
           {
@@ -97,6 +139,38 @@ class ReviewsList extends React.Component {
 export default ReviewsList;
 
 // Notes and Experimentation:
+
+// getIndividualStarTotal() {
+//   const fiveStarCount = 1;
+//   const fourStarCount = 1;
+//   const threeStarCount = 1;
+//   const twoStarCount = 1;
+//   const oneStarCount = 1;
+//   for (let i = 0; i < reviewsData.results.length; i += 1) {
+//     const individualStarRating = reviewsData.results[i].rating;
+//     if (individualStarRating === 5) {
+//       fiveStarCount += 1;
+//     }
+//     if (individualStarRating === 4) {
+//       fourStarCount += 1;
+//     }
+//     if (individualStarRating === 3) {
+//       threeStarCount += 1;
+//     }
+//     if (individualStarRating === 2) {
+//       twoStarCount += 1;
+//     }
+//     if (individualStarRating === 1) {
+//       oneStarCount += 1;
+//     }
+//   }
+//   this.setState({ fiveStarTotal: fiveStarCount });
+//   this.setState({ fourStarTotal: fourStarCount });
+//   this.setState({ threeStarTotal: threeStarCount });
+//   this.setState({ twoStarTotal: twoStarCount });
+//   this.setState({ oneStarTotal: fiveStarCount });
+// }
+
 // const {
 //   overallRating,
 //   email,
