@@ -61,7 +61,9 @@ class ReviewsAddForm extends React.Component {
           <h2>Write New Review</h2>
 
           <h4>Overall Rating:</h4>
-          <small>Reqired</small>
+          <small>* Required</small>
+          <br />
+          <br />
           <div onChange={this.handleChange} required>
             <input type="radio" id="overallRating1" name="overallRating" value="1" required/>
             <label htmlFor="overallRating1"> 1 - Poor </label>
@@ -74,30 +76,37 @@ class ReviewsAddForm extends React.Component {
             <input type="radio" id="overallRating5" name="overallRating" value="5" />
             <label htmlFor="overallRating5"> 5 - Great </label>
           </div>
-
+          <br />
           <h4>What is your email?</h4>
           <input className={styles.emailInput} onChange={this.handleChange} type="email" name="email" value={this.state.email} placeholder="Example: abc@123.com" required />
-
+          <br />
+          <small> * Required</small>
+          <br />
+          <br />
           <h4>What is your username?</h4>
           <div>
             <input className={styles.usernameInput} onChange={this.handleChange} type="text" name="reviewUsername" value={this.state.reviewUsername} placeholder="Example: monica927" required />
           </div>
+          <small> * Required | </small>
           <small>For privacy reasons, please do not use your full name or email as username</small>
-
+          <br />
+          <br />
           <h4>Review Summary:</h4>
           <textarea className={styles.summaryText} onChange={this.handleSummaryTextChange} type="text" name="reviewSummary" value={this.state.reviewSummary} placeholder="Example: Best purchase ever!" maxLength="60" />
           <div>
             <small>Character Count: {this.state.summaryTextCount} of 60</small>
           </div>
-
+          <br />
+          <br />
           <h4>Review Description:</h4>
           <textarea className="descriptionText" onChange={this.handleDescriptionTextChange} type="text" name="reviewBody" value={this.state.reviewBody} placeholder="Why did you like or dislike the product?" required minLength="50" maxLength="1000" />
           <div>
+            <small>* Required | </small>
             <small>Remaining Characters: {this.state.descriptionTextCount}</small>
           </div>
-
+          <br />
+          <br />
           <h4>Characteristics:</h4>
-
           <h5>Size: </h5>
           <div onChange={this.handleChange}>
             <input type="radio" id="size1" name="size" value="1" />
@@ -111,7 +120,7 @@ class ReviewsAddForm extends React.Component {
             <input type="radio" id="5" name="size" value="5" />
             <label htmlFor="5"> 5 - A size too big </label>
           </div>
-
+          <br />
           <h5>Width: </h5>
           <div onChange={this.handleChange}>
             <input type="radio" id="width1" name="width" value="1" />
@@ -125,7 +134,7 @@ class ReviewsAddForm extends React.Component {
             <input type="radio" id="width5" name="width" value="5" />
             <label htmlFor="width5"> 5 - Too wide </label>
           </div>
-
+          <br />
           <h5>Comfort: </h5>
           <div onChange={this.handleChange}>
             <input type="radio" id="comfort1" name="comfort" value="1" />
@@ -139,7 +148,7 @@ class ReviewsAddForm extends React.Component {
             <input type="radio" id="comfort5" name="comfort" value="5" />
             <label htmlFor="comfort5"> 5 - Perfect </label>
           </div>
-
+          <br />
           <h5>Quality: </h5>
           <div onChange={this.handleChange}>
             <input type="radio" id="quality1" name="quality" value="1" />
@@ -153,7 +162,7 @@ class ReviewsAddForm extends React.Component {
             <input type="radio" id="quality5" name="quality" value="5" />
             <label htmlFor="quality5"> 5 - Perfect </label>
           </div>
-
+          <br />
           <h5>Length: </h5>
           <div onChange={this.handleChange}>
             <input type="radio" id="length1" name="length" value="1" />
@@ -167,7 +176,7 @@ class ReviewsAddForm extends React.Component {
             <input type="radio" id="length5" name="length" value="5" />
             <label htmlFor="length5"> 5 - Runs long </label>
           </div>
-
+          <br />
           <h5>Fit: </h5>
           <div onChange={this.handleChange}>
             <input type="radio" id="fit1" name="fit" value="1" />
@@ -181,15 +190,18 @@ class ReviewsAddForm extends React.Component {
             <input type="radio" id="fit5" name="fit" value="5" />
             <label htmlFor="fit5"> 5 - Runs long </label>
           </div>
-
+          <br />
           <h4>Do you recommend this product?</h4>
+          <small>* Required</small>
+          <br />
+          <br />
           <div onChange={this.handleChange}>
-            <input type="radio" id="recommendedYes" name="recommended" value="true" />
+            <input type="radio" id="recommendedYes" name="recommended" value="true" require />
             <label htmlFor="recommendedYes">Yes </label>
             <input type="radio" id="recommendedNo" name="recommended" value="false" />
             <label htmlFor="recommendedNo">No </label>
           </div>
-
+          <br />
           <h4>Photos:</h4>
           <small>Upload Your Photos</small>
           <div>
