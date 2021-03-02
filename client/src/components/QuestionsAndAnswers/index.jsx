@@ -14,44 +14,44 @@ import SearchBar from '../SearchBar';
 
 const QuestionsAndAnswers = () => (
   <div>
-  <QATitle />
-  <div className={styles.searchContainer}>
-    <SearchBar />
-  </div>
-  <div className={styles.questionContainer}>
-    <Question />
-    <div className={styles.helpfulContainer}>
-      <Helpful />
-      <AddAnswer />
+    <QATitle />
+    <div className={styles.searchContainer}>
+      <SearchBar />
     </div>
-  </div>
-  <div className={styles.answerContainer}>
-  <Answer />
-  <div className={styles.byUserContainer}>
-    <ByUser />
-    <AnswerHelpful />
-    <Report />
-  </div>
-  </div>
-  <div className={styles.questionContainer}>
-    <Question />
-    <div className={styles.helpfulContainer}>
-      <Helpful />
-      <AddAnswer />
+    <div className={styles.questionContainer}>
+      <Question />
+      <div className={styles.helpfulContainer}>
+        <Helpful />
+        <AddAnswer />
+      </div>
     </div>
-  </div>
-  <div className={styles.answerContainer}>
-  <Answer />
-  <div className={styles.byUserContainer}>
-    <ByUser />
-    <AnswerHelpful />
-    <Report />
-  </div>
-  </div>
-  <div className={styles.buttonContainer}>
-    <LoadMoreAnswers />
-    <AddAQuestion />
-  </div>
+    <div className={styles.answerContainer}>
+      <Answer />
+      <div className={styles.byUserContainer}>
+        <ByUser />
+        <AnswerHelpful />
+        <Report />
+      </div>
+    </div>
+    <div className={styles.questionContainer}>
+      <Question />
+      <div className={styles.helpfulContainer}>
+        <Helpful />
+        <AddAnswer />
+      </div>
+    </div>
+    <div className={styles.answerContainer}>
+      <Answer />
+      <div className={styles.byUserContainer}>
+        <ByUser />
+        <AnswerHelpful />
+        <Report />
+      </div>
+    </div>
+    <div className={styles.buttonContainer}>
+      <LoadMoreAnswers />
+      <AddAQuestion />
+    </div>
   </div>
 
 );
