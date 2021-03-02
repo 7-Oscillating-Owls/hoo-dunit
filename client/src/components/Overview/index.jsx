@@ -40,32 +40,24 @@ class Overview extends React.Component {
 
     return (
       <div className={styles.overview}>
-        <div className={styles.imageGallery}><ImageGallery images={filteredStyle.photos} /></div>
-        <div className={styles.productInformation}>
-          <ProductInformation
-            productInfo={productInfo}
-            originalPrice={filteredStyle.original_price}
-            salePrice={filteredStyle.sale_price}
-          />
-        </div>
-        <div className={styles.styleSelector}>
-          <StyleSelector
-            allStyles={allStyles}
-            getSelectedStyleId={this.getSelectedStyleId}
-          />
-        </div>
-        <div className={styles.addToCart}>
-          <Cart
-            skus={filteredStyle.skus}
-            styleId={filteredStyle.style_id}
-          />
-        </div>
-        <div className={styles.productDescription}>
-          <ProductDescription
-            description={productInfo.description}
-            features={productInfo.features}
-          />
-        </div>
+        <ImageGallery images={filteredStyle.photos} />
+        <ProductInformation
+          productInfo={productInfo}
+          originalPrice={filteredStyle.original_price}
+          salePrice={filteredStyle.sale_price}
+        />
+        <StyleSelector
+          allStyles={allStyles}
+          getSelectedStyleId={this.getSelectedStyleId}
+        />
+        <Cart
+          skus={filteredStyle.skus}
+          styleId={selectedStyleId}
+        />
+        <ProductDescription
+          description={productInfo.description}
+          features={productInfo.features}
+        />
       </div>
     );
   }

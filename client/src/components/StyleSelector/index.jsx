@@ -6,27 +6,19 @@ class StyleSelector extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      selectedStyleId: 0,
-    };
-
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(styleId) {
-    this.setState({
-      selectedStyleId: styleId,
-    });
-    const { selectedStyleId } = this.state;
+  handleClick(event) {
     const { getSelectedStyleId } = this.props;
-    getSelectedStyleId(selectedStyleId);
+    getSelectedStyleId(Number(event.target.alt));
   }
 
   render() {
     const { allStyles } = this.props;
 
     return (
-      <div className={styles.container}>
+      <div className={`${styles.container} ${styles.styleSelector}`}>
         {allStyles.map((style) => (
           <div
             key={style.photos[0].url}
@@ -35,7 +27,7 @@ class StyleSelector extends React.Component {
               className={styles.item}
               src={style.photos[0].thumbnail_url}
               alt={style.style_id}
-              onClick={()=>this.handleClick(style.style_id)}
+              onClick={this.handleClick}
             />
           </div>
         ))}

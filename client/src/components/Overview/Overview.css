@@ -11,28 +11,3 @@
                        "a d"
                        "e e";
 }
-
-.imageGallery {
-  grid-area: a;
-  border: 1px solid black;
-}
-
-.productInformation {
-  grid-area: b;
-  border: 1px solid black;
-}
-
-.styleSelector {
-  grid-area: c;
-  border: 1px solid black;
-}
-
-.addToCart {
-  grid-area: d;
-  border: 1px solid black;
-}
-
-.productDescription {
-  grid-area: e;
-  border: 1px solid black;
-}

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BsCheck } from 'react-icons/bs';
+import styles from './ProductDescription.css';
 
 const ProductDescription = ({ description, features }) => (
-  <div>
+  <div className={styles.productDescription}>
     <div>{description}</div>
     {features.map((feature) => (
       <div key={feature.value}>

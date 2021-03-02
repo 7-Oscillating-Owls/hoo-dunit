@@ -5,11 +5,9 @@ import styles from './Cart.css';
 class Cart extends React.Component {
   constructor(props) {
     super(props);
-    const { styleId } = this.props;
     this.state = {
       selectedSize: '',
       selectedQuantity: 0,
-      selectedStyleId: styleId,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -23,8 +21,9 @@ class Cart extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { selectedSize, selectedQuantity, selectedStyleId } = this.state;
-    console.log(`Added to Cart: Style ID ${selectedStyleId}, Size ${selectedSize} Quantity ${selectedQuantity}`);
+    const { selectedSize, selectedQuantity } = this.state;
+    const { styleId } = this.props;
+    console.log(`Added to Cart: Style ID ${styleId}, Size ${selectedSize} Quantity ${selectedQuantity}`);
   }
 
   render() {
@@ -36,7 +35,7 @@ class Cart extends React.Component {
     const displayQuantity = Array.from(new Array(filteredQuantity[0]), (x, i) => i + 1);
 
     return (
-      <div className={styles.selectContainer}>
+      <div className={`${styles.selectContainer} ${styles.addToCart}`}>
         <form onSubmit={this.handleSubmit}>
           <select name="selectedSize" value={selectedSize} onChange={this.handleChange}>
             <option value="">SELECT A SIZE</option>
