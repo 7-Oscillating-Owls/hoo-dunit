@@ -19,13 +19,13 @@ class QuestionModal extends React.Component {
   }
   validate() {
     console.log('validating')
-
+    { this.state.question.length < 1 ? this.setState({ questionError: "Please enter a question" }) : null }
   }
 
   handleSubmitClick(event) {
     event.preventDefault();
     this.validate()
-   this.props.modalclose();
+  //  this.props.modalclose();
   }
 
   handleOnChange(event) {
@@ -42,21 +42,21 @@ class QuestionModal extends React.Component {
             placeholder="Enter your question"
             maxLength="1000"
           />
-          <small>{this.state.questionError}</small>
+          <small className={styles.errors}>{this.state.questionError}</small>
           <input
             type="text"
             name="nickname"
             placeholder="Example: jackson11!"
             maxLength="60"
           />
-          <small>{this.state.nickname}</small>
+          <small className={styles.errors}>{this.state.nickname}</small>
           <input
             type="email"
             name="email"
             placeholder="enter email"
             maxLength="60"
           />
-          <small>{this.state.emailError}</small>
+          <small className={styles.errors}>{this.state.emailError}</small>
           <small>For authentication reasons, you will not be emailed</small>
         </form>
         <button type="button" onClick={this.handleSubmitClick} className={styles.buttonModalForm}>Submit</button>
