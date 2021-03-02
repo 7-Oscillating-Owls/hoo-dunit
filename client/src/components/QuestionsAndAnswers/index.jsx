@@ -11,12 +11,13 @@ import LoadMoreAnswers from '../LoadMoreAnswers';
 import QATitle from '../QATitle';
 import AddAQuestion from '../AddAQuestion';
 import QuestionModal from '../QuestionModal';
+import SearchBar from '../SearchBar';
 
 const QuestionsAndAnswers = () => (
 
   <div className={styles.qa}>
     <div className={styles.qatitle}><QATitle /></div>
-    <div className={styles.searchBar}>SearchBar</div>
+    <SearchBar />
 
     <div className={styles.qaContainer}>
       <div className={styles.questionList}>
