@@ -33,7 +33,7 @@ class QuestionModal extends React.Component {
             placeholder="Enter your question"
             maxLength="1000"
           />
-          <textarea
+          <input
             type="text"
             name="nickname"
             placeholder="Example: jackson11!"
