@@ -33,7 +33,7 @@ class ReviewsList extends React.Component {
       }
     });
     const averageRating = ratingTotal / (this.state.reviewCount);
-    const recommended = `${(recommendTotal / 4) * 100}%`;
+    const recommended = `${((recommendTotal / 4).toFixed(2)) * 100}%`;
     this.setState({ overallRating: averageRating, recommendPercent: recommended });
   }
 
