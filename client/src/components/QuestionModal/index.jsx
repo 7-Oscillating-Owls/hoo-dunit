@@ -11,18 +11,22 @@ class QuestionModal extends React.Component {
 
     };
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
+    this.handleOnChange = this.handleOnChange.bind(this);
   }
 
   handleSubmitClick(event) {
     event.preventDefault();
    this.props.modalclose();
+  }
 
+  handleOnChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
     return (
       <div className={styles.questionModalForm}>
-        <form className={styles.modalform}>
+        <form className={styles.modalform} onChange={this.handleOnChange}>
           <textarea
             type="text"
             name="question"
