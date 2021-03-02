@@ -10,7 +10,6 @@ import Report from '../Report';
 import LoadMoreAnswers from '../LoadMoreAnswers';
 import QATitle from '../QATitle';
 import AddAQuestion from '../AddAQuestion';
-import QuestionModal from '../QuestionModal';
 import SearchBar from '../SearchBar';
 
 const QuestionsAndAnswers = () => (
@@ -48,6 +47,10 @@ const QuestionsAndAnswers = () => (
     <AnswerHelpful />
     <Report />
   </div>
+  </div>
+  <div className={styles.buttonContainer}>
+    <LoadMoreAnswers />
+    <AddAQuestion />
   </div>
   </div>
 
