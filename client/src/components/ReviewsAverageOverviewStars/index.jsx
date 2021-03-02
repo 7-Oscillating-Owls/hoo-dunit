@@ -7,19 +7,19 @@ const ReviewsAverageOverviewStars = (props) => {
   let halfAndRemainingStars;
   const remainingStars = 4 - solidStars;
   if (solidStars !== ratings) {
-    halfAndRemainingStars = <FaStarHalfAlt size={30} />;
+    halfAndRemainingStars = <FaStarHalfAlt size={25} />;
   } else {
-    halfAndRemainingStars = <FaRegStar size={30} />;
+    halfAndRemainingStars = <FaRegStar size={25} />;
   }
 
   return (
     <div>
       {
-        [...Array(solidStars)].map(() => <FaStar size={30} />)
+        [...Array(solidStars)].map(() => <FaStar size={25} />)
       }
       {halfAndRemainingStars}
       {
-        [...Array(remainingStars)].map(() => <FaRegStar size={30} />)
+        [...Array(remainingStars)].map(() => <FaRegStar size={25} />)
       }
     </div>
   );
