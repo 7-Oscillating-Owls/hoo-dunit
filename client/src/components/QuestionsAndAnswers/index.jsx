@@ -14,12 +14,19 @@ import QuestionModal from '../QuestionModal';
 import SearchBar from '../SearchBar';
 
 const QuestionsAndAnswers = () => (
-<div>
+  <div>
   <QATitle />
-    <div className={styles.searchContainer}>
-      <SearchBar />
+  <div className={styles.searchContainer}>
+    <SearchBar />
+  </div>
+  <div>
+    <Question />
+    <div>
+      <Helpful />
+      <AddAnswer />
     </div>
-</div>
+  </div>
+  </div>
 
 );
 
