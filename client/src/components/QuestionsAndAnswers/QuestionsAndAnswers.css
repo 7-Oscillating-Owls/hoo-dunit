@@ -84,3 +84,9 @@
   display: flex;
   justify-content: space-around;
 }
+
+.buttonContainer {
+  display:  flex;
+  margin-top: 25px;
+  justify-content: space-around;
+}
