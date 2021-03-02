@@ -1,5 +1,6 @@
 import React from 'react';
 import QuestionModal from '../QuestionModal';
+import styles from './AddAQuestion.css'
 
 class AddAQuestion extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class AddAQuestion extends React.Component {
 
       <div>
         <button
-          className="questionButton"
+          className={styles.questionButton}
           type="button"
           onClick={this.handleClick}
         >

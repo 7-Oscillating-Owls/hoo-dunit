@@ -1,65 +1,28 @@
-.qa {
-  border: 1px dotted red;
-  margin: 15px 7px;
-  padding: 7px;
-}
 
-.searchBar {
-  border: 1px solid black;
-  margin: 25px 0px;
-  padding: 3px;
+.questionContainer {
+  display: flex;
+  justify-content: space-between;
 
 }
 
-.answerhelpfulcontainer {
+.helpfulContainer {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.answerContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.byUserContainer {
   display: flex;
   justify-content: space-around;
-}
-.byuser {
-  margin: 15px 7px;
 }
 
 .buttonContainer {
-  display: flex;
-}
-
-.moreAnsweredQuestionsButton {
+  display:  flex;
+  margin-top: 25px;
   justify-content: space-around;
-  padding: 15px;
-  margin: 0 7px;
-  border: 2px solid blue;
-}
-.addAQuestionButton {
-  justify-content: space-around;
-  padding: 7px;
-  margin: 0 7px;
-
-}
-.addAQuestionButton button {
-  padding: 17px;
-  background-color: white;
-}
-
-.questionList {
-  display: flex;
-  justify-content: space-between;
-}
-
-.answerList {
-
-
-}
-
-.answerhelpful {
-  margin: 17px 7px;
-}
-
-.report {
-  margin: 17px 7px;
-}
-.loadmoreanswers {
-  margin-left: 10px;
-  font-size: 14px;
-  padding: 7px;
-  border: none;
 }
