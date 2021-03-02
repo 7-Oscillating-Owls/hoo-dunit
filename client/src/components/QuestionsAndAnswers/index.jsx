@@ -11,6 +11,7 @@ import LoadMoreAnswers from '../LoadMoreAnswers';
 import QATitle from '../QATitle';
 import AddAQuestion from '../AddAQuestion';
 import SearchBar from '../SearchBar';
+import MoreAnsweredQuestions from '../MoreAnsweredQuestions';
 
 const QuestionsAndAnswers = () => (
   <div>
@@ -49,7 +50,7 @@ const QuestionsAndAnswers = () => (
       </div>
     </div>
     <div className={styles.buttonContainer}>
-      <LoadMoreAnswers />
+      <MoreAnsweredQuestions />
       <AddAQuestion />
     </div>
   </div>
