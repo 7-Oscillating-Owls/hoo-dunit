@@ -5,7 +5,6 @@ import styles from './Cart.css';
 class Cart extends React.Component {
   constructor(props) {
     super(props);
-    const { styleId } = this.props;
     this.state = {
       selectedSize: '',
       selectedQuantity: 0,
