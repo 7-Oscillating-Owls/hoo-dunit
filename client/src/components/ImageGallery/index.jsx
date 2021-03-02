@@ -47,7 +47,7 @@ class ImageGallery extends React.Component {
     const { current } = this.state;
     const { images } = this.props;
     return (
-      <div className={styles.carousel}>
+      <div className={`${styles.carousel} ${styles.imageGallery}`}>
         <AiOutlineArrowLeft data-testid="leftArrow-click" type="button" className="leftarrow" onClick={this.previousSlide} />
         {
             images.map((item, index) => (

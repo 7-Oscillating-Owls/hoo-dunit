@@ -26,7 +26,7 @@ class StyleSelector extends React.Component {
     const { allStyles } = this.props;
 
     return (
-      <div className={styles.container}>
+      <div className={`${styles.container} ${styles.styleSelector}`}>
         {allStyles.map((style) => (
           <div
             key={style.photos[0].url}

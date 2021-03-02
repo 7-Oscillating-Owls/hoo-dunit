@@ -1,3 +1,10 @@
+
+.productInformation {
+  grid-area: b;
+  border: 1px solid black;
+}
+
+
 .productInfo {
   display: grid;
   grid-template-rows: 1fr auto

@@ -36,7 +36,7 @@ class Cart extends React.Component {
     const displayQuantity = Array.from(new Array(filteredQuantity[0]), (x, i) => i + 1);
 
     return (
-      <div className={styles.selectContainer}>
+      <div className={`${styles.selectContainer} ${styles.addToCart}`}>
         <form onSubmit={this.handleSubmit}>
           <select name="selectedSize" value={selectedSize} onChange={this.handleChange}>
             <option value="">SELECT A SIZE</option>

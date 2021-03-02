@@ -1,3 +1,8 @@
+.imageGallery {
+  grid-area: a;
+  border: 1px solid black;
+}
+
 .carousel {
   display: flex;
   justify-content: center;
