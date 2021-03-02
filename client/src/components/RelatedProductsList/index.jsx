@@ -14,35 +14,82 @@ class RelatedProductsList extends Component {
 
     this.state = {
       position: 0,
+      containerWidth: 0,
     };
+
+    this.setContainerRef = (element) => {
+      this.container = element;
+    };
+
+    this.setCarouselRef = (element) => {
+      this.carousel = element;
+    };
+
+    this.showScrollLeftButton = this.showScrollLeftButton.bind(this);
+    this.showScrollRightButton = this.showScrollRightButton.bind(this);
   }
 
-  scrollLeft() {
+  componentDidMount() {
+    if (this.container) {
+      this.setState({
+        containerWidth: this.container.scrollWidth,
+      });
+    }
+  }
+
+  scrollLeft(e) {
+    e.stopPropagation();
+
     const { position } = this.state;
-    console.log('scroll left', position);
+    const newX = Math.max(this.carousel.scrollLeft - 270, 0);
+    this.carousel.scroll({
+      left: Math.min(position * 270, newX),
+      behavior: 'smooth',
+    });
+
     this.setState({
-      position: Math.max(0, position - 1),
+      position: Math.max(position - 1, 0),
     });
   }
 
-  scrollRight() {
+  scrollRight(e) {
+    e.stopPropagation();
+
     const { position } = this.state;
-    // eslint-disable-next-line react/prop-types
     const { relatedProducts } = this.props;
+    const newX = this.carousel.scrollLeft + 270;
+
+    this.carousel.scroll({
+      left: Math.max(position * 270, newX),
+      behavior: 'smooth',
+    });
 
     this.setState({
-      position: Math.min(relatedProducts.length, position + 1),
+      position: Math.min(position + 1, relatedProducts.length),
     });
+  }
+
+  showScrollRightButton() {
+    if (this.container && this.carousel) {
+      const scrollableWidth = this.carousel.scrollWidth - this.carousel.clientWidth;
+      return this.carousel.scrollLeft < scrollableWidth;
+    }
+    return false;
+  }
+
+  showScrollLeftButton() {
+    const { position } = this.state;
+
+    if (this.carousel) {
+      return this.carousel.scrollLeft > 0;
+    }
+    return position > 0;
   }
 
   render() {
     // eslint-disable-next-line react/prop-types
     const { relatedProducts, stylesByProductId } = this.props;
     const { position } = this.state;
-
-    const carouselStyle = {
-      right: `${position * 250}px`,
-    };
 
     // eslint-disable-next-line react/prop-types
     const cardsComponenets = relatedProducts.map(({
@@ -64,31 +111,42 @@ class RelatedProductsList extends Component {
     ));
 
     return (
-      <div className={styles.relatedProductsList}>
+      <div className={styles.relatedProductsList} ref={this.setContainerRef}>
         <div className={styles.leftArrowSpacer}>
-          <button
-            className={styles.scrollButton}
-            type="button"
-            onClick={() => this.scrollLeft()}
-          >
-            &lt;
-          </button>
+          {
+            this.showScrollLeftButton()
+            && (
+              <button
+                className={styles.scrollButton}
+                type="button"
+                onClick={(e) => this.scrollLeft(e)}
+              >
+                &lt;
+              </button>
+            )
+          }
         </div>
-        <div className={styles.carousel} style={carouselStyle}>
+        <div className={styles.carousel} ref={this.setCarouselRef}>
           {cardsComponenets}
         </div>
+
         <div className={styles.rightArrowSpacer}>
-          <button
-            className={styles.scrollButton}
-            type="button"
-            onClick={() => this.scrollRight()}
-          >
-            &gt;
-          </button>
+          {
+            this.showScrollRightButton()
+            && (
+              <button
+                className={styles.scrollButton}
+                type="button"
+                onClick={(e) => this.scrollRight(e)}
+              >
+                &gt;
+              </button>
+            )
+          }
         </div>
       </div>
     );
-  };
+  }
 }
 // RelatedProductsList.propTypes = {
 //   relatedProducts: PropTypes.arrayOf().isRequired,
