@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 import styles from './ImageGallery.css';
 
 class ImageGallery extends React.Component {
@@ -46,20 +47,17 @@ class ImageGallery extends React.Component {
     const { current } = this.state;
     const { images } = this.props;
     return (
-      <section className={styles.carousel}>
-        <button data-testid="leftArrow-click" type="button" className="left-arrow" onClick={this.previousSlide}>left</button>
-        <button data-testid="rightArrow-click" type="button" className="right-arrow" onClick={this.nextSlide}>right</button>
-        <div className="image-items">
-          {
+      <div className={styles.carousel}>
+        <AiOutlineArrowLeft data-testid="leftArrow-click" type="button" className="leftarrow" onClick={this.previousSlide} />
+        {
             images.map((item, index) => (
-              <div key={item.url}>
+              <div className={styles.aroundImage} key={item.url}>
                 {index === current && <img className={styles.styleImage} src={item.url} alt="style" />}
               </div>
             ))
-}
-        </div>
-
-      </section>
+       }
+        <AiOutlineArrowRight data-testid="rightArrow-click" type="button" className="rightarrow" onClick={this.nextSlide} />
+      </div>
     );
   }
 }
