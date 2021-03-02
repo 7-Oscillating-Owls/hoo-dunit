@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 
 import RelatedProductCard from '../RelatedProductCard';
+import ComparisonButton from '../ComparisonButton';
 
 import styles from './RelatedProductsList.css';
 
@@ -107,6 +108,7 @@ class RelatedProductsList extends Component {
         category={category}
         features={features}
         defaultStyle={stylesByProductId(id).results[0]}
+        ActionButton={ComparisonButton}
       />
     ));
 

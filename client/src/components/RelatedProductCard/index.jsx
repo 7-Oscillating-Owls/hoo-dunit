@@ -8,7 +8,8 @@ const RelatedProductCard = ({
   name,
   category,
   description,
-  defaultStyle
+  defaultStyle,
+  ActionButton
 }) => {
   let productPrice;
   let priceStyle;
@@ -31,6 +32,7 @@ const RelatedProductCard = ({
 
   return (
     <article className={styles.relatedProductCard}>
+      <ActionButton productId={id} />
       <img
         className={styles.productImage}
         src={defaultStyle.photos[0].url}
