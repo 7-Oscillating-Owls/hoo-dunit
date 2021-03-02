@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
+import ReviewsAverageOverviewStars from '../ReviewsAverageOverviewStars';
 import ReviewTiles from '../ReviewTiles';
 import ReviewsAddForm from '../ReviewsAddForm';
 import ReviewsMoreReviews from '../ReviewsMoreReviews';
@@ -12,7 +12,7 @@ class ReviewsList extends React.Component {
     this.state = {
       reviewsList: [],
       reviewCount: reviewsData.results.length,
-      overallRating: 5,
+      overallRating: 0,
       recommendPercent: 0,
     };
     this.getOverallView = this.getOverallView.bind(this);
@@ -33,7 +33,7 @@ class ReviewsList extends React.Component {
       }
     });
     const averageRating = ratingTotal / (this.state.reviewCount);
-    const recommended = `${(recommendTotal / 4) * 100}%`;
+    const recommended = `${((recommendTotal / 4).toFixed(2)) * 100}%`;
     this.setState({ overallRating: averageRating, recommendPercent: recommended });
   }
 
@@ -43,22 +43,10 @@ class ReviewsList extends React.Component {
         <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
         <div className={styles.overallRating}>{this.state.overallRating}</div>
         <div className={styles.starRating}>
-          {
-            [...Array(2)].map((star, index) => <FaStar size={30} key={index} />)
-          }
-          <FaStarHalfAlt size={30} />
-          {
-            [...Array(2)].map((star, index) => <FaRegStar size={30} key={index} />)
-          }
+          <ReviewsAverageOverviewStars ratings={this.state.overallRating} />
         </div>
-        <div className={styles.recommendOverview}>{this.state.recommendPercent}
-          {' '}
-          of reviewers recommend this product
-        </div>
-        <div className={styles.totalReviews}>{this.state.reviewCount}
-          {' '}
-          Reviews
-        </div>
+        <div className={styles.recommendOverview}>{this.state.recommendPercent} of reviewers recommend this product</div>
+        <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
         <div>
           {
             // eslint-disable-next-line array-callback-return

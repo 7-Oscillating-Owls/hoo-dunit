@@ -65,15 +65,15 @@ class ReviewsAddForm extends React.Component {
           <h4>Overall Rating:</h4>
           <div onChange={this.handleChange}>
             <input type="radio" id="1" name="overallRating" value="1" />
-            <label for="1"> 1 - Poor </label>
+            <label htmlFor="1"> 1 - Poor </label>
             <input type="radio" id="2" name="overallRating" value="2" />
-            <label for="2"> 2 - Fair </label>
+            <label htmlFor="2"> 2 - Fair </label>
             <input type="radio" id="3" name="overallRating" value="3" />
-            <label for="3"> 3 - Average </label>
+            <label htmlFor="3"> 3 - Average </label>
             <input type="radio" id="4" name="overallRating" value="4" />
-            <label for="4"> 4 - Good </label>
+            <label htmlFor="4"> 4 - Good </label>
             <input type="radio" id="5" name="overallRating" value="5" />
-            <label for="5"> 5 - Great </label>
+            <label htmlFor="5"> 5 - Great </label>
           </div>
 
           <h4>What is your email?</h4>
@@ -102,93 +102,93 @@ class ReviewsAddForm extends React.Component {
           <h5>Size: </h5>
           <div onChange={this.handleChange}>
             <input type="radio" id="1" name="size" value="1" />
-            <label for="1"> 1 - A size too small </label>
+            <label htmlFor="1"> 1 - A size too small </label>
             <input type="radio" id="2" name="size" value="2" />
-            <label for="2"> 2 - Half size too small </label>
+            <label htmlFor="2"> 2 - Half size too small </label>
             <input type="radio" id="3" name="size" value="3" />
-            <label for="3"> 3 - Perfect </label>
+            <label htmlFor="3"> 3 - Perfect </label>
             <input type="radio" id="4" name="size" value="4" />
-            <label for="4"> 4 - Half size too big </label>
+            <label htmlFor="4"> 4 - Half size too big </label>
             <input type="radio" id="5" name="size" value="5" />
-            <label for="5"> 5 - A size too big </label>
+            <label htmlFor="5"> 5 - A size too big </label>
           </div>
 
           <h5>Width: </h5>
           <div onChange={this.handleChange}>
             <input type="radio" id="1" name="width" value="1" />
-            <label for="1"> 1 - Too narrow </label>
+            <label htmlFor="1"> 1 - Too narrow </label>
             <input type="radio" id="2" name="width" value="2" />
-            <label for="2"> 2 - Slightly narrow </label>
+            <label htmlFor="2"> 2 - Slightly narrow </label>
             <input type="radio" id="3" name="width" value="3" />
-            <label for="3"> 3 - Perfect </label>
+            <label htmlFor="3"> 3 - Perfect </label>
             <input type="radio" id="4" name="width" value="4" />
-            <label for="4"> 4 - Slightly wide </label>
+            <label htmlFor="4"> 4 - Slightly wide </label>
             <input type="radio" id="5" name="width" value="5" />
-            <label for="5"> 5 - Too wide </label>
+            <label htmlFor="5"> 5 - Too wide </label>
           </div>
 
           <h5>Comfort: </h5>
           <div onChange={this.handleChange}>
             <input type="radio" id="1" name="comfort" value="1" />
-            <label for="1"> 1 - Uncomfortable </label>
+            <label htmlFor="1"> 1 - Uncomfortable </label>
             <input type="radio" id="2" name="comfort" value="2" />
-            <label for="2"> 2 - Slightly uncomfortable </label>
+            <label htmlFor="2"> 2 - Slightly uncomfortable </label>
             <input type="radio" id="3" name="comfort" value="3" />
-            <label for="3"> 3 - Okay </label>
+            <label htmlFor="3"> 3 - Okay </label>
             <input type="radio" id="4" name="comfort" value="4" />
-            <label for="4"> 4 - Comfortable </label>
+            <label htmlFor="4"> 4 - Comfortable </label>
             <input type="radio" id="5" name="comfort" value="5" />
-            <label for="5"> 5 - Perfect </label>
+            <label htmlFor="5"> 5 - Perfect </label>
           </div>
 
           <h5>Quality: </h5>
           <div onChange={this.handleChange}>
             <input type="radio" id="1" name="quality" value="1" />
-            <label for="1"> 1 - Poor </label>
+            <label htmlFor="1"> 1 - Poor </label>
             <input type="radio" id="2" name="quality" value="2" />
-            <label for="2"> 2 - Below Average </label>
+            <label htmlFor="2"> 2 - Below Average </label>
             <input type="radio" id="3" name="quality" value="3" />
-            <label for="3"> 3 - What I expected </label>
+            <label htmlFor="3"> 3 - What I expected </label>
             <input type="radio" id="4" name="quality" value="4" />
-            <label for="4"> 4 - Pretty great </label>
+            <label htmlFor="4"> 4 - Pretty great </label>
             <input type="radio" id="5" name="quality" value="5" />
-            <label for="5"> 5 - Perfect </label>
+            <label htmlFor="5"> 5 - Perfect </label>
           </div>
 
           <h5>Length: </h5>
           <div onChange={this.handleChange}>
             <input type="radio" id="1" name="length" value="1" />
-            <label for="1"> 1 - Runs short </label>
+            <label htmlFor="1"> 1 - Runs short </label>
             <input type="radio" id="2" name="length" value="2" />
-            <label for="2"> 2 - Runs slightly short </label>
+            <label htmlFor="2"> 2 - Runs slightly short </label>
             <input type="radio" id="3" name="length" value="3" />
-            <label for="3"> 3 - Perfect </label>
+            <label htmlFor="3"> 3 - Perfect </label>
             <input type="radio" id="4" name="length" value="4" />
-            <label for="4"> 4 - Runs slightly long </label>
+            <label htmlFor="4"> 4 - Runs slightly long </label>
             <input type="radio" id="5" name="length" value="5" />
-            <label for="5"> 5 - Runs long </label>
+            <label htmlFor="5"> 5 - Runs long </label>
           </div>
 
           <h5>Fit: </h5>
           <div onChange={this.handleChange}>
             <input type="radio" id="1" name="fit" value="1" />
-            <label for="1"> 1 - Runs tight </label>
+            <label htmlFor="1"> 1 - Runs tight </label>
             <input type="radio" id="2" name="fit" value="2" />
-            <label for="2"> 2 - Runs slightly tight </label>
+            <label htmlFor="2"> 2 - Runs slightly tight </label>
             <input type="radio" id="3" name="fit" value="3" />
-            <label for="3"> 3 - Perfect </label>
+            <label htmlFor="3"> 3 - Perfect </label>
             <input type="radio" id="4" name="fit" value="4" />
-            <label for="4"> 4 - Runs slightly long </label>
+            <label htmlFor="4"> 4 - Runs slightly long </label>
             <input type="radio" id="5" name="fit" value="5" />
-            <label for="5"> 5 - Runs long </label>
+            <label htmlFor="5"> 5 - Runs long </label>
           </div>
 
           <h4>Do you recommend this product?</h4>
           <div onChange={this.handleChange}>
             <input type="radio" id="yes" name="recommend" value="yes" />
-            <label for="yes">Yes </label>
+            <label htmlFor="yes">Yes </label>
             <input type="radio" id="no" name="recommend" value="no" />
-            <label for="no">No </label>
+            <label htmlFor="no">No </label>
           </div>
 
           <h4>Photos:</h4>
