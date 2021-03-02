@@ -33,7 +33,7 @@ class ReviewsList extends React.Component {
   }
 
   getReviews() {
-    this.setState({ reviewsList: reviewsData });
+    this.setState({ reviewsList: reviewsData.results });
     this.setState({ reviewCount: reviewsData.results.length });
   }
 
@@ -47,7 +47,7 @@ class ReviewsList extends React.Component {
       }
     });
     const averageRating = ratingTotal / (this.state.reviewCount);
-    const recommended = `${((recommendTotal / 4).toFixed(2)) * 100}%`;
+    const recommended = `${((recommendTotal / (this.state.reviewCount)).toFixed(2)) * 100}%`;
     this.setState({ overallRating: averageRating, recommendPercent: recommended });
   }
 
