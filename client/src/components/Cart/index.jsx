@@ -42,15 +42,17 @@ class Cart extends React.Component {
             <option value="">SELECT A SIZE</option>
             {
               skuIds.map((item) => (
-                <option key={item + skus[item]} value={skus[item].size}>{skus[item].size}</option>
+                <option key={item} value={skus[item].size}>
+                  {skus[item].size}
+                </option>
               ))
             }
           </select>
           <select name="selectedQuantity" value={selectedQuantity} onChange={this.handleChange}>
             <option value="">-</option>
             {
-              displayQuantity && displayQuantity.map((index) => (
-                <option key={index} value={index}>{index}</option>
+              displayQuantity && displayQuantity.map((item, index) => (
+                <option key={item} value={index}>{index}</option>
               ))
             }
           </select>
