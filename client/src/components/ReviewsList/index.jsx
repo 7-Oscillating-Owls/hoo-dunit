@@ -15,17 +15,23 @@ class ReviewsList extends React.Component {
       overallRating: 0,
       recommendPercent: 0,
     };
+    this.getReviews = this.getReviews.bind(this);
     this.getOverallView = this.getOverallView.bind(this);
+    this.addReview = this.addReview.bind(this);
   }
 
   componentDidMount() {
+    this.getReviews();
     this.getOverallView();
+  }
+
+  getReviews() {
+    this.setState({ reviewsData });
   }
 
   getOverallView() {
     let ratingTotal = 0;
     let recommendTotal = 0;
-    // const recommended = `${(recommendTotal / (this.state.reviewCount)) * 100}%`;
     reviewsData.results.forEach((review) => {
       ratingTotal += review.rating;
       if (review.recommend === true) {
@@ -35,6 +41,33 @@ class ReviewsList extends React.Component {
     const averageRating = ratingTotal / (this.state.reviewCount);
     const recommended = `${((recommendTotal / 4).toFixed(2)) * 100}%`;
     this.setState({ overallRating: averageRating, recommendPercent: recommended });
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  addReview(formData) {
+    const reviewObject = {
+      rating: formData.overallRating,
+      summary: formData.reviewSummary,
+      recommend: formData.recommend,
+      body: formData.reviewBody,
+      reviewer_name: formData.reviewUsername,
+      photos: formData.uploadedFile,
+    };
+    // Will need to change this to post request once connected to server - to POST/reviews
+    reviewsData.push(reviewObject);
+    const reviewMetaCharacteristicsObject = {
+      Size: {
+        value: formData.size,
+      },
+      Width: {
+        value: formData.width,
+      },
+      Comfort: {
+        value: formData.comfort,
+      },
+    };
+    // Will need to change this to post request to POST/reviews/meta
+    console.log('Review Added!');
   }
 
   render() {
@@ -49,13 +82,12 @@ class ReviewsList extends React.Component {
         <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
         <div>
           {
-            // eslint-disable-next-line array-callback-return
             reviewsData.results.map((review) => (
               <ReviewTiles review={review} key={review.review_id} />
             ))
           }
         </div>
-        <ReviewsAddForm />
+        <ReviewsAddForm addReview={this.addReview} />
         <ReviewsMoreReviews />
       </div>
     );
@@ -63,3 +95,42 @@ class ReviewsList extends React.Component {
 }
 
 export default ReviewsList;
+
+// Notes and Experimentation:
+// const {
+//   overallRating,
+//   email,
+//   reviewUsername,
+//   reviewSummary,
+//   reviewBody,
+//   size,
+//   width,
+//   comfort,
+//   quality,
+//   length,
+//   fit,
+//   recommend,
+//   summaryTextCount,
+//   descriptionTextCount,
+//   uploadedFile,
+// } = formData;
+
+// const reviewObject = {
+//   rating: formData.overallRating,
+//   summary: formData.reviewSummary,
+//   recommend: formData.recommend,
+//   body: formData.reviewBody,
+//   reviewer_name: formData.reviewUsername,
+//   photos: formData.uploadedFile,
+// };
+
+// const {
+//   rating,
+//   summary,
+//   recommend,
+//   body,
+//   reviewer_name,
+//   photos,
+// } = reviewObject;
+// const { overallRating, reviewSummary, recommend, reviewBody, reviewUsername, uploadedFile } = formData;
+// reviewObject.rating = formData.overallRating;
