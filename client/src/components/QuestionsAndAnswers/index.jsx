@@ -17,7 +17,6 @@ const QuestionsAndAnswers = () => (
 
   <div className={styles.qa}>
     <div className={styles.qatitle}><QATitle /></div>
-    {/* <div className={styles.searchBar}>SearchBar</div> */}
     <SearchBar />
 
     <div className={styles.qaContainer}>
