@@ -14,9 +14,8 @@ const ReviewTiles = ({ review }) => {
   const formattedDate = `${month} ${day}, ${year}`;
   return (
     <div className={styles.reviewTiles}>
-      {/* <div>{rating}</div> */}
       <div>
-        <ReviewTileStars />
+        <ReviewTileStars ratings={rating} />
       </div>
       <div>{reviewer_name}</div>
       <div>{formattedDate}</div>
