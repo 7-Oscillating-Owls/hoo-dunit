@@ -4,6 +4,7 @@ import dummyData from '../../../../data/styles';
 import productInfo from '../../../../data/productInfo';
 import ImageGallery from '../ImageGallery';
 import ProductInformation from '../ProductInformation';
+import ProductDescription from '../ProductDescription';
 import Cart from '../Cart';
 import StyleSelector from '../StyleSelector';
 
@@ -47,7 +48,12 @@ class Overview extends React.Component {
         </div>
         <div className={styles.styleSelector}><StyleSelector allStyles={allStyles} /></div>
         <div className={styles.addToCart}><Cart skus={stockKeepingUnit} styleId={styleId} /></div>
-        <div className={styles.productDescription}>Product Description</div>
+        <div className={styles.productDescription}>
+          <ProductDescription
+            description={productInfo.description}
+            features={productInfo.features}
+          />
+        </div>
       </div>
     );
   }
