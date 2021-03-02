@@ -4,10 +4,9 @@
   padding: 7px;
 }
 
-.searchBar {
-  border: 1px solid black;
-  margin: 25px 0px;
-  padding: 3px;
+.searchContainer {
+  margin: 15px;
+
 
 }
 
