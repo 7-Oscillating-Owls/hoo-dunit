@@ -1,4 +1,5 @@
 import React from 'react';
+import QuestionModal from '../QuestionModal';
 
 class AddAQuestion extends React.Component {
   constructor(props) {
@@ -6,11 +7,27 @@ class AddAQuestion extends React.Component {
     this.state = {
       showModal: false
     };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    this.setState({showModal: true });
   }
 
   render() {
     return (
-      <button className="questionButton" type="button">ADD A QUESTION + </button>
+
+      <div>
+        <button
+          className="questionButton"
+          type="button"
+          onClick={this.handleClick}
+        >
+          ADD A QUESTION +
+        </button>
+        {this.state.showModal ? <QuestionModal /> : null}
+      </div>
     );
   }
 }

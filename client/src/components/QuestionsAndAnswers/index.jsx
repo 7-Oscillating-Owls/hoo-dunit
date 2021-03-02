@@ -10,6 +10,7 @@ import Report from '../Report';
 import LoadMoreAnswers from '../LoadMoreAnswers';
 import QATitle from '../QATitle';
 import AddAQuestion from '../AddAQuestion';
+import QuestionModal from '../QuestionModal';
 
 const QuestionsAndAnswers = () => (
 
@@ -52,6 +53,7 @@ const QuestionsAndAnswers = () => (
     <div className={styles.buttonContainer}>
       <div className={styles.moreAnsweredQuestionsButton}>More Answered Questions</div>
       <div className={styles.addAQuestionButton}><AddAQuestion /></div>
+
     </div>
   </div>
 );
