@@ -49,6 +49,7 @@ const QuestionsAndAnswers = () => (
         <Report />
       </div>
     </div>
+    <LoadMoreAnswers />
     <div className={styles.buttonContainer}>
       <MoreAnsweredQuestions />
       <AddAQuestion />
