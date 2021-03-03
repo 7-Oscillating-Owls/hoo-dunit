@@ -1,3 +1,6 @@
 .AddAnswer a {
   text-decoration: underline;
 }
+.AddAnswer {
+  margin: 7px 8px;
+}
