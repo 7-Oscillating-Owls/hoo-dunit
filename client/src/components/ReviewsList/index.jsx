@@ -1,3 +1,4 @@
+/* eslint-disable react/sort-comp */
 /* eslint-disable no-console */
 import React from 'react';
 import ReviewsAverageOverviewStars from '../ReviewsAverageOverviewStars';
@@ -17,11 +18,11 @@ class ReviewsList extends React.Component {
       reviewCount: reviewsData.results.length,
       overallRating: 0,
       recommendPercent: 0,
-      fiveStarTotal: 0,
-      fourStarTotal: 0,
-      threeStarTotal: 0,
-      twoStarTotal: 0,
-      oneStarTotal: 0,
+      fiveStarTotal: '',
+      fourStarTotal: '',
+      threeStarTotal: '',
+      twoStarTotal: '',
+      oneStarTotal: '',
       displayModal: false,
     };
     this.getReviews = this.getReviews.bind(this);
@@ -36,6 +37,7 @@ class ReviewsList extends React.Component {
   componentDidMount() {
     this.getReviews();
     this.getOverallView();
+    this.getIndividualStarTotal();
   }
 
   getReviews() {
@@ -57,38 +59,7 @@ class ReviewsList extends React.Component {
     this.setState({ overallRating: averageRating, recommendPercent: recommended });
   }
 
-  getIndividualStarTotal() {
-    const fiveStarCount = 1;
-    const fourStarCount = 1;
-    const threeStarCount = 1;
-    const twoStarCount = 1;
-    const oneStarCount = 1;
-
-    reviewsData.results.forEach((review, index) => {
-      const individualStarRating = reviewsData.results[index]['rating'];
-      if (individualStarRating === 5) {
-        fiveStarCount += 1;
-      }
-      if (individualStarRating === 4) {
-        fourStarCount += 1;
-      }
-      if (individualStarRating === 3) {
-        threeStarCount += 1;
-      }
-      if (individualStarRating === 2) {
-        twoStarCount += 1;
-      }
-      if (individualStarRating === 1) {
-        oneStarCount += 1;
-      }
-    });
-    this.setState({ fiveStarTotal: fiveStarCount });
-    this.setState({ fourStarTotal: fourStarCount });
-    this.setState({ threeStarTotal: threeStarCount });
-    this.setState({ twoStarTotal: twoStarCount });
-    this.setState({ oneStarTotal: fiveStarCount });
-  }
-
+  // eslint-disable-next-line class-methods-use-this
   addReview(formData) {
     const reviewObject = {
       rating: formData.overallRating,
@@ -111,8 +82,39 @@ class ReviewsList extends React.Component {
         value: formData.comfort,
       },
     };
-    // Will need to change this to post request to POST/reviews/meta
-    console.log('Review Added!');
+      // Will need to change this to post request to POST/reviews/meta
+    console.log('Review Added!', reviewMetaCharacteristicsObject);
+  }
+
+  getIndividualStarTotal() {
+    let fiveStarCount = 0;
+    let fourStarCount = 0;
+    let threeStarCount = 0;
+    let twoStarCount = 0;
+    let oneStarCount = 0;
+
+    reviewsData.results.forEach((review) => {
+      if (review.rating === 5) {
+        fiveStarCount += 1;
+      }
+      if (review.rating === 4) {
+        fourStarCount += 1;
+      }
+      if (review.rating === 3) {
+        threeStarCount += 1;
+      }
+      if (review.rating === 2) {
+        twoStarCount += 1;
+      }
+      if (review.rating === 1) {
+        oneStarCount += 1;
+      }
+    });
+    this.setState({ fiveStarTotal: fiveStarCount });
+    this.setState({ fourStarTotal: fourStarCount });
+    this.setState({ threeStarTotal: threeStarCount });
+    this.setState({ twoStarTotal: twoStarCount });
+    this.setState({ oneStarTotal: oneStarCount });
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -147,9 +149,24 @@ class ReviewsList extends React.Component {
         <div className={styles.starRating}>
           <ReviewsAverageOverviewStars ratings={this.state.overallRating} />
         </div>
-        <div className={styles.recommendOverview}>{this.state.recommendPercent} of reviewers recommend this product</div>
-        <ReviewRatingDistribution fiveStarTotal={this.state.fiveStarTotal} fourStarTotal={this.state.fourStarTotal} threeStarTotal={this.state.threeStarTotal} twoStarTotal={this.state.twoStarTotal} oneStarTotal={this.state.oneStarTotal} />
-        <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
+        <div className={styles.recommendOverview}>
+          {this.state.recommendPercent}
+          {' '}
+          of reviewers recommend this product
+        </div>
+        <ReviewRatingDistribution
+          reviewCount={this.state.reviewCount}
+          fiveStarTotal={this.state.fiveStarTotal}
+          fourStarTotal={this.state.fourStarTotal}
+          threeStarTotal={this.state.threeStarTotal}
+          twoStarTotal={this.state.twoStarTotal}
+          oneStarTotal={this.state.oneStarTotal}
+        />
+        <div className={styles.totalReviews}>
+          {this.state.reviewCount}
+          {' '}
+          Reviews
+        </div>
         <div>
           {
             reviewsData.results.map((review) => (
@@ -160,7 +177,10 @@ class ReviewsList extends React.Component {
         <div>
           {ReviewModalRender}
         </div>
-        <ReviewsMoreReviews openAddReviewModal={this.openAddReviewModal} getMoreReviews={this.getMoreReviews} />
+        <ReviewsMoreReviews
+          openAddReviewModal={this.openAddReviewModal}
+          getMoreReviews={this.getMoreReviews}
+        />
       </div>
     );
   }
