@@ -9,8 +9,8 @@ class QuestionModal extends React.Component {
       nickname: '',
       email: '',
       questionError: null,
-      nicknameError: '',
-      emailError: ''
+      nicknameError: null,
+      emailError: null
 
     };
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
@@ -18,23 +18,26 @@ class QuestionModal extends React.Component {
     this.validate = this.validate.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
+
   validate() {
-    { this.state.question.length < 1 ? this.setState({ questionError: "Please enter a question" }) : null }
+    { this.state.question.length < 1 ? this.setState({ questionError: 'Please enter a question' }) : this.setState({questionError: null}) }
+    { this.state.nickname.length < 1 ? this.setState({ nicknameError: 'please enter a nickname' }) : this.setState({nicknameError: null}) }
+    { !this.state.email.includes('@') ? this.setState({emailError: 'please enter valid email'}) : this.setState({emailError: null})}
 
   }
 
   closeModal() {
-    {this.state.questionError ? this.props.modalclose() : null}
-  }
+    //this.props.modalclose()
+    }
+
+
+
 
   handleSubmitClick(event) {
     event.preventDefault();
     this.validate()
-  //  this.props.modalclose();
-  this.closeModal()
+     this.closeModal();
   }
-
-
 
   handleOnChange(event) {
     this.setState({ [event.target.name]: event.target.value });
@@ -49,6 +52,7 @@ class QuestionModal extends React.Component {
             name="question"
             placeholder="Enter your question"
             maxLength="1000"
+
           />
           <small className={styles.errors}>{this.state.questionError}</small>
           <input
@@ -56,13 +60,15 @@ class QuestionModal extends React.Component {
             name="nickname"
             placeholder="Example: jackson11!"
             maxLength="60"
+
           />
-          <small className={styles.errors}>{this.state.nickname}</small>
+          <small className={styles.errors}>{this.state.nicknameError}</small>
           <input
             type="email"
             name="email"
             placeholder="enter email"
             maxLength="60"
+
           />
           <small className={styles.errors}>{this.state.emailError}</small>
           <small>For authentication reasons, you will not be emailed</small>
