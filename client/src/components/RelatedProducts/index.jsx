@@ -35,6 +35,6 @@ const RelatedProducts = () => {
       />
     </section>
   );
-}
+};
 
 export default RelatedProducts;
