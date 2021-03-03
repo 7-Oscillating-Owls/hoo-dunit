@@ -12,9 +12,27 @@ import QATitle from '../QATitle';
 import AddAQuestion from '../AddAQuestion';
 import SearchBar from '../SearchBar';
 import MoreAnsweredQuestions from '../MoreAnsweredQuestions';
+import axios from 'axios'
 
-const QuestionsAndAnswers = () => (
-  <div>
+class QuestionsAndAnswers extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: []
+
+    };
+  }
+
+  componentDidMount() {
+    axios.get('/qa')
+    .then(response => {
+      this.setState({data: response.data})
+    })
+  }
+
+  render() {
+    return (
+      <div>
     <QATitle />
     <div className={styles.searchContainer}>
       <SearchBar />
@@ -55,7 +73,11 @@ const QuestionsAndAnswers = () => (
       <AddAQuestion />
     </div>
   </div>
+    )
+  }
+}
 
-);
+
+
 
 export default QuestionsAndAnswers;

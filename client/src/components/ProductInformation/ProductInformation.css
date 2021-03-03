@@ -1,19 +1,23 @@
 
 .productInformation {
   grid-area: b;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   font-family: Arial, Helvetica, sans-serif;
+  color: rgb(90, 90, 90);
+  padding: 20px;
 }
 
 .ratings {
-  font-size:13px;
+  font-size:10px;
   font-weight: 100;
 }
 
+
 .category {
-  font-size:13px;
+  font-size:15px;
   font-weight: 100;
   text-transform: uppercase;
 }
@@ -23,7 +27,7 @@
 }
 
 .price {
-  font-size:13px;
+  font-size:15px;
   font-weight: 100;
 }
 
