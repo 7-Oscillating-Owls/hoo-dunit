@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 
 import RelatedProductCard from '../RelatedProductCard';
-import ComparisonButton from '../ComparisonButton';
 
 import styles from './RelatedProductsList.css';
 
@@ -89,7 +88,7 @@ class RelatedProductsList extends Component {
 
   render() {
     // eslint-disable-next-line react/prop-types
-    const { relatedProducts, stylesByProductId } = this.props;
+    const { relatedProducts, stylesByProductId, ActionButton } = this.props;
     const { position } = this.state;
 
     // eslint-disable-next-line react/prop-types
@@ -108,7 +107,7 @@ class RelatedProductsList extends Component {
         category={category}
         features={features}
         defaultStyle={stylesByProductId(id).results[0]}
-        ActionButton={ComparisonButton}
+        ActionButton={ActionButton}
       />
     ));
 
