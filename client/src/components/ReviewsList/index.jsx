@@ -37,6 +37,7 @@ class ReviewsList extends React.Component {
   componentDidMount() {
     this.getReviews();
     this.getOverallView();
+    this.getIndividualStarTotal();
   }
 
   getReviews() {
@@ -86,27 +87,26 @@ class ReviewsList extends React.Component {
   }
 
   getIndividualStarTotal() {
-    const fiveStarCount = 1;
-    const fourStarCount = 1;
-    const threeStarCount = 1;
-    const twoStarCount = 1;
-    const oneStarCount = 1;
+    let fiveStarCount = 0;
+    let fourStarCount = 0;
+    let threeStarCount = 0;
+    let twoStarCount = 0;
+    let oneStarCount = 0;
 
-    reviewsData.results.forEach((review, index) => {
-      const individualStarRating = reviewsData.results[index]['rating'];
-      if (individualStarRating === 5) {
+    reviewsData.results.forEach((review) => {
+      if (review.rating === 5) {
         fiveStarCount += 1;
       }
-      if (individualStarRating === 4) {
+      if (review.rating === 4) {
         fourStarCount += 1;
       }
-      if (individualStarRating === 3) {
+      if (review.rating === 3) {
         threeStarCount += 1;
       }
-      if (individualStarRating === 2) {
+      if (review.rating === 2) {
         twoStarCount += 1;
       }
-      if (individualStarRating === 1) {
+      if (review.rating === 1) {
         oneStarCount += 1;
       }
     });
@@ -114,7 +114,7 @@ class ReviewsList extends React.Component {
     this.setState({ fourStarTotal: fourStarCount });
     this.setState({ threeStarTotal: threeStarCount });
     this.setState({ twoStarTotal: twoStarCount });
-    this.setState({ oneStarTotal: fiveStarCount });
+    this.setState({ oneStarTotal: oneStarCount });
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -133,7 +133,6 @@ class ReviewsList extends React.Component {
     // Display two more reviews
     console.log('More Reviews clicked');
   }
-
 
   render() {
     let display = this.state.displayModal;
@@ -156,6 +155,7 @@ class ReviewsList extends React.Component {
           of reviewers recommend this product
         </div>
         <ReviewRatingDistribution
+          reviewCount={this.state.reviewCount}
           fiveStarTotal={this.state.fiveStarTotal}
           fourStarTotal={this.state.fourStarTotal}
           threeStarTotal={this.state.threeStarTotal}
