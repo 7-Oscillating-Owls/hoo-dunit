@@ -1,3 +1,7 @@
 .helpful a {
   text-decoration: underline;
+
+}
+.helpful {
+  margin: 7px 8px;
 }
