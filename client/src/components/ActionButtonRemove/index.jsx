@@ -10,7 +10,7 @@ const ActionButtonRemove = ({ productId }) => (
 );
 
 ActionButtonRemove.propTypes = {
-  productId: PropTypes.string.isRequired,
+  productId: PropTypes.number.isRequired,
 };
 
 export default ActionButtonRemove;

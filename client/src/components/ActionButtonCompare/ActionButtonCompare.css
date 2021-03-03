@@ -13,3 +13,10 @@
 .comparisonButton:focus {
   outline: none;
 }
+
+.test2{
+  height: 300px;
+  width: 300px;
+  background-color: white;
+  border: 3px solid gray;
+}
