@@ -1,4 +1,5 @@
 .relatedProductsList {
+  align-items: stretch;
   box-sizing: border-box;
   display: flex;
   overflow: hidden;
@@ -38,10 +39,14 @@
 }
 
 .scrollButton {
+  align-self: center;
   background: white;
-  height: 100px;
-  width: 100px;
   border: none;
+  height: 70px;
+  padding: 0;
+  position: absolute;
+  width: 35px;
+  z-index: 1;
 }
 
 .scrollButton:hover {
@@ -53,11 +58,6 @@
 }
 
 .scrollButtonRight {
-  background: white;
-  height: 100px;
-  width: 100px;
-  border: none;
-}
-.scrollButtonRight:focus {
-  outline: none;
+  composes: scrollButton;
+  right: 0;
 }
