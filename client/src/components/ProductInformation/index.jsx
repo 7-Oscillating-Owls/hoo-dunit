@@ -21,7 +21,7 @@ const ProductInformation = ({ productInfo, originalPrice, salePrice }) => {
   );
 
   return (
-    <div className={`${styles.productInfo} ${styles.productInformation}`}>
+    <div className={styles.productInformation}>
       <div className={styles.ratings}>
         <span>Star Ratings </span>
         <span>Read All Reviews</span>
