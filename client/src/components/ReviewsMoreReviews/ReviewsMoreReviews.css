@@ -2,7 +2,7 @@
   justify-content: center;
 }
 
-.moreButton {
+.moreButton, .modalAddButton {
   justify-content: center;
   padding: 20px;
   margin: 0 10px;

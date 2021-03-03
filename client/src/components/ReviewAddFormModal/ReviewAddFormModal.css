@@ -1,0 +1,37 @@
+.modalWrapper {
+  background: #fff;
+  margin: 50px auto;
+  height: 90%;
+  max-height: 550px;
+  width: 90%;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: scroll;
+  padding-left: 35px;
+}
+
+/* .modalWrapper::after {
+  background: rgba(63, 61, 61, 0.7);
+  height: 100%;
+  transition: all 1.5s;
+  width: 100%
+} */
+
+.closeModalButton, .xButton {
+  cursor: pointer;
+  justify-items: right;
+  float: right;
+}
+
+.xButton {
+  margin-right: 5px;
+  padding-right: 5px;
+  font-size: 15px;
+  font-weight: lighter;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.modalContent {
+  padding: 15px 10px;
+  overflow: scroll;
+}
