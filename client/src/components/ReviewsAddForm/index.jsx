@@ -1,4 +1,5 @@
 import React from 'react';
+import ReviewsHoverStars from '../ReviewsHoverStars';
 import styles from './ReviewsAddForm.css';
 
 class ReviewsAddForm extends React.Component {
@@ -6,6 +7,7 @@ class ReviewsAddForm extends React.Component {
     super(props);
     this.state = {
       overallRating: '',
+      hoverRating: '',
       email: '',
       reviewUsername: '',
       reviewSummary: '',
@@ -22,6 +24,9 @@ class ReviewsAddForm extends React.Component {
       uploadedFile: '',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.onStarClick = this.onStarClick.bind(this);
+    this.starHover = this.starHover.bind(this);
+    this.starNotHover = this.starNotHover.bind(this);
     this.handleSummaryTextChange = this.handleSummaryTextChange.bind(this);
     this.handleDescriptionTextChange = this.handleDescriptionTextChange.bind(this);
     this.handleFileUpload = this.handleFileUpload.bind(this);
@@ -31,6 +36,18 @@ class ReviewsAddForm extends React.Component {
   handleChange(event) {
     console.log(event.target.name, event.target.value);
     this.setState({ [event.target.name]: event.target.value });
+  }
+
+  onStarClick(index) {
+    this.setState({ overallRating: index });
+  }
+
+  starHover(index) {
+    this.setState({ hoverRating: index });
+  }
+
+  starNotHover() {
+    this.setState({ hoverRating: null });
   }
 
   handleSummaryTextChange(event) {
@@ -61,10 +78,19 @@ class ReviewsAddForm extends React.Component {
           <h2>Write New Review</h2>
 
           <h4>Overall Rating:</h4>
-          <small>* Required</small>
-          <br />
-          <br />
-          <div onChange={this.handleChange} required>
+          <ReviewsHoverStars onStarClick={this.onStarClick} handleChange={this.handleChange} starHover={this.starHover} starNotHover={this.starNotHover} overallRating={this.state.overallRating} hoverRating={this.state.hoverRating} />
+          <div>
+            <br />
+            <small>* Required</small>
+            <br />
+            <br />
+            <p>1 - Poor</p>
+            <p>2 - Fair</p>
+            <p>3 - Average</p>
+            <p>4 - Good</p>
+            <p>5 - Great</p>
+          </div>
+          {/* <div onChange={this.handleChange} required>
             <input type="radio" id="overallRating1" name="overallRating" value="1" required/>
             <label htmlFor="overallRating1"> 1 - Poor </label>
             <input type="radio" id="overallRating2" name="overallRating" value="2" />
@@ -75,7 +101,7 @@ class ReviewsAddForm extends React.Component {
             <label htmlFor="overallRating4"> 4 - Good </label>
             <input type="radio" id="overallRating5" name="overallRating" value="5" />
             <label htmlFor="overallRating5"> 5 - Great </label>
-          </div>
+          </div> */}
           <br />
           <h4>What is your email?</h4>
           <input className={styles.emailInput} onChange={this.handleChange} type="email" name="email" value={this.state.email} placeholder="Example: abc@123.com" required />
