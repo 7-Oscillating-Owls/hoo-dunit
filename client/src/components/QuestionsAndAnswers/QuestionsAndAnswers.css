@@ -18,7 +18,8 @@
 
 .byUserContainer {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+
 }
 
 .buttonContainer {
