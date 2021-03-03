@@ -1,19 +1,10 @@
 .reviewsList {
   display: grid;
-  border: 1px solid gray;
   box-sizing: border-box;
   grid-gap: 20px;
   justify-items: stretch;
   align-items: stretch;
   padding: 35px;
-}
-
-.modalBackdrop {
-  background: rgba(63, 61, 61, 0.7);
-  height: 100%;
-  position: fixed;
-  transition: all 1.5s;
-  width: 100%
 }
 
 .ratingsAndReviewsTitle {
