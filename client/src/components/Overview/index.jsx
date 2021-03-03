@@ -57,6 +57,7 @@ class Overview extends React.Component {
         <ProductDescription
           description={productInfo.description}
           features={productInfo.features}
+          slogan={productInfo.slogan}
         />
       </div>
     );

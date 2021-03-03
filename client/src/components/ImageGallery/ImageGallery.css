@@ -1,6 +1,6 @@
 .imageGallery {
   grid-area: a;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .carousel {
