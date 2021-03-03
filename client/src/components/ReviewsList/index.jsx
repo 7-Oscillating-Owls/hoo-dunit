@@ -22,12 +22,14 @@ class ReviewsList extends React.Component {
       threeStarTotal: 0,
       twoStarTotal: 0,
       oneStarTotal: 0,
+      displayModal: false,
     };
     this.getReviews = this.getReviews.bind(this);
     this.getOverallView = this.getOverallView.bind(this);
     this.addReview = this.addReview.bind(this);
     this.getIndividualStarTotal = this.getIndividualStarTotal.bind(this);
     this.openAddReviewModal = this.openAddReviewModal.bind(this);
+    this.closeAddReviewModal = this.closeAddReviewModal.bind(this);
     this.getMoreReviews = this.getMoreReviews.bind(this);
   }
 
@@ -117,6 +119,11 @@ class ReviewsList extends React.Component {
   openAddReviewModal() {
     // Open review modal
     console.log('Add Revew clicked');
+    this.setState({ displayModal: true });
+  }
+
+  closeAddReviewModal() {
+    this.setState({ displayModal: false });
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -126,6 +133,13 @@ class ReviewsList extends React.Component {
   }
 
   render() {
+    let display = this.state.displayModal;
+    let ReviewModalRender;
+    if (display === true) {
+      ReviewModalRender = <ReviewAddFormModal className={styles.modalBackdrop} addReview={this.addReview} displayModal={this.state.displayModal} closeAddReviewModal={this.closeAddReviewModal}/>
+    } else {
+      ReviewModalRender = null;
+    }
     return (
       <div className={styles.reviewsList}>
         <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
@@ -134,7 +148,6 @@ class ReviewsList extends React.Component {
           <ReviewsAverageOverviewStars ratings={this.state.overallRating} />
         </div>
         <div className={styles.recommendOverview}>{this.state.recommendPercent} of reviewers recommend this product</div>
-        <div className={styles.ratingDistribution}>Star Distribution: </div>
         <ReviewRatingDistribution fiveStarTotal={this.state.fiveStarTotal} fourStarTotal={this.state.fourStarTotal} threeStarTotal={this.state.threeStarTotal} twoStarTotal={this.state.twoStarTotal} oneStarTotal={this.state.oneStarTotal} />
         <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
         <div>
@@ -144,8 +157,9 @@ class ReviewsList extends React.Component {
             ))
           }
         </div>
-        <ReviewsAddForm addReview={this.addReview} />
-        <ReviewAddFormModal />
+        <div>
+          {ReviewModalRender}
+        </div>
         <ReviewsMoreReviews openAddReviewModal={this.openAddReviewModal} getMoreReviews={this.getMoreReviews} />
       </div>
     );
