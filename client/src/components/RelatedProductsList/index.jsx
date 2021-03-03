@@ -129,8 +129,6 @@ class RelatedProductsList extends Component {
         <div className={styles.carousel} ref={this.setCarouselRef}>
           {cardsComponenets}
         </div>
-
-        {/* <div className={styles.rightArrowSpacer}> */}
         {
           this.showScrollRightButton()
           && (
@@ -143,7 +141,6 @@ class RelatedProductsList extends Component {
             </button>
           )
         }
-        {/* </div> */}
       </div>
     );
   }
