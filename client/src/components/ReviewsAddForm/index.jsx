@@ -24,7 +24,7 @@ class ReviewsAddForm extends React.Component {
       uploadedFile: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.onStarClick = this.onStarClick.bind(this);
+    // this.onStarClick = this.onStarClick.bind(this);
     this.starHover = this.starHover.bind(this);
     this.starNotHover = this.starNotHover.bind(this);
     this.handleSummaryTextChange = this.handleSummaryTextChange.bind(this);
@@ -38,16 +38,16 @@ class ReviewsAddForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  onStarClick(index) {
-    this.setState({ overallRating: index });
-  }
+  // onStarClick(index) {
+  //   this.setState({ overallRating: index });
+  // }
 
   starHover(index) {
     this.setState({ hoverRating: index });
   }
 
   starNotHover() {
-    this.setState({ hoverRating: null });
+    this.setState({ hoverRating: 0 });
   }
 
   handleSummaryTextChange(event) {
@@ -78,7 +78,14 @@ class ReviewsAddForm extends React.Component {
           <h2>Write New Review</h2>
 
           <h4>Overall Rating:</h4>
-          <ReviewsHoverStars onStarClick={this.onStarClick} handleChange={this.handleChange} starHover={this.starHover} starNotHover={this.starNotHover} overallRating={this.state.overallRating} hoverRating={this.state.hoverRating} />
+          <ReviewsHoverStars
+            // onStarClick={this.onStarClick}
+            handleChange={this.handleChange}
+            starHover={this.starHover}
+            starNotHover={this.starNotHover}
+            overallRating={this.state.overallRating}
+            hoverRating={this.state.hoverRating}
+          />
           <div>
             <br />
             <small>* Required</small>
