@@ -1,5 +1,5 @@
 .modalWrapper {
-  background: #fff;
+  /* background: #fff;
   margin: 50px auto;
   height: 90%;
   max-height: 550px;
@@ -7,31 +7,45 @@
   justify-content: center;
   box-sizing: border-box;
   overflow: scroll;
-  padding-left: 35px;
-}
-
-/* .modalWrapper::after {
-  background: rgba(63, 61, 61, 0.7);
-  height: 100%;
-  transition: all 1.5s;
-  width: 100%
-} */
-
-.closeModalButton, .xButton {
-  cursor: pointer;
-  justify-items: right;
-  float: right;
-}
-
-.xButton {
-  margin-right: 5px;
-  padding-right: 5px;
-  font-size: 15px;
-  font-weight: lighter;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding-left: 35px; */
+  height: 85%;
+  position: fixed;
+  z-index: 500;
+  background-color: white;
+  width: 70%;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px black;
+  padding: 16px;
+  left: 15%;
+  top: 10%;
+  box-sizing: border-box;
+  transition: all .3 ease-out;
+  overflow: scroll;
 }
 
 .modalContent {
   padding: 15px 10px;
   overflow: scroll;
+}
+
+.timesCircleClose {
+  justify-content: space-around;
+  cursor: pointer;
+  padding: 3px;
+  margin: 15px 10px;
+  float: right;
+  position: fixed;
+  position: fixed;
+  z-index: 500;
+  left: 85%;
+  top: 7%;
+}
+
+.closeModalButton {
+  justify-content: space-around;
+  padding: 7px;
+  margin: 0px 10px;
+  border: 2px solid gray;
+  cursor: pointer;
+  float: right;
 }

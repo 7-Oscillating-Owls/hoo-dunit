@@ -9,6 +9,21 @@
   padding: 20px;
   margin: 50px 10px;
   border: 2px solid gray;
+  cursor: pointer;
+}
+
+.closeModalButton, .xButton {
+  cursor: pointer;
+  justify-items: right;
+  float: right;
+}
+
+.xButton {
+  margin-right: 5px;
+  padding-right: 5px;
+  font-size: 15px;
+  font-weight: lighter;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 input {
