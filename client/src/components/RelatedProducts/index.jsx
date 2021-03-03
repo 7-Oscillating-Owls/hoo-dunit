@@ -1,6 +1,8 @@
 import React from 'react';
 
 import RelatedProductsList from '../RelatedProductsList';
+import ActionButtonCompare from '../ActionButtonCompare';
+import ActionButtonRemove from '../ActionButtonRemove';
 import {
   // getProducts,
   getDetailForProduct,
@@ -22,12 +24,14 @@ const RelatedProducts = () => {
       <RelatedProductsList
         relatedProducts={relatedProductsDetails}
         stylesByProductId={getStylesForProduct}
+        ActionButton={ActionButtonCompare}
       />
 
       <h3 className={styles.listTitle}>Your Outfit</h3>
       <RelatedProductsList
         relatedProducts={relatedProductsDetails}
         stylesByProductId={getStylesForProduct}
+        ActionButton={ActionButtonRemove}
       />
     </section>
   );
