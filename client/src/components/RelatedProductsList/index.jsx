@@ -114,38 +114,36 @@ class RelatedProductsList extends Component {
 
     return (
       <div className={styles.relatedProductsList} ref={this.setContainerRef}>
-        <div className={styles.leftArrowSpacer}>
-          {
-            this.showScrollLeftButton()
-            && (
-              <button
-                className={styles.scrollButton}
-                type="button"
-                onClick={(e) => this.scrollLeft(e)}
-              >
-                &lt;
-              </button>
-            )
-          }
-        </div>
+        {
+          this.showScrollLeftButton()
+          && (
+            <button
+              className={styles.scrollButton}
+              type="button"
+              onClick={(e) => this.scrollLeft(e)}
+            >
+              &lt;
+            </button>
+          )
+        }
         <div className={styles.carousel} ref={this.setCarouselRef}>
           {cardsComponenets}
         </div>
 
-        <div className={styles.rightArrowSpacer}>
-          {
-            this.showScrollRightButton()
-            && (
-              <button
-                className={styles.scrollButton}
-                type="button"
-                onClick={(e) => this.scrollRight(e)}
-              >
-                &gt;
-              </button>
-            )
-          }
-        </div>
+        {/* <div className={styles.rightArrowSpacer}> */}
+        {
+          this.showScrollRightButton()
+          && (
+            <button
+              className={styles.scrollButtonRight}
+              type="button"
+              onClick={(e) => this.scrollRight(e)}
+            >
+              &gt;
+            </button>
+          )
+        }
+        {/* </div> */}
       </div>
     );
   }
