@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './styles.css';
+import styles from './ProductInformation.css';
 
 const ProductInformation = ({ productInfo, originalPrice, salePrice }) => {
   const currentPrice = salePrice === null ? (
@@ -24,7 +24,7 @@ const ProductInformation = ({ productInfo, originalPrice, salePrice }) => {
     <div className={styles.productInformation}>
       <div className={styles.ratings}>
         <span>Star Ratings </span>
-        <span>Read All Reviews</span>
+        <u>Read All Reviews</u>
       </div>
       <div className={styles.category}>{productInfo.category}</div>
       <div className={styles.name}>{productInfo.name}</div>
