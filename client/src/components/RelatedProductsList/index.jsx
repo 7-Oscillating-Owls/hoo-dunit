@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 
 import RelatedProductCard from '../RelatedProductCard';
+import ComparisonButton from '../ComparisonButton';
 
 import styles from './RelatedProductsList.css';
 
@@ -107,43 +108,39 @@ class RelatedProductsList extends Component {
         category={category}
         features={features}
         defaultStyle={stylesByProductId(id).results[0]}
+        ActionButton={ComparisonButton}
       />
     ));
 
     return (
       <div className={styles.relatedProductsList} ref={this.setContainerRef}>
-        <div className={styles.leftArrowSpacer}>
-          {
-            this.showScrollLeftButton()
-            && (
-              <button
-                className={styles.scrollButton}
-                type="button"
-                onClick={(e) => this.scrollLeft(e)}
-              >
-                &lt;
-              </button>
-            )
-          }
-        </div>
+        {
+          this.showScrollLeftButton()
+          && (
+            <button
+              className={styles.scrollButton}
+              type="button"
+              onClick={(e) => this.scrollLeft(e)}
+            >
+              &lt;
+            </button>
+          )
+        }
         <div className={styles.carousel} ref={this.setCarouselRef}>
           {cardsComponenets}
         </div>
-
-        <div className={styles.rightArrowSpacer}>
-          {
-            this.showScrollRightButton()
-            && (
-              <button
-                className={styles.scrollButton}
-                type="button"
-                onClick={(e) => this.scrollRight(e)}
-              >
-                &gt;
-              </button>
-            )
-          }
-        </div>
+        {
+          this.showScrollRightButton()
+          && (
+            <button
+              className={styles.scrollButtonRight}
+              type="button"
+              onClick={(e) => this.scrollRight(e)}
+            >
+              &gt;
+            </button>
+          )
+        }
       </div>
     );
   }
