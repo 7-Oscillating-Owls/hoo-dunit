@@ -28,7 +28,7 @@ const ProductInformation = ({ productInfo, originalPrice, salePrice }) => {
       </div>
       <div className={styles.category}>{productInfo.category}</div>
       <div className={styles.name}>{productInfo.name}</div>
-      {currentPrice && currentPrice}
+      {currentPrice}
     </div>
   );
 };
