@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import styles from './ActionButtonCompare.css';
 
 const ActionButtonCompare = ({ productId }) => (
@@ -7,5 +7,9 @@ const ActionButtonCompare = ({ productId }) => (
     *
   </button>
 );
+
+ActionButtonCompare.propTypes = {
+  productId: PropTypes.string.isRequired,
+};
 
 export default ActionButtonCompare;

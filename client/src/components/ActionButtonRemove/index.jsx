@@ -1,11 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './ActionButtonRemove.css';
 
-const ActionButtonCompare = ({ productId }) => (
+const ActionButtonRemove = ({ productId }) => (
   <button type="button" className={styles.actionButtonRemove} onClick={() => console.log('remove from outfit :', productId)}>
     x
   </button>
 );
 
-export default ActionButtonCompare;
+ActionButtonRemove.propTypes = {
+  productId: PropTypes.string.isRequired,
+};
+
+export default ActionButtonRemove;
