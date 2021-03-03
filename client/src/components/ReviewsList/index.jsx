@@ -1,3 +1,4 @@
+/* eslint-disable react/sort-comp */
 /* eslint-disable no-console */
 import React from 'react';
 import ReviewsAverageOverviewStars from '../ReviewsAverageOverviewStars';
@@ -17,11 +18,11 @@ class ReviewsList extends React.Component {
       reviewCount: reviewsData.results.length,
       overallRating: 0,
       recommendPercent: 0,
-      fiveStarTotal: 0,
-      fourStarTotal: 0,
-      threeStarTotal: 0,
-      twoStarTotal: 0,
-      oneStarTotal: 0,
+      fiveStarTotal: '',
+      fourStarTotal: '',
+      threeStarTotal: '',
+      twoStarTotal: '',
+      oneStarTotal: '',
       displayModal: false,
     };
     this.getReviews = this.getReviews.bind(this);
@@ -57,6 +58,33 @@ class ReviewsList extends React.Component {
     this.setState({ overallRating: averageRating, recommendPercent: recommended });
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  addReview(formData) {
+    const reviewObject = {
+      rating: formData.overallRating,
+      summary: formData.reviewSummary,
+      recommend: formData.recommend,
+      body: formData.reviewBody,
+      reviewer_name: formData.reviewUsername,
+      photos: formData.uploadedFile,
+    };
+    // Will need to change this to post request once connected to server - to POST/reviews
+    reviewsData.push(reviewObject);
+    const reviewMetaCharacteristicsObject = {
+      Size: {
+        value: formData.size,
+      },
+      Width: {
+        value: formData.width,
+      },
+      Comfort: {
+        value: formData.comfort,
+      },
+    };
+      // Will need to change this to post request to POST/reviews/meta
+    console.log('Review Added!', reviewMetaCharacteristicsObject);
+  }
+
   getIndividualStarTotal() {
     const fiveStarCount = 1;
     const fourStarCount = 1;
@@ -89,32 +117,6 @@ class ReviewsList extends React.Component {
     this.setState({ oneStarTotal: fiveStarCount });
   }
 
-  addReview(formData) {
-    const reviewObject = {
-      rating: formData.overallRating,
-      summary: formData.reviewSummary,
-      recommend: formData.recommend,
-      body: formData.reviewBody,
-      reviewer_name: formData.reviewUsername,
-      photos: formData.uploadedFile,
-    };
-    // Will need to change this to post request once connected to server - to POST/reviews
-    reviewsData.push(reviewObject);
-    const reviewMetaCharacteristicsObject = {
-      Size: {
-        value: formData.size,
-      },
-      Width: {
-        value: formData.width,
-      },
-      Comfort: {
-        value: formData.comfort,
-      },
-    };
-    // Will need to change this to post request to POST/reviews/meta
-    console.log('Review Added!');
-  }
-
   // eslint-disable-next-line class-methods-use-this
   openAddReviewModal() {
     // Open review modal
@@ -131,6 +133,7 @@ class ReviewsList extends React.Component {
     // Display two more reviews
     console.log('More Reviews clicked');
   }
+
 
   render() {
     let display = this.state.displayModal;
@@ -159,7 +162,11 @@ class ReviewsList extends React.Component {
           twoStarTotal={this.state.twoStarTotal}
           oneStarTotal={this.state.oneStarTotal}
         />
-        <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
+        <div className={styles.totalReviews}>
+          {this.state.reviewCount}
+          {' '}
+          Reviews
+        </div>
         <div>
           {
             reviewsData.results.map((review) => (
