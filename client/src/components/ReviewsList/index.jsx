@@ -147,8 +147,18 @@ class ReviewsList extends React.Component {
         <div className={styles.starRating}>
           <ReviewsAverageOverviewStars ratings={this.state.overallRating} />
         </div>
-        <div className={styles.recommendOverview}>{this.state.recommendPercent} of reviewers recommend this product</div>
-        <ReviewRatingDistribution fiveStarTotal={this.state.fiveStarTotal} fourStarTotal={this.state.fourStarTotal} threeStarTotal={this.state.threeStarTotal} twoStarTotal={this.state.twoStarTotal} oneStarTotal={this.state.oneStarTotal} />
+        <div className={styles.recommendOverview}>
+          {this.state.recommendPercent}
+          {' '}
+          of reviewers recommend this product
+        </div>
+        <ReviewRatingDistribution
+          fiveStarTotal={this.state.fiveStarTotal}
+          fourStarTotal={this.state.fourStarTotal}
+          threeStarTotal={this.state.threeStarTotal}
+          twoStarTotal={this.state.twoStarTotal}
+          oneStarTotal={this.state.oneStarTotal}
+        />
         <div className={styles.totalReviews}>{this.state.reviewCount} Reviews</div>
         <div>
           {
@@ -160,7 +170,10 @@ class ReviewsList extends React.Component {
         <div>
           {ReviewModalRender}
         </div>
-        <ReviewsMoreReviews openAddReviewModal={this.openAddReviewModal} getMoreReviews={this.getMoreReviews} />
+        <ReviewsMoreReviews
+          openAddReviewModal={this.openAddReviewModal}
+          getMoreReviews={this.getMoreReviews}
+        />
       </div>
     );
   }
