@@ -13,8 +13,18 @@ import AddAQuestion from '../AddAQuestion';
 import SearchBar from '../SearchBar';
 import MoreAnsweredQuestions from '../MoreAnsweredQuestions';
 
-const QuestionsAndAnswers = () => (
-  <div>
+class QuestionsAndAnswers extends React.Component {
+  constructor(props){
+    super(props)
+      this.state ={
+        data: []
+
+    }
+  }
+
+  render() {
+    return (
+      <div>
     <QATitle />
     <div className={styles.searchContainer}>
       <SearchBar />
@@ -55,7 +65,11 @@ const QuestionsAndAnswers = () => (
       <AddAQuestion />
     </div>
   </div>
+    )
+  }
+}
 
-);
+
+
 
 export default QuestionsAndAnswers;
