@@ -1,5 +1,5 @@
 .modalWrapper {
-  background: #fff;
+  /* background: #fff;
   margin: 50px auto;
   height: 90%;
   max-height: 550px;
@@ -7,7 +7,19 @@
   justify-content: center;
   box-sizing: border-box;
   overflow: scroll;
-  padding-left: 35px;
+  padding-left: 35px; */
+  height: 90%;
+  position: fixed;
+  z-index: 500;
+  background-color: white;
+  width: 70%;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px black;
+  padding: 16px;
+  left: 15%;
+  top: 1%;
+  box-sizing: border-box;
+  transition: all .3 ease-out;
 }
 
 /* .modalWrapper::after {
