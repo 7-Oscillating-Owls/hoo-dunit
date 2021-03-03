@@ -24,7 +24,6 @@ class ReviewsAddForm extends React.Component {
       uploadedFile: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    // this.onStarClick = this.onStarClick.bind(this);
     this.starHover = this.starHover.bind(this);
     this.starNotHover = this.starNotHover.bind(this);
     this.handleSummaryTextChange = this.handleSummaryTextChange.bind(this);
@@ -38,11 +37,12 @@ class ReviewsAddForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  // onStarClick(index) {
-  //   this.setState({ overallRating: index });
-  // }
+  onStarClick(index) {
+    this.setState({ overallRating: index });
+  }
 
   starHover(index) {
+    console.log("Hover: ", index);
     this.setState({ hoverRating: index });
   }
 
@@ -79,7 +79,6 @@ class ReviewsAddForm extends React.Component {
 
           <h4>Overall Rating:</h4>
           <ReviewsHoverStars
-            // onStarClick={this.onStarClick}
             handleChange={this.handleChange}
             starHover={this.starHover}
             starNotHover={this.starNotHover}

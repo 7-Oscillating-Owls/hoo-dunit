@@ -19,7 +19,7 @@ const ReviewsHoverStars = (props) => (
               className={styles.star}
               color={ratingValue <= (props.hoverRating || props.overallRating) ? "#404040" : "#E6E6E6"}
               size={50}
-              onMouseEnter={props.starHover}
+              onMouseEnter={() => props.starHover(ratingValue)}
               onMouseLeave={props.starNotHover}
             />
           </label>
