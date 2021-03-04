@@ -3,6 +3,7 @@ import React from 'react';
 import RelatedProductsList from '../RelatedProductsList';
 import ActionButtonCompare from '../ActionButtonCompare';
 import ActionButtonRemove from '../ActionButtonRemove';
+import AppModal from '../AppModal';
 import {
   // getProducts,
   getDetailForProduct,
@@ -24,15 +25,20 @@ const RelatedProducts = () => {
       <RelatedProductsList
         relatedProducts={relatedProductsDetails}
         stylesByProductId={getStylesForProduct}
-        ActionButton={ActionButtonCompare}
+        actionType="compare"
       />
 
       <h3 className={styles.listTitle}>Your Outfit</h3>
       <RelatedProductsList
         relatedProducts={relatedProductsDetails}
         stylesByProductId={getStylesForProduct}
-        ActionButton={ActionButtonRemove}
+        actionType="outfit"
       />
+
+      <AppModal>
+        <div>Hello</div>
+      </AppModal>
+
     </section>
   );
 };

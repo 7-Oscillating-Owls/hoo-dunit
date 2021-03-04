@@ -3,14 +3,8 @@ import RelatedProducts from '../RelatedProducts';
 import QuestionsAndAnswers from '../QuestionsAndAnswers';
 import Overview from '../Overview';
 import ReviewsList from '../ReviewsList';
-import { registerModal, AppModalInstance } from '../AppModal';
+// import { registerModal, AppModalInstance } from '../AppModal';
 import styles from './App.css';
-
-const Test = () => (
-  <div>
-    Well hello There!
-  </div>
-);
 
 class App extends React.Component {
   constructor(props) {
@@ -45,8 +39,6 @@ class App extends React.Component {
         <RelatedProducts />
         <ReviewsList />
         <QuestionsAndAnswers />
-        <AppModalInstance ref={registerModal} />
-
       </div>
     );
   }

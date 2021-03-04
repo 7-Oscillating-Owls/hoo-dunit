@@ -1,80 +1,48 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import styles from './AppModal.css';
 
-const warn = () => console.log('modal is not registered');
-
-const modal = {
-  open: warn,
-  close: warn,
-};
-
-const registerModal = (ref) => {
-  if (ref) {
-    console.log('modal is registered');
-    modal.open = ref.open;
-    modal.close = ref.close;
-  } else {
-    modal.open = warn;
-    modal.close = warn;
-  }
-};
+const modalRoot = document.getElementById('modal-root');
 
 class AppModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hidden: true,
+      showModal: false,
     };
-
-    this.open = this.open.bind(this);
-    this.close = this.close.bind(this);
   }
 
-  open(component) {
-    console.log('modal open');
+  open() {
     this.setState({
-      hidden: false,
-      component,
+      showModal: true,
     });
   }
 
   close() {
-    console.log('modal close');
     this.setState({
-      hidden: true,
+      showModal: false,
     });
   }
 
   render() {
-    const { hidden, component } = this.state;
-    // eslint-disable-next-line react/prop-types
-    const { renderContent } = this.props;
-    const modalStyles = [styles.appModal];
-    if (hidden) {
-      modalStyles.push(styles.hidden);
+    const { children } = this.props;
+    const { showModal } = this.state;
+
+    const classList = [styles.appModal];
+    if (!showModal) {
+      classList.push(styles.hidden);
     }
 
-    const stopEventProp = (e) => {
-      console.log('clicked inside modal. stopping event bubbling');
-      e.stopPropagation();
-    }
-
-    return (
-      <div className={modalStyles.join(' ')} onClick={this.close}>
-        <div className={styles.inner} onClick={stopEventProp}>
-          {
-            component
-            && component()
-          }
+    return ReactDOM.createPortal(
+      (
+        <div className={classList.join(' ')}>
+          {children}
         </div>
-      </div>
+      ),
+      modalRoot,
     );
   }
 }
 
-export {
-  registerModal,
-  AppModal as AppModalInstance,
-};
-export default modal;
+export default AppModal;
