@@ -1,7 +1,6 @@
 import React from 'react';
 
 import RelatedProductsList from '../RelatedProductsList';
-import AppModal from '../AppModal';
 import {
   // getProducts,
   getDetailForProduct,
@@ -9,7 +8,6 @@ import {
   // relatedProductsDetails,
   getStylesForProduct,
 } from '../../../../data/products';
-
 import styles from './RelatedProducts.css';
 
 const RelatedProducts = () => {
@@ -32,11 +30,6 @@ const RelatedProducts = () => {
         stylesByProductId={getStylesForProduct}
         actionType="outfit"
       />
-
-      <AppModal>
-        <div>Hello</div>
-      </AppModal>
-
     </section>
   );
 };
