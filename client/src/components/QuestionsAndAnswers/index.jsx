@@ -12,6 +12,7 @@ import QATitle from '../QATitle';
 import AddAQuestion from '../AddAQuestion';
 import SearchBar from '../SearchBar';
 import MoreAnsweredQuestions from '../MoreAnsweredQuestions';
+import Questiontwo from '../Questiontwo';
 import axios from 'axios'
 
 class QuestionsAndAnswers extends React.Component {
@@ -54,7 +55,7 @@ class QuestionsAndAnswers extends React.Component {
       </div>
     </div>
     <div className={styles.questionContainer}>
-      <Question data ={data}/>
+      <Questiontwo data ={data}/>
       <div className={styles.helpfulContainer}>
         <Helpful />
         <AddAnswer />
