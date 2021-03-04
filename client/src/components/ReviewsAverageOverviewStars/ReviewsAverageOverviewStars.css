@@ -1,1 +1,40 @@
+.stars {
+  width: 50px;
+  height: 70px;
+}
 
+.testStarOne {
+  color: black;
+}
+
+.testStarTwo {
+  color: black;
+  font-size: 24px;
+  /* background: repeating-linear-gradient(90deg, gray, 2px, #FFF 2px, #FFF 4px); */
+  background: gray;
+  overflow: hidden;
+}
+
+.testStarOne::before {
+  color: #cbb247;
+  font-size: 24px;
+  background: repeating-linear-gradient( -45deg, #e6c84b, #e6c84b 2px, #FFF 2px, #FFF 4px);
+  overflow: hidden;
+}
+
+.testStarTwo::before {
+  color:gray;
+  width: 75%;
+}
+
+.testStarOne::after {
+  color: blue;
+  width: 75%;
+}
+
+.testStarTwo::after {
+  color:blue;
+  width: 75%;
+}
+
+/* overflow: hidden; */
