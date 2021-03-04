@@ -1,8 +1,6 @@
 import React from 'react';
 
 import RelatedProductsList from '../RelatedProductsList';
-import ActionButtonCompare from '../ActionButtonCompare';
-import ActionButtonRemove from '../ActionButtonRemove';
 import AppModal from '../AppModal';
 import {
   // getProducts,
