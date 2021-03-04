@@ -20,17 +20,18 @@ class QuestionsAndAnswers extends React.Component {
     this.state = {
       data: []
 
-    };
+    }
   }
 
   componentDidMount() {
     axios.get('/qa')
     .then(response => {
-      this.setState({data: response.data})
+      this.setState({data: response.data.results})
     })
   }
 
   render() {
+    const { data } = this.state;
     return (
       <div>
     <QATitle />
@@ -38,7 +39,7 @@ class QuestionsAndAnswers extends React.Component {
       <SearchBar />
     </div>
     <div className={styles.questionContainer}>
-      <Question />
+      <Question data ={data} />
       <div className={styles.helpfulContainer}>
         <Helpful />
         <AddAnswer />
@@ -53,7 +54,7 @@ class QuestionsAndAnswers extends React.Component {
       </div>
     </div>
     <div className={styles.questionContainer}>
-      <Question />
+      <Question data ={data}/>
       <div className={styles.helpfulContainer}>
         <Helpful />
         <AddAnswer />
