@@ -1,8 +1,6 @@
 import React from 'react';
 
 import RelatedProductsList from '../RelatedProductsList';
-import ActionButtonCompare from '../ActionButtonCompare';
-import ActionButtonRemove from '../ActionButtonRemove';
 import {
   // getProducts,
   getDetailForProduct,
@@ -10,7 +8,6 @@ import {
   // relatedProductsDetails,
   getStylesForProduct,
 } from '../../../../data/products';
-
 import styles from './RelatedProducts.css';
 
 const RelatedProducts = () => {
@@ -24,17 +21,17 @@ const RelatedProducts = () => {
       <RelatedProductsList
         relatedProducts={relatedProductsDetails}
         stylesByProductId={getStylesForProduct}
-        ActionButton={ActionButtonCompare}
+        actionType="compare"
       />
 
       <h3 className={styles.listTitle}>Your Outfit</h3>
       <RelatedProductsList
         relatedProducts={relatedProductsDetails}
         stylesByProductId={getStylesForProduct}
-        ActionButton={ActionButtonRemove}
+        actionType="outfit"
       />
     </section>
   );
-}
+};
 
 export default RelatedProducts;

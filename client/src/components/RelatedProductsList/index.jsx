@@ -13,83 +13,71 @@ class RelatedProductsList extends Component {
     super(props);
 
     this.state = {
-      position: 0,
-      containerWidth: 0,
-    };
-
-    this.setContainerRef = (element) => {
-      this.container = element;
+      showLeftButton: false,
+      showRightButton: false,
     };
 
     this.setCarouselRef = (element) => {
       this.carousel = element;
     };
 
-    this.showScrollLeftButton = this.showScrollLeftButton.bind(this);
-    this.showScrollRightButton = this.showScrollRightButton.bind(this);
+    this.renderButtons = this.renderButtons.bind(this);
   }
 
   componentDidMount() {
-    if (this.container) {
+    if (this.carousel) {
+      this.renderButtons();
+    }
+  }
+
+  makeScrollHandler() {
+    let timerId = null;
+    return () => {
+      if (timerId !== null) {
+        clearTimeout(timerId);
+      }
+      timerId = setTimeout(() => {
+        this.renderButtons();
+      }, 200);
+    };
+  }
+
+  scrollCarousel(e, x) {
+    e.stopPropagation();
+
+    this.carousel.scroll({
+      left: this.carousel.scrollLeft + x,
+      behavior: 'smooth',
+    });
+  }
+
+  renderButtons() {
+    if (this.carousel) {
+      const scrollableWidth = this.carousel.scrollWidth - this.carousel.clientWidth;
+
       this.setState({
-        containerWidth: this.container.scrollWidth,
+        showLeftButton: this.carousel.scrollLeft > 0,
+        showRightButton: this.carousel.scrollLeft < scrollableWidth,
       });
     }
   }
 
-  scrollLeft(e) {
-    e.stopPropagation();
-
-    const { position } = this.state;
-    const newX = Math.max(this.carousel.scrollLeft - 270, 0);
-    this.carousel.scroll({
-      left: Math.min(position * 270, newX),
-      behavior: 'smooth',
-    });
-
-    this.setState({
-      position: Math.max(position - 1, 0),
-    });
-  }
-
-  scrollRight(e) {
-    e.stopPropagation();
-
-    const { position } = this.state;
-    const { relatedProducts } = this.props;
-    const newX = this.carousel.scrollLeft + 270;
-
-    this.carousel.scroll({
-      left: Math.max(position * 270, newX),
-      behavior: 'smooth',
-    });
-
-    this.setState({
-      position: Math.min(position + 1, relatedProducts.length),
-    });
-  }
-
-  showScrollRightButton() {
-    if (this.container && this.carousel) {
-      const scrollableWidth = this.carousel.scrollWidth - this.carousel.clientWidth;
-      return this.carousel.scrollLeft < scrollableWidth;
-    }
-    return false;
-  }
-
-  showScrollLeftButton() {
-    const { position } = this.state;
-
-    if (this.carousel) {
-      return this.carousel.scrollLeft > 0;
-    }
-    return position > 0;
-  }
-
   render() {
     // eslint-disable-next-line react/prop-types
-    const { relatedProducts, stylesByProductId, ActionButton } = this.props;
-    const { position } = this.state;
+    const { relatedProducts, stylesByProductId, actionType } = this.props;
+    const { showLeftButton, showRightButton } = this.state;
+    const scrollSize = 270;
+
+    let buttonSymbol;
+    let buttonAction;
+
+    if (actionType === 'compare') {
+      buttonSymbol = '*';
+      buttonAction = (id) => console.log('compare ', id);
+    } else {
+      buttonSymbol = 'x';
+      buttonAction = (id) => console.log('remove ', id);
+    }
 
     // eslint-disable-next-line react/prop-types
     const cardsComponenets = relatedProducts.map(({
@@ -107,39 +95,34 @@ class RelatedProductsList extends Component {
         category={category}
         features={features}
         defaultStyle={stylesByProductId(id).results[0]}
-        ActionButton={ActionButton}
-      />
+      >
+        <button type="button" className={styles.actionButton} onClick={() => buttonAction(id)}>{buttonSymbol}</button>
+      </RelatedProductCard>
     ));
 
+    const leftScrollButton = (
+      <button className={styles.scrollButton} type="button" onClick={(e) => this.scrollCarousel(e, -scrollSize)}>
+        &lt;
+      </button>
+    );
+
+    const rightScrollButton = (
+      <button className={styles.scrollButtonRight} type="button" onClick={(e) => this.scrollCarousel(e, scrollSize)}>
+        &gt;
+      </button>
+    );
+
     return (
-      <div className={styles.relatedProductsList} ref={this.setContainerRef}>
-        {
-          this.showScrollLeftButton()
-          && (
-            <button
-              className={styles.scrollButton}
-              type="button"
-              onClick={(e) => this.scrollLeft(e)}
-            >
-              &lt;
-            </button>
-          )
-        }
-        <div className={styles.carousel} ref={this.setCarouselRef}>
+      <div className={styles.relatedProductsList}>
+        { showLeftButton && leftScrollButton }
+        <div
+          className={styles.carousel}
+          ref={this.setCarouselRef}
+          onScroll={this.makeScrollHandler()}
+        >
           {cardsComponenets}
         </div>
-        {
-          this.showScrollRightButton()
-          && (
-            <button
-              className={styles.scrollButtonRight}
-              type="button"
-              onClick={(e) => this.scrollRight(e)}
-            >
-              &gt;
-            </button>
-          )
-        }
+        { showRightButton && rightScrollButton }
       </div>
     );
   }
