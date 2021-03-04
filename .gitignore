@@ -105,3 +105,7 @@ dist
 
 # macOS
 .DS_Store
+
+
+#token
+token.js
