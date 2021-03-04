@@ -3,14 +3,19 @@ import ReactDOM from 'react-dom';
 
 import styles from './AppModal.css';
 
-const modalRoot = document.getElementById('modal-root');
+let modalRoot;
 
 class AppModal extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       showModal: false,
     };
+
+    if (!modalRoot && window.document) {
+      modalRoot = window.document.getElementById('modal-root');
+    }
   }
 
   open() {
@@ -28,8 +33,8 @@ class AppModal extends React.Component {
   render() {
     const { children } = this.props;
     const { showModal } = this.state;
-
     const classList = [styles.appModal];
+
     if (!showModal) {
       classList.push(styles.hidden);
     }
