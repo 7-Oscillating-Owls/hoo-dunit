@@ -174,9 +174,7 @@ class ReviewsList extends React.Component {
             ))
           }
         </div>
-        <div>
-          {ReviewModalRender}
-        </div>
+        {ReviewModalRender}
         <ReviewsMoreReviews
           openAddReviewModal={this.openAddReviewModal}
           getMoreReviews={this.getMoreReviews}

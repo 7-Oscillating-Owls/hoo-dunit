@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
+import AppModal from '../AppModal';
 
 import RelatedProductCard from '../RelatedProductCard';
 
@@ -42,6 +43,18 @@ class RelatedProductsList extends Component {
     };
   }
 
+  openModal() {
+    this.setState({
+      showModal: true,
+    });
+  }
+
+  dismissModal() {
+    this.setState({
+      showModal: false,
+    });
+  }
+
   scrollCarousel(e, x) {
     e.stopPropagation();
 
@@ -65,7 +78,7 @@ class RelatedProductsList extends Component {
   render() {
     // eslint-disable-next-line react/prop-types
     const { relatedProducts, stylesByProductId, actionType } = this.props;
-    const { showLeftButton, showRightButton } = this.state;
+    const { showLeftButton, showRightButton, showModal } = this.state;
     const scrollSize = 270;
 
     let buttonSymbol;
@@ -73,7 +86,7 @@ class RelatedProductsList extends Component {
 
     if (actionType === 'compare') {
       buttonSymbol = '*';
-      buttonAction = (id) => console.log('compare ', id);
+      buttonAction = (id) => this.openModal(id);
     } else {
       buttonSymbol = 'x';
       buttonAction = (id) => console.log('remove ', id);
@@ -123,6 +136,16 @@ class RelatedProductsList extends Component {
           {cardsComponenets}
         </div>
         { showRightButton && rightScrollButton }
+        {
+          showModal
+          && (
+            <AppModal ref={this.registerModal} outsideClickHandler={() => this.dismissModal()}>
+              <div className={styles.comparisonModal}>
+                Hello!
+              </div>
+            </AppModal>
+          )
+        }
       </div>
     );
   }

@@ -4,8 +4,10 @@
 
 .moreButton, .modalAddButton {
   justify-content: center;
+  background-color: white;
   padding: 20px;
   margin: 0 10px;
-  border: 2px solid gray;
+  border: 2px solid #C9C9C9;
   cursor: pointer;
+  box-shadow: 2px 2px 8px 1px #C7C7C7;
 }

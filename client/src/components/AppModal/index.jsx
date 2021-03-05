@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import PropTypes from 'prop-types';
 import styles from './AppModal.css';
 
 let modalRoot;
@@ -9,45 +9,35 @@ class AppModal extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      showModal: false,
-    };
-
     if (!modalRoot && window.document) {
       modalRoot = window.document.getElementById('modal-root');
     }
   }
 
-  open() {
-    this.setState({
-      showModal: true,
-    });
-  }
-
-  close() {
-    this.setState({
-      showModal: false,
-    });
-  }
-
   render() {
-    const { children } = this.props;
-    const { showModal } = this.state;
-    const classList = [styles.appModal];
-
-    if (!showModal) {
-      classList.push(styles.hidden);
-    }
+    const { children, outsideClickHandler } = this.props;
 
     return ReactDOM.createPortal(
       (
-        <div className={classList.join(' ')}>
-          {children}
+        <div className={styles.appModal} onClick={outsideClickHandler}>
+          <div className={styles.inner} onClick={(e) => e.stopPropagation()}>
+            {children}
+          </div>
         </div>
       ),
       modalRoot,
     );
   }
 }
+
+AppModal.defaultProps = {
+  children: undefined,
+  outsideClickHandler: () => console.warn('warning: outsideClickHandler prop should be defined on AppModal'),
+};
+
+AppModal.propTypes = {
+  children: PropTypes.func,
+  outsideClickHandler: PropTypes.func,
+};
 
 export default AppModal;
