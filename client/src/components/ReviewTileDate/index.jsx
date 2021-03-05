@@ -10,7 +10,7 @@ const ReviewTileDate = (props) => {
   const year = newDate.getFullYear();
   const formattedDate = `${month} ${day}, ${year}`;
   return (
-    <div>{formattedDate}</div>
+    <span>{formattedDate}</span>
   );
 };
 

@@ -5,12 +5,14 @@
 }
 
 .addButton {
-  background-color: white;
   padding: 15px 20px;
   margin: 0 5px;
+  background-color: white;
+  color: #7A7A7A;
   border: 2px solid #C9C9C9;
   cursor: pointer;
   box-shadow: 2px 2px 8px 1px #C7C7C7;
+  text-transform: uppercase;
 }
 
 .xButton {
@@ -20,13 +22,15 @@
 }
 
 .closeModalButton {
-  justify-content: space-around;
-  background-color: white;
   padding: 15px 20px;
   margin: 0 30px;
+  justify-content: space-around;
+  background-color: white;
+  color: #7A7A7A;
   border: 2px solid #C9C9C9;
   cursor: pointer;
   box-shadow: 2px 2px 8px 1px #C7C7C7;
+  text-transform: uppercase;
 }
 
 .xButton {
@@ -41,10 +45,8 @@
 .closeModalButton:hover,
 .addButton:focus,
 .closeModalButton:focus {
-  background-color: #828282;
-  color: white;
-  border-color: #828282;
-  font-style: italic;
+  font-weight: 900;
+  transform: scale(1.02, 1.05);
 }
 
 input {

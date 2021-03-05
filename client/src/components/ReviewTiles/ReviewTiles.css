@@ -1,6 +1,7 @@
 .reviewTiles {
   padding: 10px;
   margin: 20px 5px;
+  font-size: 12px;
   display: grid;
   border: 1px solid #E6E6E6;
   box-sizing: border-box;
@@ -14,3 +15,21 @@
 .reviewTiles:focus {
   transform: scale(1.02, 1.05);
 }
+
+.tileSummary {
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.tileBody {
+  font-size: 14px;
+}
+
+.tileHeader {
+  justify-content: space-between;
+}
+
+.nameAndDate {
+  /* float: right; */
+}
+

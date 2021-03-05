@@ -5,10 +5,10 @@ const ReviewTileStars = (props) => {
   const { ratings } = props;
   const remainingStars = 5 - ratings;
   return (
-    <div>
-      {[...Array(ratings)].map((star) => <FaStar size={10} key={star} />)}
-      {[...Array(remainingStars)].map((star) => <FaRegStar size={10} key={star} />)}
-    </div>
+    <span>
+      {[...Array(ratings)].map((star) => <FaStar size={20} key={star} />)}
+      {[...Array(remainingStars)].map((star) => <FaRegStar size={20} key={star} />)}
+    </span>
   );
 };
 

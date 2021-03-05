@@ -5,19 +5,19 @@
 .moreButton, .modalAddButton {
   justify-content: center;
   background-color: white;
+  color: #7A7A7A;
   padding: 20px;
   margin: 0 10px;
   border: 2px solid #C9C9C9;
   cursor: pointer;
   box-shadow: 2px 2px 8px 1px #C7C7C7;
+  text-transform: uppercase;
 }
 
 .moreButton:hover,
 .modalAddButton:hover,
 .moreButton:focus,
 .modalAddButton:focus {
-  background-color: #828282;
-  color: white;
-  border-color: #828282;
-  font-style: italic;
+  font-weight: 900;
+  transform: scale(1.02, 1.05);
 }
