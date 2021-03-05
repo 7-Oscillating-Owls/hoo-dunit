@@ -1,6 +1,29 @@
-.searchbar {
+.searchBar {
   width: 90%;
   height: 35px;
-  margin-bottom: 15px;
+  margin: 15px 15px 15px 0px;
   font-weight: bold;
+  display: flex;
+}
+
+.input {
+    width: 95%;
+    height: 37px;
+    font-size: 16px ;
+    line-height: 20px ;
+    font-weight: 400 ;
+    background: none ;
+    border: 1px solid rgb(123, 122, 122) ;
+    color: rgb(34, 34, 34) ;
+    margin: 5px ;
+    padding: 5px ;
+    width: 100% ;
+    text-overflow: ellipsis ;
+}
+.input:hover {
+  background-color: rgb(228, 228, 228);
+
+}
+.icon {
+  margin: 13px;
 }
