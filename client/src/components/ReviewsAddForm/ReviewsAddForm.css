@@ -2,15 +2,16 @@
   padding: 10px;
   margin: 10px 5px;
   overflow: scroll;
+  background-color: white;
 }
 
 .addButton {
-  justify-content: space-around;
+  background-color: white;
   padding: 20px;
-  margin: 50px 10px;
-  border: 2px solid gray;
-  background: white;
+  margin: 0 10px;
+  border: 2px solid #C9C9C9;
   cursor: pointer;
+  box-shadow: 2px 2px 8px 1px #C7C7C7;
 }
 
 .closeModalButton, .xButton {

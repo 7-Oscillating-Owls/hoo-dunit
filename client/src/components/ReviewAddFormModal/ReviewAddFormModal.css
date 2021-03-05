@@ -1,13 +1,4 @@
-.modalWrapper {
-  /* background: #fff;
-  margin: 50px auto;
-  height: 90%;
-  max-height: 550px;
-  width: 90%;
-  justify-content: center;
-  box-sizing: border-box;
-  overflow: scroll;
-  padding-left: 35px; */
+.modal {
   height: 75%;
   position: fixed;
   z-index: 500;
@@ -20,7 +11,7 @@
   left: 15%;
   top: 10%;
   box-sizing: border-box;
-  transition: all .3 ease-out;
+  transition: all 3ms ease-out;
   overflow: scroll;
 }
 
@@ -35,7 +26,6 @@
   padding: 3px;
   margin: 15px 10px;
   float: right;
-  position: fixed;
   position: fixed;
   z-index: 500;
   left: 85%;
