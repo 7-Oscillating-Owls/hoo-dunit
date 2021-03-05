@@ -2,7 +2,7 @@
   justify-content: center;
 }
 
-.modalAddButton, .moreButton {
+/* .modalAddButton, .moreButton {
   padding: 20px;
   margin: 25px 10px;
   justify-content: center;
@@ -20,4 +20,26 @@
 .modalAddButton:focus {
   font-weight: 900;
   transform: scale(1.02, 1.05);
+} */
+
+.moreButton, .modalAddButton {
+  padding: 20px;
+  margin: 25px 10px;
+  justify-content: center;
+  font-family: "montserrat", sans-serif;
+  font-weight: 700;
+  border: none;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  background-image: linear-gradient(to right, #F5268E, #F53C8E, #F5508E, #F5628E, #F5738E, #F57D8E, #F58A8E, #F58A8E, #F5958E);
+  background-size: 200%;
+  transition: 0.5s;
+  box-shadow: 2px 2px 7px 2px #BFBFBF;
+}
+
+.moreButton:hover, .modalAddButton:hover,
+.moreButton:focus, .modalAddButton:focus {
+  background-position: right;
 }
