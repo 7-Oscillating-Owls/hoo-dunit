@@ -42,7 +42,7 @@ class QuestionsAndAnswers extends React.Component {
     <div className={styles.questionContainer}>
       <Question data ={data} />
       <div className={styles.helpfulContainer}>
-        <Helpful />
+        <Helpful data={data}/>
         <AddAnswer />
       </div>
     </div>
