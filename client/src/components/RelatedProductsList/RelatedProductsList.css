@@ -4,7 +4,6 @@
   display: flex;
   overflow: hidden;
   position: relative;
-  /* padding-left: 50px; */
 }
 
 .actionButton {
@@ -26,38 +25,20 @@
 .carousel {
   display: flex;
   position: relative;
-  /* transition: right 200ms; */
   overflow: hidden;
 }
 
-.spacer {
-  bottom: 0;
-  box-sizing: border-box;
-  display: flex;
-  position: absolute;
-  top: 0;
-  width: 30px;
-  z-index: 1;
-}
-
-.leftArrowSpacer {
-  composes: spacer;
-  left: 0;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.rightArrowSpacer {
-  composes: spacer;
-  justify-content: flex-end;
-  align-items: center;
-  right: 0;
+.comparisonModal {
+  background-color: white;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+  height: 300px;
+  width: 400px;
 }
 
 .scrollButton {
   align-self: center;
   background: white;
-  border: none;
+  border: 1px solid black;
   height: 70px;
   padding: 0;
   position: absolute;
@@ -67,6 +48,8 @@
 
 .scrollButton:hover {
   font-size: 20px;
+  color: white;
+  background-color: black;
 }
 
 .scrollButton:focus {
