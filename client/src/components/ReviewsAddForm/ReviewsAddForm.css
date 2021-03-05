@@ -9,12 +9,17 @@
   margin: 25px 10px;
   margin-right: 20px;
   justify-content: center;
-  background-color: white;
-  color: #7A7A7A;
-  border: 2px solid #C9C9C9;
-  cursor: pointer;
-  box-shadow: 2px 2px 8px 1px #C7C7C7;
+  font-family: "montserrat", sans-serif;
+  font-weight: 700;
+  border: none;
   text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  background-image: linear-gradient(to right, #1CD8D2 0%, #93EDC7  51%, #1CD8D2  100%);
+  background-size: 200%;
+  transition: 0.5s;
+  box-shadow: 2px 2px 7px 2px #BFBFBF;
 }
 
 .xButton {
@@ -35,8 +40,7 @@
 .cancelButton:hover,
 .addButton:focus,
 .cancelButton:focus {
-  font-weight: 900;
-  transform: scale(1.02, 1.05);
+  background-position: right;
 }
 
 input {
