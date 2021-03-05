@@ -1,3 +1,20 @@
 .qatitle {
-  font-size: 13px;
+  padding: 0px;
+  line-height: normal;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 0px;
+  color: #040c13;
+  text-align: left;
+  background-color: white;
+
+
+}
+
+.qatitle:hover {
+  color: grey;
+  font-style: italic;
+  border-top: 2px solid grey;
+  border-bottom: 2px solid grey;
+
 }

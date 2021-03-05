@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './QATitle.css';
 
 const QATitle = () => (
-  <h3 className={styles.qatitle}>QUESTIONS & ANSWERS</h3>
+  <span className={styles.qatitle}>QUESTIONS & ANSWERS</span>
 );
 
 export default QATitle;
