@@ -5,18 +5,35 @@
 }
 
 .addButton {
-  justify-content: space-around;
-  padding: 20px;
-  margin: 50px 10px;
-  border: 2px solid gray;
-  background: white;
+  background-color: white;
+  padding: 15px 20px;
+  margin: 0 5px;
+  border: 2px solid #C9C9C9;
   cursor: pointer;
+  box-shadow: 2px 2px 8px 1px #C7C7C7;
 }
 
-.closeModalButton, .xButton {
+.addButton:hover, .closeModalButton:hover {
+  background-color: #828282;
+  color: white;
+  border-color: #828282;
+  font-style: italic;
+}
+
+.xButton {
   cursor: pointer;
   justify-items: right;
   float: right;
+}
+
+.closeModalButton {
+  justify-content: space-around;
+  background-color: white;
+  padding: 15px 20px;
+  margin: 0 30px;
+  border: 2px solid #C9C9C9;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px 1px #C7C7C7;
 }
 
 .xButton {
