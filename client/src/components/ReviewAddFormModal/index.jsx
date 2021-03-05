@@ -11,8 +11,8 @@ const ReviewAddFormModal = (props) => (
         className={styles.modalContent}
         addReview={props.addReview}
         closeModalButton={props.closeModalButton}
+        closeAddReviewModal={props.closeAddReviewModal}
       />
-      <button type="button" className={styles.closeModalButton} onClick={props.closeAddReviewModal}>Cancel</button>
     </div>
   </div>
 );

@@ -73,7 +73,9 @@ class ReviewsAddForm extends React.Component {
 
   render() {
     return (
-        <form onSubmit={this.handleSubmit}>
+      <div>
+
+      <form onSubmit={this.handleSubmit}>
           <h2>Write New Review</h2>
 
           <h4>Overall Rating:</h4>
@@ -222,6 +224,11 @@ class ReviewsAddForm extends React.Component {
             <label htmlFor="fit5"> 5 - Runs long </label>
           </div>
           <br />
+          <h4>Photos:</h4>
+          <small>Upload Your Photos</small>
+          <div>
+            <input className={styles.fileInput} type="file" id="uploadedFile" onChange={this.handleFileUpload} />
+          </div>
           <h4>Do you recommend this product?</h4>
           <small>* Required</small>
           <br />
@@ -233,13 +240,12 @@ class ReviewsAddForm extends React.Component {
             <label htmlFor="recommendedNo">No </label>
           </div>
           <br />
-          <h4>Photos:</h4>
-          <small>Upload Your Photos</small>
-          <div>
-            <input className={styles.fileInput} type="file" id="uploadedFile" onChange={this.handleFileUpload} />
-          </div>
+          <br />
+          <br />
           <button className={styles.addButton} type="submit">Submit Review</button>
+          <button type="button" className={styles.closeModalButton} onClick={this.props.closeAddReviewModal}>Cancel</button>
         </form>
+      </div>
     );
   }
 }
