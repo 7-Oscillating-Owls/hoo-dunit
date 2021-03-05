@@ -14,8 +14,6 @@
   align-self: center;
 }
 
-
-
 .imageWrapper {
   height: 100%;
   width: 100%;
@@ -32,4 +30,16 @@
 .thumbnail:hover {
   background:black;
   cursor: pointer;
+}
+
+.leftArrow {
+  position: absolute;
+  left: 65px;
+  align-self: center;
+}
+
+.rightArrow {
+  position: absolute;
+  right: 40px;
+  align-self: center;
 }
