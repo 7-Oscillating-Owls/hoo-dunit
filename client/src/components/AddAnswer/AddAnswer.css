@@ -4,3 +4,8 @@
 .AddAnswer {
   margin: 17px 8px;
 }
+
+.AddAnswer:hover {
+  transform: scale(1.2);
+  font-weight: 500;
+}
