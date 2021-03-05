@@ -1,7 +1,7 @@
 .reviewsList {
   color: #6E6E6E;
   display: grid;
-  grid-template-columns: 30% auto;
+  grid-template-columns: 27% auto;
   box-sizing: border-box;
   grid-gap: 20px;
   justify-items: space-between;
@@ -13,9 +13,9 @@
 
 .ratingsOverview {
   padding: 20px;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
   margin: 20px 5px;
-  font-size: 12px;
+  font-size: 14px;
   display: grid;
   border: 1px solid #E6E6E6;
   box-sizing: border-box;
@@ -25,7 +25,7 @@
   box-shadow: 2px 2px 8px 1px #C7C7C7;
   border-radius: 7px;
   align-content: flex-start;
-  height: 55%;
+  height: 50%;
 }
 
 .ratingsAndReviewsTitle {
@@ -49,5 +49,5 @@
 }
 
 .recommendOverview {
-  padding-left: 20px;
+  font-size: 12.5px;
 }
