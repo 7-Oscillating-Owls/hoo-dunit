@@ -35,9 +35,7 @@
   flex-direction: row;
   justify-content: space-between;
   padding-bottom: 20px;
+  font-weight: 700;
+  color: #9C9C9C;
 }
 
-.outerNameDate {
-  display: flex;
-  justify-content: flex-end;
-}
