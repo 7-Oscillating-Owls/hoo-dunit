@@ -1,4 +1,4 @@
-input[type="radio"] {
+input[type="radio"][name="overallRating"] {
   display: none;
 }
 
