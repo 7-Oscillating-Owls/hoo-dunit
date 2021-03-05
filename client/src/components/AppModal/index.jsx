@@ -16,13 +16,11 @@ class AppModal extends React.Component {
 
   render() {
     const { children, outsideClickHandler } = this.props;
-    const classList = [styles.appModal];
-    const innerStyles = [styles.inner];
 
     return ReactDOM.createPortal(
       (
-        <div className={classList.join(' ')} onClick={outsideClickHandler}>
-          <div className={innerStyles.join(' ')} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.appModal} onClick={outsideClickHandler}>
+          <div className={styles.inner} onClick={(e) => e.stopPropagation()}>
             {children}
           </div>
         </div>
@@ -34,7 +32,7 @@ class AppModal extends React.Component {
 
 AppModal.defaultProps = {
   children: undefined,
-  outsideClickHandler: () => console.warn('warning: outsideClickHandler should be defined on AppModal'),
+  outsideClickHandler: () => console.warn('warning: outsideClickHandler prop should be defined on AppModal'),
 };
 
 AppModal.propTypes = {
