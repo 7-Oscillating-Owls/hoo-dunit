@@ -73,7 +73,6 @@ class ReviewsAddForm extends React.Component {
 
   render() {
     return (
-      <div>
         <form onSubmit={this.handleSubmit}>
           <h2>Write New Review</h2>
 
@@ -241,7 +240,6 @@ class ReviewsAddForm extends React.Component {
           </div>
           <button className={styles.addButton} type="submit">Submit Review</button>
         </form>
-      </div>
     );
   }
 }
