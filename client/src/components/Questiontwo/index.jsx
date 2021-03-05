@@ -7,7 +7,7 @@ const Questiontwo = (props) => (
   {props.data.slice(1,2).map((question, index) => {
       return <QuestionListtwo
         question={question.question_body}
-        key={index}
+        key={question.question_id}
     />
   })}
   </div>
