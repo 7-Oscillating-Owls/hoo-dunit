@@ -25,6 +25,3 @@ const ReviewRatingDistribution = (props) => {
 };
 
 export default ReviewRatingDistribution;
-
-// Notes and Experimentation:
-

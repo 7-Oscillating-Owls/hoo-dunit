@@ -4,8 +4,7 @@ import { FaTimesCircle } from 'react-icons/fa';
 import styles from './ReviewAddFormModal.css';
 
 const ReviewAddFormModal = (props) => (
-  <div>
-    <div className={styles.modalWrapper} style={{ opacity: props.displayModal ? '1' : '0' }}>
+    <div className={styles.modalWrapper}>
       <FaTimesCircle className={styles.timesCircleClose} onClick={props.closeAddReviewModal} />
       <ReviewsAddForm
         className={styles.modalContent}
@@ -14,7 +13,6 @@ const ReviewAddFormModal = (props) => (
       />
       <button type="button" className={styles.closeModalButton} onClick={props.closeAddReviewModal}>Cancel</button>
     </div>
-  </div>
 );
 
 export default ReviewAddFormModal;
