@@ -1,62 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
+import ThumbnailSelector from '../ThumbnailSelector';
 import styles from './ImageGallery.css';
 
 class ImageGallery extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      current: 0,
+      url: 'https://images.unsplash.com/photo-1418985991508-e47386d96a71?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
     };
-
-    this.previousSlide = this.previousSlide.bind(this);
-    this.nextSlide = this.nextSlide.bind(this);
   }
 
-  previousSlide() {
-    const { current } = this.state;
-    const { images } = this.props;
-    if (current === 0) {
-      this.setState({
-        current: images.length - 1,
-      });
-    } else {
-      this.setState({
-        current: current - 1,
-      });
-    }
-  }
-
-  nextSlide() {
-    const { current } = this.state;
-    const { images } = this.props;
-    if (current === images.length - 1) {
-      this.setState({
-        current: 0,
-      });
-    } else {
-      this.setState({
-        current: current + 1,
-      });
-    }
+  handleClick(url) {
+    this.setState({
+      url,
+    });
   }
 
   render() {
-    const { current } = this.state;
     const { images } = this.props;
+    const { url } = this.state;
     return (
-      <div className={`${styles.carousel} ${styles.imageGallery}`}>
-        <AiOutlineArrowLeft data-testid="leftArrow-click" type="button" className="leftarrow" onClick={this.previousSlide} />
-        {
-            images.map((item, index) => (
-              <div className={styles.aroundImage} key={item.url}>
-                {index === current && <img className={styles.styleImage} src={item.url} alt="style" />}
-              </div>
-            ))
-       }
-        <AiOutlineArrowRight data-testid="rightArrow-click" type="button" className="rightarrow" onClick={this.nextSlide} />
+      <div className={styles.imageGallery}>
+        <div className={styles.thumbnailWrapper}>
+          {
+              images.map((item) => (
+                <div key={item.url}>
+                  <img className={styles.thumbnail} src={item.url} alt="style" onClick={() => this.handleClick(item.url)} />
+                </div>
+              ))
+          }
+        </div>
+        <div className={styles.imageWrapper}>
+          <ThumbnailSelector currentImage={url} />
+        </div>
       </div>
     );
   }
