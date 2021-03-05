@@ -13,13 +13,6 @@
   box-shadow: 2px 2px 8px 1px #C7C7C7;
 }
 
-.addButton:hover, .closeModalButton:hover {
-  background-color: #828282;
-  color: white;
-  border-color: #828282;
-  font-style: italic;
-}
-
 .xButton {
   cursor: pointer;
   justify-items: right;
@@ -42,6 +35,16 @@
   font-size: 15px;
   font-weight: lighter;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.addButton:hover,
+.closeModalButton:hover,
+.addButton:focus,
+.closeModalButton:focus {
+  background-color: #828282;
+  color: white;
+  border-color: #828282;
+  font-style: italic;
 }
 
 input {
