@@ -1,6 +1,7 @@
 /* eslint-disable react/sort-comp */
 /* eslint-disable no-console */
 import React from 'react';
+import axios from 'axios';
 import ReviewsAverageOverviewStars from '../ReviewsAverageOverviewStars';
 import ReviewRatingDistribution from '../ReviewRatingDistribution';
 import ReviewTiles from '../ReviewTiles';
@@ -41,8 +42,16 @@ class ReviewsList extends React.Component {
   }
 
   getReviews() {
-    this.setState({ reviewsList: reviewsData.results });
-    this.setState({ reviewCount: reviewsData.results.length });
+    axios.get('/reviews')
+      .then((response) => {
+        console.log(response.data.results);
+        this.setState({ reviewsList: response.data.results})
+      })
+      .catch((error) => {
+        console.log('Error fetching reviews: ', error);
+      })
+    // this.setState({ reviewsList: reviewsData.results });
+    // this.setState({ reviewCount: reviewsData.results.length });
   }
 
   getOverallView() {
@@ -172,7 +181,7 @@ class ReviewsList extends React.Component {
         <div>
           <div>
             {
-              reviewsData.results.map((review) => (
+              this.state.reviewsList.map((review) => (
                 <ReviewTiles review={review} key={review.review_id} />
               ))
             }
