@@ -144,41 +144,45 @@ class ReviewsList extends React.Component {
     }
     return (
       <div className={styles.reviewsList}>
-        <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
-        <div className={styles.overallRating}>{this.state.overallRating}</div>
-        <div className={styles.starRating}>
-          <ReviewsAverageOverviewStars ratings={this.state.overallRating} />
-        </div>
-        <div className={styles.recommendOverview}>
-          {this.state.recommendPercent}
-          {' '}
-          of reviewers recommend this product
-        </div>
-        <ReviewRatingDistribution
-          reviewCount={this.state.reviewCount}
-          fiveStarTotal={this.state.fiveStarTotal}
-          fourStarTotal={this.state.fourStarTotal}
-          threeStarTotal={this.state.threeStarTotal}
-          twoStarTotal={this.state.twoStarTotal}
-          oneStarTotal={this.state.oneStarTotal}
-        />
-        <div className={styles.totalReviews}>
-          {this.state.reviewCount}
-          {' '}
-          Reviews
+        <div className={styles.ratingsOverview}>
+          <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
+          <div className={styles.overallRating}>{this.state.overallRating}</div>
+          <div className={styles.starRating}>
+            <ReviewsAverageOverviewStars ratings={this.state.overallRating} />
+          </div>
+          <div className={styles.recommendOverview}>
+            {this.state.recommendPercent}
+            {' '}
+            of reviewers recommend this product
+          </div>
+          <ReviewRatingDistribution
+            reviewCount={this.state.reviewCount}
+            fiveStarTotal={this.state.fiveStarTotal}
+            fourStarTotal={this.state.fourStarTotal}
+            threeStarTotal={this.state.threeStarTotal}
+            twoStarTotal={this.state.twoStarTotal}
+            oneStarTotal={this.state.oneStarTotal}
+          />
+          <div>
+            {this.state.reviewCount}
+            {' '}
+            Reviews
+          </div>
         </div>
         <div>
-          {
-            reviewsData.results.map((review) => (
-              <ReviewTiles review={review} key={review.review_id} />
-            ))
-          }
+          <div>
+            {
+              reviewsData.results.map((review) => (
+                <ReviewTiles review={review} key={review.review_id} />
+              ))
+            }
+          </div>
+          {ReviewModalRender}
+          <ReviewsMoreReviews
+            openAddReviewModal={this.openAddReviewModal}
+            getMoreReviews={this.getMoreReviews}
+          />
         </div>
-        {ReviewModalRender}
-        <ReviewsMoreReviews
-          openAddReviewModal={this.openAddReviewModal}
-          getMoreReviews={this.getMoreReviews}
-        />
       </div>
     );
   }

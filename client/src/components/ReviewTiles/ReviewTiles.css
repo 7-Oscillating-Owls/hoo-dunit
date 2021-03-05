@@ -1,5 +1,5 @@
 .reviewTiles {
-  padding: 10px;
+  padding: 35px;
   margin: 20px 5px;
   font-size: 12px;
   display: grid;
@@ -9,6 +9,7 @@
   justify-items: left;
   align-items: center;
   box-shadow: 2px 2px 8px 1px #C7C7C7;
+  border-radius: 7px;
 }
 
 .reviewTiles:hover,
