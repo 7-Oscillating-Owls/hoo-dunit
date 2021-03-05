@@ -244,7 +244,7 @@ class ReviewsAddForm extends React.Component {
           <br />
           <button className={styles.addButton} type="submit">Submit Review</button>
         <button
-          className={styles.closeModalButton}
+          className={styles.cancelButton}
           type="button"
           onClick={this.props.closeAddReviewModal}
         >

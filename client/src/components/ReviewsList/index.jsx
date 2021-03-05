@@ -163,7 +163,7 @@ class ReviewsList extends React.Component {
             twoStarTotal={this.state.twoStarTotal}
             oneStarTotal={this.state.oneStarTotal}
           />
-          <div>
+          <div className={styles.reviewTotal}>
             {this.state.reviewCount}
             {' '}
             Reviews

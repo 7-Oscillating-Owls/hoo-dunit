@@ -9,7 +9,7 @@ const ReviewTiles = ({ review }) => {
   return (
     <div className={styles.reviewTiles}>
       <div className={styles.tileHeader}>
-        <ReviewTileStars className={styles.starRating} ratings={rating} />
+        <ReviewTileStars ratings={rating} />
         <span className={styles.nameAndDate}>
           {` ${reviewer_name} | `}
           <ReviewTileDate date={date} />

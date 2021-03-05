@@ -2,7 +2,6 @@
   padding: 35px;
   margin: 20px 5px;
   font-size: 12px;
-  display: grid;
   border: 1px solid #E6E6E6;
   box-sizing: border-box;
   grid-gap: 20px;
@@ -19,18 +18,26 @@
 
 .tileSummary {
   font-weight: 900;
-  font-size: 18px;
+  font-size: 19px;
+  padding-bottom: 15px;
 }
 
 .tileBody {
   font-size: 14px;
+  font-weight: 700;
+  color: #75C0C9;
+  padding-bottom: 20px;
 }
 
 .tileHeader {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
   justify-content: space-between;
+  padding-bottom: 20px;
 }
 
-.nameAndDate {
-  /* float: right; */
+.outerNameDate {
+  display: flex;
+  justify-content: flex-end;
 }
-
