@@ -4,9 +4,10 @@ import QuestionListtwo from '../QuestionListtwo'
 
 const Questiontwo = (props) => (
   <div>
-  {props.data.slice(1,2).map((question) => {
+  {props.data.slice(1,2).map((question, index) => {
       return <QuestionListtwo
         question={question.question_body}
+        key={index}
     />
   })}
   </div>
