@@ -8,7 +8,7 @@ const ReviewsHoverStars = (props) => (
       [...Array(5)].map((star, index) => {
         const ratingValue = index + 1;
         return (
-          <label>
+          <label  className={styles.radioStar}>
             <input
               className={styles.radio}
               type="radio"
