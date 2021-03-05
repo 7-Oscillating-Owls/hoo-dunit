@@ -25,7 +25,7 @@ class SearchBar extends React.Component {
           className={styles.input}
           onChange ={this.handleOnChange}
         />
-        <FaSearch className={styles.icon} size={25}/>
+        <FaSearch className={styles.icon} size={25} />
       </div>
     );
   }
