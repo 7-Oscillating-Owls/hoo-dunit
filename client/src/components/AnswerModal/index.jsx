@@ -14,6 +14,7 @@ class AnswerModal extends React.Component {
     }
     this.validate = this.validate.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleSubmitClick = this.handleSubmitClick.bind(this);
   }
 
   validate() {

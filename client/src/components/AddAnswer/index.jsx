@@ -10,11 +10,16 @@ class AddAnswer extends React.Component {
       showAnswerModal: false
     }
     this.handleClick = this.handleClick.bind(this)
+    this.handleModalClose = this.handleModalClose.bind(this)
   }
 
   handleClick(event) {
     event.preventDefault();
     this.setState({showAnswerModal: true });
+  }
+
+  handleModalClose () {
+    this.setState({showModal: false});
   }
 
   render() {
