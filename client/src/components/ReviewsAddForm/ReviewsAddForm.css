@@ -4,20 +4,22 @@
   overflow: scroll;
 }
 
-.addButton {
-  background-color: white;
-  padding: 15px 20px;
-  margin: 0 5px;
-  border: 2px solid #C9C9C9;
+.addButton, .cancelButton {
+  padding: 20px;
+  margin: 25px 10px;
+  margin-right: 20px;
+  justify-content: center;
+  font-family: "montserrat", sans-serif;
+  font-weight: 700;
+  border: none;
+  text-transform: uppercase;
+  border-radius: 5px;
   cursor: pointer;
-  box-shadow: 2px 2px 8px 1px #C7C7C7;
-}
-
-.addButton:hover, .closeModalButton:hover {
-  background-color: #828282;
   color: white;
-  border-color: #828282;
-  font-style: italic;
+  background-image: linear-gradient(to right, #1CD8D2 0%, #93EDC7  51%, #1CD8D2  100%);
+  background-size: 200%;
+  transition: 0.5s;
+  box-shadow: 2px 2px 7px 2px #BFBFBF;
 }
 
 .xButton {
@@ -26,22 +28,19 @@
   float: right;
 }
 
-.closeModalButton {
-  justify-content: space-around;
-  background-color: white;
-  padding: 15px 20px;
-  margin: 0 30px;
-  border: 2px solid #C9C9C9;
-  cursor: pointer;
-  box-shadow: 2px 2px 8px 1px #C7C7C7;
-}
-
 .xButton {
   margin-right: 5px;
   padding-right: 5px;
   font-size: 15px;
   font-weight: lighter;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.addButton:hover,
+.cancelButton:hover,
+.addButton:focus,
+.cancelButton:focus {
+  background-position: right;
 }
 
 input {

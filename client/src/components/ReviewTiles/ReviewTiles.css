@@ -1,11 +1,41 @@
 .reviewTiles {
-  padding: 10px;
-  margin: 10px 5px;
-  display: grid;
+  padding: 35px;
+  margin: 20px 5px;
+  font-size: 12px;
   border: 1px solid #E6E6E6;
   box-sizing: border-box;
   grid-gap: 20px;
   justify-items: left;
   align-items: center;
   box-shadow: 2px 2px 8px 1px #C7C7C7;
+  border-radius: 7px;
 }
+
+.reviewTiles:hover,
+.reviewTiles:focus {
+  transform: scale(1.02, 1.05);
+}
+
+.tileSummary {
+  font-weight: 900;
+  font-size: 19px;
+  padding-bottom: 15px;
+}
+
+.tileBody {
+  font-size: 14px;
+  font-weight: 700;
+  color: #75C0C9;
+  padding-bottom: 20px;
+}
+
+.tileHeader {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  font-weight: 700;
+  color: #9C9C9C;
+}
+

@@ -13,6 +13,7 @@ import AddAQuestion from '../AddAQuestion';
 import SearchBar from '../SearchBar';
 import MoreAnsweredQuestions from '../MoreAnsweredQuestions';
 import Questiontwo from '../Questiontwo';
+import Answerlist from '../Answerlist';
 import axios from 'axios'
 
 class QuestionsAndAnswers extends React.Component {
@@ -42,12 +43,12 @@ class QuestionsAndAnswers extends React.Component {
     <div className={styles.questionContainer}>
       <Question data ={data} />
       <div className={styles.helpfulContainer}>
-        <Helpful />
+        <Helpful data={data}/>
         <AddAnswer />
       </div>
     </div>
     <div className={styles.answerContainer}>
-      <Answer />
+
       <div className={styles.byUserContainer}>
         <ByUser />
         <AnswerHelpful />
@@ -62,7 +63,7 @@ class QuestionsAndAnswers extends React.Component {
       </div>
     </div>
     <div className={styles.answerContainer}>
-      <Answer />
+      <Answerlist />
       <div className={styles.byUserContainer}>
         <ByUser />
         <AnswerHelpful />

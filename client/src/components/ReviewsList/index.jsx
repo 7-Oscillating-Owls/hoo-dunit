@@ -1,13 +1,14 @@
 /* eslint-disable react/sort-comp */
 /* eslint-disable no-console */
 import React from 'react';
+import axios from 'axios';
 import ReviewsAverageOverviewStars from '../ReviewsAverageOverviewStars';
 import ReviewRatingDistribution from '../ReviewRatingDistribution';
 import ReviewTiles from '../ReviewTiles';
 import ReviewsAddForm from '../ReviewsAddForm';
 import ReviewAddFormModal from '../ReviewAddFormModal';
 import ReviewsMoreReviews from '../ReviewsMoreReviews';
-import reviewsData from '../../../../data/reviews';
+import exampleReviewsData from '../../../../data/reviews';
 import styles from './ReviewsList.css';
 
 class ReviewsList extends React.Component {
@@ -15,7 +16,7 @@ class ReviewsList extends React.Component {
     super(props);
     this.state = {
       reviewsList: [],
-      reviewCount: reviewsData.results.length,
+      reviewCount: 0,
       overallRating: 0,
       recommendPercent: 0,
       fiveStarTotal: '',
@@ -36,19 +37,27 @@ class ReviewsList extends React.Component {
 
   componentDidMount() {
     this.getReviews();
-    this.getOverallView();
-    this.getIndividualStarTotal();
   }
 
   getReviews() {
-    this.setState({ reviewsList: reviewsData.results });
-    this.setState({ reviewCount: reviewsData.results.length });
+    axios.get('/reviews')
+      .then((response) => {
+        const reviewsData = response.data.results;
+        console.log(reviewsData);
+        this.setState({ reviewsList: reviewsData });
+        this.setState({ reviewCount: reviewsData.length });
+        this.getOverallView();
+        this.getIndividualStarTotal();
+      })
+      .catch((error) => {
+        console.log('Error fetching reviews: ', error);
+      })
   }
 
   getOverallView() {
     let ratingTotal = 0;
     let recommendTotal = 0;
-    reviewsData.results.forEach((review) => {
+    this.state.reviewsList.forEach((review) => {
       ratingTotal += review.rating;
       if (review.recommend === true) {
         recommendTotal += 1;
@@ -70,18 +79,18 @@ class ReviewsList extends React.Component {
       photos: formData.uploadedFile,
     };
     // Will need to change this to post request once connected to server - to POST/reviews
-    reviewsData.push(reviewObject);
-    const reviewMetaCharacteristicsObject = {
-      Size: {
-        value: formData.size,
-      },
-      Width: {
-        value: formData.width,
-      },
-      Comfort: {
-        value: formData.comfort,
-      },
-    };
+    // reviewsData.push(reviewObject);
+    // const reviewMetaCharacteristicsObject = {
+    //   Size: {
+    //     value: formData.size,
+    //   },
+    //   Width: {
+    //     value: formData.width,
+    //   },
+    //   Comfort: {
+    //     value: formData.comfort,
+    //   },
+    // };
       // Will need to change this to post request to POST/reviews/meta
     console.log('Review Added!', reviewMetaCharacteristicsObject);
   }
@@ -93,7 +102,7 @@ class ReviewsList extends React.Component {
     let twoStarCount = 0;
     let oneStarCount = 0;
 
-    reviewsData.results.forEach((review) => {
+    this.state.reviewsList.forEach((review) => {
       if (review.rating === 5) {
         fiveStarCount += 1;
       }
@@ -119,8 +128,6 @@ class ReviewsList extends React.Component {
 
   // eslint-disable-next-line class-methods-use-this
   openAddReviewModal() {
-    // Open review modal
-    console.log('Add Revew clicked');
     this.setState({ displayModal: true });
   }
 
@@ -144,41 +151,45 @@ class ReviewsList extends React.Component {
     }
     return (
       <div className={styles.reviewsList}>
-        <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
-        <div className={styles.overallRating}>{this.state.overallRating}</div>
-        <div className={styles.starRating}>
-          <ReviewsAverageOverviewStars ratings={this.state.overallRating} />
-        </div>
-        <div className={styles.recommendOverview}>
-          {this.state.recommendPercent}
-          {' '}
-          of reviewers recommend this product
-        </div>
-        <ReviewRatingDistribution
-          reviewCount={this.state.reviewCount}
-          fiveStarTotal={this.state.fiveStarTotal}
-          fourStarTotal={this.state.fourStarTotal}
-          threeStarTotal={this.state.threeStarTotal}
-          twoStarTotal={this.state.twoStarTotal}
-          oneStarTotal={this.state.oneStarTotal}
-        />
-        <div className={styles.totalReviews}>
-          {this.state.reviewCount}
-          {' '}
-          Reviews
+        <div className={styles.ratingsOverview}>
+          <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
+          <div className={styles.overallRating}>{this.state.overallRating}</div>
+          <div className={styles.starRating}>
+            <ReviewsAverageOverviewStars ratings={this.state.overallRating} />
+          </div>
+          <div className={styles.recommendOverview}>
+            {this.state.recommendPercent}
+            {' '}
+            of reviewers recommend this product
+          </div>
+          <ReviewRatingDistribution
+            reviewCount={this.state.reviewCount}
+            fiveStarTotal={this.state.fiveStarTotal}
+            fourStarTotal={this.state.fourStarTotal}
+            threeStarTotal={this.state.threeStarTotal}
+            twoStarTotal={this.state.twoStarTotal}
+            oneStarTotal={this.state.oneStarTotal}
+          />
+          <div className={styles.reviewTotal}>
+            {this.state.reviewCount}
+            {' '}
+            Reviews
+          </div>
         </div>
         <div>
-          {
-            reviewsData.results.map((review) => (
-              <ReviewTiles review={review} key={review.review_id} />
-            ))
-          }
+          <div>
+            {
+              this.state.reviewsList.map((review) => (
+                <ReviewTiles review={review} key={review.review_id} />
+              ))
+            }
+          </div>
+          {ReviewModalRender}
+          <ReviewsMoreReviews
+            openAddReviewModal={this.openAddReviewModal}
+            getMoreReviews={this.getMoreReviews}
+          />
         </div>
-        {ReviewModalRender}
-        <ReviewsMoreReviews
-          openAddReviewModal={this.openAddReviewModal}
-          getMoreReviews={this.getMoreReviews}
-        />
       </div>
     );
   }

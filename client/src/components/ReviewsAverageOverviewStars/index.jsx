@@ -25,7 +25,7 @@ const ReviewsAverageOverviewStars = (props) => {
     partialStars = <img src="/images/FilledStar.png" className={styles.stars} alt="Solid Star" />;
   } else {
     // Unfilled star
-    partialStars = <img src="/images/FilledStar.png" className={styles.stars} alt="Solid Star" />;
+    partialStars = <img src="/images/UnfilledStar.png" className={styles.stars} alt="Unfilled Star" />;
   }
 
   return (
