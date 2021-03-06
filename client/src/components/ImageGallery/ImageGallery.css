@@ -5,8 +5,8 @@
   justify-content: space-around;
   position: relative;
   overflow: hidden;
-}
 
+}
 
 .thumbnailWrapper{
   position: absolute;
@@ -14,32 +14,38 @@
   align-self: center;
 }
 
-.imageWrapper {
+/* .imageWrapper {
   height: 100%;
   width: 100%;
   align-self: center;
-}
+} */
 
 .thumbnail {
   border: 1px solid white;
   height: 40px;
   width: 40px;
   object-fit: cover;
+  transition: 0.5s all ease-in-out;
 }
 
 .thumbnail:hover {
   background:black;
+  transform: scale(1.5);
   cursor: pointer;
+
 }
 
 .leftArrow {
   position: absolute;
   left: 65px;
   align-self: center;
+  cursor: pointer;
 }
 
 .rightArrow {
   position: absolute;
   right: 40px;
   align-self: center;
+  cursor: pointer;
 }
+

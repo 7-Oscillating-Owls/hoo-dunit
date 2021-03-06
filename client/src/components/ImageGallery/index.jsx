@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { HiArrowNarrowLeft, HiArrowNarrowRight } from 'react-icons/hi';
 import ThumbnailSelector from '../ThumbnailSelector';
+
 import styles from './ImageGallery.css';
 
 class ImageGallery extends React.Component {
@@ -69,22 +70,22 @@ class ImageGallery extends React.Component {
   render() {
     const { images } = this.props;
     const { url } = this.state;
+
     return (
       <div className={styles.imageGallery}>
         <div className={styles.thumbnailWrapper}>
           {
               images.map((item, index) => (
                 <div key={item.url}>
-                  <img className={styles.thumbnail} src={item.url} alt="style" onClick={() => this.handleClick(item.url, index)} />
+                  <img className={styles.thumbnail}  src={item.url} alt="style" onClick={() => this.handleClick(item.url, index)} />
                 </div>
               ))
           }
         </div>
         <HiArrowNarrowLeft className={styles.leftArrow} onClick={this.previousSlide} />
-        <div className={styles.imageWrapper}>
-          <ThumbnailSelector currentImage={url} />
-        </div>
+        <ThumbnailSelector currentImage={url} />
         <HiArrowNarrowRight className={styles.rightArrow} onClick={this.nextSlide} />
+
       </div>
     );
   }
