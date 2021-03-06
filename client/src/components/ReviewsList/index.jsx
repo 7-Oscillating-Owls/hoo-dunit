@@ -8,7 +8,7 @@ import ReviewTiles from '../ReviewTiles';
 import ReviewsAddForm from '../ReviewsAddForm';
 import ReviewAddFormModal from '../ReviewAddFormModal';
 import ReviewsMoreReviews from '../ReviewsMoreReviews';
-import reviewsData from '../../../../data/reviews';
+import exampleReviewsData from '../../../../data/reviews';
 import styles from './ReviewsList.css';
 
 class ReviewsList extends React.Component {
@@ -16,7 +16,7 @@ class ReviewsList extends React.Component {
     super(props);
     this.state = {
       reviewsList: [],
-      reviewCount: reviewsData.results.length,
+      reviewCount: exampleReviewsData.results.length,
       overallRating: 0,
       recommendPercent: 0,
       fiveStarTotal: '',
@@ -37,27 +37,27 @@ class ReviewsList extends React.Component {
 
   componentDidMount() {
     this.getReviews();
-    this.getOverallView();
-    this.getIndividualStarTotal();
   }
 
   getReviews() {
     axios.get('/reviews')
       .then((response) => {
-        console.log(response.data.results);
-        this.setState({ reviewsList: response.data.results})
+        const reviewsData = response.data.results;
+        console.log(reviewsData);
+        this.setState({ reviewsList: reviewsData });
+        this.setState({ reviewCount: reviewsData.length });
+        this.getOverallView();
+        this.getIndividualStarTotal();
       })
       .catch((error) => {
         console.log('Error fetching reviews: ', error);
       })
-    // this.setState({ reviewsList: reviewsData.results });
-    // this.setState({ reviewCount: reviewsData.results.length });
   }
 
   getOverallView() {
     let ratingTotal = 0;
     let recommendTotal = 0;
-    reviewsData.results.forEach((review) => {
+    this.state.reviewsList.forEach((review) => {
       ratingTotal += review.rating;
       if (review.recommend === true) {
         recommendTotal += 1;
@@ -79,18 +79,18 @@ class ReviewsList extends React.Component {
       photos: formData.uploadedFile,
     };
     // Will need to change this to post request once connected to server - to POST/reviews
-    reviewsData.push(reviewObject);
-    const reviewMetaCharacteristicsObject = {
-      Size: {
-        value: formData.size,
-      },
-      Width: {
-        value: formData.width,
-      },
-      Comfort: {
-        value: formData.comfort,
-      },
-    };
+    // reviewsData.push(reviewObject);
+    // const reviewMetaCharacteristicsObject = {
+    //   Size: {
+    //     value: formData.size,
+    //   },
+    //   Width: {
+    //     value: formData.width,
+    //   },
+    //   Comfort: {
+    //     value: formData.comfort,
+    //   },
+    // };
       // Will need to change this to post request to POST/reviews/meta
     console.log('Review Added!', reviewMetaCharacteristicsObject);
   }
@@ -102,7 +102,7 @@ class ReviewsList extends React.Component {
     let twoStarCount = 0;
     let oneStarCount = 0;
 
-    reviewsData.results.forEach((review) => {
+    this.state.reviewsList.forEach((review) => {
       if (review.rating === 5) {
         fiveStarCount += 1;
       }
@@ -128,8 +128,6 @@ class ReviewsList extends React.Component {
 
   // eslint-disable-next-line class-methods-use-this
   openAddReviewModal() {
-    // Open review modal
-    console.log('Add Revew clicked');
     this.setState({ displayModal: true });
   }
 
