@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './AddAnswer.css';
+import AnswerModal from '../AnswerModal'
 
 
 class AddAnswer extends React.Component {
@@ -8,18 +9,25 @@ class AddAnswer extends React.Component {
     this.state = {
       showAnswerModal: false
     }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    this.setState({showAnswerModal: true });
   }
 
   render() {
     return (
-      <small className={styles.AddAnswer}><a>Add Answer</a></small>
+      <div>
+        <small className={styles.AddAnswer}><a onClick={this.handleClick}>Add Answer</a></small>
+        {this.state.showAnswerModal ? <AnswerModal modalclose={this.handleModalClose}/> : null}
+      </div>
     )
   }
 }
 
-// const AddAnswer = () => (
-//   <small className={styles.AddAnswer}><a>Add Answer</a></small>
-// );
+
 
 export default AddAnswer;
 
