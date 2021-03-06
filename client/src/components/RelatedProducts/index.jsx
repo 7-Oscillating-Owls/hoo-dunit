@@ -10,28 +10,46 @@ import {
 } from '../../../../data/products';
 import styles from './RelatedProducts.css';
 
-const RelatedProducts = () => {
-  const productId = '14807';
-  const relatedProductIds = getRelatedProducts(productId);
-  const relatedProductsDetails = relatedProductIds.map((id) => getDetailForProduct(id));
+class RelatedProducts extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <section className={styles.relatedProducts}>
-      <h3 className={styles.listTitle}>Related Products</h3>
-      <RelatedProductsList
-        relatedProducts={relatedProductsDetails}
-        stylesByProductId={getStylesForProduct}
-        actionType="compare"
-      />
+    this.state = {
+      relatedProducts: [],
+      outfitProducts: [],
+    };
+  }
 
-      <h3 className={styles.listTitle}>Your Outfit</h3>
-      <RelatedProductsList
-        relatedProducts={relatedProductsDetails}
-        stylesByProductId={getStylesForProduct}
-        actionType="outfit"
-      />
-    </section>
-  );
+  componentDidMount() {
+    const { productId } = this.props;
+    // fetch data using productId
+  }
+
+  render() {
+    let { productId } = this.props;
+    console.log('relatedProducts: ', productId);
+    productId = '14807';
+    const relatedProductIds = getRelatedProducts(productId);
+    const relatedProductsDetails = relatedProductIds.map((id) => getDetailForProduct(id));
+
+    return (
+      <section className={styles.relatedProducts}>
+        <h3 className={styles.listTitle}>Related Products</h3>
+        <RelatedProductsList
+          relatedProducts={relatedProductsDetails}
+          stylesByProductId={getStylesForProduct}
+          actionType="compare"
+        />
+
+        <h3 className={styles.listTitle}>Your Outfit</h3>
+        <RelatedProductsList
+          relatedProducts={relatedProductsDetails}
+          stylesByProductId={getStylesForProduct}
+          actionType="outfit"
+        />
+      </section>
+    );
+  }
 };
 
 export default RelatedProducts;

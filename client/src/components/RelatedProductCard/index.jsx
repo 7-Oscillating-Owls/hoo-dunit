@@ -1,5 +1,8 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
+import {
+  Link,
+} from 'react-router-dom';
 
 import styles from './RelatedProductCard.css';
 
@@ -39,7 +42,7 @@ const RelatedProductCard = ({
         alt={`${defaultStyle.name} ${description}`}
       />
       <div className={styles.productCategory}>{category}</div>
-      <div className={styles.productName}><a href={`/products/${id}`} className={styles.productLink}>{name}</a></div>
+      <div className={styles.productName}><Link to={`/products/${id}`} className={styles.productLink}>{name}</Link></div>
       {priceEle}
       <div className={styles.starRating}>Star Ratings</div>
     </article>

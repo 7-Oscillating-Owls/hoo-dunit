@@ -1,24 +1,27 @@
 const express = require('express');
 const path = require('path');
-const token = require('../token.js');
-const app = express();
-const port = 3000;
 const axios = require('axios');
 
+const token = require('../token.js');
+
+const app = express();
+const port = 3000;
+
+app.use(express.json());
 app.use('/static', express.static(path.join(__dirname, '/../client/dist')));
 app.use('/', express.static(path.join(__dirname, '..', 'public')));
-app.use(express.json());
+app.use('/products/*', express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/qa', (request, response) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?product_id=14931&count=2', {
     headers: {
-      'Authorization' : token
-    }
+      Authorization: token,
+    },
   })
     .then((res) => {
       response.send(res.data);
     })
-    .catch((error) => {
+    .catch(() => {
       response.send('error man');
     });
 });
