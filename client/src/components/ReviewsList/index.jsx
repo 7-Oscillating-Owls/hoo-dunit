@@ -174,7 +174,7 @@ class ReviewsList extends React.Component {
           <div className={styles.reviewTotal}>
             {this.state.reviewCount}
             {' '}
-            Reviews
+            Total Reviews
           </div>
         </div>
         <div>
