@@ -50,12 +50,13 @@ class QuestionsAndAnswers extends React.Component {
           <Questiontwo data={data} />
           <Answerlisttwo />
         </div>
+        <div className={styles.button}>
+        <MoreAnsweredQuestions />
+        <AddAQuestion />
+        </div>
       </div>
     )
   }
 }
-
-
-
 
 export default QuestionsAndAnswers;
