@@ -26,7 +26,12 @@ class RelatedProductsList extends Component {
   }
 
   componentDidMount() {
-    if (this.carousel) {
+    this.renderButtons();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { relatedProducts } = this.props;
+    if (prevProps.relatedProducts !== relatedProducts) {
       this.renderButtons();
     }
   }
@@ -77,7 +82,7 @@ class RelatedProductsList extends Component {
 
   render() {
     // eslint-disable-next-line react/prop-types
-    const { relatedProducts, stylesByProductId, actionType } = this.props;
+    const { relatedProducts, actionType } = this.props;
     const { showLeftButton, showRightButton, showModal } = this.state;
     const scrollSize = 270;
 
@@ -99,6 +104,7 @@ class RelatedProductsList extends Component {
       name,
       category,
       features,
+      styles: productStyles,
     }) => (
       <RelatedProductCard
         key={id}
@@ -107,7 +113,7 @@ class RelatedProductsList extends Component {
         name={name}
         category={category}
         features={features}
-        defaultStyle={stylesByProductId(id).results[0]}
+        defaultStyle={productStyles[0]}
       >
         <button type="button" className={styles.actionButton} onClick={() => buttonAction(id)}>{buttonSymbol}</button>
       </RelatedProductCard>
