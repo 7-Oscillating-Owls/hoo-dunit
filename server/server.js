@@ -53,9 +53,11 @@ app.get('/reviews', (request, response) => {
   })
     .then((result) => {
       response.send(result.data);
+      response.status(200);
     })
     .catch((error) => {
       response.send('Error fetching reviews: ', error);
+      response.status(500);
     });
 });
 
@@ -71,10 +73,12 @@ app.get('/reviews/meta', (request, response) => {
     },
   })
     .then((result) => {
-      response.send(result);
+      response.send(result.data);
+      response.status(200);
     })
     .catch((error) => {
       response.send('Error fetching reviews meta data: ', error);
+      response.status(500);
     });
 });
 

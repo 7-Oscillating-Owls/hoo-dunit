@@ -60,8 +60,7 @@ class ReviewsList extends React.Component {
   getMetaData() {
     axios.get('/reviews/meta')
       .then((response) => {
-        // this.setState({ metaObject: response.data});
-        console.log('Meta data response: ' + response);
+        this.setState({ metaObject: response.data});
       })
       .catch((error) => {
         console.log('Error fetching meta data: ', error);
@@ -185,7 +184,7 @@ class ReviewsList extends React.Component {
             twoStarTotal={this.state.twoStarTotal}
             oneStarTotal={this.state.oneStarTotal}
           />
-          <ReviewCharacteristics />
+          <ReviewCharacteristics metaObject={this.state.metaObject} />
           <div className={styles.reviewTotal}>
             {this.state.reviewCount}
             {' '}
