@@ -7,6 +7,7 @@ class StyleSelector extends React.Component {
     super(props);
     this.state = {
       selectedStyle: 'Forest Green & Black',
+      isClicked: true,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -16,12 +17,13 @@ class StyleSelector extends React.Component {
     getSelectedStyleId(styleId);
     this.setState({
       selectedStyle: styleName,
+      isClicked: false,
     });
   }
 
   render() {
     const { allStyles } = this.props;
-    const { selectedStyle } = this.state;
+    const { selectedStyle, isClicked } = this.state;
     return (
       <div className={styles.styleSelector}>
         <div className={styles.nameContainer}>
@@ -40,7 +42,12 @@ class StyleSelector extends React.Component {
             />
             </div>
           ))}
+          <div className={styles.checkmark}>
+            {isClicked &&
+            <div>Check</div>}
         </div>
+        </div>
+
       </div>
     );
   }

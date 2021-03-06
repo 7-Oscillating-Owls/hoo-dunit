@@ -36,4 +36,11 @@
   width: 60px;
   object-fit: cover;
   cursor: pointer;
+  position: relative;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
