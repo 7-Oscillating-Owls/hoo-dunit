@@ -36,11 +36,12 @@ class AnswerModal extends React.Component {
     return (
 
       <div className={styles.AnswerModal}>
+        <h3>Submit your Answer</h3>
         <form className={styles.modalform} onChange={this.handleOnChange}>
           <textarea
             type="text"
             name="question"
-            placeholder="Enter your question"
+            placeholder="Enter your Answer"
             maxLength="1000"
           />
           <small>For privacy reasons, do not use your full name or email address</small>

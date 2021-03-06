@@ -46,6 +46,7 @@ class QuestionModal extends React.Component {
   render() {
     return (
       <div className={styles.questionModalForm}>
+        <h3>Ask Your Question</h3>
         <form className={styles.modalform} onChange={this.handleOnChange}>
           <textarea
             type="text"
@@ -62,6 +63,7 @@ class QuestionModal extends React.Component {
             maxLength="60"
 
           />
+          <small>For privacy reasons, do not use your full name or email address</small>
           <small className={styles.errors}>{this.state.nicknameError}</small>
           <input
             type="email"
