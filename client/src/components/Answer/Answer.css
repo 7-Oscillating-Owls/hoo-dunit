@@ -1,7 +1,13 @@
 .answer {
   display: flex;
+  flex-direction: column;
 }
 
+.footer {
+  display: flex;
+  margin: 5px;
+
+}
 
 .answer p {
 

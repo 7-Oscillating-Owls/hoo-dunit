@@ -50,9 +50,7 @@ class QuestionsAndAnswers extends React.Component {
     <div className={styles.answerContainer}>
 
       <div className={styles.byUserContainer}>
-        <ByUser />
-        <AnswerHelpful />
-        <Report />
+
       </div>
     </div>
     <div className={styles.questionContainer}>
@@ -65,9 +63,7 @@ class QuestionsAndAnswers extends React.Component {
     <div className={styles.answerContainer}>
       <Answerlist />
       <div className={styles.byUserContainer}>
-        <ByUser />
-        <AnswerHelpful />
-        <Report />
+
       </div>
     </div>
     <LoadMoreAnswers />
