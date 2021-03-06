@@ -48,7 +48,7 @@ class QuestionsAndAnswers extends React.Component {
       </div>
     </div>
     <div className={styles.answerContainer}>
-      <Answer />
+
       <div className={styles.byUserContainer}>
         <ByUser />
         <AnswerHelpful />

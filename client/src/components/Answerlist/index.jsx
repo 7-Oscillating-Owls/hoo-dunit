@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Answerlist.css';
 import Answer from '../Answer';
-const token = require('../../../../token.js')
+const token = require('../../../../token.js');
 const axios = require('axios')
 
 class Answerlist extends React.Component {
@@ -12,25 +12,42 @@ class Answerlist extends React.Component {
     }
   }
 
-  componentDidMount(){
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?product_id=14931&question_id=84310/answers', {
-    headers: {
-      'Authorization' : token
-    }
-  })
-    .then((res) => {
-      this.setState({answers: res.data});
+  componentDidMount() {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/84310/answers', {
+      headers: {
+        'Authorization': token
+      }
     })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then((res) => {
+
+        this.setState({ answers: res.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
+
+    let answercomponents;
+     if ( this.state.answers['results']) {
+
+      answercomponents = this.state.answers['results'].slice(0,2).map((answer) => {
+
+        return (
+          <Answer answer={answer} key={answer.answer_id} />
+        )
+      });
+
+    }
     return (
-    <div>hello</div>
+      <div>
+        {answercomponents}
+      </div>
     )
+
   }
 }
+
 
 export default Answerlist;
