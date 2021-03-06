@@ -1,31 +1,4 @@
-
-.questionContainer {
+.button {
   display: flex;
-  justify-content: space-between;
-
-
-}
-
-.helpfulContainer {
-  display: flex;
-  justify-content: flex-end;
-
-
-}
-
-.answerContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-.byUserContainer {
-  display: flex;
-  justify-content: flex-start;
-
-}
-
-.buttonContainer {
-  display:  flex;
-  margin-top: 25px;
   justify-content: space-around;
 }

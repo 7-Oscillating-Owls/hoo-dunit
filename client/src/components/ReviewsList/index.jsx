@@ -163,6 +163,7 @@ class ReviewsList extends React.Component {
             of reviewers recommend this product
           </div>
           <ReviewRatingDistribution
+            className={styles.ratingDistribution}
             reviewCount={this.state.reviewCount}
             fiveStarTotal={this.state.fiveStarTotal}
             fourStarTotal={this.state.fourStarTotal}
@@ -173,7 +174,7 @@ class ReviewsList extends React.Component {
           <div className={styles.reviewTotal}>
             {this.state.reviewCount}
             {' '}
-            Reviews
+            Total Reviews
           </div>
         </div>
         <div>

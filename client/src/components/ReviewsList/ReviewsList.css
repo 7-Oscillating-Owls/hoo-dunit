@@ -25,7 +25,7 @@
   box-shadow: 2px 2px 8px 1px #C7C7C7;
   border-radius: 7px;
   align-content: flex-start;
-  height: 55%;
+  height: 50%;
   width: 100%;
 }
 
@@ -38,11 +38,9 @@
 }
 
 .overallRating {
-  padding-left: 20px;
   font-size: 70px;
   font-weight: 700;
-  /* color: #6E6E6E; */
-  color: #75C0C9;
+  color: #63DCE6;
 }
 
 .starRating {
@@ -51,13 +49,16 @@
 }
 
 .recommendOverview {
-  font-size: 12.5px;
-  color: #75C0C9;
+  font-size: 16px;
+  color: #75C0DC;
   font-weight: 900;
-  justify-content: center;
+  text-align: center;
+  margin: 25px auto;
 }
 
 .reviewTotal {
-  color: #75C0C9;
+  color: #75C0DC;
   font-weight: 800;
+  margin: 30px auto;
+  font-size: 20px;
 }
