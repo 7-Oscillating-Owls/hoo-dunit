@@ -1,12 +1,41 @@
 .answer {
   display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px 2px;
+  font-size: 12px;
+  border: 1px solid #fafafa;
+  box-sizing: border-box;
+  justify-items: left;
+  box-shadow: .5px .5px 1px .5px #3f3f3f;
+  border-radius: 2px;
+}
+.answer:hover,
+.answer:focus {
+  transform: scale(1.02, 1.05);
 }
 
+.footer {
+  display: flex;
+  margin: 5px;
+  font-size: 15px;
+
+}
+
+.answer h4 {
+  color: rgb(9, 61, 146);
+  font-size: 20px;
+}
 
 .answer p {
 
-  font-size: 13px;
+  font-size: 15px;
   padding-top: 10px;
   margin-left: 4px;
 
+}
+
+.footer small {
+  font-size: 15px;
 }

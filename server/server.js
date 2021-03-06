@@ -23,6 +23,20 @@ app.get('/qa', (request, response) => {
     });
 });
 
+app.get('/answers', (request, response) => {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/84310/answers', {
+    headers: {
+      'Authorization' : token
+    }
+  })
+    .then((res) => {
+      response.send(res.data);
+    })
+    .catch((error) => {
+      response.send('error man');
+    });
+});
+
 app.get('/reviews', (request, response) => {
   const productId = "14296";
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', {
