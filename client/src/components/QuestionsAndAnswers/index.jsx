@@ -29,9 +29,9 @@ class QuestionsAndAnswers extends React.Component {
 
   componentDidMount() {
     axios.get('/qa')
-    .then(response => {
-      this.setState({data: response.data.results})
-    })
+      .then(response => {
+        this.setState({ data: response.data.results });
+      });
   }
 
   render() {
@@ -51,11 +51,11 @@ class QuestionsAndAnswers extends React.Component {
           <Answerlisttwo />
         </div>
         <div className={styles.button}>
-        <MoreAnsweredQuestions />
-        <AddAQuestion />
+          <MoreAnsweredQuestions />
+          <AddAQuestion />
         </div>
       </div>
-    )
+    );
   }
 }
 
