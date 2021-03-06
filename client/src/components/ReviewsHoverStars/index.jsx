@@ -21,6 +21,7 @@ const ReviewsHoverStars = (props) => (
               size={50}
               onMouseEnter={() => props.starHover(ratingValue)}
               onMouseLeave={props.starNotHover}
+              key={`Hover stars ${index} ${star}`}
             />
           </label>
         );

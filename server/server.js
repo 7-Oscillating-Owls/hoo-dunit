@@ -40,22 +40,45 @@ app.get('/answers', (request, response) => {
     });
 });
 
+// Get product's review information
 app.get('/reviews', (request, response) => {
-  const productId = "14296";
+  const productId = "14296"; // 14931, 14932, 14034, 14296, 14807
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', {
     headers: {
       Authorization: token,
     },
     params: {
-      // Need to pass in params via request
       product_id: `${productId}`,
     },
   })
     .then((result) => {
       response.send(result.data);
+      response.status(200);
     })
     .catch((error) => {
       response.send('Error fetching reviews: ', error);
+      response.status(500);
+    });
+});
+
+// Get product's review meta data
+app.get('/reviews/meta', (request, response) => {
+  const productId = "14296"; // 14931, 14932, 14034, 14296, 14807
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta', {
+    headers: {
+      Authorization: token,
+    },
+    params: {
+      product_id: `${productId}`,
+    },
+  })
+    .then((result) => {
+      response.send(result.data);
+      response.status(200);
+    })
+    .catch((error) => {
+      response.send('Error fetching reviews meta data: ', error);
+      response.status(500);
     });
 });
 
