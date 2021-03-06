@@ -1,6 +1,7 @@
 .addToCart {
   grid-area: d;
   /* border: 1px solid black; */
+  height: 50px;
 }
 
 .selectContainer {
