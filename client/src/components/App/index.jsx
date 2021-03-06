@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import axios from 'axios';
 
 import RelatedProducts from '../RelatedProducts';
 import QuestionsAndAnswers from '../QuestionsAndAnswers';
@@ -12,22 +13,48 @@ import ReviewsList from '../ReviewsList';
 import styles from './App.css';
 
 class AppComponent extends React.Component {
-  componentDidMount() {
-    const { productId } = this.props.match.params;
-    console.log('initial fetch for ', productId);
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      product: undefined,
+    };
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     const { productId } = this.props.match.params;
-    console.log('fetch data for ', productId);
+    this.fetchProductDetail();
+  }
+
+  componentDidUpdate(prev) {
+    const { productId } = this.props.match.params;
+    const { productId:prevId } = prev.match.params;
+
+    if (productId !== prevId) {
+      this.fetchProductDetail();
+    }
+  }
+
+  fetchProductDetail() {
+    const { productId } = this.props.match.params;
+    if (productId) {
+      axios.get(`/api/products/${productId}`)
+        .then((response) => {
+          this.setState({
+            product: response.data,
+          });
+        });
+    }
   }
 
   render() {
     const { productId } = this.props.match.params;
+    const { product } = this.state;
+
     return (
       <>
         <Overview />
-        <RelatedProducts productId={productId} />
+        <RelatedProducts productId={productId} product={product} />
         <ReviewsList />
         <QuestionsAndAnswers />
       </>
