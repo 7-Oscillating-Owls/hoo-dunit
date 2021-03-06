@@ -14,6 +14,7 @@ import SearchBar from '../SearchBar';
 import MoreAnsweredQuestions from '../MoreAnsweredQuestions';
 import Questiontwo from '../Questiontwo';
 import Answerlist from '../Answerlist';
+import Answerlisttwo from '../Answerlisttwo';
 import axios from 'axios'
 
 class QuestionsAndAnswers extends React.Component {
@@ -61,7 +62,7 @@ class QuestionsAndAnswers extends React.Component {
         <Helpful />
         <AddAnswer />
       </div>
-
+      <Answerlisttwo />
     </div>
     <div className={styles.answerContainer}>
       <Answerlist />
