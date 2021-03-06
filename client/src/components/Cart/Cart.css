@@ -1,7 +1,8 @@
 .addToCart {
   grid-area: d;
   /* border: 1px solid black; */
-  height: 50px;
+  width: 425px;
+  height: 30px;
 }
 
 .selectContainer {
