@@ -16,7 +16,7 @@ class ReviewsList extends React.Component {
     super(props);
     this.state = {
       reviewsList: [],
-      reviewCount: exampleReviewsData.results.length,
+      reviewCount: 0,
       overallRating: 0,
       recommendPercent: 0,
       fiveStarTotal: '',

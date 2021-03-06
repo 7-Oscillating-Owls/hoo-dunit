@@ -24,7 +24,6 @@ app.get('/qa', (request, response) => {
 });
 
 app.get('/reviews', (request, response) => {
-  // const productId = request.productId;
   const productId = "14296";
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', {
     headers: {
