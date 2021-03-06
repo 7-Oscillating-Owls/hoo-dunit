@@ -1,11 +1,14 @@
 import React from 'react';
 import styles from './Answer.css';
 
-const Answer = () => (
-  <div className={styles.answer}>
-    <h4>A:</h4>
-    <p>Alias libero voluptas adipisci et quam iure vel</p>
-  </div>
-);
+const Answer = (props) => {
+
+    return (
+      <div className={styles.answer}>
+        <p>{props.answer.answer_id}</p>
+      </div>
+    );
+
+    }
 
 export default Answer;
