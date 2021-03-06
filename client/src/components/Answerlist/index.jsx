@@ -1,8 +1,7 @@
-import React from 'react'
+import React from 'react';
 import styles from './Answerlist.css';
 import Answer from '../Answer';
-const token = require('../../../../token.js');
-const axios = require ('axios')
+const axios = require ('axios');
 
 class Answerlist extends React.Component {
   constructor(props) {
@@ -13,26 +12,18 @@ class Answerlist extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/84310/answers', {
-      headers: {
-        'Authorization': token
-      }
-    })
-      .then((res) => {
-
-        this.setState({ answers: res.data });
-      })
-      .catch((error) => {
-        console.log(error);
+    axios.get('/answers')
+      .then(response => {
+        this.setState({ answers: response.data.results })
       });
   }
 
   render() {
 
     let answercomponents;
-     if ( this.state.answers['results']) {
+    if (this.state.answers['results']) {
 
-      answercomponents = this.state.answers['results'].slice(0,2).map((answer) => {
+      answercomponents = this.state.answers['results'].slice(0, 2).map((answer) => {
 
         return (
           <Answer answer={answer} key={answer.answer_id} />

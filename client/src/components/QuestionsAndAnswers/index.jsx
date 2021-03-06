@@ -61,14 +61,11 @@ class QuestionsAndAnswers extends React.Component {
         <Helpful />
         <AddAnswer />
       </div>
+
     </div>
     <div className={styles.answerContainer}>
       <Answerlist />
-      <div className={styles.byUserContainer}>
-        <ByUser />
-        <AnswerHelpful />
-        <Report />
-      </div>
+
     </div>
     <LoadMoreAnswers />
     <div className={styles.buttonContainer}>

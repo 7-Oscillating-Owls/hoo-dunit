@@ -3,7 +3,8 @@
 
 }
 .helpful {
-  margin: 17px 8px;
+  margin: 15px 8px;
+  font-size: 15px;
 }
 .helpful:hover {
   transform: scale(1.2);
