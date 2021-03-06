@@ -12,25 +12,25 @@
 }
 
 .ratingsOverview {
-  padding: 20px;
-  padding-bottom: 30px;
+  padding-top: 15px;
   margin: 20px 5px;
   font-size: 14px;
   display: grid;
-  border: 1px solid #E6E6E6;
   box-sizing: border-box;
-  grid-gap: 20px;
+  grid-gap: 7px;
   justify-items: center;
   align-items: center;
+  align-content: flex-start;
+  width: 100%;
+  border: 1px solid #E6E6E6;
   box-shadow: 2px 2px 8px 1px #C7C7C7;
   border-radius: 7px;
-  align-content: flex-start;
-  height: 50%;
-  width: 100%;
+  height: 420px;
+  /* height: 50%; */
+  /* min-height: 420px; */
 }
 
 .ratingsAndReviewsTitle {
-  padding: 5px;
   color: #808080;
   font-weight: 900;
   font-size: 20px;
@@ -38,27 +38,21 @@
 }
 
 .overallRating {
-  font-size: 70px;
+  font-size: 35px;
   font-weight: 700;
   color: #63DCE6;
 }
 
-.starRating {
-  padding-left: 20px;
-  color: #525252;
-}
-
 .recommendOverview {
-  font-size: 16px;
+  font-size: 12px;
   color: #75C0DC;
   font-weight: 900;
   text-align: center;
-  margin: 25px auto;
+  margin: 10px auto;
 }
 
 .reviewTotal {
   color: #75C0DC;
   font-weight: 800;
-  margin: 30px auto;
-  font-size: 20px;
+  font-size: 14px;
 }
