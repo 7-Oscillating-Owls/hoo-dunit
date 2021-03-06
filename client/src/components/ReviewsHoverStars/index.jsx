@@ -14,6 +14,7 @@ const ReviewsHoverStars = (props) => (
               type="radio"
               name="overallRating"
               value={ratingValue}
+              key={`Hover stars ${index} ${star}`}
             />
             <FaStar
               className={styles.star}
