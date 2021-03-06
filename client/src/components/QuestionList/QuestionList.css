@@ -1,0 +1,16 @@
+.questionlist {
+  display: flex;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px 2px;
+  font-size: 17px;
+  box-sizing: border-box;
+  box-shadow: .5px .5px 1px .5px #3f3f3f;
+  border-radius: 2px;
+}
+
+.sidebar {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}

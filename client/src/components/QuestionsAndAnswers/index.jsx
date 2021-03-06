@@ -43,23 +43,19 @@ class QuestionsAndAnswers extends React.Component {
     <div className={styles.questionContainer}>
       <Question data ={data} />
       <div className={styles.helpfulContainer}>
-        <Helpful data={data}/>
-        <AddAnswer />
+
       </div>
     </div>
     <div className={styles.answerContainer}>
 
       <div className={styles.byUserContainer}>
-        <ByUser />
-        <AnswerHelpful />
-        <Report />
+
       </div>
     </div>
     <div className={styles.questionContainer}>
       <Questiontwo data ={data}/>
       <div className={styles.helpfulContainer}>
-        <Helpful />
-        <AddAnswer />
+
       </div>
 
     </div>
