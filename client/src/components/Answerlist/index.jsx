@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Answerlist.css';
 import Answer from '../Answer';
-//const token = require('../../../../token.js');
+const token = require('../../../../token.js');
 const axios = require ('axios')
 
 class Answerlist extends React.Component {
