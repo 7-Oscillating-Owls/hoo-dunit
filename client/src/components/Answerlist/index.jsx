@@ -14,7 +14,7 @@ class Answerlist extends React.Component {
   componentDidMount() {
     axios.get('/answers')
       .then(response => {
-        this.setState({ answers: response.data.results })
+        this.setState({ answers: response.data})
       });
   }
 
