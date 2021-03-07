@@ -36,7 +36,7 @@ AppModal.defaultProps = {
 };
 
 AppModal.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.element,
   outsideClickHandler: PropTypes.func,
 };
 

@@ -1,13 +1,16 @@
 .styleSelector {
   grid-area: c;
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 20px;
+  padding-left: 20px;
+  width: 425px;
+  height: 100px;
+  position: relative;
 }
 
 .nameContainer {
+  padding-left: 5px;
   color: rgb(90, 90, 90);
   font-size: 15px;
 }
@@ -15,8 +18,9 @@
 .imageContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 2px;
+  width: 300px;
   justify-items: center;
+  padding-top: 10px;
 }
 
 .imageWrapper {
@@ -29,8 +33,16 @@
 .thumbnail {
   border: 1px solid black;
   border-radius: 50%;
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
   object-fit: cover;
   cursor: pointer;
+  position: relative;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-color: blue;
 }

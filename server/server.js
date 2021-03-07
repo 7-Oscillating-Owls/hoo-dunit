@@ -3,6 +3,7 @@ const path = require('path');
 const axios = require('axios');
 
 const token = require('../token.js');
+const { apiCall, fetchProductWithStyles } = require('./apiHelper.js');
 
 const app = express();
 const port = 3000;
@@ -80,6 +81,36 @@ app.get('/reviews/meta', (request, response) => {
       response.send('Error fetching reviews meta data: ', error);
       response.status(500);
     });
+});
+
+app.get('/api/products/:productId', (request, response) => {
+  const { productId } = request.params;
+
+  if (productId) {
+    fetchProductWithStyles(productId)
+      .then((result) => response.send(result))
+      .catch((error) => response.status(400).send(error));
+  }
+});
+
+app.get('/api/products/:productId/related', (request, response) => {
+  const { productId } = request.params;
+
+  if (!productId) {
+    return response.status(400);
+  }
+
+  return apiCall(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${productId}/related`)
+    .then((relatedIds) => {
+      // eslint-disable-next-line arrow-body-style
+      const relatedProducts = relatedIds.data.map((relatedId) => {
+        return fetchProductWithStyles(relatedId);
+      });
+
+      return Promise.all(relatedProducts);
+    })
+    .then((relatedProducts) => response.send(relatedProducts))
+    .catch((error) => response.status(400).send(error));
 });
 
 app.listen(port, () => {

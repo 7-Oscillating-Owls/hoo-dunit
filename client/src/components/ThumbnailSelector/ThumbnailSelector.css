@@ -23,3 +23,10 @@
   top: 0;
   right: 0;
 }
+
+.dialog {
+  position: absolute;
+  position: static;
+  left: 20%;
+  top: 0;
+}

@@ -1,13 +1,8 @@
 import React from 'react';
+import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import RelatedProductsList from '../RelatedProductsList';
-import {
-  // getProducts,
-  getDetailForProduct,
-  getRelatedProducts,
-  // relatedProductsDetails,
-  getStylesForProduct,
-} from '../../../../data/products';
 import styles from './RelatedProducts.css';
 
 class RelatedProducts extends React.Component {
@@ -21,35 +16,58 @@ class RelatedProducts extends React.Component {
   }
 
   componentDidMount() {
+    this.fetchRelatedProducts();
+  }
+
+  componentDidUpdate(prev) {
     const { productId } = this.props;
-    // fetch data using productId
+    if (prev.productId !== productId) {
+      this.fetchRelatedProducts();
+    }
+  }
+
+  fetchRelatedProducts() {
+    const { productId } = this.props;
+
+    if (productId) {
+      axios.get(`/api/products/${productId}/related`)
+        .then((response) => {
+          this.setState({
+            relatedProducts: response.data,
+          });
+        })
+        .catch(() => {
+          console.warn('failed to fetch related products');
+          this.setState({
+            relatedProducts: [],
+          });
+        });
+    }
   }
 
   render() {
-    let { productId } = this.props;
-    console.log('relatedProducts: ', productId);
-    productId = '14807';
-    const relatedProductIds = getRelatedProducts(productId);
-    const relatedProductsDetails = relatedProductIds.map((id) => getDetailForProduct(id));
+    const { relatedProducts } = this.state;
 
     return (
       <section className={styles.relatedProducts}>
         <h3 className={styles.listTitle}>Related Products</h3>
         <RelatedProductsList
-          relatedProducts={relatedProductsDetails}
-          stylesByProductId={getStylesForProduct}
+          relatedProducts={relatedProducts}
           actionType="compare"
         />
 
         <h3 className={styles.listTitle}>Your Outfit</h3>
         <RelatedProductsList
-          relatedProducts={relatedProductsDetails}
-          stylesByProductId={getStylesForProduct}
+          relatedProducts={relatedProducts}
           actionType="outfit"
         />
       </section>
     );
   }
+}
+
+RelatedProducts.propTypes = {
+  productId: PropTypes.string.isRequired,
 };
 
 export default RelatedProducts;

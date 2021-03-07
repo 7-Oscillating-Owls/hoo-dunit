@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
 import AppModal from '../AppModal';
-
 import RelatedProductCard from '../RelatedProductCard';
-
 import styles from './RelatedProductsList.css';
 
-// the linting errors occuring are because of the mock data we're using
-// its much too complex of an object to spell out in prop types rn so im disabling
-// the linter temporarily
 class RelatedProductsList extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +22,12 @@ class RelatedProductsList extends Component {
   }
 
   componentDidMount() {
-    if (this.carousel) {
+    this.renderButtons();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { relatedProducts } = this.props;
+    if (prevProps.relatedProducts !== relatedProducts) {
       this.renderButtons();
     }
   }
@@ -76,8 +77,7 @@ class RelatedProductsList extends Component {
   }
 
   render() {
-    // eslint-disable-next-line react/prop-types
-    const { relatedProducts, stylesByProductId, actionType } = this.props;
+    const { relatedProducts, actionType } = this.props;
     const { showLeftButton, showRightButton, showModal } = this.state;
     const scrollSize = 270;
 
@@ -92,24 +92,9 @@ class RelatedProductsList extends Component {
       buttonAction = (id) => console.log('remove ', id);
     }
 
-    // eslint-disable-next-line react/prop-types
-    const cardsComponenets = relatedProducts.map(({
-      id,
-      description,
-      name,
-      category,
-      features,
-    }) => (
-      <RelatedProductCard
-        key={id}
-        id={id}
-        description={description}
-        name={name}
-        category={category}
-        features={features}
-        defaultStyle={stylesByProductId(id).results[0]}
-      >
-        <button type="button" className={styles.actionButton} onClick={() => buttonAction(id)}>{buttonSymbol}</button>
+    const cardsComponenets = relatedProducts.map((product) => (
+      <RelatedProductCard key={product.id} product={product}>
+        <button type="button" className={styles.actionButton} onClick={() => buttonAction(product.id)}>{buttonSymbol}</button>
       </RelatedProductCard>
     ));
 
@@ -150,9 +135,12 @@ class RelatedProductsList extends Component {
     );
   }
 }
-// RelatedProductsList.propTypes = {
-//   relatedProducts: PropTypes.arrayOf().isRequired,
-//   stylesByProductId: PropTypes.objectOf().isRequired,
-// };
+
+RelatedProductsList.propTypes = {
+  relatedProducts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+  })).isRequired,
+  actionType: PropTypes.string.isRequired,
+};
 
 export default RelatedProductsList;

@@ -21,8 +21,8 @@ class QuestionModal extends React.Component {
 
   validate() {
     { this.state.question.length < 1 ? this.setState({ questionError: 'Please enter a question' }) : this.setState({questionError: null}) }
-    { this.state.nickname.length < 1 ? this.setState({ nicknameError: 'please enter a nickname' }) : this.setState({nicknameError: null}) }
-    { !this.state.email.includes('@') ? this.setState({emailError: 'please enter valid email'}) : this.setState({emailError: null})}
+    { this.state.nickname.length < 1 ? this.setState({ nicknameError: 'Please enter a nickname' }) : this.setState({nicknameError: null}) }
+    { !this.state.email.includes('@') ? this.setState({emailError: 'Please enter valid email'}) : this.setState({emailError: null})}
 
   }
 
@@ -46,6 +46,7 @@ class QuestionModal extends React.Component {
   render() {
     return (
       <div className={styles.questionModalForm}>
+        <h3>Ask Your Question</h3>
         <form className={styles.modalform} onChange={this.handleOnChange}>
           <textarea
             type="text"
@@ -62,6 +63,7 @@ class QuestionModal extends React.Component {
             maxLength="60"
 
           />
+          <small>For privacy reasons, do not use your full name or email address</small>
           <small className={styles.errors}>{this.state.nicknameError}</small>
           <input
             type="email"
