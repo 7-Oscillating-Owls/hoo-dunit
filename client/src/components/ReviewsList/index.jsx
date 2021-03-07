@@ -164,32 +164,34 @@ class ReviewsList extends React.Component {
     }
     return (
       <div className={styles.reviewsList}>
-        <div className={styles.ratingsOverview}>
-          <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
-          <div className={styles.overallRating}>{this.state.overallRating}</div>
-          <div className={styles.starRating}>
-            <ReviewsAverageOverviewStars ratings={this.state.overallRating} />
+        <div>
+          <div className={styles.ratingsOverview}>
+            <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
+            <div className={styles.overallRating}>{this.state.overallRating}</div>
+            <div className={styles.starRating}>
+              <ReviewsAverageOverviewStars ratings={this.state.overallRating} />
+            </div>
+            <div className={styles.recommendOverview}>
+              {this.state.recommendPercent}
+              {' '}
+              of reviewers recommend this product
+            </div>
+            <ReviewRatingDistribution
+              className={styles.ratingDistribution}
+              reviewCount={this.state.reviewCount}
+              fiveStarTotal={this.state.fiveStarTotal}
+              fourStarTotal={this.state.fourStarTotal}
+              threeStarTotal={this.state.threeStarTotal}
+              twoStarTotal={this.state.twoStarTotal}
+              oneStarTotal={this.state.oneStarTotal}
+            />
+            <div className={styles.reviewTotal}>
+              {this.state.reviewCount}
+              {' '}
+              Total Reviews
+            </div>
+            <ReviewCharacteristics metaObject={this.state.metaObject} />
           </div>
-          <div className={styles.recommendOverview}>
-            {this.state.recommendPercent}
-            {' '}
-            of reviewers recommend this product
-          </div>
-          <ReviewRatingDistribution
-            className={styles.ratingDistribution}
-            reviewCount={this.state.reviewCount}
-            fiveStarTotal={this.state.fiveStarTotal}
-            fourStarTotal={this.state.fourStarTotal}
-            threeStarTotal={this.state.threeStarTotal}
-            twoStarTotal={this.state.twoStarTotal}
-            oneStarTotal={this.state.oneStarTotal}
-          />
-          <div className={styles.reviewTotal}>
-            {this.state.reviewCount}
-            {' '}
-            Total Reviews
-          </div>
-          <ReviewCharacteristics metaObject={this.state.metaObject} />
         </div>
         <div>
           <div>
