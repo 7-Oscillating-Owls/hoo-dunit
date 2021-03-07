@@ -40,19 +40,20 @@ const ReviewCharacteristics = (props) => {
       size = 'Size: ';
       const sizePercent = ((characteristics.Size.value) / 20).toFixed(1);
       sizePercentRender = (
-        <div>
-          <div>{sizePercent}</div>
-          <input className={styles.slider} type="range" min="0" max="100" value={`${sizePercent}`} />
-          <GoTriangleDown style={{ margin: `0% 0% 0% ${sizePercent - 50}%` }} className={styles.triangle} color="#75C0DC" size={25} data-width={(((characteristics.Comfort.value) / 5) * 100).toFixed(1)} />
-        </div>
+        <GoTriangleDown
+          style={{ transform: `translateX${sizePercent - 50}%)` }}
+          className={styles.triangle}
+          color="#75C0DC"
+          size={25}
+        />
       );
       sizeBar = characteristicBox;
       sizeScale = (
         <div className={styles.scale}>
           <div className={styles.scaleRange}>Small</div>
-          <div className={styles.scaleRange}></div>
+          <div className={styles.scaleRange}> </div>
           <div className={styles.scaleRange}>Perfect</div>
-          <div className={styles.scaleRange}></div>
+          <div className={styles.scaleRange}> </div>
           <div className={styles.scaleRange}>Large</div>
         </div>
       );
@@ -61,19 +62,20 @@ const ReviewCharacteristics = (props) => {
       width = 'Width: ';
       const widthPercent = (((characteristics.Width.value) / 5) * 100).toFixed(1);
       widthPercentRender = (
-        <div>
-          <div>{widthPercent}</div>
-          <input className={styles.slider} type="range" min="0" max="100" value={`${widthPercent}`} />
-          <GoTriangleDown style={{ margin: `0% 0% 0% ${widthPercent - 50}%` }} className={styles.triangle} color="#75C0DC" size={25} data-width={(((characteristics.Comfort.value) / 5) * 100).toFixed(1)} />
-        </div>
+        <GoTriangleDown
+          style={{ transform: `translateX${widthPercent - 50}%)` }}
+          className={styles.triangle}
+          color="#75C0DC"
+          size={25}
+        />
       );
       widthBar = characteristicBox;
       widthScale = (
         <div className={styles.scale}>
           <div className={styles.scaleRange}>Narrow</div>
-          <div className={styles.scaleRange}></div>
+          <div className={styles.scaleRange}> </div>
           <div className={styles.scaleRange}>Perfect</div>
-          <div className={styles.scaleRange}></div>
+          <div className={styles.scaleRange}> </div>
           <div className={styles.scaleRange}>Wide</div>
         </div>
       );
@@ -82,20 +84,20 @@ const ReviewCharacteristics = (props) => {
       comfort = 'Comfort: ';
       const comfortPercent = (((characteristics.Comfort.value) / 5) * 100).toFixed(1);
       comfortPercentRender = (
-        <div>
-          <div>{comfortPercent}</div>
-          <input className={styles.slider} type="range" min="0" max="100" value={`${comfortPercent}`} />
-          <GoTriangleDown style={{ margin: `0% 0% 0% ${comfortPercent - 50}%` }} className={styles.triangle} color="#75C0DC" size={25} data-width={(((characteristics.Comfort.value) / 5) * 100).toFixed(1)} />
-        </div>
+        <GoTriangleDown
+          style={{ transform: `translateX(${comfortPercent - 50}%)` }}
+          className={styles.triangle}
+          color="#75C0DC"
+          size={25}
+        />
       );
-      // document.getElementById('test').style.width = '70%';
       comfortBar = characteristicBox;
       comfortScale = (
         <div className={styles.scale}>
           <div className={styles.scaleRange}>Uncomfortable</div>
-          <div className={styles.scaleRange}></div>
-          <div className={styles.scaleRange}></div>
-          <div className={styles.scaleRange}></div>
+          <div className={styles.scaleRange}> </div>
+          <div className={styles.scaleRange}> </div>
+          <div className={styles.scaleRange}> </div>
           <div className={styles.scaleRange}>Perfect</div>
         </div>
       );
@@ -104,19 +106,20 @@ const ReviewCharacteristics = (props) => {
       quality = 'Quality: ';
       const qualityPercent = (((characteristics.Quality.value) / 5) * 100).toFixed(1);
       qualityPercentRender = (
-        <div>
-          <div>{qualityPercent}</div>
-          <input className={styles.slider} type="range" min="0" max="100" value={`${qualityPercent}`} />
-          <GoTriangleDown style={{ margin: `0% 0% 0% ${qualityPercent - 50}%` }} className={styles.triangle} color="#75C0DC" size={25} data-width={(((characteristics.Comfort.value) / 5) * 100).toFixed(1)} />
-        </div>
+        <GoTriangleDown
+          style={{ transform: `translateX(${qualityPercent - 50}%)` }}
+          className={styles.triangle}
+          color="#75C0DC"
+          size={25}
+        />
       );
       qualityBar = characteristicBox;
       qualityScale = (
         <div className={styles.scale}>
           <div className={styles.scaleRange}>Poor</div>
-          <div className={styles.scaleRange}></div>
-          <div className={styles.scaleRange}></div>
-          <div className={styles.scaleRange}></div>
+          <div className={styles.scaleRange}> </div>
+          <div className={styles.scaleRange}> </div>
+          <div className={styles.scaleRange}> </div>
           <div className={styles.scaleRange}>Perfect</div>
         </div>
       );
@@ -125,19 +128,20 @@ const ReviewCharacteristics = (props) => {
       fit = 'Fit: ';
       const fitPercent = (((characteristics.Fit.value) / 5) * 100).toFixed(1);
       fitPercentRender = (
-        <div>
-          <div>{fitPercent}</div>
-          <input className={styles.slider} type="range" min="0" max="100" value={`${fitPercent}`} />
-          <GoTriangleDown style={{ margin: `0% 0% 0% ${fitPercent - 50}%` }} className={styles.triangle} color="#75C0DC" size={25} data-width={(((characteristics.Comfort.value) / 5) * 100).toFixed(1)} />
-        </div>
+        <GoTriangleDown
+          style={{ transform: `translateX(${fitPercent - 50}%)` }}
+          className={styles.triangle}
+          color="#75C0DC"
+          size={25}
+        />
       );
       fitBar = characteristicBox;
       fitScale = (
         <div className={styles.scale}>
           <div className={styles.scaleRange}>Tight</div>
-          <div className={styles.scaleRange}></div>
+          <div className={styles.scaleRange}> </div>
           <div className={styles.scaleRange}>Perfect</div>
-          <div className={styles.scaleRange}></div>
+          <div className={styles.scaleRange}> </div>
           <div className={styles.scaleRange}>Long</div>
         </div>
       );
@@ -187,3 +191,4 @@ export default ReviewCharacteristics;
 
 // Need to get characteristics from data and display as slider
 // Could have 5 separate divs as sliders based on percentage
+// <input className={styles.slider} type="range" min="0" max="100" value={`${comfortPercent}`} />

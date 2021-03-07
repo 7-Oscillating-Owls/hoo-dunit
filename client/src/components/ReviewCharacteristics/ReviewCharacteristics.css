@@ -16,11 +16,6 @@ h3 {
   width: 100%;
 }
 
-.slider {
-  width: 100%;
-  /* appearance: none; */
-}
-
 .grayBox {
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
