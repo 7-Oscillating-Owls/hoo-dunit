@@ -3,7 +3,7 @@
   justify-items: center;
   margin: 20px auto 50px auto;
   font-weight: 900;
-  color: #75C0DC
+  color: #75C0DC;
 }
 
 h3 {
@@ -13,12 +13,13 @@ h3 {
 
 .triangle {
   margin-top: 7px;
+  width: 100%;
 }
 
 .grayBox {
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-gap: 5px;
+  grid-gap: 3px;
 }
 
 .box {
