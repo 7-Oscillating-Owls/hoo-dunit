@@ -41,10 +41,10 @@ class StyleSelector extends React.Component {
             />
             </div>
           ))}
-          <div className={styles.checkmark}>
+        </div>
+        <div className={styles.checkmark}>
             {isClicked &&
             <div>Check</div>}
-        </div>
         </div>
 
       </div>

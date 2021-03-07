@@ -6,6 +6,7 @@
   padding-left: 20px;
   width: 425px;
   height: 100px;
+  position: relative;
 }
 
 .nameContainer {
@@ -43,4 +44,5 @@
   position: absolute;
   top: 0;
   right: 0;
+  border-color: blue;
 }
