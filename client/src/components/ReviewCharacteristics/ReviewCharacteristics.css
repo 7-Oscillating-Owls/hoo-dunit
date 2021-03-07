@@ -1,17 +1,32 @@
 .characteristics {
-  text-align: left;
+  text-align: justify;
+  justify-items: center;
   margin: 20px auto 50px auto;
+  font-weight: 900;
 }
 
 .grayBox {
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-gap: 5px;
-  margin: 7px auto 20px auto;
+  margin: 5px auto;
 }
 
 .box {
-  background: gray;
+  background: #E6E6E6;
   width: 50px;
-  height: 10px;
+  height: 7px;
+}
+
+.scale {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-gap: 5px;
+  margin-bottom: 20px;
+}
+
+.scaleRange {
+  font-size: 12px;
+  text-align: center;
+  font-weight: 500;
 }
