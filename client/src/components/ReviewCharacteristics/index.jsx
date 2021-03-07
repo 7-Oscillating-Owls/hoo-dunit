@@ -1,4 +1,5 @@
 import React from 'react';
+import { GoTriangleDown } from 'react-icons/go';
 import styles from './ReviewCharacteristics.css';
 
 const ReviewCharacteristics = (props) => {
@@ -19,12 +20,15 @@ const ReviewCharacteristics = (props) => {
   let fitBar;
   let fitScale;
   const characteristicBox = (
-    <div className={styles.grayBox}>
-      <div className={styles.box}> </div>
-      <div className={styles.box}> </div>
-      <div className={styles.box}> </div>
-      <div className={styles.box}> </div>
-      <div className={styles.box}> </div>
+    <div>
+      <GoTriangleDown color="#75C0DC" className={styles.triangle} />
+      <div className={styles.grayBox}>
+        <div className={styles.box}> </div>
+        <div className={styles.box}> </div>
+        <div className={styles.box}> </div>
+        <div className={styles.box}> </div>
+        <div className={styles.box}> </div>
+      </div>
     </div>
   );
 
