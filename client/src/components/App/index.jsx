@@ -19,6 +19,7 @@ class AppComponent extends React.Component {
 
     this.state = {
       product: undefined,
+      starRating: 3.4,
     };
   }
 
@@ -51,11 +52,11 @@ class AppComponent extends React.Component {
 
   render() {
     const { match } = this.props;
-    const { product } = this.state;
+    const { product, starRating } = this.state;
 
     return (
       <>
-        <Overview />
+        <Overview startRating={starRating} />
         <RelatedProducts productId={match.params.productId} product={product} />
         <ReviewsList />
         <QuestionsAndAnswers />

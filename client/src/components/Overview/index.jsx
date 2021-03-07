@@ -28,8 +28,9 @@ class Overview extends React.Component {
 
   render() {
     const { allStyles, selectedStyleId } = this.state;
+    const { starRating } = this.props;
     let filteredStyle;
-
+    
     allStyles.forEach((style) => {
       if (selectedStyleId && style.style_id === selectedStyleId) {
         filteredStyle = style;
@@ -45,6 +46,7 @@ class Overview extends React.Component {
           productInfo={productInfo}
           originalPrice={filteredStyle.original_price}
           salePrice={filteredStyle.sale_price}
+          starRating={starRating}
         />
         <StyleSelector
           allStyles={allStyles}
