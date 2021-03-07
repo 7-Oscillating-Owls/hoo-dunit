@@ -13,8 +13,7 @@ h3 {
 
 .triangle {
   margin-top: 7px;
-  width: calc(100% + 15px);
-  /* right: attr(data-width); */
+  width: 100%;
 }
 
 .slider {
