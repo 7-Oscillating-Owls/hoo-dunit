@@ -62,7 +62,7 @@ class ThumbnailSelector extends React.Component {
 
         {isOpen && (
           <AppModal ref={this.registerModal} outsideClickHandler={() => this.showImage()}>
-            <img className={styles.currentImage} style={imageSize} src={currentImage} ref={this.imageRef} alt="displayImage" />
+            <img className={styles.expandedImage} style={imageSize} src={currentImage} ref={this.imageRef} alt="displayImage" />
             {clicked
               ? (
                 <div className={styles.zoombtn}>

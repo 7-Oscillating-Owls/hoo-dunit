@@ -2,7 +2,7 @@
   display: grid;
   box-sizing: border-box;
   /* border: 1px solid black; */
-  height: 500px;
+  /* height: 500px; */
   width: 100%;
   font-family: Arial, Helvetica, sans-serif;
   grid-template-columns: 2fr 1fr;

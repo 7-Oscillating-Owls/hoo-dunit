@@ -1,11 +1,71 @@
 .addToCart {
   grid-area: d;
   /* border: 1px solid black; */
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
   width: 425px;
   height: 30px;
-}
-
-.selectContainer {
+  padding-left: 10px;
   text-align: center;
 }
 
+.cartWrapper {
+  display: grid;
+  grid-template-areas:"o p"
+                      "q r";
+  /* justify-items: center; */
+}
+
+.size {
+  grid-area: o;
+  box-sizing: border-box;
+  cursor: cursor;
+  height: 40px;
+  width: 200px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700px;
+  letter-spacing: 2px;
+  justify-self: space-around;
+}
+
+.quantity {
+  grid-area: p;
+  box-sizing: border-box;
+  cursor: cursor;
+  height: 40px;
+  width: 100px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700px;
+  letter-spacing: 2px;
+}
+
+.submitCart {
+  grid-area: q;
+  box-sizing: border-box;
+  cursor: cursor;
+  height: 40px;
+  width: 200px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700px;
+  letter-spacing: 2px;
+}
+
+.addedToBag{
+  background-color:white;
+  box-sizing: border-box;
+  width: 300px;
+  height: 300px;
+}
+
+.star {
+  grid-area: r;
+  box-sizing: border-box;
+  border: 1px solid black;
+  cursor: cursor;
+  height: 40px;
+  width: 50px;
+}

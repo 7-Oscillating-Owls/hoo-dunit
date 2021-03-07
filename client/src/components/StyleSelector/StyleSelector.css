@@ -25,6 +25,7 @@
 
 .imageWrapper {
   align-self: center;
+  position: relative;
 }
 .style {
   font-weight: 600;
@@ -37,12 +38,15 @@
   width: 60px;
   object-fit: cover;
   cursor: pointer;
-  position: relative;
+
 }
 
 .checkmark {
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 50%;
   position: absolute;
   top: 0;
   right: 0;
-  border-color: blue;
+  color: black;
 }
