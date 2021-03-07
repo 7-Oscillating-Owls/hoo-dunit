@@ -31,7 +31,7 @@ class Answerlisttwo extends React.Component {
 
     }
     return (
-      <div>
+      <div className={styles.answerlisttwo}>
         {answertwocomponents}
       </div>
     )

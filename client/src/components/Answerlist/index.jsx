@@ -32,7 +32,7 @@ class Answerlist extends React.Component {
 
     }
     return (
-      <div>
+      <div className={styles.answerlist}>
         {answercomponents}
       </div>
     )

@@ -7,7 +7,7 @@ const Answer = (props) => {
 
     return (
       <div className={styles.answer}>
-        <h4>A: {props.answer.body}</h4>
+        <p>A: {props.answer.body}</p>
         <div className={styles.footer}>
           <small>by {props.answer.answerer_name}  |</small>
 
