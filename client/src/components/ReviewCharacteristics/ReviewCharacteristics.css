@@ -1,0 +1,42 @@
+.characteristics {
+  text-align: justify;
+  justify-items: center;
+  margin: 20px auto 50px auto;
+  font-weight: 900;
+  color: #75C0DC
+}
+
+h3 {
+  color: #6E6E6E;
+  padding: 10px auto;
+}
+
+.triangle {
+  margin-top: 7px;
+}
+
+.grayBox {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-gap: 5px;
+}
+
+.box {
+  background: #E6E6E6;
+  width: 50px;
+  height: 7px;
+}
+
+.scale {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-gap: 5px;
+  margin-bottom: 25px;
+}
+
+.scaleRange {
+  color: #6E6E6E;
+  font-size: 12px;
+  text-align: center;
+  font-weight: 500;
+}
