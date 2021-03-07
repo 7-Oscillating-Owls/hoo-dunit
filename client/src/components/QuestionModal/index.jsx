@@ -52,6 +52,7 @@ class QuestionModal extends React.Component {
             name="question"
             placeholder="Enter your question"
             maxLength="1000"
+            className={styles.questionfield}
 
           />
           <small className={styles.errors}>{this.state.questionError}</small>

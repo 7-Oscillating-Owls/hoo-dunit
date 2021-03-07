@@ -11,7 +11,10 @@
   top: 1%;
   box-sizing: border-box;
   transition: all .3 ease-out;
+
+  border-radius: 5px;
 }
+
 
 
 
@@ -23,11 +26,13 @@
 }
 
 .questionfield {
-  padding: 125px;
+  padding: 25px;
+
 }
 
 .emailfield {
   padding: 25px;
+
 }
 
 .errors{
