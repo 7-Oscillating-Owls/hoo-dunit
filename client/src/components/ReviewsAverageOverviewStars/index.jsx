@@ -4,7 +4,8 @@ import styles from './ReviewsAverageOverviewStars.css';
 // import images from '/static/images';
 
 const ReviewsAverageOverviewStars = (props) => {
-  const { ratings } = props;
+  //const { ratings } = props;
+  const ratings = 3.4;
   const solidStars = Math.floor(ratings);
   const starDifference = ratings - solidStars;
   let partialStars;
