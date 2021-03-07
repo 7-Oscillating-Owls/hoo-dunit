@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { AiOutlineStar } from 'react-icons/ai';
 import AppModal from '../AppModal';
 import styles from './Cart.css';
 
@@ -44,8 +45,8 @@ class Cart extends React.Component {
 
     return (
       <div className={styles.addToCart}>
-        <form onSubmit={this.handleSubmit}>
-          <select name="selectedSize" value={selectedSize} onChange={this.handleChange}>
+        <form className={styles.cartWrapper} onSubmit={this.handleSubmit}>
+          <select className={styles.size} name="selectedSize" value={selectedSize} onChange={this.handleChange}>
             <option value="">SELECT A SIZE</option>
             {
               skuIds.map((item) => (
@@ -55,7 +56,7 @@ class Cart extends React.Component {
               ))
             }
           </select>
-          <select name="selectedQuantity" value={selectedQuantity} onChange={this.handleChange}>
+          <select className={styles.quantity} name="selectedQuantity" value={selectedQuantity} onChange={this.handleChange}>
             <option value="">-</option>
             {
               displayQuantity && displayQuantity.map((item) => (
@@ -64,8 +65,10 @@ class Cart extends React.Component {
             }
           </select>
           <br />
-          <input type="submit" value="ADD TO BAG" />
+          <input className={styles.submitCart} type="submit" value="ADD TO BAG" />
+          <AiOutlineStar className={styles.star} />
         </form>
+
         {
           readyToBuy && (
           <AppModal ref={this.registerModal} outsideClickHandler={() => this.closeModal()}>
@@ -80,7 +83,8 @@ class Cart extends React.Component {
             </div>
           </AppModal>
           )
-}
+        }
+
       </div>
     );
   }
