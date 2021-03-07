@@ -13,84 +13,38 @@ const ReviewCharacteristics = (props) => {
   let qualityBar;
   let fit;
   let fitBar;
+  const characteristicBox = (
+    <div className={styles.grayBox}>
+      <div className={styles.box}> </div>
+      <div className={styles.box}> </div>
+      <div className={styles.box}> </div>
+      <div className={styles.box}> </div>
+      <div className={styles.box}> </div>
+    </div>
+  );
 
   if (metaObject.characteristics) {
     console.log('This is metaObjectcharacteristics: ', metaObject.characteristics);
     const characteristics = metaObject.characteristics;
     if (characteristics.Size) {
       size = `Size: ${((characteristics.Size.value) / 20).toFixed(1)}%`;
-      sizeBar = (
-        <div className={styles.grayBox}>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-        </div>
-      );
-    } else {
-      size = null;
-      sizeBar = null;
+      sizeBar = characteristicBox;
     }
     if (characteristics.Width) {
       width = `Width: ${(((characteristics.Width.value) / 5) * 100).toFixed(1)}%`;
-      widthBar = (
-        <div className={styles.grayBox}>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-        </div>
-      );
-    } else {
-      width = null;
-      widthBar = null;
+      widthBar = characteristicBox;
     }
     if (characteristics.Comfort) {
       comfort = `Comfort: ${(((characteristics.Comfort.value) / 5) * 100).toFixed(1)}%`;
-      comfortBar = (
-        <div className={styles.grayBox}>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-        </div>
-      );
-    } else {
-      comfort = null;
-      comfortBar = null;
+      comfortBar = characteristicBox;
     }
     if (characteristics.Quality) {
       quality = `Quality: ${(((characteristics.Quality.value) / 5) * 100).toFixed(1)}%`;
-      qualityBar = (
-        <div className={styles.grayBox}>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-        </div>
-      );
-    } else {
-      quality = null;
-      qualityBar = null;
+      qualityBar = characteristicBox;
     }
     if (characteristics.Fit) {
       fit = `Characteristics: ${(((characteristics.Fit.value) / 5) * 100).toFixed(1)}%`;
-      fitBar = (
-        <div className={styles.grayBox}>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-          <div className={styles.box}> </div>
-        </div>
-      );
-    } else {
-      fit = null;
-      fitBar = null;
+      fitBar = characteristicBox;
     }
   }
 
@@ -116,37 +70,6 @@ const ReviewCharacteristics = (props) => {
         {fit}
         {fitBar}
       </div>
-      {
-        // Testing below - there are a total of 10 potential characteristic traits
-      }
-      {/* <div>
-        {comfort}
-        {comfortBar}
-      </div>
-      <div>
-        {comfort}
-        {comfortBar}
-      </div>
-      <div>
-        {comfort}
-        {comfortBar}
-      </div>
-      <div>
-        {comfort}
-        {comfortBar}
-      </div>
-      <div>
-        {comfort}
-        {comfortBar}
-      </div>
-      <div>
-        {comfort}
-        {comfortBar}
-      </div>
-      <div>
-        {comfort}
-        {comfortBar}
-      </div> */}
     </div>
   );
 };
