@@ -34,7 +34,10 @@ const ProductInformation = ({ productInfo, originalPrice, salePrice }) => {
 };
 
 ProductInformation.propTypes = {
-  productInfo: PropTypes.objectOf(PropTypes.number).isRequired,
+  productInfo: PropTypes.shape({
+    category: PropTypes.string,
+    name: PropTypes.string,
+  }).isRequired,
   originalPrice: PropTypes.string.isRequired,
   salePrice: PropTypes.number.isRequired,
 };
