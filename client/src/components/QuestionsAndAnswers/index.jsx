@@ -42,7 +42,7 @@ class QuestionsAndAnswers extends React.Component {
         <div className={styles.searchContainer}>
           <SearchBar />
         </div>
-        <div>
+        <div className={styles.questionone}>
           <Question data={data} />
           <Answerlist />
         </div>

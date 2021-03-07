@@ -1,4 +1,11 @@
 .questionButton {
   padding: 17px;
   background-color: white;
+  border-radius: 4px;
+}
+
+.questionButton:hover {
+  background-color: grey;
+  color: white;
+  border: rgb(9, 61, 146);
 }
