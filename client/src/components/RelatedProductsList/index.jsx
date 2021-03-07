@@ -32,6 +32,12 @@ class RelatedProductsList extends Component {
     }
   }
 
+  setShowModal(shouldShowModal) {
+    this.setState({
+      showModal: !!shouldShowModal,
+    });
+  }
+
   makeScrollHandler() {
     let timerId = null;
     return () => {
@@ -42,18 +48,6 @@ class RelatedProductsList extends Component {
         this.renderButtons();
       }, 200);
     };
-  }
-
-  openModal() {
-    this.setState({
-      showModal: true,
-    });
-  }
-
-  dismissModal() {
-    this.setState({
-      showModal: false,
-    });
   }
 
   scrollCarousel(e, x) {
@@ -124,7 +118,7 @@ class RelatedProductsList extends Component {
         {
           showModal
           && (
-            <AppModal ref={this.registerModal} outsideClickHandler={() => this.dismissModal()}>
+            <AppModal ref={this.registerModal} outsideClickHandler={() => this.setShowModal()}>
               <div className={styles.comparisonModal}>
                 Hello!
               </div>
