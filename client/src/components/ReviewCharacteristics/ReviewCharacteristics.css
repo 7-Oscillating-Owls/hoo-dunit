@@ -1,0 +1,17 @@
+.characteristics {
+  text-align: left;
+  margin-top: 80px;
+}
+
+.grayBox {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-gap: 5px;
+  margin: 7px auto 20px auto;
+}
+
+.box {
+  background: gray;
+  width: 50px;
+  height: 10px;
+}
