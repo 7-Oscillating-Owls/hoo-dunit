@@ -67,7 +67,7 @@ class RelatedProducts extends React.Component {
 }
 
 RelatedProducts.propTypes = {
-  productId: PropTypes.number.isRequired,
+  productId: PropTypes.string.isRequired,
 };
 
 export default RelatedProducts;

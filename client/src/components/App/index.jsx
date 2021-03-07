@@ -5,6 +5,7 @@ import {
   Route,
 } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import RelatedProducts from '../RelatedProducts';
 import QuestionsAndAnswers from '../QuestionsAndAnswers';
@@ -22,13 +23,13 @@ class AppComponent extends React.Component {
   }
 
   componentDidMount() {
-    const { productId } = this.props.match.params;
     this.fetchProductDetail();
   }
 
   componentDidUpdate(prev) {
-    const { productId } = this.props.match.params;
-    const { productId:prevId } = prev.match.params;
+    const { match } = this.props;
+    const { productId } = match.params;
+    const { productId: prevId } = prev.match.params;
 
     if (productId !== prevId) {
       this.fetchProductDetail();
@@ -36,7 +37,8 @@ class AppComponent extends React.Component {
   }
 
   fetchProductDetail() {
-    const { productId } = this.props.match.params;
+    const { match } = this.props;
+    const { productId } = match.params;
     if (productId) {
       axios.get(`/api/products/${productId}`)
         .then((response) => {
@@ -48,19 +50,27 @@ class AppComponent extends React.Component {
   }
 
   render() {
-    const { productId } = this.props.match.params;
+    const { match } = this.props;
     const { product } = this.state;
 
     return (
       <>
         <Overview />
-        <RelatedProducts productId={productId} product={product} />
+        <RelatedProducts productId={match.params.productId} product={product} />
         <ReviewsList />
         <QuestionsAndAnswers />
       </>
     );
   }
 }
+
+AppComponent.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      productId: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 const App = () => (
   <Router>
