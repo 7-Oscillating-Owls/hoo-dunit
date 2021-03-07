@@ -1,11 +1,16 @@
 .addToCart {
   grid-area: d;
   /* border: 1px solid black; */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
   width: 425px;
   height: 30px;
-}
-
-.selectContainer {
   text-align: center;
 }
 
+.addedToBag{
+  background-color:white;
+  box-sizing: border-box;
+  width: 300px;
+  height: 300px;
+}

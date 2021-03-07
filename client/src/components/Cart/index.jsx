@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AppModal from '../AppModal';
 import styles from './Cart.css';
 
 class Cart extends React.Component {
@@ -8,6 +9,7 @@ class Cart extends React.Component {
     this.state = {
       selectedSize: '',
       selectedQuantity: 0,
+      readyToBuy: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -21,21 +23,27 @@ class Cart extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { selectedSize, selectedQuantity } = this.state;
-    const { styleId } = this.props;
-    console.log(`Added to Cart: Style ID ${styleId}, Size ${selectedSize} Quantity ${selectedQuantity}`);
+    this.setState({
+      readyToBuy: true,
+    });
+  }
+
+  closeModal() {
+    this.setState({
+      readyToBuy: false,
+    });
   }
 
   render() {
-    const { skus } = this.props;
-    const { selectedSize, selectedQuantity } = this.state;
+    const { skus, styleId } = this.props;
+    const { selectedSize, selectedQuantity, readyToBuy } = this.state;
     const skuIds = Object.keys(skus);
     const filteredQuantity = Object.values(skus).filter((sku) => sku.size === selectedSize)
       .map((sku) => sku.quantity);
     const displayQuantity = Array.from(new Array(filteredQuantity[0]), (x, i) => i + 1);
 
     return (
-      <div className={`${styles.selectContainer} ${styles.addToCart}`}>
+      <div className={styles.addToCart}>
         <form onSubmit={this.handleSubmit}>
           <select name="selectedSize" value={selectedSize} onChange={this.handleChange}>
             <option value="">SELECT A SIZE</option>
@@ -58,6 +66,21 @@ class Cart extends React.Component {
           <br />
           <input type="submit" value="ADD TO BAG" />
         </form>
+        {
+          readyToBuy && (
+          <AppModal ref={this.registerModal} outsideClickHandler={() => this.closeModal()}>
+            <div className={styles.addedToBag}>
+              Added to Cart: Style ID
+              {styleId}
+              , Size
+              {selectedSize}
+              {' '}
+              Quantity
+              {selectedQuantity}
+            </div>
+          </AppModal>
+          )
+}
       </div>
     );
   }
