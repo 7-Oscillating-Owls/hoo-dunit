@@ -4,12 +4,12 @@ import QuestionList from '../QuestionList'
 
 const Question = (props) => (
   <div>
-  {props.data.slice(0,1).map((question, index) => {
+    {props.data.slice(0, 1).map((question, index) => {
       return <QuestionList
         question={question}
         key={question.question_id}
-    />
-  })}
+      />
+    })}
   </div>
 );
 

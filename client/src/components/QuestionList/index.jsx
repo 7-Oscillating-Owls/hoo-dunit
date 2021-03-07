@@ -7,8 +7,8 @@ const QuestionList = (props) => (
   <div className={styles.questionlist}>
     <h4>Q: {props.question.question_body}</h4>
     <div className={styles.sidebar}>
-      <Helpful helpfulness ={props.question.question_helpfulness} />
-      <AddAnswer />
+        <Helpful helpfulness={props.question.question_helpfulness} />
+        <AddAnswer />
     </div>
   </div>
 )

@@ -24,10 +24,10 @@ class AddAnswer extends React.Component {
 
   render() {
     return (
-      <div>
+      <span className={styles.AddAnswer}>
         <small className={styles.AddAnswer}><a onClick={this.handleClick}>Add Answer</a></small>
         {this.state.showAnswerModal ? <AnswerModal modalclose={this.handleModalClose}/> : null}
-      </div>
+      </span>
     )
   }
 }
