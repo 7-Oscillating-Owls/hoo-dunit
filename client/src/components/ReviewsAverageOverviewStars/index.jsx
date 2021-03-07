@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import styles from './ReviewsAverageOverviewStars.css';
 // import images from '/static/images';
@@ -31,11 +32,11 @@ const ReviewsAverageOverviewStars = (props) => {
   return (
     <div>
       {
-        [...Array(solidStars)].map(() => <img src="/images/FilledStar.png" className={styles.stars} alt="Solid Star" />)
+        [...Array(solidStars)].map((star, index) => <img src="/images/FilledStar.png" className={styles.stars} alt="Solid Star" key={`Solid Star: ${index} ${star}`} />)
       }
       {partialStars}
       {
-        [...Array(remainingStars)].map(() => <img src="/images/UnfilledStar.png" className={styles.stars} alt="Unfilled Star" />)
+        [...Array(remainingStars)].map((star, index) => <img src="/images/UnfilledStar.png" className={styles.stars} alt="Unfilled Star" key={`Unfilled Star: ${index} ${star}`} />)
       }
     </div>
   );

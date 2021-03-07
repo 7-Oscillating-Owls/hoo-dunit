@@ -4,18 +4,20 @@ import React from 'react';
 import axios from 'axios';
 import ReviewsAverageOverviewStars from '../ReviewsAverageOverviewStars';
 import ReviewRatingDistribution from '../ReviewRatingDistribution';
+import ReviewCharacteristics from '../ReviewCharacteristics';
 import ReviewTiles from '../ReviewTiles';
-import ReviewsAddForm from '../ReviewsAddForm';
 import ReviewAddFormModal from '../ReviewAddFormModal';
 import ReviewsMoreReviews from '../ReviewsMoreReviews';
-import exampleReviewsData from '../../../../data/reviews';
 import styles from './ReviewsList.css';
+// import ReviewsAddForm from '../ReviewsAddForm';
+// import exampleReviewsData from '../../../../data/reviews';
 
 class ReviewsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       reviewsList: [],
+      metaObject: {},
       reviewCount: 0,
       overallRating: 0,
       recommendPercent: 0,
@@ -27,6 +29,7 @@ class ReviewsList extends React.Component {
       displayModal: false,
     };
     this.getReviews = this.getReviews.bind(this);
+    this.getMetaData = this.getMetaData.bind(this);
     this.getOverallView = this.getOverallView.bind(this);
     this.addReview = this.addReview.bind(this);
     this.getIndividualStarTotal = this.getIndividualStarTotal.bind(this);
@@ -37,13 +40,13 @@ class ReviewsList extends React.Component {
 
   componentDidMount() {
     this.getReviews();
+    this.getMetaData();
   }
 
   getReviews() {
     axios.get('/reviews')
       .then((response) => {
         const reviewsData = response.data.results;
-        console.log(reviewsData);
         this.setState({ reviewsList: reviewsData });
         this.setState({ reviewCount: reviewsData.length });
         this.getOverallView();
@@ -51,6 +54,16 @@ class ReviewsList extends React.Component {
       })
       .catch((error) => {
         console.log('Error fetching reviews: ', error);
+      })
+  }
+
+  getMetaData() {
+    axios.get('/reviews/meta')
+      .then((response) => {
+        this.setState({ metaObject: response.data});
+      })
+      .catch((error) => {
+        console.log('Error fetching meta data: ', error);
       })
   }
 
@@ -171,6 +184,7 @@ class ReviewsList extends React.Component {
             twoStarTotal={this.state.twoStarTotal}
             oneStarTotal={this.state.oneStarTotal}
           />
+          <ReviewCharacteristics metaObject={this.state.metaObject} />
           <div className={styles.reviewTotal}>
             {this.state.reviewCount}
             {' '}

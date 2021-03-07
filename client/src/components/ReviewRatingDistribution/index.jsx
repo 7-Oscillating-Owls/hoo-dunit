@@ -18,27 +18,27 @@ const ReviewRatingDistribution = (props) => {
   return (
     <div className={styles.ratingDistribution}>
       <div className={styles.distributionWrapper}>
-        <label for="fiveStar">5 Stars: </label>
+        <label htmlFor="fiveStar">5 Stars: </label>
         <progress id="fiveStar" max="100" value={fiveStarDistribution}>{`${fiveStarDistribution}%`}</progress>
         <span> {fiveStarTotal}</span>
       </div>
       <div className={styles.distributionWrapper}>
-        <label for="fourStar">4 Stars: </label>
+        <label htmlFor="fourStar">4 Stars: </label>
         <progress id="fourStar" max="100" value={fourStarDistribution}>{`${fourStarDistribution}%`}</progress>
         <span> {fourStarTotal}</span>
       </div>
       <div className={styles.distributionWrapper}>
-        <label for="threeStar">3 Stars: </label>
+        <label htmlFor="threeStar">3 Stars: </label>
         <progress id="threeStar" max="100" value={threeStarDistribution}>{`${threeStarDistribution}%`}</progress>
         <span> {threeStarTotal}</span>
       </div>
       <div className={styles.distributionWrapper}>
-        <label for="twoStar">2 Stars: </label>
+        <label htmlFor="twoStar">2 Stars: </label>
         <progress id="twoStar" max="100" value={twoStarDistribution}>{`${twoStarDistribution}%`}</progress>
         <span> {twoStarTotal}</span>
       </div>
       <div className={styles.distributionWrapper}>
-        <label for="oneStar">1 Stars: </label>
+        <label htmlFor="oneStar">1 Stars: </label>
         <progress id="oneStar" max="100" value={oneStarDistribution}>{`${oneStarDistribution}%`}</progress>
         <span> {oneStarTotal}</span>
       </div>
