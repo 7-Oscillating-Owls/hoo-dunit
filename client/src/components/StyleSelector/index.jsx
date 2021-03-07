@@ -7,7 +7,7 @@ class StyleSelector extends React.Component {
     super(props);
     this.state = {
       selectedStyle: 'Forest Green & Black',
-      isClicked: true,
+      isClicked: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -17,7 +17,7 @@ class StyleSelector extends React.Component {
     getSelectedStyleId(styleId);
     this.setState({
       selectedStyle: styleName,
-      isClicked: false,
+      isClicked: !this.state.isClicked,
     });
   }
 
@@ -33,18 +33,22 @@ class StyleSelector extends React.Component {
         <div className={styles.imageContainer}>
           {allStyles.map((style) => (
             <div className={styles.imageWrapper} key={style.photos[0].url}>
-            <img
-              className={styles.thumbnail}
-              src={style.photos[0].thumbnail_url}
-              alt={style.style_id}
-              onClick={()=>this.handleClick(style.style_id, style.name)}
-            />
+              <img
+                className={styles.thumbnail}
+                src={style.photos[0].thumbnail_url}
+                alt={style.style_id}
+                onClick={() => this.handleClick(style.style_id, style.name)}
+              />
+              {isClicked
+                ? (
+                  <div className={styles.checkmark}>
+                    &#10003;
+                  </div>
+                )
+                : null}
             </div>
           ))}
-        </div>
-        <div className={styles.checkmark}>
-            {isClicked &&
-            <div>Check</div>}
+
         </div>
 
       </div>
