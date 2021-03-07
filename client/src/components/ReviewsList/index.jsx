@@ -184,12 +184,12 @@ class ReviewsList extends React.Component {
             twoStarTotal={this.state.twoStarTotal}
             oneStarTotal={this.state.oneStarTotal}
           />
-          <ReviewCharacteristics metaObject={this.state.metaObject} />
           <div className={styles.reviewTotal}>
             {this.state.reviewCount}
             {' '}
             Total Reviews
           </div>
+          <ReviewCharacteristics metaObject={this.state.metaObject} />
         </div>
         <div>
           <div>
