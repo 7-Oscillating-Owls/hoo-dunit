@@ -22,12 +22,10 @@
   align-items: center;
   align-content: flex-start;
   width: 100%;
+  min-width: 260px;
   border: 1px solid #E6E6E6;
   box-shadow: 2px 2px 8px 1px #C7C7C7;
   border-radius: 7px;
-  height: 420px;
-  /* height: 50%; */
-  /* min-height: 420px; */
 }
 
 .ratingsAndReviewsTitle {
@@ -35,6 +33,7 @@
   font-weight: 900;
   font-size: 20px;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .overallRating {
@@ -55,4 +54,5 @@
   color: #75C0DC;
   font-weight: 800;
   font-size: 14px;
+  margin: 8px auto;
 }

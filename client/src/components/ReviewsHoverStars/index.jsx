@@ -14,7 +14,7 @@ const ReviewsHoverStars = (props) => (
               type="radio"
               name="overallRating"
               value={ratingValue}
-              required
+              key={`Hover stars ${index} ${star}`}
             />
             <FaStar
               className={styles.star}
@@ -22,6 +22,7 @@ const ReviewsHoverStars = (props) => (
               size={50}
               onMouseEnter={() => props.starHover(ratingValue)}
               onMouseLeave={props.starNotHover}
+              key={`Hover stars ${index} ${star}`}
             />
           </label>
         );
