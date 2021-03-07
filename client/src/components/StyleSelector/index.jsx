@@ -32,13 +32,12 @@ class StyleSelector extends React.Component {
         </div>
         <div className={styles.imageContainer}>
           {allStyles.map((style) => (
-            <div className={styles.imageWrapper}>
+            <div className={styles.imageWrapper} key={style.photos[0].url}>
             <img
               className={styles.thumbnail}
               src={style.photos[0].thumbnail_url}
               alt={style.style_id}
               onClick={()=>this.handleClick(style.style_id, style.name)}
-              key={style.photos[0].url}
             />
             </div>
           ))}
