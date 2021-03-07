@@ -11,22 +11,15 @@
       object-fit: cover;
 }
 
+.expandedImage {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
 
-/* .expand {
-  composes: currentImage;
-
-  height: 430px;
-} */
 
 .zoombtn {
   position: absolute;
   top: 0;
   right: 0;
-}
-
-.dialog {
-  position: absolute;
-  position: static;
-  left: 20%;
-  top: 0;
 }
