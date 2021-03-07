@@ -5,37 +5,40 @@ import styles from './ReviewCharacteristics.css';
 const ReviewCharacteristics = (props) => {
   const { metaObject } = props;
   let size;
+  let sizePercent;
   let sizeBar;
   let sizeScale;
   let width;
+  let widthPercent;
   let widthBar;
   let widthScale;
   let comfort;
+  let comfortPercent;
   let comfortBar;
   let comfortScale;
   let quality;
+  let qualityPercent;
   let qualityBar;
   let qualityScale;
   let fit;
+  let fitPercent;
   let fitBar;
   let fitScale;
   const characteristicBox = (
-    <div>
-      <GoTriangleDown color="#75C0DC" className={styles.triangle} />
-      <div className={styles.grayBox}>
-        <div className={styles.box}> </div>
-        <div className={styles.box}> </div>
-        <div className={styles.box}> </div>
-        <div className={styles.box}> </div>
-        <div className={styles.box}> </div>
-      </div>
+    <div className={styles.grayBox}>
+      <div className={styles.box}> </div>
+      <div className={styles.box}> </div>
+      <div className={styles.box}> </div>
+      <div className={styles.box}> </div>
+      <div className={styles.box}> </div>
     </div>
   );
 
   if (metaObject.characteristics) {
     const characteristics = metaObject.characteristics;
     if (characteristics.Size) {
-      size = `Size: ${((characteristics.Size.value) / 20).toFixed(1)}%`;
+      size = 'Size: ';
+      sizePercent = ((characteristics.Size.value) / 20).toFixed(1);
       sizeBar = characteristicBox;
       sizeScale = (
         <div className={styles.scale}>
@@ -48,7 +51,8 @@ const ReviewCharacteristics = (props) => {
       );
     }
     if (characteristics.Width) {
-      width = `Width: ${(((characteristics.Width.value) / 5) * 100).toFixed(1)}%`;
+      width = 'Width: ';
+      widthPercent = (((characteristics.Width.value) / 5) * 100).toFixed(1);
       widthBar = characteristicBox;
       widthScale = (
         <div className={styles.scale}>
@@ -61,7 +65,15 @@ const ReviewCharacteristics = (props) => {
       );
     }
     if (characteristics.Comfort) {
-      comfort = `Comfort: ${(((characteristics.Comfort.value) / 5) * 100).toFixed(1)}%`;
+      comfort = 'Comfort: ';
+      // <GoTriangleDown color="#75C0DC" />
+      comfortPercent = (
+        <div>
+          <div>{(((characteristics.Comfort.value) / 5) * 100).toFixed(1)}</div>
+          <input type="range" className={styles.slider} min="0" max="100" step="5" value={(((characteristics.Comfort.value) / 5) * 100).toFixed(1)} />
+          <GoTriangleDown className={styles.triangle} color="#75C0DC" size={25} data-width={(((characteristics.Comfort.value) / 5) * 100).toFixed(1)} />
+        </div>
+      );
       comfortBar = characteristicBox;
       comfortScale = (
         <div className={styles.scale}>
@@ -74,7 +86,8 @@ const ReviewCharacteristics = (props) => {
       );
     }
     if (characteristics.Quality) {
-      quality = `Quality: ${(((characteristics.Quality.value) / 5) * 100).toFixed(1)}%`;
+      quality = 'Quality: ';
+      qualityPercent = (((characteristics.Quality.value) / 5) * 100).toFixed(1);
       qualityBar = characteristicBox;
       qualityScale = (
         <div className={styles.scale}>
@@ -87,7 +100,8 @@ const ReviewCharacteristics = (props) => {
       );
     }
     if (characteristics.Fit) {
-      fit = `Fit: ${(((characteristics.Fit.value) / 5) * 100).toFixed(1)}%`;
+      fit = 'Fit: ';
+      fitPercent = (((characteristics.Fit.value) / 5) * 100).toFixed(1);
       fitBar = characteristicBox;
       fitScale = (
         <div className={styles.scale}>
@@ -106,26 +120,31 @@ const ReviewCharacteristics = (props) => {
       <h3>Product Characteristics: </h3>
       <div>
         {size}
+        {sizePercent}
         {sizeBar}
         {sizeScale}
       </div>
       <div>
         {width}
+        {widthPercent}
         {widthBar}
         {widthScale}
       </div>
       <div>
         {comfort}
+        {comfortPercent}
         {comfortBar}
         {comfortScale}
       </div>
       <div>
         {quality}
+        {qualityPercent}
         {qualityBar}
         {qualityScale}
       </div>
       <div>
         {fit}
+        {fitPercent}
         {fitBar}
         {fitScale}
       </div>
