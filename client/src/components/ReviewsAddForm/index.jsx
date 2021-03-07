@@ -97,18 +97,6 @@ class ReviewsAddForm extends React.Component {
             <p>4 - Good</p>
             <p>5 - Great</p>
           </div>
-          {/* <div onChange={this.handleChange} required>
-            <input type="radio" id="overallRating1" name="overallRating" value="1" required/>
-            <label htmlFor="overallRating1"> 1 - Poor </label>
-            <input type="radio" id="overallRating2" name="overallRating" value="2" />
-            <label htmlFor="overallRating2"> 2 - Fair </label>
-            <input type="radio" id="overallRating3" name="overallRating" value="3" />
-            <label htmlFor="overallRating3"> 3 - Average </label>
-            <input type="radio" id="overallRating4" name="overallRating" value="4" />
-            <label htmlFor="overallRating4"> 4 - Good </label>
-            <input type="radio" id="overallRating5" name="overallRating" value="5" />
-            <label htmlFor="overallRating5"> 5 - Great </label>
-          </div> */}
           <br />
           <h4>What is your email?</h4>
           <input className={styles.emailInput} onChange={this.handleChange} type="email" name="email" value={this.state.email} placeholder="Example: abc@123.com" required />
