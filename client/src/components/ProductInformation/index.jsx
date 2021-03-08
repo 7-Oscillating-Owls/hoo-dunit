@@ -8,9 +8,7 @@ const ProductInformation = (props) => {
     productInfo,
     originalPrice,
     salePrice,
-    starRating
   } = props;
-  console.log('PRODUCT INFO STAR RATING: ', starRating);
   const currentPrice = salePrice === null ? (
     <div className={styles.price}>
       $
@@ -31,7 +29,7 @@ const ProductInformation = (props) => {
   return (
     <div className={styles.productInformation}>
       <div className={styles.ratings}>
-        <span><ReviewsAverageOverviewStars starRating={starRating} /> </span>
+        {/* <span><ReviewsAverageOverviewStars starRating={starRating} /> </span> */}
         <u>Read All Reviews</u>
       </div>
       <div className={styles.category}>{productInfo.category}</div>
@@ -47,11 +45,11 @@ ProductInformation.propTypes = {
     name: PropTypes.string,
   }).isRequired,
   originalPrice: PropTypes.string.isRequired,
-  salePrice: PropTypes.string,
+  salePrice: PropTypes.number,
 };
 
 ProductInformation.defaultProps = {
-  salePrice: PropTypes.string,
+  salePrice: PropTypes.number,
 };
 
 export default ProductInformation;
