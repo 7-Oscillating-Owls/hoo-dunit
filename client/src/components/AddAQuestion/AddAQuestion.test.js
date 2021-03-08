@@ -1,9 +1,9 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import Answerlist from '.';
+import AddAQuestion from '.';
 
 it('should exist', () => {
-  const wrapper = shallow(<Answerlist />);
+  const wrapper = shallow(<AddAQuestion />);
   expect(wrapper.exists()).toBe(true);
 });
