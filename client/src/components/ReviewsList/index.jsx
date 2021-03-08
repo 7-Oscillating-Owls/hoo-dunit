@@ -18,14 +18,14 @@ class ReviewsList extends React.Component {
     this.state = {
       reviewsList: [],
       metaObject: {},
-      reviewCount: 0,
+      // reviewCount: 0,
       overallRating: 0,
       recommendPercent: 0,
-      fiveStarTotal: '',
-      fourStarTotal: '',
-      threeStarTotal: '',
-      twoStarTotal: '',
-      oneStarTotal: '',
+      // fiveStarTotal: '',
+      // fourStarTotal: '',
+      // threeStarTotal: '',
+      // twoStarTotal: '',
+      // oneStarTotal: '',
       displayModal: false,
     };
     this.getReviews = this.getReviews.bind(this);
@@ -60,7 +60,7 @@ class ReviewsList extends React.Component {
   getMetaData() {
     axios.get('/reviews/meta')
       .then((response) => {
-        this.setState({ metaObject: response.data });
+        this.setState({ metaObject: response.data});
       })
       .catch((error) => {
         console.log('Error fetching meta data: ', error);
@@ -68,17 +68,17 @@ class ReviewsList extends React.Component {
   }
 
   getOverallView() {
-    let ratingTotal = 0;
+    // let ratingTotal = 0;
     let recommendTotal = 0;
     this.state.reviewsList.forEach((review) => {
-      ratingTotal += review.rating;
+      // ratingTotal += review.rating;
       if (review.recommend === true) {
         recommendTotal += 1;
       }
     });
-    const averageRating = ratingTotal / (this.state.reviewCount);
+    // const averageRating = ratingTotal / (this.state.reviewCount);
     const recommended = `${((recommendTotal / (this.state.reviewCount)).toFixed(2)) * 100}%`;
-    this.setState({ overallRating: averageRating, recommendPercent: recommended });
+    this.setState({ recommendPercent: recommended });
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -155,6 +155,7 @@ class ReviewsList extends React.Component {
   }
 
   render() {
+    console.log('THIS IS REVIEW LIST STAR RATING: ', this.props.starRating);
     let display = this.state.displayModal;
     let ReviewModalRender;
     if (display === true) {
@@ -167,9 +168,9 @@ class ReviewsList extends React.Component {
         <div>
           <div className={styles.ratingsOverview}>
             <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
-            <div className={styles.overallRating}>{this.state.overallRating}</div>
+            <div className={styles.overallRating}>{this.props.starRating}</div>
             <div className={styles.starRating}>
-              <ReviewsAverageOverviewStars ratings={this.state.overallRating} />
+              <ReviewsAverageOverviewStars starRating={this.props.starRating} />
             </div>
             <div className={styles.recommendOverview}>
               {this.state.recommendPercent}

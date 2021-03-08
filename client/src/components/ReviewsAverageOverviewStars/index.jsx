@@ -4,10 +4,11 @@ import styles from './ReviewsAverageOverviewStars.css';
 // import images from '/static/images';
 
 const ReviewsAverageOverviewStars = (props) => {
-  //const { ratings } = props;
-  const ratings = 3.4;
-  const solidStars = Math.floor(ratings);
-  const starDifference = ratings - solidStars;
+  // const starRating = props.starRating;
+  // console.log('THIS IS PROPS IN AVG: ', props.starRating);
+  const starRating = 3.4;
+  const solidStars = Math.floor(starRating);
+  const starDifference = starRating - solidStars;
   let partialStars;
   const remainingStars = 4 - solidStars;
   if (starDifference > 0 && starDifference <= 0.12) {
