@@ -129,7 +129,7 @@ class AppComponent extends React.Component {
         <Overview starRating={starRating} />
         <RelatedProducts productId={match.params.productId} product={product} />
         <ReviewsList
-          currentProduct={product}
+          currentProduct={match.params.productId}
           starRating={starRating}
           metaObject={metaObject}
           recommendPercent={recommendPercent}

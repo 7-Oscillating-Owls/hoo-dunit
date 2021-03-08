@@ -43,14 +43,17 @@ app.get('/answers', (request, response) => {
 
 // Get product's review information
 app.get('/reviews', (request, response) => {
-  const productId = "14296"; // 14931, 14932, 14034, 14296, 14807
+  const { productId, page } = request.query;
+  // const productId = '14296';
+  // const page = '1';
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', {
     headers: {
       Authorization: token,
     },
     params: {
       product_id: `${productId}`,
-      count: 200,
+      count: 8,
+      page: `${page}`,
     },
   })
     .then((result) => {

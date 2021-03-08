@@ -21,6 +21,8 @@ class ReviewsList extends React.Component {
       limitedReviewsList: [],
       displayModal: false,
       displayMoreButton: true,
+      numberOfReviewsDisplayed: 2,
+      currentPage: 1,
     };
     this.getReviews = this.getReviews.bind(this);
     this.addReview = this.addReview.bind(this);
@@ -33,9 +35,19 @@ class ReviewsList extends React.Component {
     this.getReviews();
   }
 
-  // const currentProduct
+  // Send current product id from App with get request and retrieve reviews list
   getReviews() {
-    axios.get('/reviews')
+    // const { currentProduct } = this.props;
+    const currentProduct = '14296'; // 14931, 14932, 14034, 14296, 14807
+    const {
+      currentPage,
+    } = this.state;
+    axios.get('/reviews', {
+      params: {
+        productId: currentProduct,
+        page: currentPage,
+      },
+    })
       .then((response) => {
         const reviewsData = response.data.results;
         this.setState({
@@ -85,40 +97,34 @@ class ReviewsList extends React.Component {
   }
 
   // eslint-disable-next-line class-methods-use-this
+  // Display two more reviews
   getMoreReviews() {
-    // Display two more reviews
-    console.log('More Reviews clicked');
     const {
       reviewsList,
       limitedReviewsList,
+      numberOfReviewsDisplayed,
     } = this.state;
+    const { totalNumberOfStars } = this.props;
     const currentLength = limitedReviewsList.length;
-    if (reviewsList[currentLength + 2]) {
-      if ((limitedReviewsList.length + 2) === (currentLength + 2)) {
-        this.setState({
-          displayMoreButton: false,
-        });
-      }
+    if (reviewsList[numberOfReviewsDisplayed + 2]) {
       this.setState({
         limitedReviewsList: [
           ...limitedReviewsList,
           reviewsList[currentLength + 1],
           reviewsList[currentLength + 2],
         ],
+        numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 2),
       });
     } else if (reviewsList[currentLength + 1]) {
-      if ((limitedReviewsList.length + 1) === (currentLength + 1)) {
-        this.setState({
-          displayMoreButton: false,
-        });
-      }
       this.setState({
         limitedReviewsList: [...limitedReviewsList, reviewsList[currentLength + 1]],
+        numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 1),
       });
     } else {
-      this.setState({
-        displayMoreButton: false,
-      });
+      this.setState({ displayMoreButton: false });
+    }
+    if (numberOfReviewsDisplayed === totalNumberOfStars) {
+      this.setState({ displayMoreButton: false });
     }
   }
 
