@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import ReviewsAverageOverviewStars from '../ReviewsAverageOverviewStars';
 import styles from './ProductInformation.css';
 
-const ProductInformation = ({ productInfo, originalPrice, salePrice, starRating }) => {
+const ProductInformation = (props) => {
+  const {
+    productInfo,
+    originalPrice,
+    salePrice,
+    starRating
+  } = props;
+  console.log('PRODUCT INFO STAR RATING: ', starRating);
   const currentPrice = salePrice === null ? (
     <div className={styles.price}>
       $
@@ -24,7 +31,7 @@ const ProductInformation = ({ productInfo, originalPrice, salePrice, starRating 
   return (
     <div className={styles.productInformation}>
       <div className={styles.ratings}>
-        <span><ReviewsAverageOverviewStars ratings={starRating} /> </span>
+        <span><ReviewsAverageOverviewStars starRating={starRating} /> </span>
         <u>Read All Reviews</u>
       </div>
       <div className={styles.category}>{productInfo.category}</div>

@@ -19,12 +19,16 @@ class AppComponent extends React.Component {
 
     this.state = {
       product: undefined,
-      starRating: 3.4,
+      starRating: 5,
+      metaObject: {},
     };
+    this.getMetaData = this.getMetaData.bind(this);
+    this.getAverageRating = this.getAverageRating.bind(this);
   }
 
   componentDidMount() {
     this.fetchProductDetail();
+    this.getMetaData();
   }
 
   componentDidUpdate(prev) {
@@ -50,15 +54,39 @@ class AppComponent extends React.Component {
     }
   }
 
+  getMetaData() {
+    axios.get('/reviews/meta')
+      .then((response) => {
+        this.setState({ metaObject: response.data });
+        this.getAverageRating();
+      })
+      .catch((error) => {
+        console.log('Error fetching meta data: ', error);
+      });
+  }
+
+  getAverageRating() {
+    const { metaObject } = this.state;
+    const metaRatings = metaObject.ratings;
+    let starSubtotal = 0;
+    let starTotal = 0;
+    if (metaRatings) {
+      for (let key in metaRatings) {
+        starSubtotal += Number(key * metaRatings[key]);
+        starTotal += Number(metaRatings[key]);
+      }
+    }
+    this.setState({ starRating: ((starSubtotal / starTotal).toFixed(1)) });
+  }
+
   render() {
     const { match } = this.props;
-    const { product, starRating } = this.state;
-
+    const { product } = this.state;
     return (
       <>
-        <Overview startRating={starRating} />
+        <Overview starRating={this.state.starRating} />
         <RelatedProducts productId={match.params.productId} product={product} />
-        <ReviewsList />
+        <ReviewsList starRating={this.state.starRating} />
         <QuestionsAndAnswers />
       </>
     );

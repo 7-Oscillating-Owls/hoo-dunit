@@ -4,13 +4,16 @@ import styles from './ReviewsAverageOverviewStars.css';
 // import images from '/static/images';
 
 const ReviewsAverageOverviewStars = (props) => {
-  //const { ratings } = props;
-  const ratings = 3.4;
-  const solidStars = Math.floor(ratings);
-  const starDifference = ratings - solidStars;
+  const starRating = props.starRating;
+  const solidStars = Math.floor(starRating);
+  let starDifference = starRating - solidStars;
   let partialStars;
+  let starRender;
   const remainingStars = 4 - solidStars;
-  if (starDifference > 0 && starDifference <= 0.12) {
+  if (starRating === 5 || starRating === 0) {
+    partialStars = null;
+    starDifference = 0;
+  } else if (starDifference > 0 && starDifference <= 0.12) {
     // Unfilled star
     partialStars = <img src="/images/UnfilledStar.png" className={styles.stars} alt="Unfilled Star" />;
   } else if (starDifference > 0.12 && starDifference <= 0.37) {
@@ -30,43 +33,33 @@ const ReviewsAverageOverviewStars = (props) => {
     partialStars = <img src="/images/UnfilledStar.png" className={styles.stars} alt="Unfilled Star" />;
   }
 
+  if (starRating === 5) {
+    starRender = (
+      [...Array(5)].map((star, index) => <img src="/images/FilledStar.png" className={styles.stars} alt="Solid Star" key={`Solid Star: ${index} ${star}`} />)
+    );
+  } else if (starRating === 0) {
+    starRender = (
+      [...Array(5)].map((star, index) => <img src="/images/UnfilledStar.png" className={styles.stars} alt="Unfilled Star" key={`Unfilled Star: ${index} ${star}`} />)
+    );
+  } else {
+    starRender = (
+      <div>
+        {
+          [...Array(solidStars)].map((star, index) => <img src="/images/FilledStar.png" className={styles.stars} alt="Solid Star" key={`Solid Star: ${index} ${star}`} />)
+        }
+        {partialStars}
+        {
+          [...Array(remainingStars)].map((star, index) => <img src="/images/UnfilledStar.png" className={styles.stars} alt="Unfilled Star" key={`Unfilled Star: ${index} ${star}`} />)
+        }
+      </div>
+    );
+  }
+
   return (
     <div>
-      {
-        [...Array(solidStars)].map((star, index) => <img src="/images/FilledStar.png" className={styles.stars} alt="Solid Star" key={`Solid Star: ${index} ${star}`} />)
-      }
-      {partialStars}
-      {
-        [...Array(remainingStars)].map((star, index) => <img src="/images/UnfilledStar.png" className={styles.stars} alt="Unfilled Star" key={`Unfilled Star: ${index} ${star}`} />)
-      }
+      {starRender}
     </div>
   );
 };
 
 export default ReviewsAverageOverviewStars;
-
-// Notes and experiments:
-
-// const ReviewsAverageOverviewStars = (props) => {
-//   const { ratings } = props;
-//   const solidStars = Math.floor(ratings);
-//   let halfAndRemainingStars;
-//   const remainingStars = 4 - solidStars;
-//   if (solidStars !== ratings) {
-//     halfAndRemainingStars = <FaStarHalfAlt size={25} />;
-//   } else {
-//     halfAndRemainingStars = <FaRegStar size={25} />;
-//   }
-
-//   return (
-//     <div>
-//       {
-//         [...Array(solidStars)].map(() => <FaStar size={25} />)
-//       }
-//       {halfAndRemainingStars}
-//       {
-//         [...Array(remainingStars)].map(() => <FaRegStar size={25} />)
-//       }
-//     </div>
-//   );
-// };
