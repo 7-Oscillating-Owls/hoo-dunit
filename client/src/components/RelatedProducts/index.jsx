@@ -47,11 +47,13 @@ class RelatedProducts extends React.Component {
 
   render() {
     const { relatedProducts } = this.state;
+    const { product } = this.props;
 
     return (
       <section className={styles.relatedProducts}>
         <h3 className={styles.listTitle}>Related Products</h3>
         <RelatedProductsList
+          product={product}
           relatedProducts={relatedProducts}
           actionType="compare"
         />
@@ -66,8 +68,20 @@ class RelatedProducts extends React.Component {
   }
 }
 
+RelatedProducts.defaultProps = {
+  product: {
+    features: [],
+  },
+};
+
 RelatedProducts.propTypes = {
   productId: PropTypes.string.isRequired,
+  product: PropTypes.shape({
+    features: PropTypes.arrayOf(PropTypes.shape({
+      feature: PropTypes.string,
+      value: PropTypes.string,
+    })),
+  }),
 };
 
 export default RelatedProducts;

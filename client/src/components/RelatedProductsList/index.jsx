@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FaRegStar } from 'react-icons/fa';
 
 import AppModal from '../AppModal';
 import RelatedProductCard from '../RelatedProductCard';
+import RelatedProductCompare from '../RelatedProductCompare';
 import styles from './RelatedProductsList.css';
 
 class RelatedProductsList extends Component {
@@ -12,6 +14,7 @@ class RelatedProductsList extends Component {
     this.state = {
       showLeftButton: false,
       showRightButton: false,
+      compareToProduct: undefined,
     };
 
     this.setCarouselRef = (element) => {
@@ -32,6 +35,20 @@ class RelatedProductsList extends Component {
     }
   }
 
+  setShowModal(shouldShowModal) {
+    this.setState({
+      showModal: !!shouldShowModal,
+    });
+  }
+
+  compareProducts(product) {
+    this.setState({
+      showModal: true,
+      compareToProduct: product,
+    });
+    // this.setShowModal(true);
+  }
+
   makeScrollHandler() {
     let timerId = null;
     return () => {
@@ -42,18 +59,6 @@ class RelatedProductsList extends Component {
         this.renderButtons();
       }, 200);
     };
-  }
-
-  openModal() {
-    this.setState({
-      showModal: true,
-    });
-  }
-
-  dismissModal() {
-    this.setState({
-      showModal: false,
-    });
   }
 
   scrollCarousel(e, x) {
@@ -77,24 +82,24 @@ class RelatedProductsList extends Component {
   }
 
   render() {
-    const { relatedProducts, actionType } = this.props;
-    const { showLeftButton, showRightButton, showModal } = this.state;
+    const { actionType, product, relatedProducts } = this.props;
+    const { compareToProduct, showLeftButton, showRightButton, showModal } = this.state;
     const scrollSize = 270;
 
     let buttonSymbol;
     let buttonAction;
 
     if (actionType === 'compare') {
-      buttonSymbol = '*';
-      buttonAction = (id) => this.openModal(id);
+      buttonSymbol = <FaRegStar />;
+      buttonAction = (selectedProduct) => this.compareProducts(selectedProduct);
     } else {
       buttonSymbol = 'x';
       buttonAction = (id) => console.log('remove ', id);
     }
 
-    const cardsComponenets = relatedProducts.map((product) => (
-      <RelatedProductCard key={product.id} product={product}>
-        <button type="button" className={styles.actionButton} onClick={() => buttonAction(product.id)}>{buttonSymbol}</button>
+    const cardsComponenets = relatedProducts.map((relatedProduct) => (
+      <RelatedProductCard key={relatedProduct.id} product={relatedProduct}>
+        <button type="button" className={styles.actionButton} onClick={() => buttonAction(relatedProduct)}>{buttonSymbol}</button>
       </RelatedProductCard>
     ));
 
@@ -124,10 +129,8 @@ class RelatedProductsList extends Component {
         {
           showModal
           && (
-            <AppModal ref={this.registerModal} outsideClickHandler={() => this.dismissModal()}>
-              <div className={styles.comparisonModal}>
-                Hello!
-              </div>
+            <AppModal ref={this.registerModal} outsideClickHandler={() => this.setShowModal()}>
+              <RelatedProductCompare product={product} relatedProduct={compareToProduct} />
             </AppModal>
           )
         }
@@ -136,11 +139,16 @@ class RelatedProductsList extends Component {
   }
 }
 
+RelatedProductsList.defaultProps = {
+  product: {},
+};
+
 RelatedProductsList.propTypes = {
+  actionType: PropTypes.string.isRequired,
+  product: PropTypes.shape({}),
   relatedProducts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
   })).isRequired,
-  actionType: PropTypes.string.isRequired,
 };
 
 export default RelatedProductsList;

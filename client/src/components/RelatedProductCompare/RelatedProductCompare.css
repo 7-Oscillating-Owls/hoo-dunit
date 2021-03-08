@@ -1,0 +1,64 @@
+.comparisonModal {
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, .2);
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  color: rgb(90, 90 ,90);
+  padding: 30px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 100;
+  margin: 0;
+}
+
+.featureContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.headers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.featureRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  min-width: 400px;
+}
+
+.featureRow:hover {
+  background-color: rgba(0, 255, 55, 0.1);
+}
+
+.featureRow:hover .featureScore {
+  transform: scale3d(1.5, 1.5, 1);
+}
+
+.featureCell {
+  display: flex;
+  justify-content: center;
+}
+
+.featureName {
+  composes: featureCell;
+  flex-grow: 1;
+}
+
+.featureScore {
+  composes: featureCell;
+  min-width: 20px;
+}
+
+.productName {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
