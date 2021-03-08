@@ -33,6 +33,7 @@ class ReviewsList extends React.Component {
     this.getReviews();
   }
 
+  // const currentProduct
   getReviews() {
     axios.get('/reviews')
       .then((response) => {
