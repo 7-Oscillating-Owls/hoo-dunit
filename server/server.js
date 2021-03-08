@@ -28,7 +28,6 @@ app.get('/qa', (request, response) => {
 });
 
 app.get('/answers', (request, response) => {
-  const { questionId } = this.props;
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/84310/answers', {
     headers: {
       'Authorization' : token
@@ -122,11 +121,11 @@ app.post('/qa/postAnswer', (req, res) => {
     questionId
   } = req.body;
 
-  const { questionId }  = this.props;
+
   axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/{questionId}/answers`, {
     headers: {
       'Authorization' : token
-    };
+    }
   })
     .then((res) => {
       response.send('Successfuly posted');
