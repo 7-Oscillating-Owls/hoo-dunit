@@ -1,3 +1,5 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -20,10 +22,13 @@ class AppComponent extends React.Component {
     this.state = {
       product: undefined,
       starRating: 5,
+      totalNumberOfStars: 0,
+      recommendPercent: 100,
       metaObject: {},
     };
     this.getMetaData = this.getMetaData.bind(this);
     this.getAverageRating = this.getAverageRating.bind(this);
+    this.getRecommendPercent = this.getRecommendPercent.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +46,45 @@ class AppComponent extends React.Component {
     }
   }
 
+  getMetaData() {
+    axios.get('/reviews/meta')
+      .then((response) => {
+        this.setState({ metaObject: response.data });
+        this.getAverageRating();
+        this.getRecommendPercent();
+      })
+      .catch((error) => {
+        console.log('Error fetching meta data: ', error);
+      });
+  }
+
+  getAverageRating() {
+    const { metaObject } = this.state;
+    const metaRatings = metaObject.ratings;
+    let starSubtotal = 0;
+    let starTotal = 0;
+    if (metaRatings) {
+      for (const key in metaRatings) {
+        starSubtotal += Number(key * metaRatings[key]);
+        starTotal += Number(metaRatings[key]);
+      }
+    }
+    this.setState({ starRating: ((starSubtotal / starTotal).toFixed(1)) });
+  }
+
+  getRecommendPercent() {
+    const { metaObject } = this.state;
+    const { recommended } = metaObject;
+    const totalStars = (Number(recommended.true) + Number(recommended.false));
+    const recommendedPercentage = (
+      (recommended.true / totalStars).toFixed(2) * 100
+    );
+    this.setState({
+      recommendPercent: recommendedPercentage,
+      totalNumberOfStars: totalStars,
+    });
+  }
+
   fetchProductDetail() {
     const { match } = this.props;
     const { productId } = match.params;
@@ -54,39 +98,26 @@ class AppComponent extends React.Component {
     }
   }
 
-  getMetaData() {
-    axios.get('/reviews/meta')
-      .then((response) => {
-        this.setState({ metaObject: response.data });
-        this.getAverageRating();
-      })
-      .catch((error) => {
-        console.log('Error fetching meta data: ', error);
-      });
-  }
-
-  getAverageRating() {
-    const { metaObject } = this.state;
-    const metaRatings = metaObject.ratings;
-    let starSubtotal = 0;
-    let starTotal = 0;
-    if (metaRatings) {
-      for (let key in metaRatings) {
-        starSubtotal += Number(key * metaRatings[key]);
-        starTotal += Number(metaRatings[key]);
-      }
-    }
-    this.setState({ starRating: ((starSubtotal / starTotal).toFixed(1)) });
-  }
-
   render() {
     const { match } = this.props;
-    const { product } = this.state;
+    const {
+      product,
+      metaObject,
+      starRating,
+      recommendPercent,
+      totalNumberOfStars,
+    } = this.state;
+    console.log('THIS IS STATE METAOBJECT: ', metaObject);
     return (
       <>
-        <Overview starRating={this.state.starRating} />
+        <Overview starRating={starRating} />
         <RelatedProducts productId={match.params.productId} product={product} />
-        <ReviewsList starRating={this.state.starRating} />
+        <ReviewsList
+          starRating={starRating}
+          metaObject={metaObject}
+          recommendPercent={recommendPercent}
+          totalNumberOfStars={totalNumberOfStars}
+        />
         <QuestionsAndAnswers />
       </>
     );

@@ -47,7 +47,11 @@
   color: #75C0DC;
   font-weight: 900;
   text-align: center;
-  margin: 10px auto;
+  margin: 20px auto 15px auto;
+}
+
+.recommendedPercent {
+  font-size: 30px;
 }
 
 .reviewTotal {

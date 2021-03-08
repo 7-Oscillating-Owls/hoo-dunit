@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/sort-comp */
 /* eslint-disable no-console */
 import React from 'react';
@@ -17,10 +18,6 @@ class ReviewsList extends React.Component {
     super(props);
     this.state = {
       reviewsList: [],
-      metaObject: {},
-      // reviewCount: 0,
-      overallRating: 0,
-      recommendPercent: 0,
       // fiveStarTotal: '',
       // fourStarTotal: '',
       // threeStarTotal: '',
@@ -29,8 +26,6 @@ class ReviewsList extends React.Component {
       displayModal: false,
     };
     this.getReviews = this.getReviews.bind(this);
-    this.getMetaData = this.getMetaData.bind(this);
-    this.getOverallView = this.getOverallView.bind(this);
     this.addReview = this.addReview.bind(this);
     this.getIndividualStarTotal = this.getIndividualStarTotal.bind(this);
     this.openAddReviewModal = this.openAddReviewModal.bind(this);
@@ -40,7 +35,6 @@ class ReviewsList extends React.Component {
 
   componentDidMount() {
     this.getReviews();
-    this.getMetaData();
   }
 
   getReviews() {
@@ -49,36 +43,11 @@ class ReviewsList extends React.Component {
         const reviewsData = response.data.results;
         this.setState({ reviewsList: reviewsData });
         this.setState({ reviewCount: reviewsData.length });
-        this.getOverallView();
         this.getIndividualStarTotal();
       })
       .catch((error) => {
         console.log('Error fetching reviews: ', error);
-      })
-  }
-
-  getMetaData() {
-    axios.get('/reviews/meta')
-      .then((response) => {
-        this.setState({ metaObject: response.data});
-      })
-      .catch((error) => {
-        console.log('Error fetching meta data: ', error);
-      })
-  }
-
-  getOverallView() {
-    // let ratingTotal = 0;
-    let recommendTotal = 0;
-    this.state.reviewsList.forEach((review) => {
-      // ratingTotal += review.rating;
-      if (review.recommend === true) {
-        recommendTotal += 1;
-      }
-    });
-    // const averageRating = ratingTotal / (this.state.reviewCount);
-    const recommended = `${((recommendTotal / (this.state.reviewCount)).toFixed(2)) * 100}%`;
-    this.setState({ recommendPercent: recommended });
+      });
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -92,7 +61,7 @@ class ReviewsList extends React.Component {
       photos: formData.uploadedFile,
     };
     // Will need to change this to post request once connected to server - to POST/reviews
-    // reviewsData.push(reviewObject);
+    reviewsList.push(reviewObject);
     // const reviewMetaCharacteristicsObject = {
     //   Size: {
     //     value: formData.size,
@@ -155,10 +124,18 @@ class ReviewsList extends React.Component {
   }
 
   render() {
+    const { metaObject, recommendPercent, totalNumberOfStars } = this.props;
     let display = this.state.displayModal;
     let ReviewModalRender;
     if (display === true) {
-      ReviewModalRender = <ReviewAddFormModal className={styles.modalBackdrop} addReview={this.addReview} displayModal={this.state.displayModal} closeAddReviewModal={this.closeAddReviewModal}/>
+      ReviewModalRender = (
+        <ReviewAddFormModal
+          className={styles.modalBackdrop}
+          addReview={this.addReview}
+          displayModal={this.state.displayModal}
+          closeAddReviewModal={this.closeAddReviewModal}
+        />
+      );
     } else {
       ReviewModalRender = null;
     }
@@ -172,13 +149,16 @@ class ReviewsList extends React.Component {
               <ReviewsAverageOverviewStars starRating={this.props.starRating} />
             </div>
             <div className={styles.recommendOverview}>
-              {this.state.recommendPercent}
+              <div className={styles.recommendedPercent}>
+                {recommendPercent}
+                %
+              </div>
               {' '}
               of reviewers recommend this product
             </div>
             <ReviewRatingDistribution
               className={styles.ratingDistribution}
-              reviewCount={this.state.reviewCount}
+              reviewCount={totalNumberOfStars}
               fiveStarTotal={this.state.fiveStarTotal}
               fourStarTotal={this.state.fourStarTotal}
               threeStarTotal={this.state.threeStarTotal}
@@ -190,7 +170,7 @@ class ReviewsList extends React.Component {
               {' '}
               Total Reviews
             </div>
-            <ReviewCharacteristics metaObject={this.state.metaObject} />
+            <ReviewCharacteristics metaObject={metaObject} />
           </div>
         </div>
         <div>
@@ -284,3 +264,17 @@ export default ReviewsList;
 // } = reviewObject;
 // const { overallRating, reviewSummary, recommend, reviewBody, reviewUsername, uploadedFile } = formData;
 // reviewObject.rating = formData.overallRating;
+
+// getOverallView() {
+//   // let ratingTotal = 0;
+//   let recommendTotal = 0;
+//   this.state.reviewsList.forEach((review) => {
+//     // ratingTotal += review.rating;
+//     if (review.recommend === true) {
+//       recommendTotal += 1;
+//     }
+//   });
+//   // const averageRating = ratingTotal / (this.state.reviewCount);
+//   const recommended = `${((recommendTotal / (this.state.reviewCount)).toFixed(2)) * 100}%`;
+//   this.setState({ recommendPercent: recommended });
+// }
