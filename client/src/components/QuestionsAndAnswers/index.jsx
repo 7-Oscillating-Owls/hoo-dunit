@@ -45,7 +45,7 @@ class QuestionsAndAnswers extends React.Component {
           <Answerlist />
           <Questiontwo data={data} />
           <Answerlisttwo />
-          {this.state.isMore ? <QuestionMore data={data} /> : null }
+          {isMore ? <QuestionMore data={data} /> : null }
         </div>
 
         <div className={styles.button}>
