@@ -66,11 +66,11 @@ class Overview extends React.Component {
     return (
       <div className={styles.overview}>
         <ImageGallery images={filteredStyle[0].photos} />
-        <ProductInformation
+        {/* <ProductInformation
           productInfo={productInfo}
           originalPrice={filteredStyle[0].original_price}
           salePrice={filteredStyle[0].sale_price}
-        />
+        /> */}
         <StyleSelector
           allStyles={allStyles}
           getSelectedStyleId={this.getSelectedStyleId}

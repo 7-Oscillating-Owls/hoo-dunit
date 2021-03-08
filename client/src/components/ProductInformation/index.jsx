@@ -29,7 +29,10 @@ const ProductInformation = (props) => {
   return (
     <div className={styles.productInformation}>
       <div className={styles.ratings}>
-        {/* <span><ReviewsAverageOverviewStars starRating={starRating} /> </span> */}
+        <span>
+          <ReviewsAverageOverviewStars starRating={starRating} />
+          {' '}
+        </span>
         <u>Read All Reviews</u>
       </div>
       <div className={styles.category}>{productInfo.category}</div>

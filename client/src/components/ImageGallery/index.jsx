@@ -17,16 +17,7 @@ class ImageGallery extends React.Component {
     this.previousSlide = this.previousSlide.bind(this);
     this.nextSlide = this.nextSlide.bind(this);
   }
-
-  componentDidUpdate(prev) {
-    const { images } = this.props;
-    if (prev.images !== images) {
-      this.handleClick()
-    this.previousSlide()
-    this.nextSlide()
-    }
-  }
-
+  
   handleClick(url, index) {
     this.setState({
       url,
