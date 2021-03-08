@@ -1,20 +1,22 @@
 import React from 'react';
 import styles from './AnswerModal.css';
+import axios from 'axios';
 
 class AnswerModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      question: '',
+      answer: '',
       nickname: '',
       email: '',
-      questionError: null,
+      answerError: null,
       nicknameError: null,
       emailError: null,
     };
     this.validate = this.validate.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
+    this.postAnswer = this.postAnswer.bind(this);
   }
 
   handleOnChange(event) {
@@ -24,16 +26,32 @@ class AnswerModal extends React.Component {
   handleSubmitClick(event) {
     event.preventDefault();
     this.validate();
+    this.postAnswer();
+
   }
 
   validate() {
-    const { question, nickname, email } = this.state;
+    const { answer, nickname, email } = this.state;
 
-    { question.length < 1 ? this.setState({ questionError: 'Please enter a question' }) : this.setState({ questionError: null }) }
+    { answer.length < 1 ? this.setState({ answerError: 'Please enter a answer' }) : this.setState({ answerError: null }) }
     { nickname.length < 1 ? this.setState({ nicknameError: 'Please enter a nickname' }) : this.setState({ nicknameError: null }) }
     { !email.includes('@') ? this.setState({ emailError: 'Please enter valid email' }) : this.setState({ emailError: null }) }
   }
 
+  postAnswer() {
+    const { answer, nickname, email } = this.state;
+    const { questionId } = this.props;
+    axios.post('/qa/postAnswer', {
+      body: answer,
+      nickname: nickname,
+      email,
+      questionId,
+    })
+      .then(() => { })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   render() {
     return (
 
@@ -42,13 +60,14 @@ class AnswerModal extends React.Component {
         <form className={styles.modalform} onChange={this.handleOnChange}>
           <textarea
             type="text"
-            name="question"
+            name="answer"
             placeholder="Enter your Answer"
             maxLength="1000"
             className={styles.questionfield}
           />
+          <small className={styles.errors}>{this.state.answerError}</small>
           <small>For privacy reasons, do not use your full name or email address</small>
-          <small className={styles.errors}>{this.state.questionError}</small>
+
           <input
             type="text"
             name="nickname"
