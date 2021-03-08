@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Question.css';
-import QuestionList from '../QuestionList'
+import QuestionList from '../QuestionList';
 
 const Question = (props) => (
   <div>
