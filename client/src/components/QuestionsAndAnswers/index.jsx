@@ -29,7 +29,6 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   handleMoreClick() {
-    console.log('hi mom');
     this.setState({ isMore: true });
   }
 
