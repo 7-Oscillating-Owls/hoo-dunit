@@ -1,14 +1,11 @@
 .answer {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
   padding: 1px;
   margin: 1px 2px;
   font-size: 12px;
-  border: 1px solid #fafafa;
   box-sizing: border-box;
   justify-items: left;
-  box-shadow: .5px .5px 1px .5px #3f3f3f;
   border-radius: 2px;
 }
 .answer:hover,
