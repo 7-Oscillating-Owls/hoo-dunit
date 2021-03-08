@@ -25,6 +25,11 @@ class AppComponent extends React.Component {
       totalNumberOfStars: 0,
       recommendPercent: 100,
       metaObject: {},
+      fiveStarTotal: '',
+      fourStarTotal: '',
+      threeStarTotal: '',
+      twoStarTotal: '',
+      oneStarTotal: '',
     };
     this.getMetaData = this.getMetaData.bind(this);
     this.getAverageRating = this.getAverageRating.bind(this);
@@ -69,7 +74,14 @@ class AppComponent extends React.Component {
         starTotal += Number(metaRatings[key]);
       }
     }
-    this.setState({ starRating: ((starSubtotal / starTotal).toFixed(1)) });
+    this.setState({
+      starRating: ((starSubtotal / starTotal).toFixed(1)),
+      fiveStarTotal: metaRatings['5'],
+      fourStarTotal: metaRatings['4'],
+      threeStarTotal: metaRatings['3'],
+      twoStarTotal: metaRatings['2'],
+      oneStarTotal: metaRatings['1'],
+    });
   }
 
   getRecommendPercent() {
@@ -106,6 +118,11 @@ class AppComponent extends React.Component {
       starRating,
       recommendPercent,
       totalNumberOfStars,
+      fiveStarTotal,
+      fourStarTotal,
+      threeStarTotal,
+      twoStarTotal,
+      oneStarTotal,
     } = this.state;
     console.log('THIS IS STATE METAOBJECT: ', metaObject);
     return (
@@ -117,6 +134,11 @@ class AppComponent extends React.Component {
           metaObject={metaObject}
           recommendPercent={recommendPercent}
           totalNumberOfStars={totalNumberOfStars}
+          fiveStarTotal={fiveStarTotal}
+          fourStarTotal={fourStarTotal}
+          threeStarTotal={threeStarTotal}
+          twoStarTotal={twoStarTotal}
+          oneStarTotal={oneStarTotal}
         />
         <QuestionsAndAnswers />
       </>
