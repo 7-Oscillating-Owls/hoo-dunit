@@ -23,7 +23,12 @@
 }
 
 .questionfield {
-  padding: 125px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
 }
 
 .emailfield {

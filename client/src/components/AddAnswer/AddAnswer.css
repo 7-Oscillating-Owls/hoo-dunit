@@ -5,6 +5,9 @@
   margin: 12px 8px;
 }
 
+.form {
+  margin: 12px 8px;
+}
 .AddAnswer:hover {
   transform: scale(1.2);
   font-weight: 500;

@@ -24,7 +24,7 @@ class AddAnswer extends React.Component {
 
   render() {
     return (
-      <span className={styles.AddAnswer}>
+      <span className={styles.form}>
         <small className={styles.AddAnswer}><a onClick={this.handleClick}>Add Answer</a></small>
         {this.state.showAnswerModal ? <AnswerModal modalclose={this.handleModalClose}/> : null}
       </span>

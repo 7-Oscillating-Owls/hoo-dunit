@@ -45,6 +45,7 @@ class AnswerModal extends React.Component {
             name="question"
             placeholder="Enter your Answer"
             maxLength="1000"
+            className={styles.questionfield}
           />
           <small>For privacy reasons, do not use your full name or email address</small>
           <small className={styles.errors}>{this.state.questionError}</small>
@@ -53,6 +54,7 @@ class AnswerModal extends React.Component {
             name="nickname"
             placeholder="Example: jackson11!"
             maxLength="60"
+            className={styles.questionfield}
           />
           <small>For authentication reasons, you will not be emailed</small>
           <small className={styles.errors}>{this.state.nicknameError}</small>
@@ -61,6 +63,7 @@ class AnswerModal extends React.Component {
             name="email"
             placeholder="enter email"
             maxLength="60"
+            className={styles.questionfield}
           />
           <small className={styles.errors}>{this.state.emailError}</small>
           <small>For authentication reasons, you will not be emailed</small>
