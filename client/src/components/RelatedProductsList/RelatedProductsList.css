@@ -26,6 +26,8 @@
   display: flex;
   position: relative;
   overflow: hidden;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .comparisonModal {
