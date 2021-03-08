@@ -19,12 +19,16 @@ class AppComponent extends React.Component {
 
     this.state = {
       product: undefined,
-      starRating: 3.4,
+      starRating: 0,
+      metaObject: {},
     };
+    this.getMetaData = this.getMetaData.bind(this);
+    this.getAverageRating = this.getAverageRating.bind(this);
   }
 
   componentDidMount() {
     this.fetchProductDetail();
+    this.getMetaData();
   }
 
   componentDidUpdate(prev) {
@@ -48,6 +52,40 @@ class AppComponent extends React.Component {
           });
         });
     }
+  }
+
+  getMetaData() {
+    axios.get('/reviews/meta')
+      .then((response) => {
+        this.setState({ metaObject: response.data });
+        this.getAverageRating();
+      })
+      .catch((error) => {
+        console.log('Error fetching meta data: ', error);
+      })
+  }
+
+  getAverageRating() {
+    const { metaObject } = this.state;
+    const metaRatings = metaObject.ratings;
+    let oneStar = 0;
+    let twoStar = 0;
+    let threeStar = 0;
+    let fourStar = 0;
+    let fiveStar = 0;
+    let starSubtotal = 0;
+    let starTotal = 0;
+    if (metaRatings) {
+      for (key in metaRatings) {
+        starSubtotal += (key * obj[key]);
+        starTotal += (key * obj[key]);
+      }
+
+      console.log('STAR SUBTOTAL: ', starSubtotal);
+      console.log('STAR RATING: ', this.state.starRating);
+      console.log('STARS TOTAL: ', starTotal);
+    }
+    this.setState({ starRating: ((ratingsTotal / totalStars).toFixed(1) * 100) });
   }
 
   render() {

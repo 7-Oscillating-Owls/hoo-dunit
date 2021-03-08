@@ -60,7 +60,7 @@ class ReviewsList extends React.Component {
   getMetaData() {
     axios.get('/reviews/meta')
       .then((response) => {
-        this.setState({ metaObject: response.data});
+        this.setState({ metaObject: response.data });
       })
       .catch((error) => {
         console.log('Error fetching meta data: ', error);
