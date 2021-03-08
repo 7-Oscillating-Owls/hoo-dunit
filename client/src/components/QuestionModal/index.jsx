@@ -10,7 +10,7 @@ class QuestionModal extends React.Component {
       email: '',
       questionError: null,
       nicknameError: null,
-      emailError: null
+      emailError: null,
 
     };
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
@@ -19,28 +19,24 @@ class QuestionModal extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  validate() {
-    { this.state.question.length < 1 ? this.setState({ questionError: 'Please enter a question' }) : this.setState({questionError: null}) }
-    { this.state.nickname.length < 1 ? this.setState({ nicknameError: 'Please enter a nickname' }) : this.setState({nicknameError: null}) }
-    { !this.state.email.includes('@') ? this.setState({emailError: 'Please enter valid email'}) : this.setState({emailError: null})}
-
-  }
-
-  closeModal() {
-    //this.props.modalclose()
-    }
-
-
-
-
   handleSubmitClick(event) {
     event.preventDefault();
-    this.validate()
-     this.closeModal();
+    this.validate();
+    this.closeModal();
   }
 
   handleOnChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+  }
+
+  closeModal() {
+    this.props.modalclose();
+  }
+
+  validate() {
+    { this.state.question.length < 1 ? this.setState({ questionError: 'Please enter a question' }) : this.setState({ questionError: null }) }
+    { this.state.nickname.length < 1 ? this.setState({ nicknameError: 'Please enter a nickname' }) : this.setState({ nicknameError: null }) }
+    { !this.state.email.includes('@') ? this.setState({ emailError: 'Please enter valid email' }) : this.setState({ emailError: null }) }
   }
 
   render() {
