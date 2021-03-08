@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Questiontwo.css';
-import QuestionListtwo from '../QuestionListtwo'
+import QuestionListtwo from '../QuestionListtwo';
 
 const Questiontwo = (props) => (
   <div>

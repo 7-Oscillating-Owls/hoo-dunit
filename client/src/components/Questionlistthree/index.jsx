@@ -1,11 +1,11 @@
 import React from 'react';
 import Helpful from '../Helpful';
 import AddAnswer from '../AddAnswer';
-import styles from './QuestionListtwo.css';
+import styles from './Questionlistthree.css';
 
-const QuestionListtwo = (props) => {
+const Questionlistthree = (props) => {
   return (
-    <div className={styles.questionlisttwo}>
+    <div className={styles.questionlistthree}>
       <p>
         Q:
       {props.question.question_body}
@@ -15,8 +15,9 @@ const QuestionListtwo = (props) => {
         <AddAnswer />
 
       </div>
+
     </div>
   )
 }
 
-export default QuestionListtwo;
+export default Questionlistthree;
