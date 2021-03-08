@@ -41,7 +41,7 @@ class QuestionsAndAnswers extends React.Component {
           <SearchBar />
         </div>
         <div className={styles.questionone}>
-          <Question data={data} more={isMore} />
+          <Question data={data} />
           <Answerlist />
           <Questiontwo data={data} />
           <Answerlisttwo />
