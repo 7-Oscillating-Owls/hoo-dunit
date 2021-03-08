@@ -22,7 +22,6 @@ class ReviewsList extends React.Component {
     };
     this.getReviews = this.getReviews.bind(this);
     this.addReview = this.addReview.bind(this);
-    // this.getIndividualStarTotal = this.getIndividualStarTotal.bind(this);
     this.openAddReviewModal = this.openAddReviewModal.bind(this);
     this.closeAddReviewModal = this.closeAddReviewModal.bind(this);
     this.getMoreReviews = this.getMoreReviews.bind(this);
@@ -37,7 +36,6 @@ class ReviewsList extends React.Component {
       .then((response) => {
         const reviewsData = response.data.results;
         this.setState({ reviewsList: reviewsData });
-        // this.getIndividualStarTotal();
       })
       .catch((error) => {
         console.log('Error fetching reviews: ', error);
@@ -55,7 +53,7 @@ class ReviewsList extends React.Component {
       photos: formData.uploadedFile,
     };
     // Will need to change this to post request once connected to server - to POST/reviews
-    reviewsList.push(reviewObject);
+    // reviewsList.push(reviewObject);
     // const reviewMetaCharacteristicsObject = {
     //   Size: {
     //     value: formData.size,
@@ -67,7 +65,7 @@ class ReviewsList extends React.Component {
     //     value: formData.comfort,
     //   },
     // };
-      // Will need to change this to post request to POST/reviews/meta
+    // Will need to change this to post request to POST/reviews/meta
     console.log('Review Added!', reviewMetaCharacteristicsObject);
   }
 
@@ -98,16 +96,12 @@ class ReviewsList extends React.Component {
       twoStarTotal,
       oneStarTotal,
     } = this.props;
-    console.log('metaObject.ratings: ', metaObject.ratings);
+
     const {
       displayModal,
-      // fiveStarTotal,
-      // fourStarTotal,
-      // threeStarTotal,
-      // twoStarTotal,
-      // oneStarTotal,
       reviewsList,
     } = this.state;
+
     let ReviewModalRender;
     if (displayModal === true) {
       ReviewModalRender = (
@@ -121,6 +115,7 @@ class ReviewsList extends React.Component {
     } else {
       ReviewModalRender = null;
     }
+
     return (
       <div className={styles.reviewsList}>
         <div>
@@ -141,11 +136,11 @@ class ReviewsList extends React.Component {
             <ReviewRatingDistribution
               className={styles.ratingDistribution}
               reviewCount={totalNumberOfStars}
-              fiveStarTotal={fiveStarTotal}
-              fourStarTotal={fourStarTotal}
-              threeStarTotal={threeStarTotal}
-              twoStarTotal={twoStarTotal}
-              oneStarTotal={oneStarTotal}
+              fiveStarTotal={Number(fiveStarTotal)}
+              fourStarTotal={Number(fourStarTotal)}
+              threeStarTotal={Number(threeStarTotal)}
+              twoStarTotal={Number(twoStarTotal)}
+              oneStarTotal={Number(oneStarTotal)}
             />
             <div className={styles.reviewTotal}>
               {totalNumberOfStars}
@@ -175,95 +170,3 @@ class ReviewsList extends React.Component {
 }
 
 export default ReviewsList;
-
-// Notes and Experimentation:
-
-// getIndividualStarTotal() {
-//   const fiveStarCount = 1;
-//   const fourStarCount = 1;
-//   const threeStarCount = 1;
-//   const twoStarCount = 1;
-//   const oneStarCount = 1;
-//   for (let i = 0; i < reviewsData.results.length; i += 1) {
-//     const individualStarRating = reviewsData.results[i].rating;
-//     if (individualStarRating === 5) {
-//       fiveStarCount += 1;
-//     }
-//     if (individualStarRating === 4) {
-//       fourStarCount += 1;
-//     }
-//     if (individualStarRating === 3) {
-//       threeStarCount += 1;
-//     }
-//     if (individualStarRating === 2) {
-//       twoStarCount += 1;
-//     }
-//     if (individualStarRating === 1) {
-//       oneStarCount += 1;
-//     }
-//   }
-//   this.setState({ fiveStarTotal: fiveStarCount });
-//   this.setState({ fourStarTotal: fourStarCount });
-//   this.setState({ threeStarTotal: threeStarCount });
-//   this.setState({ twoStarTotal: twoStarCount });
-//   this.setState({ oneStarTotal: fiveStarCount });
-// }
-
-// const {
-//   overallRating,
-//   email,
-//   reviewUsername,
-//   reviewSummary,
-//   reviewBody,
-//   size,
-//   width,
-//   comfort,
-//   quality,
-//   length,
-//   fit,
-//   recommend,
-//   summaryTextCount,
-//   descriptionTextCount,
-//   uploadedFile,
-// } = formData;
-
-// const reviewObject = {
-//   rating: formData.overallRating,
-//   summary: formData.reviewSummary,
-//   recommend: formData.recommend,
-//   body: formData.reviewBody,
-//   reviewer_name: formData.reviewUsername,
-//   photos: formData.uploadedFile,
-// };
-
-// const {
-//   rating,
-//   summary,
-//   recommend,
-//   body,
-//   reviewer_name,
-//   photos,
-// } = reviewObject;
-// const {
-//   overallRating,
-//   reviewSummary,
-//   recommend,
-//   reviewBody,
-//   reviewUsername,
-//   uploadedFile,
-// } = formData;
-// reviewObject.rating = formData.overallRating;
-
-// getOverallView() {
-//   // let ratingTotal = 0;
-//   let recommendTotal = 0;
-//   this.state.reviewsList.forEach((review) => {
-//     // ratingTotal += review.rating;
-//     if (review.recommend === true) {
-//       recommendTotal += 1;
-//     }
-//   });
-//   // const averageRating = ratingTotal / (this.state.reviewCount);
-//   const recommended = `${((recommendTotal / (this.state.reviewCount)).toFixed(2)) * 100}%`;
-//   this.setState({ recommendPercent: recommended });
-// }

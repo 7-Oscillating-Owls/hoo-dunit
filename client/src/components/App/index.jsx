@@ -124,7 +124,6 @@ class AppComponent extends React.Component {
       twoStarTotal,
       oneStarTotal,
     } = this.state;
-    console.log('THIS IS STATE METAOBJECT: ', metaObject);
     return (
       <>
         <Overview starRating={starRating} />
