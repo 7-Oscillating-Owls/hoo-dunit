@@ -69,3 +69,7 @@
   height: 40px;
   width: 50px;
 }
+
+.star:hover {
+  color: black;
+}

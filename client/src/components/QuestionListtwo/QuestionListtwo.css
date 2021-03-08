@@ -13,5 +13,7 @@
 .sidebar {
   display: flex;
   justify-content: flex-end;
-  margin-top: 8px;
+  margin-top: 4px;
+  margin-right: 5px;
+  color: black;
 }

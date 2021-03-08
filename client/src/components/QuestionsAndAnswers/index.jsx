@@ -45,13 +45,10 @@ class QuestionsAndAnswers extends React.Component {
         <div className={styles.questionone}>
           <Question data={data} />
           <Answerlist />
-
-        </div>
-        <div>
           <Questiontwo data={data} />
           <Answerlisttwo />
-
         </div>
+
         <div className={styles.button}>
         <MoreAnsweredQuestions />
         <AddAQuestion />
