@@ -30,7 +30,7 @@ const ProductInformation = (props) => {
     <div className={styles.productInformation}>
       <div className={styles.ratings}>
         <span>
-          <ReviewsAverageOverviewStars starRating={starRating} />
+          {/* <ReviewsAverageOverviewStars starRating={starRating} /> */}
           {' '}
         </span>
         <u>Read All Reviews</u>
