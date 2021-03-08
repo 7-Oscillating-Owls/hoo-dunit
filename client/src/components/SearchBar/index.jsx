@@ -2,12 +2,11 @@ import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 import styles from './SearchBar.css';
 
-
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: ''
+      searchTerm: '',
     };
     this.handleOnChange = this.handleOnChange.bind(this);
   }
