@@ -18,7 +18,9 @@ class ReviewsList extends React.Component {
     super(props);
     this.state = {
       reviewsList: [],
+      limitedReviewsList: [],
       displayModal: false,
+      displayMoreButton: true,
     };
     this.getReviews = this.getReviews.bind(this);
     this.addReview = this.addReview.bind(this);
@@ -35,7 +37,10 @@ class ReviewsList extends React.Component {
     axios.get('/reviews')
       .then((response) => {
         const reviewsData = response.data.results;
-        this.setState({ reviewsList: reviewsData });
+        this.setState({
+          reviewsList: reviewsData,
+          limitedReviewsList: [reviewsData[0], reviewsData[1]],
+        });
       })
       .catch((error) => {
         console.log('Error fetching reviews: ', error);
@@ -82,6 +87,38 @@ class ReviewsList extends React.Component {
   getMoreReviews() {
     // Display two more reviews
     console.log('More Reviews clicked');
+    const {
+      reviewsList,
+      limitedReviewsList,
+    } = this.state;
+    const currentLength = limitedReviewsList.length;
+    if (reviewsList[currentLength + 2]) {
+      if ((limitedReviewsList.length + 2) === (currentLength + 2)) {
+        this.setState({
+          displayMoreButton: false,
+        });
+      }
+      this.setState({
+        limitedReviewsList: [
+          ...limitedReviewsList,
+          reviewsList[currentLength + 1],
+          reviewsList[currentLength + 2],
+        ],
+      });
+    } else if (reviewsList[currentLength + 1]) {
+      if ((limitedReviewsList.length + 1) === (currentLength + 1)) {
+        this.setState({
+          displayMoreButton: false,
+        });
+      }
+      this.setState({
+        limitedReviewsList: [...limitedReviewsList, reviewsList[currentLength + 1]],
+      });
+    } else {
+      this.setState({
+        displayMoreButton: false,
+      });
+    }
   }
 
   render() {
@@ -99,7 +136,8 @@ class ReviewsList extends React.Component {
 
     const {
       displayModal,
-      reviewsList,
+      displayMoreButton,
+      limitedReviewsList,
     } = this.state;
 
     let ReviewModalRender;
@@ -153,7 +191,7 @@ class ReviewsList extends React.Component {
         <div>
           <div>
             {
-              reviewsList.map((review) => (
+              limitedReviewsList.map((review) => (
                 <ReviewTiles review={review} key={review.review_id} />
               ))
             }
@@ -162,6 +200,7 @@ class ReviewsList extends React.Component {
           <ReviewsMoreReviews
             openAddReviewModal={this.openAddReviewModal}
             getMoreReviews={this.getMoreReviews}
+            displayMoreButton={displayMoreButton}
           />
         </div>
       </div>
