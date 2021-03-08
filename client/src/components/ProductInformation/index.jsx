@@ -10,7 +10,6 @@ const ProductInformation = (props) => {
     salePrice,
     starRating
   } = props;
-  console.log('PRODUCT INFO STAR RATING: ', starRating);
   const currentPrice = salePrice === null ? (
     <div className={styles.price}>
       $

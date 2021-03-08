@@ -155,7 +155,6 @@ class ReviewsList extends React.Component {
   }
 
   render() {
-    console.log('THIS IS REVIEW LIST STAR RATING: ', this.props.starRating);
     let display = this.state.displayModal;
     let ReviewModalRender;
     if (display === true) {
