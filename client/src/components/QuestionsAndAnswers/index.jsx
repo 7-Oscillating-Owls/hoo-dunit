@@ -9,13 +9,16 @@ import MoreAnsweredQuestions from '../MoreAnsweredQuestions';
 import Questiontwo from '../Questiontwo';
 import Answerlist from '../Answerlist';
 import Answerlisttwo from '../Answerlisttwo';
+import QuestionMore from '../QuestionMore';
 
 class QuestionsAndAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
+      isMore: false,
     };
+    this.handleMoreClick = this.handleMoreClick.bind(this);
   }
 
   componentDidMount() {
@@ -25,8 +28,13 @@ class QuestionsAndAnswers extends React.Component {
       });
   }
 
+  handleMoreClick() {
+    console.log('hi mom');
+    this.setState({ isMore: true });
+  }
+
   render() {
-    const { data } = this.state;
+    const { data, isMore } = this.state;
     return (
       <div>
         <QATitle />
@@ -34,14 +42,15 @@ class QuestionsAndAnswers extends React.Component {
           <SearchBar />
         </div>
         <div className={styles.questionone}>
-          <Question data={data} />
+          <Question data={data} more={isMore} />
           <Answerlist />
           <Questiontwo data={data} />
           <Answerlisttwo />
+          {this.state.isMore ? <QuestionMore data={data} /> : null }
         </div>
 
         <div className={styles.button}>
-          <MoreAnsweredQuestions />
+          <MoreAnsweredQuestions click={this.handleMoreClick} />
           <AddAQuestion />
         </div>
       </div>

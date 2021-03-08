@@ -1,8 +1,0 @@
-cleaned up code in AddAQuestion component
-# Please enter the commit message for your changes. Lines starting
-# with '#' will be ignored, and an empty message aborts the commit.
-#
-# On branch atcodeclean
-# Changes to be committed:
-#	modified:   client/src/components/AddAQuestion/index.jsx
-#
