@@ -1,28 +1,20 @@
-import React from 'react'
-import styles from './AnswerModal.css'
+import React from 'react';
+import styles from './AnswerModal.css';
 
 class AnswerModal extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       question: '',
       nickname: '',
       email: '',
       questionError: null,
       nicknameError: null,
-      emailError: null
-    }
+      emailError: null,
+    };
     this.validate = this.validate.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
-  }
-
-  validate() {
-    const { question, nickname, email} = this.state;
-
-    { question.length < 1 ? this.setState({ questionError: 'Please enter a question' }) : this.setState({ questionError: null }) }
-    { nickname.length < 1 ? this.setState({ nicknameError: 'Please enter a nickname' }) : this.setState({ nicknameError: null }) }
-    { !email.includes('@') ? this.setState({ emailError: 'Please enter valid email' }) : this.setState({ emailError: null }) }
   }
 
   handleOnChange(event) {
@@ -32,8 +24,16 @@ class AnswerModal extends React.Component {
   handleSubmitClick(event) {
     event.preventDefault();
     this.validate();
-
   }
+
+  validate() {
+    const { question, nickname, email } = this.state;
+
+    { question.length < 1 ? this.setState({ questionError: 'Please enter a question' }) : this.setState({ questionError: null }) }
+    { nickname.length < 1 ? this.setState({ nicknameError: 'Please enter a nickname' }) : this.setState({ nicknameError: null }) }
+    { !email.includes('@') ? this.setState({ emailError: 'Please enter valid email' }) : this.setState({ emailError: null }) }
+  }
+
   render() {
     return (
 
@@ -70,8 +70,8 @@ class AnswerModal extends React.Component {
         </form>
         <button type="button" onClick={this.handleSubmitClick} className={styles.answerModalForm}>Submit</button>
       </div>
-    )
+    );
   }
 }
 
-export default AnswerModal
+export default AnswerModal;
