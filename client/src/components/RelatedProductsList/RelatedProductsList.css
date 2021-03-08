@@ -32,9 +32,9 @@
 
 .comparisonModal {
   background-color: white;
+  border: 1px solid black;
   box-shadow: 0 0 8px rgba(0, 0, 0, .1);
-  height: 300px;
-  width: 400px;
+
 }
 
 .scrollButton {
@@ -46,6 +46,9 @@
   position: absolute;
   width: 35px;
   z-index: 1;
+  animation-name: fadeIn;
+  animation-duration: 150ms;
+  animation-timing-function: ease-out;
 }
 
 .scrollButton:hover {
@@ -60,5 +63,28 @@
 
 .scrollButtonRight {
   composes: scrollButton;
+  animation-name: fadeInFromRight;
+  animation-duration: 150ms;
+  animation-timing-function: ease-out;
   right: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(-40px, 0, 0);
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes fadeInFromRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(40px, 0, 0);
+  }
+  100% {
+    opacity: 100%;
+  }
 }

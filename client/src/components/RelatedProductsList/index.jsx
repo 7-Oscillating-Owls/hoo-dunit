@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FaRegStar } from 'react-icons/fa';
 
 import AppModal from '../AppModal';
 import RelatedProductCard from '../RelatedProductCard';
+import RelatedProductCompare from '../RelatedProductCompare';
 import styles from './RelatedProductsList.css';
-
-const Comparison = ({ product, compareToProduct }) => {
-  const features = product.features;
-  const relatedFeatures = compareToProduct.features;
-  return (
-    <div className={styles.comparisonModal}>
-      {`${product.id}(${features.length}) vs ${compareToProduct.id}(${relatedFeatures.length})`}
-    </div>
-  );
-};
-
 
 class RelatedProductsList extends Component {
   constructor(props) {
@@ -99,7 +90,7 @@ class RelatedProductsList extends Component {
     let buttonAction;
 
     if (actionType === 'compare') {
-      buttonSymbol = '*';
+      buttonSymbol = <FaRegStar />;
       buttonAction = (selectedProduct) => this.compareProducts(selectedProduct);
     } else {
       buttonSymbol = 'x';
@@ -139,7 +130,7 @@ class RelatedProductsList extends Component {
           showModal
           && (
             <AppModal ref={this.registerModal} outsideClickHandler={() => this.setShowModal()}>
-              <Comparison product={product} compareToProduct={compareToProduct} />
+              <RelatedProductCompare product={product} relatedProduct={compareToProduct} />
             </AppModal>
           )
         }
@@ -148,11 +139,16 @@ class RelatedProductsList extends Component {
   }
 }
 
+RelatedProductsList.defaultProps = {
+  product: {},
+};
+
 RelatedProductsList.propTypes = {
+  actionType: PropTypes.string.isRequired,
+  product: PropTypes.shape({}),
   relatedProducts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
   })).isRequired,
-  actionType: PropTypes.string.isRequired,
 };
 
 export default RelatedProductsList;
