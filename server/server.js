@@ -14,9 +14,14 @@ app.use('/', express.static(path.join(__dirname, '..', 'public')));
 app.use('/products/*', express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/qa', (request, response) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?product_id=14931', {
+  const { productId } = request.query;
+  console.log(productId)
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', {
     headers: {
       Authorization: token,
+    },
+    params: {
+      product_id: `${productId}`
     },
   })
     .then((res) => {

@@ -21,13 +21,11 @@ class QuestionsAndAnswers extends React.Component {
     };
     this.handleMoreClick = this.handleMoreClick.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
+    this.getQuestions = this.getQuestions.bind(this);
   }
 
   componentDidMount() {
-    axios.get('/qa')
-      .then(response => {
-        this.setState({ data: response.data.results });
-      });
+    this.getQuestions();
   }
 
   handleOnChange(event) {
@@ -36,6 +34,22 @@ class QuestionsAndAnswers extends React.Component {
 
   handleMoreClick() {
     this.setState({ isMore: true });
+  }
+  getQuestions() {
+    const { productId } = this.props;
+    axios.get('/qa', {
+      params: {
+        productId: productId
+      },
+    })
+    .then((response) => {
+      this.setState({
+         data: response.data.results
+        });
+    })
+    .catch((error) => {
+      console.log('error fetching questions')
+    })
   }
 
   render() {
