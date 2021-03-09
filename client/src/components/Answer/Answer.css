@@ -13,6 +13,10 @@
   transform: scale(1.02, 1.05);
 }
 
+.answer:hover:nth-child(n+1) {
+  background-color: rgb(235, 232, 232);
+
+}
 .footer {
   display: flex;
   margin: 1px;
