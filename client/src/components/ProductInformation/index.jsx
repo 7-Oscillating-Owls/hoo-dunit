@@ -7,6 +7,7 @@ const ProductInformation = (props) => {
   const {
     category,
     name,
+    styleName,
     originalPrice,
     salePrice,
     starRating,
@@ -18,13 +19,13 @@ const ProductInformation = (props) => {
     </div>
   ) : (
     <div>
-      <div className={styles.salePrice}>
+      <span className={styles.originalPrice}>
+        {originalPrice}
+      </span>
+      <span className={styles.salePrice}>
         $
         {salePrice}
-      </div>
-      <div className={styles.originalPrice}>
-        {originalPrice}
-      </div>
+      </span>
     </div>
   );
 
@@ -39,7 +40,9 @@ const ProductInformation = (props) => {
       </div>
       <div className={styles.category}>{category}</div>
       <div className={styles.name}>{name}</div>
+      <div>{styleName}</div>
       {currentPrice}
+      <div className={styles.discount}>This product is excluded from all promotional discounts and offers</div>
     </div>
   );
 };

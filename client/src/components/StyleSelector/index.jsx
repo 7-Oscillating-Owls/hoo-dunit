@@ -7,7 +7,6 @@ class StyleSelector extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedStyle: 'Forest Green & Black',
       isClicked: -1,
     };
     this.handleClick = this.handleClick.bind(this);
@@ -15,22 +14,17 @@ class StyleSelector extends React.Component {
 
   handleClick(styleId, styleName, index) {
     const { getSelectedStyleId } = this.props;
-    getSelectedStyleId(styleId);
+    getSelectedStyleId(styleId, styleName);
     this.setState({
-      selectedStyle: styleName,
       isClicked: index,
     });
   }
 
   render() {
     const { allStyles } = this.props;
-    const { selectedStyle, isClicked } = this.state;
+    const { isClicked } = this.state;
     return (
       <div className={styles.styleSelector}>
-        {/* <div className={styles.nameContainer}>
-          <span className={styles.style}>STYLE &gt; </span>
-          {selectedStyle}
-        </div> */}
         <div className={styles.imageContainer}>
           {allStyles.map((style, index) => (
             <div className={styles.imageWrapper} key={style.photos[0].url}>
@@ -40,19 +34,21 @@ class StyleSelector extends React.Component {
                 alt={style.style_id}
                 onClick={() => this.handleClick(style.style_id, style.name, index)}
               />
+
               {(isClicked === index)
                 ? (
-                  <FaCheckCircle className={styles.checkmark}/>
-                  // <div className={styles.checkmark}>
-                  //   &#10003;
-                  // </div>
+                  <FaCheckCircle className={styles.checkmark} />
                 )
                 : null }
             </div>
           ))}
 
         </div>
-
+        <div className={styles.nameContainer}>
+          {allStyles.length}
+          {' '}
+          styles available
+        </div>
       </div>
     );
   }

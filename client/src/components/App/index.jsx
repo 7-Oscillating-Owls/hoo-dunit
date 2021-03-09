@@ -174,7 +174,7 @@ class AppComponent extends React.Component {
           characteristicNames={characteristicNames}
           characteristicIds={characteristicIds}
         />
-        <QuestionsAndAnswers />
+        <QuestionsAndAnswers productId={match.params.productId} />
       </>
     );
   }

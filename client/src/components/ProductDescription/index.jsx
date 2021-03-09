@@ -7,15 +7,16 @@ const ProductDescription = ({ description, features, slogan }) => (
   <div className={styles.productDescription}>
     <div>
       <h3>{slogan}</h3>
-      <p>{description}</p>
+      <p className={styles.paragraph}>{description}</p>
     </div>
-    {features.map((feature) => (
-      <div key={feature.value}>
-        <BsCheck size={15} />
-        {feature.value}
-      </div>
-    ))}
-
+    <div className={styles.features}>
+      {features.map((feature) => (
+        <span className={styles.feature} key={feature.value}>
+          <BsCheck size={15} />
+          {feature.value}
+        </span>
+      ))}
+    </div>
   </div>
 
 );

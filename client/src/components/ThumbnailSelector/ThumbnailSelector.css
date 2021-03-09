@@ -11,12 +11,14 @@
       object-fit: cover;
       align-self: center;
       cursor: crosshair;
+      transition: smooth;
 }
 
 .expandedImage {
   width: 80%;
   height: 80%;
   object-fit: contain;
+  justify-content: center;
 }
 
 

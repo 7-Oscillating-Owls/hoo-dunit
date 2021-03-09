@@ -1,24 +1,48 @@
 .addToCart {
   grid-area: d;
-  /* border: 1px solid black; */
-
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   width: 425px;
-  height: 30px;
-  padding-left: 10px;
+  padding-left: 20px;
+  padding-top: 10px;
   text-align: center;
 }
 
+
 .cartWrapper {
   display: grid;
-  grid-template-areas:"o p"
-                      "q r";
+  grid-template-areas:"o o"
+                      "p q"
+                      "r s";
+  grid-gap: 20px;
   /* justify-items: center; */
 }
 
-.size {
+.allThingsSize{
   grid-area: o;
+}
+
+.guideRuler {
+  justify-items: left;
+}
+
+.sizeGuide {
+  font-size: 12px;
+}
+
+.ruler {
+  height: 29px;
+}
+
+.selectSize {
+  grid-area: o;
+  font-weight:600;
+  font-size: 14px;
+  justify-self: left;
+}
+
+
+.size {
   box-sizing: border-box;
   cursor: cursor;
   height: 40px;
@@ -30,46 +54,116 @@
   justify-self: space-around;
 }
 
-.quantity {
-  grid-area: p;
+.sizeBox {
+  grid: p;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  border: 1px solid#ebedee;
+  border-left: 1px solid #ebedee;
+  flex-wrap: wrap;
   box-sizing: border-box;
-  cursor: cursor;
+}
+
+.sizeBtn {
+  background-color: white;
+  border: 1px solid#ebedee;
+  border-left: none;
+  align-items: center;
+  box-sizing: border-box;
   height: 40px;
+  font-size: 13px;
+  margin-bottom: -1px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  border-color: #ebedee;
+  /* font-weight: 700; */
+}
+
+.sizeBtn:hover {
+  background: black;
+  color: white;
+  border-color: #ebedee;
+}
+
+.sizeBtn:focus {
+  background: black;
+  color: white;
+  border-color: #ebedee;
+}
+
+.quantity {
+  grid-area: q;
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 37px;
   width: 100px;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700px;
   letter-spacing: 2px;
 }
 
 .submitCart {
-  grid-area: q;
+  grid-area: r;
+  display: flex;
+  background-color: black;
+  justify-content: space-evenly;
   box-sizing: border-box;
-  cursor: cursor;
+  cursor: pointer;
   height: 40px;
-  width: 200px;
+  width: 300px;
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 700px;
   letter-spacing: 2px;
 }
 
+/* .submitCart:hover {
+  color: gray;
+} */
+
+.addToBagText {
+  padding-top: 10px;
+  color: white;
+}
+
+.addToBagText:hover {
+  color: gray;
+}
+
+.submitCart:active {
+  background-color: gray;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.arrow {
+  height: 30px;
+  width: 30px;
+  color: white;
+}
+
 .addedToBag{
+
   background-color:white;
   box-sizing: border-box;
   width: 300px;
   height: 300px;
+
 }
 
 .star {
-  grid-area: r;
-  box-sizing: border-box;
-  border: 1px solid black;
-  cursor: cursor;
-  height: 40px;
-  width: 50px;
+  grid-area: s;
+  /* box-sizing: border-box; */
+  /* border: 1px solid gray; */
+  cursor: pointer;
+  height: 37px;
+  width: 40px;
+  justify-self: left;
 }
 
 .star:hover {
-  color: black;
+  background-color: pink;
 }
