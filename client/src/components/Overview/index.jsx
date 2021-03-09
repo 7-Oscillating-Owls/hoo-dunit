@@ -55,36 +55,43 @@ class Overview extends React.Component {
 
   render() {
     const { data, allStyles, selectedStyleId } = this.state;
-    const filteredStyle = allStyles.filter((style) => {
+
+    let filteredStyle;
+    data.forEach((style) => {
       if (selectedStyleId && style.style_id === selectedStyleId) {
-        return style;
+        filteredStyle = style;
       } if (style['default?'] === true) {
-        return style;
+        filteredStyle = style;
       }
     });
 
     return (
-      <div className={styles.overview}>
-        <ImageGallery images={filteredStyle[0].photos} />
-        <ProductInformation
-          productInfo={productInfo}
-          originalPrice={filteredStyle[0].original_price}
-          salePrice={filteredStyle[0].sale_price}
-        />
-        <StyleSelector
-          allStyles={allStyles}
-          getSelectedStyleId={this.getSelectedStyleId}
-        />
-        <Cart
-          skus={filteredStyle[0].skus}
-          styleId={selectedStyleId}
-        />
-        <ProductDescription
-          description={productInfo.description}
-          features={productInfo.features}
-          slogan={productInfo.slogan}
-        />
-      </div>
+      <>
+        {filteredStyle
+          && (
+          <div className={styles.overview}>
+            <ImageGallery images={filteredStyle.photos} />
+            <ProductInformation
+              productInfo={productInfo}
+              originalPrice={filteredStyle.original_price}
+              salePrice={filteredStyle.sale_price}
+            />
+            <StyleSelector
+              allStyles={data}
+              getSelectedStyleId={this.getSelectedStyleId}
+            />
+            <Cart
+              skus={filteredStyle.skus}
+              styleId={selectedStyleId}
+            />
+            <ProductDescription
+              description={productInfo.description}
+              features={productInfo.features}
+              slogan={productInfo.slogan}
+            />
+          </div>
+          )}
+      </>
     );
   }
 }
