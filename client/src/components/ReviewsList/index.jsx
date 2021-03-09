@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
+/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/sort-comp */
-/* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
 import ReviewsAverageOverviewStars from '../ReviewsAverageOverviewStars';
@@ -46,8 +46,8 @@ class ReviewsList extends React.Component {
 
   // Send current product id from App with get request and retrieve reviews list
   getReviews() {
+    const { reviewsList } = this.state;
     const { currentProduct } = this.props;
-    // const currentProduct = '14296'; // 14931, 14932, 14034, 14296, 14807
     const {
       currentPage,
     } = this.state;
@@ -60,7 +60,7 @@ class ReviewsList extends React.Component {
       .then((response) => {
         const reviewsData = response.data.results;
         this.setState({
-          reviewsList: reviewsData,
+          reviewsList: [...reviewsList, reviewsData],
           limitedReviewsList: [reviewsData[0], reviewsData[1]],
         });
       })
@@ -69,8 +69,7 @@ class ReviewsList extends React.Component {
       });
   }
 
-  // eslint-disable-next-line class-methods-use-this
-
+  // This function sends post request with data from ReviewsAddForm
   // Notes: Characteristic ID and name are passed down as props - will need to send in post request
   // Name and id are stored at same index for each array
   // characteristicNames and characteristicIds are both arrays
@@ -114,12 +113,13 @@ class ReviewsList extends React.Component {
     this.setState({ displayModal: false });
   }
 
-  // Display two more reviews
+  // Display two more reviews each time more review button is clicked
   getMoreReviews() {
     const {
       reviewsList,
       limitedReviewsList,
       numberOfReviewsDisplayed,
+      currentPage,
     } = this.state;
     const { totalNumberOfStars } = this.props;
     if (reviewsList[numberOfReviewsDisplayed + 2]) {
@@ -146,13 +146,10 @@ class ReviewsList extends React.Component {
     if (numberOfReviewsDisplayed === totalNumberOfStars) {
       this.setState({ displayMoreButton: false });
     }
-    if (!reviewsList[numberOfReviewsDisplayed + 1] && !reviewsList[numberOfReviewsDisplayed + 1]) {
-      this.setState({ displayMoreButton: false });
+    if (!reviewsList[numberOfReviewsDisplayed + 2] && !reviewsList[numberOfReviewsDisplayed + 1]) {
+      this.setState({ currentPage: (currentPage + 1) });
+      this.getReviews();
     }
-
-    // else if (numberOfReviewsDisplayed === totalNumberOfStars) {
-    //   this.setState({ displayMoreButton: false });
-    // }
   }
 
   render() {

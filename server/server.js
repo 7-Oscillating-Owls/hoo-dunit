@@ -50,7 +50,7 @@ app.get('/reviews', (request, response) => {
     },
     params: {
       product_id: `${productId}`,
-      count: 100,
+      count: 20,
       page: `${page}`,
     },
   })
