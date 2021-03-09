@@ -5,7 +5,7 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   width: 425px;
-  height: 30px;
+  /* height: 30px; */
   padding-left: 10px;
   text-align: center;
 }
@@ -28,6 +28,37 @@
   font-weight: 700px;
   letter-spacing: 2px;
   justify-self: space-around;
+}
+
+.sizeBox {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  border: 1px solid#ebedee;
+  border-left: 1px solid #ebedee;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.sizeBtn {
+  background-color: white;
+  border: 1px solid#ebedee;
+  border-left: none;
+  align-items: center;
+  box-sizing: border-box;
+  height: 40px;
+  font-size: 13px;
+  margin-bottom: -1px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  /* font-weight: 700; */
+}
+
+.sizeBtn:hover {
+  background: black;
+  color: white;
 }
 
 .quantity {

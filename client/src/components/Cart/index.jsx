@@ -12,6 +12,7 @@ class Cart extends React.Component {
       selectedQuantity: 0,
       readyToBuy: false,
     };
+    this.getSize = this.getSize.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -26,6 +27,12 @@ class Cart extends React.Component {
     event.preventDefault();
     this.setState({
       readyToBuy: true,
+    });
+  }
+
+  getSize(selectedSize) {
+    this.setState({
+      selectedSize,
     });
   }
 
@@ -46,7 +53,7 @@ class Cart extends React.Component {
     return (
       <div className={styles.addToCart}>
         <form className={styles.cartWrapper} onSubmit={this.handleSubmit}>
-          <select className={styles.size} name="selectedSize" value={selectedSize} onChange={this.handleChange}>
+          {/* <select className={styles.size} name="selectedSize" value={selectedSize} onChange={this.handleChange}>
             <option value="">SELECT A SIZE</option>
             {
               skuIds.map((item) => (
@@ -55,7 +62,16 @@ class Cart extends React.Component {
                 </option>
               ))
             }
-          </select>
+          </select> */}
+          <div className={styles.sizeBox}>
+            {
+              skuIds.map((item) => (
+                <button className={styles.sizeBtn} type="button" name="selectedSize" key={item} value={selectedSize} onClick={() => this.getSize(skus[item].size)}>
+                  <span>{skus[item].size}</span>
+                </button>
+              ))
+            }
+          </div>
           <select className={styles.quantity} name="selectedQuantity" value={selectedQuantity} onChange={this.handleChange}>
             <option value="">-</option>
             {

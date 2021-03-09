@@ -43,6 +43,7 @@
   left: 65px;
   align-self: center;
   cursor: pointer;
+  transition: smooth;
 }
 
 .rightArrow {

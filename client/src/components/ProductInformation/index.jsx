@@ -19,13 +19,13 @@ const ProductInformation = (props) => {
     </div>
   ) : (
     <div>
-      <div className={styles.salePrice}>
+      <span className={styles.originalPrice}>
+        {originalPrice}
+      </span>
+      <span className={styles.salePrice}>
         $
         {salePrice}
-      </div>
-      <div className={styles.originalPrice}>
-        {originalPrice}
-      </div>
+      </span>
     </div>
   );
 
@@ -42,6 +42,7 @@ const ProductInformation = (props) => {
       <div className={styles.name}>{name}</div>
       <div>{styleName}</div>
       {currentPrice}
+      <div classname={styles.discount}>This product is excluded from all promotional discounts and offers</div>
     </div>
   );
 };

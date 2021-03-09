@@ -39,13 +39,17 @@
 }
 
 .originalPrice {
-  font-size:13px;
+  font-size:15px;
   font-weight: 100;
   text-decoration: line-through;
 }
 
 .salePrice {
-  font-size:13px;
+  font-size:15px;
   font-weight: 100;
   color: red;
+}
+
+.discount {
+  font-size: 10px;
 }

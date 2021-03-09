@@ -11,6 +11,7 @@
       object-fit: cover;
       align-self: center;
       cursor: crosshair;
+      transition: smooth;
 }
 
 .expandedImage {
