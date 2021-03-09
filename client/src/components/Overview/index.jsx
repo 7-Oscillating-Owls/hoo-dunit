@@ -45,18 +45,22 @@ class Overview extends React.Component {
 
   fetchAllStyles() {
     const { productId } = this.props;
-
-    axios.get(`/api/products/${productId}`)
-      .then((res) => {
-        this.setState({
-          category: res.data.category,
-          name: res.data.name,
-          slogan: res.data.slogan,
-          description: res.data.description,
-          features: res.data.features,
-          data: res.data.styles,
-        });
-      });
+    if (productId) {
+      axios.get(`/api/products/${productId}`)
+        .then((res) => {
+          this.setState({
+            category: res.data.category,
+            name: res.data.name,
+            slogan: res.data.slogan,
+            description: res.data.description,
+            features: res.data.features,
+            data: res.data.styles,
+          });
+        })
+        .catch(() => {
+          console.log('error retrieving styles data');
+        })
+    }
   }
 
   render() {
