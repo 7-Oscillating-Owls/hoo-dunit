@@ -84,7 +84,8 @@ class ReviewsList extends React.Component {
     };
     axios.post('/reviews', reviewDataObject)
       .then((response) => {
-        alert('Successfully added review');
+        customAlert('Successfully added review');
+        console.log('Successfully added review: ', response.data);
         this.getReviews();
       })
       .catch((error) => {
@@ -125,12 +126,12 @@ class ReviewsList extends React.Component {
         limitedReviewsList: [...limitedReviewsList, reviewsList[currentLength + 1]],
         numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 1),
       });
-    } else {
+    } else if (numberOfReviewsDisplayed === totalNumberOfStars) {
       this.setState({ displayMoreButton: false });
     }
-    if (numberOfReviewsDisplayed === totalNumberOfStars) {
-      this.setState({ displayMoreButton: false });
-    }
+    // if (numberOfReviewsDisplayed === totalNumberOfStars) {
+    //   this.setState({ displayMoreButton: false });
+    // }
   }
 
   render() {

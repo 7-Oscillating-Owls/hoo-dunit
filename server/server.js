@@ -50,7 +50,7 @@ app.get('/reviews', (request, response) => {
     },
     params: {
       product_id: `${productId}`,
-      count: 8,
+      count: 100,
       page: `${page}`,
     },
   })
@@ -85,20 +85,40 @@ app.get('/reviews/meta', (request, response) => {
     });
 });
 
-// app.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', (request, response) => {
-//   // Will need to send data to API
-//   headers: {
-//     Authorization: token,
-//   }
-// })
-//   .then((response) => {
-//     response.status(201);
-//     console.log('Add review server response: ', response);
-//   })
-//   .catch((error) => {
-//     response.status(404);
-//     console.log('Error with server review post request: ', error);
-//   });
+// Reviews post request
+app.post('/reviews', (request, response) => {
+  // const {
+  //   product_id: product_id,
+  //   rating: rating,
+  //   summary: summary,
+  //   body: body,
+  //   recommend: recommend,
+  //   name: name,
+  //   email: email,
+  //   photos: photos,
+  //   characteristics: {
+  //     sizeID: formData.size,
+  //     widthID: formData.width,
+  //     comfortID: formData.comfort,
+  //     qualityID: formData.quality,
+  //     productLengthID: formData.productLength,
+  //     fitID: formData.fit,
+  //   },
+  // } = request.body;
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', {
+    headers: {
+      Authorization: token,
+    },
+  })
+    .then((response) => {
+      response.status(201);
+      response.send('Add review server response: ', response);
+    })
+    .catch((error) => {
+      response.status(404);
+      response.send('Error with server review post request: ', error);
+    });
+});
 
 app.get('/api/products/:productId', (request, response) => {
   const { productId } = request.params;
