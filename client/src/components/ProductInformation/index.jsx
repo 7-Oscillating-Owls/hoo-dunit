@@ -21,6 +21,7 @@ const ProductInformation = (props) => {
     <div>
       <span className={styles.originalPrice}>
         {originalPrice}
+        {' '}
       </span>
       <span className={styles.salePrice}>
         $

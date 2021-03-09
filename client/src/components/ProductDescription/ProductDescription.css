@@ -3,18 +3,29 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
   color: rgb(90, 90, 90);
-  display: flex;
+  display: grid;
   padding-left: 20px;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "a ."
+                       "a b"
+                       "a .";
+  width: 100%;
 }
+
+.details {
+  grid-area: a;
+}
+
+.features {
+  grid-area: b;
+  /*flex-direction: column;
+  justify-items:flex-start ; */
+}
+
 
 .paragraph {
   display: inline-block;
 }
 
 
-.features {
-  display: flex;
-  flex-direction: column;
-  justify-items:flex-start ;
-}
 

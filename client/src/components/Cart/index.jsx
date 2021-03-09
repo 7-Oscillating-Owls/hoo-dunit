@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AiFillStar } from 'react-icons/ai';
+import { GrDeliver } from 'react-icons/gr';
 import { CgArrowLongRight } from 'react-icons/cg';
 import AppModal from '../AppModal';
 import styles from './Cart.css';
@@ -119,10 +120,12 @@ class Cart extends React.Component {
                   </h5>
                   <h5>
                     Size
+                    {' '}
                     {selectedSize}
                   </h5>
                   <h5>
                     Quantity
+                    {' '}
                     {selectedQuantity}
                   </h5>
                 </div>
