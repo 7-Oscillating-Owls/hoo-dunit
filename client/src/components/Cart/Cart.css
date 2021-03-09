@@ -30,7 +30,6 @@
 
 .sizeBox {
   display: grid;
-
   grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
   border: 1px solid#ebedee;
   border-left: 1px solid #ebedee;
@@ -89,9 +88,11 @@
   font-size: 13px;
   font-weight: 700px;
   letter-spacing: 2px;
+  padding-top: 10px;
 }
 
 .addedToBag{
+
   background-color:white;
   box-sizing: border-box;
   width: 300px;
