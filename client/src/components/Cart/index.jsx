@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AiFillStar } from 'react-icons/ai';
 import { GrDeliver } from 'react-icons/gr';
+import { BiRuler, BiEnvelope } from 'react-icons/bi';
 import { CgArrowLongRight } from 'react-icons/cg';
 import AppModal from '../AppModal';
 import styles from './Cart.css';
