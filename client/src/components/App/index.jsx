@@ -126,7 +126,7 @@ class AppComponent extends React.Component {
     } = this.state;
     return (
       <>
-        <Overview productId={match.params.productId} />
+        <Overview productId={match.params.productId} product={product} />
         <RelatedProducts productId={match.params.productId} product={product} />
         <ReviewsList
           starRating={starRating}

@@ -5,7 +5,8 @@ import styles from './ProductInformation.css';
 
 const ProductInformation = (props) => {
   const {
-    productInfo,
+    category,
+    name,
     originalPrice,
     salePrice,
   } = props;
@@ -35,8 +36,8 @@ const ProductInformation = (props) => {
         </span>
         <u>Read All Reviews</u>
       </div>
-      <div className={styles.category}>{productInfo.category}</div>
-      <div className={styles.name}>{productInfo.name}</div>
+      <div className={styles.category}>{category}</div>
+      <div className={styles.name}>{name}</div>
       {currentPrice}
     </div>
   );

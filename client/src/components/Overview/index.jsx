@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import styles from './Overview.css';
-import dummyData from '../../../../data/styles';
-import productInfo from '../../../../data/productInfo';
 import ImageGallery from '../ImageGallery';
 import ProductInformation from '../ProductInformation';
 import ProductDescription from '../ProductDescription';
@@ -15,10 +13,13 @@ class Overview extends React.Component {
     super(props);
 
     this.state = {
-      data: [],
-      allStyles: dummyData.results,
+      category: '',
+      name: '',
+      slogan: '',
+      description: '',
       selectedStyleId: 0,
-
+      features: [],
+      data: [],
     };
 
     this.fetchAllStyles = this.fetchAllStyles.bind(this);
@@ -48,14 +49,20 @@ class Overview extends React.Component {
     axios.get(`/api/products/${productId}`)
       .then((res) => {
         this.setState({
+          category: res.data.category,
+          name: res.data.name,
+          slogan: res.data.slogan,
+          description: res.data.description,
+          features: res.data.features,
           data: res.data.styles,
         });
       });
   }
 
   render() {
-    const { data, allStyles, selectedStyleId } = this.state;
-
+    const {
+      category, name, slogan, description, features, data, selectedStyleId,
+    } = this.state;
     let filteredStyle;
     data.forEach((style) => {
       if (selectedStyleId && style.style_id === selectedStyleId) {
@@ -69,27 +76,28 @@ class Overview extends React.Component {
       <>
         {filteredStyle
           && (
-          <div className={styles.overview}>
-            <ImageGallery images={filteredStyle.photos} />
-            <ProductInformation
-              productInfo={productInfo}
-              originalPrice={filteredStyle.original_price}
-              salePrice={filteredStyle.sale_price}
-            />
-            <StyleSelector
-              allStyles={data}
-              getSelectedStyleId={this.getSelectedStyleId}
-            />
-            <Cart
-              skus={filteredStyle.skus}
-              styleId={selectedStyleId}
-            />
-            <ProductDescription
-              description={productInfo.description}
-              features={productInfo.features}
-              slogan={productInfo.slogan}
-            />
-          </div>
+            <div className={styles.overview}>
+              <ImageGallery images={filteredStyle.photos} />
+              <ProductInformation
+                category={category}
+                name={name}
+                originalPrice={filteredStyle.original_price}
+                salePrice={filteredStyle.sale_price}
+              />
+              <StyleSelector
+                allStyles={data}
+                getSelectedStyleId={this.getSelectedStyleId}
+              />
+              <Cart
+                skus={filteredStyle.skus}
+                styleId={selectedStyleId}
+              />
+              <ProductDescription
+                description={description}
+                features={features}
+                slogan={slogan}
+              />
+            </div>
           )}
       </>
     );
