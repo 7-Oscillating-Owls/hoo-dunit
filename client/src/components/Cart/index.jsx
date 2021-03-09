@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AiOutlineStar } from 'react-icons/ai';
+import { BiStar } from 'react-icons/bi';
+import { CgArrowLongRight } from 'react-icons/cg';
 import AppModal from '../AppModal';
 import styles from './Cart.css';
 
@@ -46,7 +47,9 @@ class Cart extends React.Component {
 
   render() {
     const { skus, styleId } = this.props;
-    const { selectedSize, selectedQuantity, readyToBuy, sizeClicked } = this.state;
+    const {
+      selectedSize, selectedQuantity, readyToBuy, sizeClicked,
+    } = this.state;
     const skuIds = Object.keys(skus);
     const filteredQuantity = Object.values(skus).filter((sku) => sku.size === selectedSize)
       .map((sku) => sku.quantity);
@@ -65,6 +68,7 @@ class Cart extends React.Component {
               ))
             }
           </select> */}
+          <h5 className={styles.selectSize}>Select size</h5>
           <div className={styles.sizeBox}>
             {
               skuIds.map((item) => (
@@ -75,7 +79,7 @@ class Cart extends React.Component {
             }
           </div>
           <select className={styles.quantity} name="selectedQuantity" value={selectedQuantity} onChange={this.handleChange}>
-            <option value="">-</option>
+            <option value="">Quantity</option>
             {
               displayQuantity && displayQuantity.map((item) => (
                 <option key={item} value={item}>{item}</option>
@@ -83,8 +87,11 @@ class Cart extends React.Component {
             }
           </select>
           <br />
-          <input className={styles.submitCart} type="submit" value="ADD TO BAG" />
-          <AiOutlineStar className={styles.star} />
+          <button className={styles.submitCart} type="submit" value="ADD TO BAG">
+            <span className={styles.addToBagText}>ADD TO BAG</span>
+            <CgArrowLongRight className={styles.arrow} />
+          </button>
+          <BiStar className={styles.star} />
         </form>
 
         {

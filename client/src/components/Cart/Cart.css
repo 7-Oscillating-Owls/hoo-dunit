@@ -8,15 +8,26 @@
   text-align: center;
 }
 
+
 .cartWrapper {
   display: grid;
-  grid-template-areas:"o p"
-                      "q r";
+  grid-template-areas:"o o"
+                      "p q"
+                      "r s";
+  grid-gap: 20px;
   /* justify-items: center; */
 }
 
-.size {
+
+.selectSize {
   grid-area: o;
+  font-weight:600;
+  font-size: 14px;
+  justify-self: left;
+}
+
+
+.size {
   box-sizing: border-box;
   cursor: cursor;
   height: 40px;
@@ -29,6 +40,7 @@
 }
 
 .sizeBox {
+  grid: p;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
   border: 1px solid#ebedee;
@@ -67,28 +79,55 @@
 }
 
 .quantity {
-  grid-area: p;
+  grid-area: q;
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 37px;
+  width: 100px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700px;
+  letter-spacing: 2px;
+}
+
+.submitCart {
+  grid-area: r;
+  display: flex;
+  background-color: black;
+  justify-content: space-evenly;
   box-sizing: border-box;
   cursor: pointer;
   height: 40px;
-  width: 100px;
+  width: 300px;
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 700px;
   letter-spacing: 2px;
 }
 
-.submitCart {
-  grid-area: q;
-  box-sizing: border-box;
-  cursor: pointer;
-  height: 40px;
-  width: 200px;
-  text-transform: uppercase;
-  font-size: 13px;
-  font-weight: 700px;
-  letter-spacing: 2px;
+/* .submitCart:hover {
+  color: gray;
+} */
+
+.addToBagText {
   padding-top: 10px;
+  color: white;
+}
+
+.addToBagText:hover {
+  color: gray;
+}
+
+.submitCart:active {
+  background-color: gray;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.arrow {
+  height: 30px;
+  width: 30px;
+  color: white;
 }
 
 .addedToBag{
@@ -97,17 +136,19 @@
   box-sizing: border-box;
   width: 300px;
   height: 300px;
+
 }
 
 .star {
-  grid-area: r;
-  box-sizing: border-box;
-  border: 1px solid black;
-  cursor: cursor;
-  height: 40px;
-  width: 50px;
+  grid-area: s;
+  /* box-sizing: border-box; */
+  /* border: 1px solid gray; */
+  cursor: pointer;
+  height: 37px;
+  width: 40px;
+  justify-self: left;
 }
 
 .star:hover {
-  color: black;
+  background-color: pink;
 }
