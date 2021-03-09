@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BiStar } from 'react-icons/bi';
+import { BiStar, BiRuler } from 'react-icons/bi';
 import { CgArrowLongRight } from 'react-icons/cg';
 import AppModal from '../AppModal';
 import styles from './Cart.css';
@@ -69,6 +69,13 @@ class Cart extends React.Component {
             }
           </select> */}
           <h5 className={styles.selectSize}>Select size</h5>
+          {/* <div className={styles.allThingsSize}>
+
+            <span className={styles.guideRuler}>
+            <span className={styles.sizeGuide}>Size Guide</span>
+            <BiRuler className={styles.ruler} /></span>
+
+          </div> */}
           <div className={styles.sizeBox}>
             {
               skuIds.map((item) => (
@@ -96,17 +103,17 @@ class Cart extends React.Component {
 
         {
           readyToBuy && (
-          <AppModal ref={this.registerModal} outsideClickHandler={() => this.closeModal()}>
-            <div className={styles.addedToBag}>
-              Added to Cart: Style ID
-              {styleId}
-              , Size
-              {selectedSize}
-              {' '}
-              Quantity
-              {selectedQuantity}
-            </div>
-          </AppModal>
+            <AppModal ref={this.registerModal} outsideClickHandler={() => this.closeModal()}>
+              <div className={styles.addedToBag}>
+                Added to Cart: Style ID
+                {styleId}
+                , Size
+                {selectedSize}
+                {' '}
+                Quantity
+                {selectedQuantity}
+              </div>
+            </AppModal>
           )
         }
 

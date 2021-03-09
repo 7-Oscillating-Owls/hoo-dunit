@@ -47,7 +47,7 @@ class StyleSelector extends React.Component {
         <div className={styles.nameContainer}>
           {allStyles.length}
           {' '}
-          STYLES AVAILABLE
+          styles available
         </div>
       </div>
     );
