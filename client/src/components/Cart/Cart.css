@@ -215,16 +215,16 @@
   height: 35px;
   width: 40px;
   justify-self: left;
-  fill: none;
+  outline: black;
 }
 
 .star:hover {
-  fill: pink;
+  color: black;
 }
 
-.star:hover {
+/* .star:hover {
   background-color: pink;
-}
+} */
 
 .success {
   grid-area: a;
@@ -256,5 +256,5 @@
   font-size: 20px;
   align-items: start;
   margin: none;
-  
+
 }

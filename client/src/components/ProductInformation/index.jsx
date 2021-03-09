@@ -34,7 +34,7 @@ const ProductInformation = (props) => {
     <div className={styles.productInformation}>
       <div className={styles.ratings}>
         <ReviewsAverageOverviewStars starRating={starRating} />
-        <div className={styles.reviewsText}><a href="index.reviewsList">Read All Reviews</a></div>
+        <div className={styles.reviewsText}><a href="index.jsx.productInformation">Read All Reviews</a></div>
       </div>
       <div className={styles.category}>{category}</div>
       <div className={styles.name}>{name}</div>
