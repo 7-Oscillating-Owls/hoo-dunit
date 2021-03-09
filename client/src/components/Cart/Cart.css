@@ -78,6 +78,7 @@
   cursor: pointer;
   letter-spacing: 0.2px;
   border-color: #ebedee;
+  outline: none;
   /* font-weight: 700; */
 }
 
@@ -162,6 +163,11 @@
   height: 37px;
   width: 40px;
   justify-self: left;
+}
+
+.star:hover {
+  fill: pink;
+  color: yellow;
 }
 
 .star:hover {
