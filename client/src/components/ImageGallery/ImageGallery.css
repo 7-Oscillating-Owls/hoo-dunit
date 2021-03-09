@@ -12,6 +12,8 @@
   position: absolute;
   left: 15px;
   align-self: center;
+  overflow: hidden;
+  /* overflow-y: scroll; */
 }
 
 /* .imageWrapper {

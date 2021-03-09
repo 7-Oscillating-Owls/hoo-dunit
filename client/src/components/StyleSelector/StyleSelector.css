@@ -32,7 +32,7 @@
 }
 
 .thumbnail {
-  border: 1px solid black;
+  border: 1px solid gray;
   border-radius: 50%;
   height: 60px;
   width: 60px;

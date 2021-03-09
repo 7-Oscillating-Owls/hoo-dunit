@@ -8,9 +8,11 @@ import styles from './ImageGallery.css';
 class ImageGallery extends React.Component {
   constructor(props) {
     super(props);
+    const { images } = this.props;
     this.state = {
-      url: 'https://images.unsplash.com/photo-1418985991508-e47386d96a71?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+      url: images[0].url,
       current: 0,
+      click: true,
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -19,9 +21,11 @@ class ImageGallery extends React.Component {
   }
   
   handleClick(url, index) {
+    const { click } = this.state;
     this.setState({
       url,
       current: index,
+      click: !click,
     });
   }
 
@@ -69,23 +73,24 @@ class ImageGallery extends React.Component {
 
   render() {
     const { images } = this.props;
-    const { url } = this.state;
+    const { url, click } = this.state;
 
     return (
       <div className={styles.imageGallery}>
         <div className={styles.thumbnailWrapper}>
           {
-              images.map((item, index) => (
-                <div key={item.url}>
-                  <img className={styles.thumbnail}  src={item.url} alt="style" onClick={() => this.handleClick(item.url, index)} />
-                </div>
-              ))
+            images.map((item, index) => (
+              <div key={item.url}>
+                <img className={styles.thumbnail} src={item.url} alt="style" onClick={() => this.handleClick(item.url, index)} />
+              </div>
+            ))
           }
         </div>
         <HiArrowNarrowLeft className={styles.leftArrow} onClick={this.previousSlide} />
-        <ThumbnailSelector currentImage={url} />
+        {click
+          ? <ThumbnailSelector currentImage={images[0].url} />
+          : <ThumbnailSelector currentImage={url} />}
         <HiArrowNarrowRight className={styles.rightArrow} onClick={this.nextSlide} />
-
       </div>
     );
   }
