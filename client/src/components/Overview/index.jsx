@@ -17,6 +17,7 @@ class Overview extends React.Component {
       name: '',
       slogan: '',
       description: '',
+      styleName: '',
       selectedStyleId: 0,
       features: [],
       data: [],
@@ -37,8 +38,9 @@ class Overview extends React.Component {
     }
   }
 
-  getSelectedStyleId(selectedStyleId) {
+  getSelectedStyleId(selectedStyleId, styleName) {
     this.setState({
+      styleName,
       selectedStyleId,
     });
   }
@@ -66,7 +68,7 @@ class Overview extends React.Component {
   render() {
     const { starRating } = this.props;
     const {
-      category, name, slogan, description, features, data, selectedStyleId,
+      category, name, slogan, description, styleName, features, data, selectedStyleId,
     } = this.state;
     let filteredStyle;
     data.forEach((style) => {
@@ -86,6 +88,7 @@ class Overview extends React.Component {
               <ProductInformation
                 category={category}
                 name={name}
+                styleName={styleName}
                 originalPrice={filteredStyle.original_price}
                 salePrice={filteredStyle.sale_price}
                 starRating={starRating}
@@ -112,6 +115,7 @@ class Overview extends React.Component {
 
 Overview.propTypes = {
   productId: PropTypes.string.isRequired,
+  starRating: PropTypes.number.isRequired,
 };
 
 export default Overview;

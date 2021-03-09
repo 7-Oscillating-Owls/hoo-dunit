@@ -7,6 +7,7 @@ const ProductInformation = (props) => {
   const {
     category,
     name,
+    styleName,
     originalPrice,
     salePrice,
     starRating,
@@ -39,6 +40,7 @@ const ProductInformation = (props) => {
       </div>
       <div className={styles.category}>{category}</div>
       <div className={styles.name}>{name}</div>
+      <div>{styleName}</div>
       {currentPrice}
     </div>
   );
