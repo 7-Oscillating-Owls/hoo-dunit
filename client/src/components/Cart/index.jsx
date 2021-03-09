@@ -11,6 +11,7 @@ class Cart extends React.Component {
       selectedSize: '',
       selectedQuantity: 0,
       readyToBuy: false,
+      sizeClicked: false,
     };
     this.getSize = this.getSize.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,6 +34,7 @@ class Cart extends React.Component {
   getSize(selectedSize) {
     this.setState({
       selectedSize,
+      sizeClicked: true,
     });
   }
 
@@ -44,7 +46,7 @@ class Cart extends React.Component {
 
   render() {
     const { skus, styleId } = this.props;
-    const { selectedSize, selectedQuantity, readyToBuy } = this.state;
+    const { selectedSize, selectedQuantity, readyToBuy, sizeClicked } = this.state;
     const skuIds = Object.keys(skus);
     const filteredQuantity = Object.values(skus).filter((sku) => sku.size === selectedSize)
       .map((sku) => sku.quantity);

@@ -1,12 +1,10 @@
 .addToCart {
   grid-area: d;
-  /* border: 1px solid black; */
-
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   width: 425px;
-  /* height: 30px; */
-  padding-left: 10px;
+  padding-left: 20px;
+  padding-top: 10px;
   text-align: center;
 }
 
@@ -53,18 +51,26 @@
   align-items: center;
   cursor: pointer;
   letter-spacing: 0.2px;
+  border-color: #ebedee;
   /* font-weight: 700; */
 }
 
 .sizeBtn:hover {
   background: black;
   color: white;
+  border-color: #ebedee;
+}
+
+.sizeBtn:focus {
+  background: black;
+  color: white;
+  border-color: #ebedee;
 }
 
 .quantity {
   grid-area: p;
   box-sizing: border-box;
-  cursor: cursor;
+  cursor: pointer;
   height: 40px;
   width: 100px;
   text-transform: uppercase;
@@ -76,7 +82,7 @@
 .submitCart {
   grid-area: q;
   box-sizing: border-box;
-  cursor: cursor;
+  cursor: pointer;
   height: 40px;
   width: 200px;
   text-transform: uppercase;
