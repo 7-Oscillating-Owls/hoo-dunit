@@ -17,8 +17,10 @@ class QuestionsAndAnswers extends React.Component {
     this.state = {
       data: [],
       isMore: false,
+      searchTerm: '',
     };
     this.handleMoreClick = this.handleMoreClick.bind(this);
+    this.handleOnChange = this.handleOnChange.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +28,10 @@ class QuestionsAndAnswers extends React.Component {
       .then(response => {
         this.setState({ data: response.data.results });
       });
+  }
+
+  handleOnChange(event) {
+    this.setState({ searchTerm: event.target.value });
   }
 
   handleMoreClick() {
@@ -38,7 +44,7 @@ class QuestionsAndAnswers extends React.Component {
       <div>
         <QATitle />
         <div className={styles.searchContainer}>
-          <SearchBar />
+          <SearchBar change={this.handleOnChange} />
         </div>
         <div className={styles.questionone}>
           <Question data={data} />
