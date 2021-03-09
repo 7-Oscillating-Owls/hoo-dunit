@@ -21,6 +21,7 @@ class AppComponent extends React.Component {
 
     this.state = {
       product: undefined,
+      myOutfit: {},
       starRating: 5,
       totalNumberOfStars: 0,
       characteristicNames: [],
@@ -33,6 +34,9 @@ class AppComponent extends React.Component {
       twoStarTotal: '',
       oneStarTotal: '',
     };
+
+    this.addToMyOutfit = this.addToMyOutfit.bind(this);
+    this.removeFromMyOutfit = this.removeFromMyOutfit.bind(this);
     this.getMetaData = this.getMetaData.bind(this);
     this.getAverageRating = this.getAverageRating.bind(this);
     this.getCharacteristicId = this.getCharacteristicId.bind(this);
@@ -140,10 +144,19 @@ class AppComponent extends React.Component {
     }
   }
 
+  addToMyOutfit(product) {
+    console.log(`add ${product} to my outfit`);
+  }
+
+  removeFromMyOutfit(product) {
+    console.log(`remove ${product} from my outfit`);
+  }
+
   render() {
     const { match } = this.props;
     const {
       product,
+      myOutfit,
       metaObject,
       starRating,
       recommendPercent,
@@ -159,7 +172,13 @@ class AppComponent extends React.Component {
     return (
       <>
         <Overview productId={match.params.productId} product={product} starRating={starRating} />
-        <RelatedProducts productId={match.params.productId} product={product} />
+        <RelatedProducts
+          productId={match.params.productId}
+          product={product}
+          myOutfit={myOutfit}
+          addOutfit={this.addToMyOutfit}
+          removeOutfit={this.removeFromMyOutfit}
+        />
         <ReviewsList
           currentProduct={match.params.productId}
           starRating={starRating}
