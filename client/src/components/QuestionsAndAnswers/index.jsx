@@ -17,8 +17,10 @@ class QuestionsAndAnswers extends React.Component {
     this.state = {
       data: [],
       isMore: false,
+      searchTerm: '',
     };
     this.handleMoreClick = this.handleMoreClick.bind(this);
+    this.handleOnChange = this.handleOnChange.bind(this);
   }
 
   componentDidMount() {
@@ -28,17 +30,24 @@ class QuestionsAndAnswers extends React.Component {
       });
   }
 
+  handleOnChange(event) {
+    this.setState({ searchTerm: event.target.value });
+  }
+
   handleMoreClick() {
     this.setState({ isMore: true });
   }
 
   render() {
-    const { data, isMore } = this.state;
+    const { data, isMore, searchTerm } = this.state;
+    // const filteredItem = data.filter(item => {
+    //   return item.data.question_body.toLowerCase().includes(searchTerm.toLowerCase())
+    // });
     return (
       <div>
         <QATitle />
         <div className={styles.searchContainer}>
-          <SearchBar />
+          <SearchBar change={this.handleOnChange} />
         </div>
         <div className={styles.questionone}>
           <Question data={data} />
