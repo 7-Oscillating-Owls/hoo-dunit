@@ -46,7 +46,6 @@ class ReviewsList extends React.Component {
 
   // Send current product id from App with get request and retrieve reviews list
   getReviews() {
-    const { reviewsList } = this.state;
     const { currentProduct } = this.props;
     const {
       currentPage,
@@ -60,7 +59,7 @@ class ReviewsList extends React.Component {
       .then((response) => {
         const reviewsData = response.data.results;
         this.setState({
-          reviewsList: [...reviewsList, reviewsData],
+          reviewsList: reviewsData,
           limitedReviewsList: [reviewsData[0], reviewsData[1]],
         });
       })
