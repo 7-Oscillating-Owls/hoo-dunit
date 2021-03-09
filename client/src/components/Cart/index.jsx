@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BiStar, BiRuler } from 'react-icons/bi';
+import { AiFillStar } from 'react-icons/ai';
+import { GrDeliver } from 'react-icons/gr';
+import { BiRuler, BiEnvelope } from 'react-icons/bi';
 import { CgArrowLongRight } from 'react-icons/cg';
 import AppModal from '../AppModal';
 import styles from './Cart.css';
@@ -100,7 +102,7 @@ class Cart extends React.Component {
             <span className={styles.addToBagText}>ADD TO BAG</span>
             <CgArrowLongRight className={styles.arrow} />
           </button>
-          <BiStar className={styles.star} />
+          <AiFillStar className={styles.star} />
         </form>
 
         {
@@ -119,10 +121,12 @@ class Cart extends React.Component {
                   </h5>
                   <h5>
                     Size
+                    {' '}
                     {selectedSize}
                   </h5>
                   <h5>
                     Quantity
+                    {' '}
                     {selectedQuantity}
                   </h5>
                 </div>
