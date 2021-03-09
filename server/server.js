@@ -66,7 +66,8 @@ app.get('/reviews', (request, response) => {
 
 // Get product's review meta data
 app.get('/reviews/meta', (request, response) => {
-  const productId = '14296'; // 14931, 14932, 14034, 14296, 14807
+  // const productId = '14296'; // 14931, 14932, 14034, 14296, 14807
+  const { productId } = request.query;
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta', {
     headers: {
       Authorization: token,
