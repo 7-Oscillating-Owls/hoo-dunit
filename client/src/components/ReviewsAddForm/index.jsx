@@ -16,7 +16,7 @@ class ReviewsAddForm extends React.Component {
       width: '',
       comfort: '',
       quality: '',
-      length: '',
+      productLength: '',
       fit: '',
       recommended: true,
       summaryTextCount: 0,
@@ -186,16 +186,16 @@ class ReviewsAddForm extends React.Component {
           <br />
           <h5>Length: </h5>
           <div onChange={this.handleChange}>
-            <input type="radio" id="length1" name="length" value="1" />
-            <label htmlFor="length1"> 1 - Runs short </label>
-            <input type="radio" id="length2" name="length" value="2" />
-            <label htmlFor="length2"> 2 - Runs slightly short </label>
-            <input type="radio" id="length3" name="length" value="3" />
-            <label htmlFor="length3"> 3 - Perfect </label>
-            <input type="radio" id="length4" name="length" value="4" />
-            <label htmlFor="length4"> 4 - Runs slightly long </label>
-            <input type="radio" id="length5" name="length" value="5" />
-            <label htmlFor="length5"> 5 - Runs long </label>
+            <input type="radio" id="productLength1" name="productLength" value="1" />
+            <label htmlFor="productLength1"> 1 - Runs short </label>
+            <input type="radio" id="productLength2" name="productLength" value="2" />
+            <label htmlFor="productLength2"> 2 - Runs slightly short </label>
+            <input type="radio" id="productLength3" name="productLength" value="3" />
+            <label htmlFor="productLength3"> 3 - Perfect </label>
+            <input type="radio" id="productLength4" name="productLength" value="4" />
+            <label htmlFor="productLength4"> 4 - Runs slightly long </label>
+            <input type="radio" id="productLength5" name="productLength" value="5" />
+            <label htmlFor="productLength5"> 5 - Runs long </label>
           </div>
           <br />
           <h5>Fit: </h5>

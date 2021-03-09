@@ -44,8 +44,6 @@ app.get('/answers', (request, response) => {
 // Get product's review information
 app.get('/reviews', (request, response) => {
   const { productId, page } = request.query;
-  // const productId = '14296';
-  // const page = '1';
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', {
     headers: {
       Authorization: token,
@@ -86,6 +84,16 @@ app.get('/reviews/meta', (request, response) => {
       response.status(500);
     });
 });
+
+// app.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', (request, response) => {
+//   // Will need to send data to API
+// })
+//   .then((response) => {
+//     console.log('Add review server response: ', response);
+//   })
+//   .catch((error) => {
+//     console.log('Error with server review post request: ', error);
+//   });
 
 app.get('/api/products/:productId', (request, response) => {
   const { productId } = request.params;

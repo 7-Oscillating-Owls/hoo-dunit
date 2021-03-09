@@ -62,29 +62,34 @@ class ReviewsList extends React.Component {
 
   // eslint-disable-next-line class-methods-use-this
   addReview(formData) {
-    const reviewObject = {
+    // const { currentProduct } = this.props;
+    const currentProduct = '14296'; // 14931, 14932, 14034, 14296, 14807
+    const reviewDataObject = {
+      product_id: currentProduct,
       rating: formData.overallRating,
-      summary: formData.reviewSummary,
-      recommend: formData.recommend,
+      summary: formData.reviewSummary || '',
       body: formData.reviewBody,
-      reviewer_name: formData.reviewUsername,
-      photos: formData.uploadedFile,
+      recommend: formData.recommended,
+      name: formData.reviewUsername,
+      email: formData.email,
+      photos: formData.uploadedFile || '',
+      characteristics: {
+        sizeID: formData.size,
+        widthID: formData.width,
+        comfortID: formData.comfort,
+        qualityID: formData.quality,
+        productLengthID: formData.productLength,
+        fitID: formData.fit,
+      },
     };
-    // Will need to change this to post request once connected to server - to POST/reviews
-    // reviewsList.push(reviewObject);
-    // const reviewMetaCharacteristicsObject = {
-    //   Size: {
-    //     value: formData.size,
-    //   },
-    //   Width: {
-    //     value: formData.width,
-    //   },
-    //   Comfort: {
-    //     value: formData.comfort,
-    //   },
-    // };
-    // Will need to change this to post request to POST/reviews/meta
-    console.log('Review Added!', reviewMetaCharacteristicsObject);
+    axios.post('/reviews', reviewDataObject)
+      .then((response) => {
+        alert('Successfully added review');
+        this.getReviews();
+      })
+      .catch((error) => {
+        console.log('Error adding review: ', error);
+      });
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -216,3 +221,27 @@ class ReviewsList extends React.Component {
 }
 
 export default ReviewsList;
+
+// Slightly unclear regarding characteristics post request instructions in Learn
+// How do we get ID?
+
+// characteristics: {
+//   size: {
+//     value: formData.size,
+//   },
+//   width: {
+//     value: formData.width,
+//   },
+//   comfort: {
+//     value: formData.comfort,
+//   },
+//   quality: {
+//     value: formData.quality,
+//   },
+//   productLength: {
+//     value: formData.productLength,
+//   },
+//   fit: {
+//     value: formData.fit,
+//   },
+// },
