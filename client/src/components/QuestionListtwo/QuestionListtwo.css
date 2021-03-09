@@ -9,6 +9,9 @@
   color: rgb(3, 3, 104);
 }
 
+.questionlisttwo:hover {
+  font-weight: 700;
+}
 .sidebar {
   display: flex;
   justify-content: flex-end;

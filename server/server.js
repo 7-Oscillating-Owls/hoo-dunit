@@ -14,9 +14,14 @@ app.use('/', express.static(path.join(__dirname, '..', 'public')));
 app.use('/products/*', express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/qa', (request, response) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?product_id=14931', {
+  const { productId } = request.query;
+  console.log(productId)
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', {
     headers: {
       Authorization: token,
+    },
+    params: {
+      product_id: `${productId}`
     },
   })
     .then((res) => {
@@ -50,7 +55,7 @@ app.get('/reviews', (request, response) => {
     },
     params: {
       product_id: `${productId}`,
-      count: 100,
+      count: 20,
       page: `${page}`,
     },
   })
@@ -60,7 +65,7 @@ app.get('/reviews', (request, response) => {
     })
     .catch((error) => {
       response.send('Error fetching reviews: ', error);
-      response.status(500);
+      response.status(400);
     });
 });
 
@@ -81,8 +86,8 @@ app.get('/reviews/meta', (request, response) => {
       response.status(200);
     })
     .catch((error) => {
-      response.send('Error fetching reviews meta data: ', error);
-      response.status(500);
+      response.send('Error fetching server reviews meta data: ', error);
+      response.status(400);
     });
 });
 
@@ -97,7 +102,7 @@ app.post('/reviews', (request, response) => {
   //   name,
   //   email,
   //   photos,
-  //   // Characteristics portion still needs work on
+  //   // Characteristics portion still needs work on - may need put request for characteristics
   //   characteristics: characteristics,
   // } = request.body;
   // console.log('This is request.body: ', request.body);
@@ -107,7 +112,7 @@ app.post('/reviews', (request, response) => {
     },
     params: {
       product_id: request.body.product_id,
-    }
+    },
   })
     .then((response) => {
       response.status(201);
