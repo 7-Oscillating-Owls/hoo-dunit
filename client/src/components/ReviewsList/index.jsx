@@ -147,7 +147,8 @@ class ReviewsList extends React.Component {
     }
     if (!reviewsList[numberOfReviewsDisplayed + 2] && !reviewsList[numberOfReviewsDisplayed + 1]) {
       this.setState({ currentPage: (currentPage + 1) });
-      this.getReviews();
+      // Need to fine tune this later
+      // this.getReviews();
     }
   }
 
