@@ -30,8 +30,8 @@ app.get('/qa', (request, response) => {
 app.get('/answers', (request, response) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/84310/answers', {
     headers: {
-      'Authorization' : token
-    }
+      Authorization: token,
+    },
   })
     .then((res) => {
       response.send(res.data);
@@ -43,7 +43,7 @@ app.get('/answers', (request, response) => {
 
 // Get product's review information
 app.get('/reviews', (request, response) => {
-  const productId = "14296"; // 14931, 14932, 14034, 14296, 14807
+  const productId = '14296'; // 14931, 14932, 14034, 14296, 14807
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', {
     headers: {
       Authorization: token,
@@ -64,7 +64,7 @@ app.get('/reviews', (request, response) => {
 
 // Get product's review meta data
 app.get('/reviews/meta', (request, response) => {
-  const productId = "14296"; // 14931, 14932, 14034, 14296, 14807
+  const productId = '14296'; // 14931, 14932, 14034, 14296, 14807
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta', {
     headers: {
       Authorization: token,

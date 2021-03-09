@@ -5,10 +5,10 @@ import styles from './ProductInformation.css';
 
 const ProductInformation = (props) => {
   const {
-    productInfo,
+    category,
+    name,
     originalPrice,
     salePrice,
-    starRating
   } = props;
   const currentPrice = salePrice === null ? (
     <div className={styles.price}>
@@ -30,11 +30,14 @@ const ProductInformation = (props) => {
   return (
     <div className={styles.productInformation}>
       <div className={styles.ratings}>
-        <span><ReviewsAverageOverviewStars starRating={starRating} /> </span>
+        <span>
+          {/* <ReviewsAverageOverviewStars starRating={starRating} /> */}
+          {' '}
+        </span>
         <u>Read All Reviews</u>
       </div>
-      <div className={styles.category}>{productInfo.category}</div>
-      <div className={styles.name}>{productInfo.name}</div>
+      <div className={styles.category}>{category}</div>
+      <div className={styles.name}>{name}</div>
       {currentPrice}
     </div>
   );
@@ -46,11 +49,11 @@ ProductInformation.propTypes = {
     name: PropTypes.string,
   }).isRequired,
   originalPrice: PropTypes.string.isRequired,
-  salePrice: PropTypes.string,
+  salePrice: PropTypes.number,
 };
 
 ProductInformation.defaultProps = {
-  salePrice: PropTypes.string,
+  salePrice: PropTypes.number,
 };
 
 export default ProductInformation;
