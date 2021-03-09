@@ -104,8 +104,8 @@ class AppComponent extends React.Component {
     const { characteristics } = metaObject;
     for (const key in characteristics) {
       if (characteristics[key]) {
-        names.push(characteristics[key]);
-        id.push(characteristics[key].id);
+        names.push(key);
+        id.push(characteristics[key]);
       }
     }
     this.setState({

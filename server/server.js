@@ -114,13 +114,13 @@ app.post('/reviews', (request, response) => {
       product_id: request.body.product_id,
     },
   })
-    .then((response) => {
-      response.status(201);
-      response.send('Add review server response: ', response);
+    .then((res) => {
+      res.status(201);
+      res.send('Add review server response: ', res);
     })
     .catch((error) => {
-      response.status(404);
-      response.send('Error with server review post request: ', error);
+      res.status(404);
+      res.send('Error with server review post request: ', error);
     });
 });
 

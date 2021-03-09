@@ -11,8 +11,6 @@ import ReviewTiles from '../ReviewTiles';
 import ReviewAddFormModal from '../ReviewAddFormModal';
 import ReviewsMoreReviews from '../ReviewsMoreReviews';
 import styles from './ReviewsList.css';
-// import ReviewsAddForm from '../ReviewsAddForm';
-// import exampleReviewsData from '../../../../data/reviews';
 
 class ReviewsList extends React.Component {
   constructor(props) {
@@ -163,6 +161,8 @@ class ReviewsList extends React.Component {
       threeStarTotal,
       twoStarTotal,
       oneStarTotal,
+      characteristicNames,
+      characteristicIds,
     } = this.props;
 
     const {
@@ -179,6 +179,8 @@ class ReviewsList extends React.Component {
           addReview={this.addReview}
           displayModal={displayModal}
           closeAddReviewModal={this.closeAddReviewModal}
+          characteristicNames={characteristicNames}
+          characteristicIds={characteristicIds}
         />
       );
     } else {
