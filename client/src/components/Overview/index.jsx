@@ -64,6 +64,7 @@ class Overview extends React.Component {
   }
 
   render() {
+    const { starRating } = this.props;
     const {
       category, name, slogan, description, features, data, selectedStyleId,
     } = this.state;
@@ -87,6 +88,7 @@ class Overview extends React.Component {
                 name={name}
                 originalPrice={filteredStyle.original_price}
                 salePrice={filteredStyle.sale_price}
+                starRating={starRating}
               />
               <StyleSelector
                 allStyles={data}

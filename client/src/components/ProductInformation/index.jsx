@@ -9,6 +9,7 @@ const ProductInformation = (props) => {
     name,
     originalPrice,
     salePrice,
+    starRating,
   } = props;
   const currentPrice = salePrice === null ? (
     <div className={styles.price}>
@@ -31,7 +32,7 @@ const ProductInformation = (props) => {
     <div className={styles.productInformation}>
       <div className={styles.ratings}>
         <span>
-          {/* <ReviewsAverageOverviewStars starRating={starRating} /> */}
+          <ReviewsAverageOverviewStars starRating={starRating} />
           {' '}
         </span>
         <u>Read All Reviews</u>
