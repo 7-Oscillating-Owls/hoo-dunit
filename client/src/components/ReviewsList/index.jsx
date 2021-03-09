@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/sort-comp */
 /* eslint-disable no-console */
@@ -96,7 +97,7 @@ class ReviewsList extends React.Component {
     };
     axios.post('/reviews', reviewDataObject)
       .then((response) => {
-        customAlert('Successfully added review');
+        alert('Successfully added review');
         console.log('Successfully added review: ', response.data);
         this.getReviews();
       })
@@ -105,7 +106,6 @@ class ReviewsList extends React.Component {
       });
   }
 
-  // eslint-disable-next-line class-methods-use-this
   openAddReviewModal() {
     this.setState({ displayModal: true });
   }
@@ -114,7 +114,6 @@ class ReviewsList extends React.Component {
     this.setState({ displayModal: false });
   }
 
-  // eslint-disable-next-line class-methods-use-this
   // Display two more reviews
   getMoreReviews() {
     const {
@@ -123,19 +122,18 @@ class ReviewsList extends React.Component {
       numberOfReviewsDisplayed,
     } = this.state;
     const { totalNumberOfStars } = this.props;
-    const currentLength = limitedReviewsList.length;
     if (reviewsList[numberOfReviewsDisplayed + 2]) {
       this.setState({
         limitedReviewsList: [
           ...limitedReviewsList,
-          reviewsList[currentLength + 1],
-          reviewsList[currentLength + 2],
+          reviewsList[numberOfReviewsDisplayed + 1],
+          reviewsList[numberOfReviewsDisplayed + 2],
         ],
         numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 2),
       });
-    } else if (reviewsList[currentLength + 1]) {
+    } else if (reviewsList[numberOfReviewsDisplayed + 1]) {
       this.setState({
-        limitedReviewsList: [...limitedReviewsList, reviewsList[currentLength + 1]],
+        limitedReviewsList: [...limitedReviewsList, reviewsList[numberOfReviewsDisplayed + 1]],
         numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 1),
       });
     } else {
@@ -146,6 +144,9 @@ class ReviewsList extends React.Component {
       });
     }
     if (numberOfReviewsDisplayed === totalNumberOfStars) {
+      this.setState({ displayMoreButton: false });
+    }
+    if (!reviewsList[numberOfReviewsDisplayed + 1] && !reviewsList[numberOfReviewsDisplayed + 1]) {
       this.setState({ displayMoreButton: false });
     }
 
