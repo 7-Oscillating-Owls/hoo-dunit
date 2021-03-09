@@ -1,6 +1,7 @@
 .imageGallery {
   grid-area: a;
-  height: 400px;
+  height: 550px;
+  width: 900px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

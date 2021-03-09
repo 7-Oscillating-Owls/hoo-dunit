@@ -9,6 +9,7 @@ const ProductInformation = (props) => {
     name,
     originalPrice,
     salePrice,
+    starRating,
   } = props;
   const currentPrice = salePrice === null ? (
     <div className={styles.price}>
@@ -30,11 +31,11 @@ const ProductInformation = (props) => {
   return (
     <div className={styles.productInformation}>
       <div className={styles.ratings}>
-        <span>
-          {/* <ReviewsAverageOverviewStars starRating={starRating} /> */}
+        <span className={styles.star}>
+          <ReviewsAverageOverviewStars starRating={starRating} />
           {' '}
         </span>
-        <u>Read All Reviews</u>
+        <a href="index.reviewsList">Read All Reviews</a>
       </div>
       <div className={styles.category}>{category}</div>
       <div className={styles.name}>{name}</div>

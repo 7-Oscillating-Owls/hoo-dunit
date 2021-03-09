@@ -14,10 +14,14 @@
 }
 
 .ratings {
+  display: flex;
   font-size:10px;
   font-weight: 100;
 }
 
+.star {
+  color: black;
+}
 
 .category {
   font-size:15px;
