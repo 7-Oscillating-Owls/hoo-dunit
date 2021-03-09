@@ -31,11 +31,11 @@ const ProductInformation = (props) => {
   return (
     <div className={styles.productInformation}>
       <div className={styles.ratings}>
-        <span>
+        <span className={styles.star}>
           <ReviewsAverageOverviewStars starRating={starRating} />
           {' '}
         </span>
-        <u>Read All Reviews</u>
+        <a href="index.reviewsList">Read All Reviews</a>
       </div>
       <div className={styles.category}>{category}</div>
       <div className={styles.name}>{name}</div>

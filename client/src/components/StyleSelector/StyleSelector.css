@@ -1,10 +1,8 @@
 .styleSelector {
   grid-area: c;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  padding-left: 20px;
-  width: 425px;
+  flex-direction: row;
+  justify-content: center;
   height: 100px;
   position: relative;
 }
@@ -17,11 +15,20 @@
 
 .imageContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  width: 300px;
+  grid-template-columns: repeat(20, 1fr);
+  /* width: 300px; */
   justify-items: center;
-  padding-top: 10px;
+  grid-gap: 8px;
+  /*padding-top: 10px; */
 }
+
+/* .imageContainer {
+  display: inline-flex;
+  flex-direction: row;
+  /* justify-items: center;
+  height: 100%;
+  transition: transform 0.4s ease;
+} */
 
 .imageWrapper {
   align-self: center;
@@ -33,7 +40,7 @@
 
 .thumbnail {
   border: 1px solid gray;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   height: 60px;
   width: 60px;
   object-fit: cover;
@@ -43,10 +50,12 @@
 
 .checkmark {
   box-sizing: border-box;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -10px;
+  right: -5px;
   color: black;
 }
