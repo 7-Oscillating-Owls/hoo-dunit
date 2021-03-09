@@ -39,7 +39,10 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   render() {
-    const { data, isMore } = this.state;
+    const { data, isMore, searchTerm } = this.state;
+    // const filteredItem = data.filter(item => {
+    //   return item.data.question_body.toLowerCase().includes(searchTerm.toLowerCase())
+    // });
     return (
       <div>
         <QATitle />
