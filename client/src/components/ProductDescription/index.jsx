@@ -11,10 +11,10 @@ const ProductDescription = ({ description, features, slogan }) => (
     </div>
     <div className={styles.features}>
       {features.map((feature) => (
-        <div className={styles.feature} key={feature.value}>
-          <div className={styles.checkMark}>
-            <BsCheck size={15} /> {feature.value}
-          </div>
+        <div className={styles.feature} key={feature.feature}>
+          <BsCheck className={styles.checkMark} size={15} />
+          {' '}
+          {feature.feature}
         </div>
       ))}
     </div>
