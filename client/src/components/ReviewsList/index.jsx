@@ -35,10 +35,18 @@ class ReviewsList extends React.Component {
     this.getReviews();
   }
 
+  componentDidUpdate(prev) {
+    const { currentProduct } = this.props;
+    const { currentProduct: previousProduct } = prev;
+    if (currentProduct !== previousProduct) {
+      this.getReviews();
+    }
+  }
+
   // Send current product id from App with get request and retrieve reviews list
   getReviews() {
-    // const { currentProduct } = this.props;
-    const currentProduct = '14296'; // 14931, 14932, 14034, 14296, 14807
+    const { currentProduct } = this.props;
+    // const currentProduct = '14296'; // 14931, 14932, 14034, 14296, 14807
     const {
       currentPage,
     } = this.state;
@@ -67,10 +75,9 @@ class ReviewsList extends React.Component {
   // characteristicNames and characteristicIds are both arrays
   // const { characteristicNames, characteristicIds } = this.props;
   addReview(formData) {
-    // const { currentProduct } = this.props;
-    const currentProduct = '14296'; // 14931, 14932, 14034, 14296, 14807
+    const { currentProduct } = this.props;
     const reviewDataObject = {
-      product_id: currentProduct,
+      product_id: currentProduct || 14296, // Alt 14931, 14932, 14034, 14296, 14807,
       rating: formData.overallRating,
       summary: formData.reviewSummary || '',
       body: formData.reviewBody,

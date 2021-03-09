@@ -60,7 +60,7 @@ app.get('/reviews', (request, response) => {
     })
     .catch((error) => {
       response.send('Error fetching reviews: ', error);
-      response.status(500);
+      response.status(400);
     });
 });
 
@@ -81,8 +81,8 @@ app.get('/reviews/meta', (request, response) => {
       response.status(200);
     })
     .catch((error) => {
-      response.send('Error fetching reviews meta data: ', error);
-      response.status(500);
+      response.send('Error fetching server reviews meta data: ', error);
+      response.status(400);
     });
 });
 
@@ -97,7 +97,7 @@ app.post('/reviews', (request, response) => {
   //   name,
   //   email,
   //   photos,
-  //   // Characteristics portion still needs work on
+  //   // Characteristics portion still needs work on - may need put request for characteristics
   //   characteristics: characteristics,
   // } = request.body;
   // console.log('This is request.body: ', request.body);
@@ -107,7 +107,7 @@ app.post('/reviews', (request, response) => {
     },
     params: {
       product_id: request.body.product_id,
-    }
+    },
   })
     .then((response) => {
       response.status(201);

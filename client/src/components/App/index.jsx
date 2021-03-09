@@ -51,16 +51,17 @@ class AppComponent extends React.Component {
 
     if (productId !== prevId) {
       this.fetchProductDetail();
+      this.getMetaData();
     }
   }
 
   getMetaData() {
-    // const { match } = this.props;
-    const currentProduct = '14296'; // 14931, 14932, 14034, 14296, 14807
+    const { match } = this.props;
     axios.get('/reviews/meta', {
       params: {
-        // productId: match.params.productId,
-        productId: currentProduct,
+        // Alt 14931, 14932, 14034, 14296, 14807
+        // Will need to update code later to account for undefined
+        productId: match.params.productId || 14296,
       },
     })
       .then((response) => {
@@ -71,6 +72,7 @@ class AppComponent extends React.Component {
       })
       .catch((error) => {
         console.log('Error fetching meta data: ', error);
+        throw (error);
       });
   }
 
