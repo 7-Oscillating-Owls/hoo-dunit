@@ -30,8 +30,8 @@ app.get('/qa', (request, response) => {
 app.get('/answers', (request, response) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/84310/answers', {
     headers: {
-      'Authorization' : token
-    }
+      Authorization: token,
+    },
   })
     .then((res) => {
       response.send(res.data);
@@ -66,7 +66,7 @@ app.get('/reviews', (request, response) => {
 
 // Get product's review meta data
 app.get('/reviews/meta', (request, response) => {
-  const productId = "14296"; // 14931, 14932, 14034, 14296, 14807
+  const productId = '14296'; // 14931, 14932, 14034, 14296, 14807
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta', {
     headers: {
       Authorization: token,
@@ -87,11 +87,16 @@ app.get('/reviews/meta', (request, response) => {
 
 // app.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', (request, response) => {
 //   // Will need to send data to API
+//   headers: {
+//     Authorization: token,
+//   }
 // })
 //   .then((response) => {
+//     response.status(201);
 //     console.log('Add review server response: ', response);
 //   })
 //   .catch((error) => {
+//     response.status(404);
 //     console.log('Error with server review post request: ', error);
 //   });
 
@@ -125,6 +130,29 @@ app.get('/api/products/:productId/related', (request, response) => {
     .catch((error) => response.status(400).send(error));
 });
 
+app.post('/qa/postAnswer', (req, res) => {
+  const {
+    body,
+    name,
+    email,
+    questionId
+  } = req.body;
+
+
+  axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/{questionId}/answers`, {
+    headers: {
+      'Authorization' : token
+    }
+  })
+    .then((res) => {
+      response.send('Successfuly posted');
+    })
+    .catch((error) => {
+      response.send('error posting');
+    });
+})
+
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);
 });
+

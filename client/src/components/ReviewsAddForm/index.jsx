@@ -37,19 +37,6 @@ class ReviewsAddForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  onStarClick(index) {
-    this.setState({ overallRating: index });
-  }
-
-  starHover(index) {
-    console.log("Hover: ", index);
-    this.setState({ hoverRating: index });
-  }
-
-  starNotHover() {
-    this.setState({ hoverRating: 0 });
-  }
-
   handleSummaryTextChange(event) {
     const summaryEventChange = event.target.value;
     this.setState({ summaryTextCount: summaryEventChange.length });
@@ -69,6 +56,19 @@ class ReviewsAddForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.addReview(this.state);
+  }
+
+  onStarClick(index) {
+    this.setState({ overallRating: index });
+  }
+
+  starHover(index) {
+    console.log("Hover: ", index);
+    this.setState({ hoverRating: index });
+  }
+
+  starNotHover() {
+    this.setState({ hoverRating: 0 });
   }
 
   render() {

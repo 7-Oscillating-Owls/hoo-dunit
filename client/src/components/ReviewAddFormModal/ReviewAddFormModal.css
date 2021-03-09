@@ -20,16 +20,16 @@
   overflow: scroll;
 }
 
-.timesCircleClose {
+.GrClose {
   justify-content: space-around;
   cursor: pointer;
-  padding: 3px;
+  padding: 20px;
   margin: 15px 10px;
   float: right;
   position: fixed;
   z-index: 500;
-  left: 85%;
-  top: 7%;
+  left: 77.5%;
+  top: 10%;
 }
 
 .closeModalButton {

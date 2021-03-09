@@ -1,12 +1,12 @@
 import React from 'react';
 import ReviewsAddForm from '../ReviewsAddForm';
-import { FaTimesCircle } from 'react-icons/fa';
+import { GrClose } from 'react-icons/gr';
 import styles from './ReviewAddFormModal.css';
 
 const ReviewAddFormModal = (props) => (
   <div className={styles.modal}>
     <div>
-      <FaTimesCircle className={styles.timesCircleClose} onClick={props.closeAddReviewModal} />
+      <GrClose className={styles.GrClose} onClick={props.closeAddReviewModal} />
       <ReviewsAddForm
         className={styles.modalContent}
         addReview={props.addReview}
