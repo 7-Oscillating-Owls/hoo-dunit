@@ -43,13 +43,15 @@ app.get('/answers', (request, response) => {
 
 // Get product's review information
 app.get('/reviews', (request, response) => {
-  const productId = '14296'; // 14931, 14932, 14034, 14296, 14807
+  const { productId, page } = request.query;
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', {
     headers: {
       Authorization: token,
     },
     params: {
       product_id: `${productId}`,
+      count: 100,
+      page: `${page}`,
     },
   })
     .then((result) => {
@@ -64,7 +66,8 @@ app.get('/reviews', (request, response) => {
 
 // Get product's review meta data
 app.get('/reviews/meta', (request, response) => {
-  const productId = '14296'; // 14931, 14932, 14034, 14296, 14807
+  // const productId = '14296'; // 14931, 14932, 14034, 14296, 14807
+  const { productId } = request.query;
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta', {
     headers: {
       Authorization: token,
@@ -80,6 +83,39 @@ app.get('/reviews/meta', (request, response) => {
     .catch((error) => {
       response.send('Error fetching reviews meta data: ', error);
       response.status(500);
+    });
+});
+
+// Reviews post request
+app.post('/reviews', (request, response) => {
+  // const {
+  //   product_id,
+  //   rating,
+  //   summary,
+  //   body,
+  //   recommend,
+  //   name,
+  //   email,
+  //   photos,
+  //   // Characteristics portion still needs work on
+  //   characteristics: characteristics,
+  // } = request.body;
+  // console.log('This is request.body: ', request.body);
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', request.body, {
+    headers: {
+      Authorization: token,
+    },
+    params: {
+      product_id: request.body.product_id,
+    }
+  })
+    .then((response) => {
+      response.status(201);
+      response.send('Add review server response: ', response);
+    })
+    .catch((error) => {
+      response.status(404);
+      response.send('Error with server review post request: ', error);
     });
 });
 
@@ -138,4 +174,3 @@ app.post('/qa/postAnswer', (req, res) => {
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);
 });
-

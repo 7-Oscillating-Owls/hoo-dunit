@@ -20,6 +20,7 @@
   background-size: 200%;
   transition: 0.5s;
   box-shadow: 2px 2px 7px 2px #BFBFBF;
+  outline: none;
 }
 
 .xButton {
@@ -41,6 +42,8 @@
 .addButton:focus,
 .cancelButton:focus {
   background-position: right;
+  outline: none;
+  border: none;
 }
 
 input {
