@@ -23,6 +23,8 @@ class AppComponent extends React.Component {
       product: undefined,
       starRating: 5,
       totalNumberOfStars: 0,
+      characteristicNames: [],
+      characteristicIds: [],
       recommendPercent: 100,
       metaObject: {},
       fiveStarTotal: '',
@@ -33,6 +35,7 @@ class AppComponent extends React.Component {
     };
     this.getMetaData = this.getMetaData.bind(this);
     this.getAverageRating = this.getAverageRating.bind(this);
+    this.getCharacteristicId = this.getCharacteristicId.bind(this);
     this.getRecommendPercent = this.getRecommendPercent.bind(this);
   }
 
@@ -52,10 +55,18 @@ class AppComponent extends React.Component {
   }
 
   getMetaData() {
-    axios.get('/reviews/meta')
+    // const { match } = this.props;
+    const currentProduct = '14296'; // 14931, 14932, 14034, 14296, 14807
+    axios.get('/reviews/meta', {
+      params: {
+        // productId: match.params.productId,
+        productId: currentProduct,
+      },
+    })
       .then((response) => {
         this.setState({ metaObject: response.data });
         this.getAverageRating();
+        this.getCharacteristicId();
         this.getRecommendPercent();
       })
       .catch((error) => {
@@ -81,6 +92,23 @@ class AppComponent extends React.Component {
       threeStarTotal: metaRatings['3'],
       twoStarTotal: metaRatings['2'],
       oneStarTotal: metaRatings['1'],
+    });
+  }
+
+  getCharacteristicId() {
+    const names = [];
+    const id = [];
+    const { metaObject } = this.state;
+    const { characteristics } = metaObject;
+    for (const key in characteristics) {
+      if (characteristics[key]) {
+        names.push(characteristics[key]);
+        id.push(characteristics[key].id);
+      }
+    }
+    this.setState({
+      characteristicNames: names,
+      characteristicIds: id,
     });
   }
 
@@ -123,6 +151,8 @@ class AppComponent extends React.Component {
       threeStarTotal,
       twoStarTotal,
       oneStarTotal,
+      characteristicNames,
+      characteristicIds,
     } = this.state;
     return (
       <>
@@ -139,6 +169,8 @@ class AppComponent extends React.Component {
           threeStarTotal={threeStarTotal}
           twoStarTotal={twoStarTotal}
           oneStarTotal={oneStarTotal}
+          characteristicNames={characteristicNames}
+          characteristicIds={characteristicIds}
         />
         <QuestionsAndAnswers />
       </>

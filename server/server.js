@@ -89,27 +89,25 @@ app.get('/reviews/meta', (request, response) => {
 // Reviews post request
 app.post('/reviews', (request, response) => {
   // const {
-  //   product_id: product_id,
-  //   rating: rating,
-  //   summary: summary,
-  //   body: body,
-  //   recommend: recommend,
-  //   name: name,
-  //   email: email,
-  //   photos: photos,
-  //   characteristics: {
-  //     sizeID: formData.size,
-  //     widthID: formData.width,
-  //     comfortID: formData.comfort,
-  //     qualityID: formData.quality,
-  //     productLengthID: formData.productLength,
-  //     fitID: formData.fit,
-  //   },
+  //   product_id,
+  //   rating,
+  //   summary,
+  //   body,
+  //   recommend,
+  //   name,
+  //   email,
+  //   photos,
+  //   // Characteristics portion still needs work on
+  //   characteristics: characteristics,
   // } = request.body;
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', {
+  // console.log('This is request.body: ', request.body);
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', request.body, {
     headers: {
       Authorization: token,
     },
+    params: {
+      product_id: request.body.product_id,
+    }
   })
     .then((response) => {
       response.status(201);
@@ -176,4 +174,3 @@ app.post('/qa/postAnswer', (req, res) => {
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);
 });
-

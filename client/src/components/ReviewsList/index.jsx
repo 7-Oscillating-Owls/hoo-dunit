@@ -61,6 +61,11 @@ class ReviewsList extends React.Component {
   }
 
   // eslint-disable-next-line class-methods-use-this
+
+  // Notes: Characteristic ID and name are passed down as props - will need to send in post request
+  // Name and id are stored at same index for each array
+  // characteristicNames and characteristicIds are both arrays
+  // const { characteristicNames, characteristicIds } = this.props;
   addReview(formData) {
     // const { currentProduct } = this.props;
     const currentProduct = '14296'; // 14931, 14932, 14034, 14296, 14807
@@ -126,10 +131,18 @@ class ReviewsList extends React.Component {
         limitedReviewsList: [...limitedReviewsList, reviewsList[currentLength + 1]],
         numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 1),
       });
-    } else if (numberOfReviewsDisplayed === totalNumberOfStars) {
+    } else {
+      this.setState({
+        limitedReviewsList: reviewsList,
+        numberOfReviewsDisplayed: reviewsList.length,
+        displayMoreButton: false,
+      });
+    }
+    if (numberOfReviewsDisplayed === totalNumberOfStars) {
       this.setState({ displayMoreButton: false });
     }
-    // if (numberOfReviewsDisplayed === totalNumberOfStars) {
+
+    // else if (numberOfReviewsDisplayed === totalNumberOfStars) {
     //   this.setState({ displayMoreButton: false });
     // }
   }
