@@ -14,7 +14,7 @@ app.use('/', express.static(path.join(__dirname, '..', 'public')));
 app.use('/products/*', express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/qa', (request, response) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?product_id=14931&count=2', {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?product_id=14931', {
     headers: {
       Authorization: token,
     },
