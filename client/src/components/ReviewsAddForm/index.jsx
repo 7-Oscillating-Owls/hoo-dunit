@@ -37,7 +37,6 @@ class ReviewsAddForm extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.name, event.target.value);
     this.setState({ [event.target.name]: event.target.value });
   }
 
@@ -59,24 +58,24 @@ class ReviewsAddForm extends React.Component {
 
   handleAddCharacteristics(id, name) {
     console.log('YAY Charactierstic id and name', id, name);
-    if (name === 'Size') {
-      this.setState({ size: id, name });
-    }
-    if (name === 'Width') {
-      this.setState({ width: id, name });
-    }
-    if (name === 'Comfort') {
-      this.setState({ comfort: id, name });
-    }
-    if (name === 'Quality') {
-      this.setState({ quality: id, name });
-    }
-    if (name === 'Length') {
-      this.setState({ productLength: id, name });
-    }
-    if (name === 'Fit') {
-      this.setState({ fit: id, name });
-    }
+    // if (name === 'Size') {
+    //   this.setState({ size: id, name });
+    // }
+    // if (name === 'Width') {
+    //   this.setState({ width: id, name });
+    // }
+    // if (name === 'Comfort') {
+    //   this.setState({ comfort: id, name });
+    // }
+    // if (name === 'Quality') {
+    //   this.setState({ quality: id, name });
+    // }
+    // if (name === 'Length') {
+    //   this.setState({ productLength: id, name });
+    // }
+    // if (name === 'Fit') {
+    //   this.setState({ fit: id, name });
+    // }
   }
 
   handleSubmit(event) {
