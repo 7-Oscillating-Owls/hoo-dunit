@@ -20,14 +20,19 @@ const RelatedProductCard = ({
     description,
     styles: productStyles,
   } = product;
-  const defaultStyle = productStyles[0];
 
-  if (defaultStyle.sale_price !== null) {
-    productPrice = defaultStyle.sale_price;
+  const cardInfo = (() => ({
+    photo: productStyles && productStyles[0].photos[0].url,
+    salePrice: productStyles && productStyles[0].sale_price,
+    originalPrice: productStyles && productStyles[0].original_price,
+  }))();
+
+  if (cardInfo.salePrice !== null) {
+    productPrice = cardInfo.salePrice;
     priceStyle = styles.salePrice;
-    secondPriceEle = (<span className={styles.strikePrice}>{`$${defaultStyle.original_price}`}</span>);
+    secondPriceEle = (<span className={styles.strikePrice}>{`$${cardInfo.originalPrice}`}</span>);
   } else {
-    productPrice = defaultStyle.original_price;
+    productPrice = cardInfo.originalPrice;
   }
 
   const priceEle = (
@@ -40,11 +45,16 @@ const RelatedProductCard = ({
   return (
     <article className={styles.relatedProductCard}>
       {children}
-      <img
-        className={styles.productImage}
-        src={defaultStyle.photos[0].url}
-        alt={`${defaultStyle.name} ${description}`}
-      />
+      {
+        cardInfo.photo
+        && (
+          <img
+            className={styles.productImage}
+            src={cardInfo.photo}
+            alt={`${name} ${description}`}
+          />
+        )
+      }
       <div className={styles.productCategory}>{category}</div>
       <div className={styles.productName}><Link to={`/products/${id}`} className={styles.productLink}>{name}</Link></div>
       {priceEle}

@@ -21,6 +21,7 @@ const ProductInformation = (props) => {
     <div>
       <span className={styles.originalPrice}>
         {originalPrice}
+        {' '}
       </span>
       <span className={styles.salePrice}>
         $
@@ -32,28 +33,25 @@ const ProductInformation = (props) => {
   return (
     <div className={styles.productInformation}>
       <div className={styles.ratings}>
-        <span className={styles.star}>
-          <ReviewsAverageOverviewStars starRating={starRating} />
-          {' '}
-        </span>
-        <a href="index.reviewsList">Read All Reviews</a>
+        <ReviewsAverageOverviewStars starRating={starRating} />
+        <div className={styles.reviewsText}><a href="index.jsx.productInformation">Read All Reviews</a></div>
       </div>
       <div className={styles.category}>{category}</div>
       <div className={styles.name}>{name}</div>
       <div>{styleName}</div>
       {currentPrice}
-      <div className={styles.discount}>This product is excluded from all promotional discounts and offers</div>
+      <div className={styles.discount}>This product is excluded from all promotional discounts and offers.</div>
     </div>
   );
 };
 
 ProductInformation.propTypes = {
-  productInfo: PropTypes.shape({
-    category: PropTypes.string,
-    name: PropTypes.string,
-  }).isRequired,
+  category: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  styleName: PropTypes.string.isRequired,
   originalPrice: PropTypes.string.isRequired,
   salePrice: PropTypes.number,
+  starRating: PropTypes.number.isRequired,
 };
 
 ProductInformation.defaultProps = {

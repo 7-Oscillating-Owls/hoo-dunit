@@ -11,8 +11,6 @@ import ReviewTiles from '../ReviewTiles';
 import ReviewAddFormModal from '../ReviewAddFormModal';
 import ReviewsMoreReviews from '../ReviewsMoreReviews';
 import styles from './ReviewsList.css';
-// import ReviewsAddForm from '../ReviewsAddForm';
-// import exampleReviewsData from '../../../../data/reviews';
 
 class ReviewsList extends React.Component {
   constructor(props) {
@@ -58,9 +56,10 @@ class ReviewsList extends React.Component {
     })
       .then((response) => {
         const reviewsData = response.data.results;
+        // If reviewsData only has 1 - what should happen?
         this.setState({
           reviewsList: reviewsData,
-          limitedReviewsList: [reviewsData[0], reviewsData[1]],
+          limitedReviewsList: reviewsData.slice(0, 2),
         });
       })
       .catch((error) => {
@@ -69,12 +68,12 @@ class ReviewsList extends React.Component {
   }
 
   // This function sends post request with data from ReviewsAddForm
-  // Notes: Characteristic ID and name are passed down as props - will need to send in post request
-  // Name and id are stored at same index for each array
-  // characteristicNames and characteristicIds are both arrays
-  // const { characteristicNames, characteristicIds } = this.props;
+  // Notes: Characteristic ID and name are passed down as props
+  // (2 separate arrays) and sent back as an object stored in state
   addReview(formData) {
     const { currentProduct } = this.props;
+    console.log(formData);
+    this.setState({ displayModal: false });
     const reviewDataObject = {
       product_id: currentProduct || 14296, // Alt 14931, 14932, 14034, 14296, 14807,
       rating: formData.overallRating,
@@ -85,23 +84,23 @@ class ReviewsList extends React.Component {
       email: formData.email,
       photos: formData.uploadedFile || '',
       characteristics: {
-        sizeID: formData.size,
-        widthID: formData.width,
-        comfortID: formData.comfort,
-        qualityID: formData.quality,
-        productLengthID: formData.productLength,
-        fitID: formData.fit,
+        sizeId: formData.size,
+        widthId: formData.width,
+        comfortId: formData.comfort,
+        qualityId: formData.quality,
+        productLengthId: formData.productLength,
+        fitId: formData.fit,
       },
     };
-    axios.post('/reviews', reviewDataObject)
-      .then((response) => {
-        alert('Successfully added review');
-        console.log('Successfully added review: ', response.data);
-        this.getReviews();
-      })
-      .catch((error) => {
-        console.log('Error adding review: ', error);
-      });
+    // axios.post('/reviews', reviewDataObject)
+      // .then((response) => {
+      //   alert('Successfully added review');
+      //   console.log('Successfully added review: ', response.data);
+      //   this.getReviews();
+      // })
+      // .catch((error) => {
+      //   console.log('Error adding review: ', error);
+      // });
   }
 
   openAddReviewModal() {
@@ -147,7 +146,8 @@ class ReviewsList extends React.Component {
     }
     if (!reviewsList[numberOfReviewsDisplayed + 2] && !reviewsList[numberOfReviewsDisplayed + 1]) {
       this.setState({ currentPage: (currentPage + 1) });
-      this.getReviews();
+      // Need to fine tune this later
+      // this.getReviews();
     }
   }
 
@@ -162,6 +162,8 @@ class ReviewsList extends React.Component {
       threeStarTotal,
       twoStarTotal,
       oneStarTotal,
+      characteristicNames,
+      characteristicIds,
     } = this.props;
 
     const {
@@ -178,6 +180,8 @@ class ReviewsList extends React.Component {
           addReview={this.addReview}
           displayModal={displayModal}
           closeAddReviewModal={this.closeAddReviewModal}
+          characteristicNames={characteristicNames}
+          characteristicIds={characteristicIds}
         />
       );
     } else {

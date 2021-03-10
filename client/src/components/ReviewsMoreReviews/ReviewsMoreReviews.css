@@ -37,9 +37,13 @@
   background-size: 200%;
   transition: 0.5s;
   box-shadow: 2px 2px 7px 2px #BFBFBF;
+  outline: none;
+  border: none;
 }
 
 .moreButton:hover, .modalAddButton:hover,
 .moreButton:focus, .modalAddButton:focus {
   background-position: right;
+  outline: none;
+  border: none;
 }

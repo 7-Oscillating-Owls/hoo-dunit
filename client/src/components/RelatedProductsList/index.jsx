@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FaRegStar } from 'react-icons/fa';
 
-import AppModal from '../AppModal';
-import RelatedProductCard from '../RelatedProductCard';
-import RelatedProductCompare from '../RelatedProductCompare';
 import styles from './RelatedProductsList.css';
 
 class RelatedProductsList extends Component {
@@ -14,14 +10,11 @@ class RelatedProductsList extends Component {
     this.state = {
       showLeftButton: false,
       showRightButton: false,
-      compareToProduct: undefined,
     };
 
     this.setCarouselRef = (element) => {
       this.carousel = element;
     };
-
-    this.renderButtons = this.renderButtons.bind(this);
   }
 
   componentDidMount() {
@@ -29,24 +22,10 @@ class RelatedProductsList extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { relatedProducts } = this.props;
-    if (prevProps.relatedProducts !== relatedProducts) {
+    const { children } = this.props;
+    if (prevProps.children !== children) {
       this.renderButtons();
     }
-  }
-
-  setShowModal(shouldShowModal) {
-    this.setState({
-      showModal: !!shouldShowModal,
-    });
-  }
-
-  compareProducts(product) {
-    this.setState({
-      showModal: true,
-      compareToProduct: product,
-    });
-    // this.setShowModal(true);
   }
 
   makeScrollHandler() {
@@ -82,35 +61,17 @@ class RelatedProductsList extends Component {
   }
 
   render() {
-    const { actionType, product, relatedProducts } = this.props;
-    const { compareToProduct, showLeftButton, showRightButton, showModal } = this.state;
-    const scrollSize = 270;
-
-    let buttonSymbol;
-    let buttonAction;
-
-    if (actionType === 'compare') {
-      buttonSymbol = <FaRegStar />;
-      buttonAction = (selectedProduct) => this.compareProducts(selectedProduct);
-    } else {
-      buttonSymbol = 'x';
-      buttonAction = (id) => console.log('remove ', id);
-    }
-
-    const cardsComponenets = relatedProducts.map((relatedProduct) => (
-      <RelatedProductCard key={relatedProduct.id} product={relatedProduct}>
-        <button type="button" className={styles.actionButton} onClick={() => buttonAction(relatedProduct)}>{buttonSymbol}</button>
-      </RelatedProductCard>
-    ));
+    const { children, sizeOfScroll } = this.props;
+    const { showLeftButton, showRightButton } = this.state;
 
     const leftScrollButton = (
-      <button className={styles.scrollButton} type="button" onClick={(e) => this.scrollCarousel(e, -scrollSize)}>
+      <button className={styles.scrollButton} type="button" onClick={(e) => this.scrollCarousel(e, -sizeOfScroll)}>
         &lt;
       </button>
     );
 
     const rightScrollButton = (
-      <button className={styles.scrollButtonRight} type="button" onClick={(e) => this.scrollCarousel(e, scrollSize)}>
+      <button className={styles.scrollButtonRight} type="button" onClick={(e) => this.scrollCarousel(e, sizeOfScroll)}>
         &gt;
       </button>
     );
@@ -123,32 +84,24 @@ class RelatedProductsList extends Component {
           ref={this.setCarouselRef}
           onScroll={this.makeScrollHandler()}
         >
-          {cardsComponenets}
+          {children}
         </div>
         { showRightButton && rightScrollButton }
-        {
-          showModal
-          && (
-            <AppModal ref={this.registerModal} outsideClickHandler={() => this.setShowModal()}>
-              <RelatedProductCompare product={product} relatedProduct={compareToProduct} />
-            </AppModal>
-          )
-        }
       </div>
     );
   }
 }
 
 RelatedProductsList.defaultProps = {
-  product: {},
+  children: undefined,
 };
 
 RelatedProductsList.propTypes = {
-  actionType: PropTypes.string.isRequired,
-  product: PropTypes.shape({}),
-  relatedProducts: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-  })).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
+  sizeOfScroll: PropTypes.number.isRequired,
 };
 
 export default RelatedProductsList;

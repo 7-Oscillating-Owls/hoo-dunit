@@ -98,7 +98,6 @@ class ImageGallery extends React.Component {
 
 ImageGallery.propTypes = {
   images: PropTypes.arrayOf(PropTypes.object).isRequired,
-  getImageUserWants: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;
