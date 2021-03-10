@@ -19,7 +19,7 @@ class ImageGallery extends React.Component {
     this.previousSlide = this.previousSlide.bind(this);
     this.nextSlide = this.nextSlide.bind(this);
   }
-  
+
   handleClick(url, index) {
     const { click } = this.state;
     this.setState({

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BiStar, BiRuler } from 'react-icons/bi';
+import { AiFillStar } from 'react-icons/ai';
+import { GrDeliver } from 'react-icons/gr';
+import { BiRuler, BiEnvelope } from 'react-icons/bi';
 import { CgArrowLongRight } from 'react-icons/cg';
 import AppModal from '../AppModal';
 import styles from './Cart.css';
@@ -46,7 +48,9 @@ class Cart extends React.Component {
   }
 
   render() {
-    const { skus, styleId } = this.props;
+    const {
+      skus, styleId, selectedUrl, name, styleName, originalPrice,
+    } = this.props;
     const {
       selectedSize, selectedQuantity, readyToBuy, sizeClicked,
     } = this.state;
@@ -98,20 +102,45 @@ class Cart extends React.Component {
             <span className={styles.addToBagText}>ADD TO BAG</span>
             <CgArrowLongRight className={styles.arrow} />
           </button>
-          <BiStar className={styles.star} />
+          <AiFillStar className={styles.star} />
         </form>
 
         {
           readyToBuy && (
             <AppModal ref={this.registerModal} outsideClickHandler={() => this.closeModal()}>
+
               <div className={styles.addedToBag}>
-                Added to Cart: Style ID
-                {styleId}
-                , Size
-                {selectedSize}
-                {' '}
-                Quantity
-                {selectedQuantity}
+                <h5 className={styles.success}>SUCCESSFULLY ADDED TO CART!</h5>
+                <div className={styles.cartImageWrapper}><img className={styles.cartImage} src={selectedUrl} alt="cartImage" /></div>
+                <div className={styles.names}>
+                  <h5>{name}</h5>
+                  <h5>{styleName}</h5>
+                  <h5>
+                    $
+                    {originalPrice}
+                  </h5>
+                  <h5>
+                    Size
+                    {' '}
+                    {selectedSize}
+                  </h5>
+                  <h5>
+                    Quantity
+                    {' '}
+                    {selectedQuantity}
+                  </h5>
+                </div>
+                <div className={styles.buttons}>
+                  <button className={styles.viewBag} type="submit" value="VIEW BAG">
+                    <span className={styles.viewBagText}>VIEW BAG</span>
+                    <CgArrowLongRight className={styles.arrow} />
+                  </button>
+                  <button className={styles.checkout} type="submit" value="CHECKOUT">
+                    <span className={styles.checkoutText}>CHECKOUT</span>
+                    <CgArrowLongRight className={styles.checkoutArrow} />
+                  </button>
+                </div>
+
               </div>
             </AppModal>
           )
@@ -125,6 +154,7 @@ class Cart extends React.Component {
 Cart.propTypes = {
   skus: PropTypes.objectOf(PropTypes.object).isRequired,
   styleId: PropTypes.number.isRequired,
+  selectedUrl: PropTypes.string.isRequired,
 };
 
 export default Cart;

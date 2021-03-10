@@ -61,7 +61,7 @@ class Overview extends React.Component {
         })
         .catch(() => {
           console.log('error retrieving styles data');
-        })
+        });
     }
   }
 
@@ -84,7 +84,9 @@ class Overview extends React.Component {
         {filteredStyle
           && (
             <div className={styles.overview}>
-              <ImageGallery images={filteredStyle.photos} />
+              <ImageGallery
+                images={filteredStyle.photos}
+              />
               <ProductInformation
                 category={category}
                 name={name}
@@ -100,6 +102,10 @@ class Overview extends React.Component {
               <Cart
                 skus={filteredStyle.skus}
                 styleId={selectedStyleId}
+                selectedUrl={filteredStyle.photos[0].url}
+                name={name}
+                styleName={styleName}
+                originalPrice={filteredStyle.original_price}
               />
               <ProductDescription
                 description={description}
