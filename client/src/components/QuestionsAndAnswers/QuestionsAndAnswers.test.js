@@ -3,7 +3,7 @@ import React from 'react';
 
 import QuestionsAndAnswers from '.';
 
-it('should exist', () => {
+xit('should exist', () => {
   const wrapper = shallow(<QuestionsAndAnswers />);
   expect(wrapper.exists()).toBe(true);
 });
