@@ -64,7 +64,12 @@ class RelatedProducts extends React.Component {
 
   render() {
     const { compareToProduct, relatedProducts, showModal } = this.state;
-    const { product, myOutfit } = this.props;
+    const {
+      addOutfit,
+      product,
+      myOutfit,
+      removeOutfit,
+    } = this.props;
 
     const relatedProductCards = relatedProducts.map((relatedProduct) => (
       <RelatedProductCard key={relatedProduct.id} product={relatedProduct}>
@@ -77,16 +82,20 @@ class RelatedProducts extends React.Component {
     const myOutfitCards = Object.keys(myOutfit).map((productId) => {
       const thisProduct = myOutfit[productId];
       return (
-        <RelatedProductCard key={productId} product={thisProduct} />
+        <RelatedProductCard
+          key={productId}
+          product={thisProduct}
+        >
+          <button type="button" className={styles.actionButton} onClick={() => removeOutfit(thisProduct)}>x</button>
+        </RelatedProductCard>
       );
     });
-    console.log(myOutfitCards);
+
     const addProductCard = (
-      <RelatedProductCard product={product}>
-        <button type="button" className={styles.addToOutfitButton}>Test</button>
+      <RelatedProductCard key={'add' + product.id} product={product}>
+        <button type="button" className={styles.addToOutfitButton} onClick={() => addOutfit(product)}>Test</button>
       </RelatedProductCard>
     );
-    myOutfitCards.unshift(addProductCard);
 
     return (
       <section className={styles.relatedProducts}>
@@ -101,7 +110,7 @@ class RelatedProducts extends React.Component {
         <RelatedProductsList
           sizeOfScroll={270}
         >
-          {myOutfitCards}
+          {[addProductCard, ...myOutfitCards]}
         </RelatedProductsList>
         {
           showModal
@@ -116,7 +125,26 @@ class RelatedProducts extends React.Component {
   }
 }
 
+const productShape = PropTypes.shape({
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  name: PropTypes.string,
+  category: PropTypes.string,
+  description: PropTypes.string,
+  styles: PropTypes.arrayOf(PropTypes.shape({
+    original_price: PropTypes.string,
+    sales_price: PropTypes.string,
+    photos: PropTypes.arrayOf(PropTypes.shape({
+      url: PropTypes.string,
+    })),
+    name: PropTypes.string,
+  })),
+});
+
 RelatedProducts.defaultProps = {
+  myOutfit: {},
   product: {
     features: [],
   },
@@ -124,10 +152,14 @@ RelatedProducts.defaultProps = {
 
 RelatedProducts.propTypes = {
   addOutfit: PropTypes.func.isRequired,
-  myOutfit: PropTypes.objectOf(PropTypes.string).isRequired,
+  myOutfit: PropTypes.objectOf(PropTypes.shape(productShape)),
   removeOutfit: PropTypes.func.isRequired,
   productId: PropTypes.string.isRequired,
   product: PropTypes.shape({
+    id: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
     features: PropTypes.arrayOf(PropTypes.shape({
       feature: PropTypes.string,
       value: PropTypes.string,

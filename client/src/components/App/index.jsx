@@ -35,6 +35,19 @@ class AppComponent extends React.Component {
       oneStarTotal: '',
     };
 
+    // this.localStorage = storageAvailable() ? window.localStorage : ;
+    let storage;
+
+    try { // test if localStorage works
+      storage = window.localStorage;
+      storage.setItem('OO7', 'owls');
+      storage.getItem('007');
+      storage.removeItem('007');
+    } catch { // if not, no persistence
+      storage = {};
+    }
+    this.localStorage = storage;
+
     this.addToMyOutfit = this.addToMyOutfit.bind(this);
     this.removeFromMyOutfit = this.removeFromMyOutfit.bind(this);
     this.getMetaData = this.getMetaData.bind(this);
@@ -46,6 +59,13 @@ class AppComponent extends React.Component {
   componentDidMount() {
     this.fetchProductDetail();
     this.getMetaData();
+
+    if (this.localStorage.getItem) {
+      const myOutfit = this.localStorage.getItem('myOutfit') || '{}';
+      this.setState({
+        myOutfit: JSON.parse(myOutfit),
+      });
+    }
   }
 
   componentDidUpdate(prev) {
@@ -145,11 +165,37 @@ class AppComponent extends React.Component {
   }
 
   addToMyOutfit(product) {
-    console.log(`add ${product} to my outfit`);
+    const { myOutfit } = this.state;
+
+    const newOutfit = {
+      ...myOutfit,
+      [product.id]: product,
+    };
+
+    if (this.localStorage.getItem) {
+      this.localStorage.setItem('myOutfit', JSON.stringify(newOutfit));
+    }
+
+    this.setState({
+      myOutfit: newOutfit,
+    });
   }
 
   removeFromMyOutfit(product) {
-    console.log(`remove ${product} from my outfit`);
+    const { myOutfit } = this.state;
+    const newOutfit = {
+      ...myOutfit,
+    };
+
+    delete newOutfit[product.id];
+
+    if (this.localStorage.getItem) {
+      this.localStorage.setItem('myOutfit', JSON.stringify(newOutfit));
+    }
+
+    this.setState({
+      myOutfit: newOutfit,
+    });
   }
 
   render() {

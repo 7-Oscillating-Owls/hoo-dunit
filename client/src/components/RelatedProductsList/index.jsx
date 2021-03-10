@@ -97,7 +97,10 @@ RelatedProductsList.defaultProps = {
 };
 
 RelatedProductsList.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
   sizeOfScroll: PropTypes.number.isRequired,
 };
 
