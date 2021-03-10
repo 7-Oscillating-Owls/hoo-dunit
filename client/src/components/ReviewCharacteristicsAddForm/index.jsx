@@ -4,7 +4,6 @@ import React from 'react';
 
 const ReviewCharacteristicsAddForm = (props) => {
   const {
-    handleChange,
     characteristicNames,
     characteristicIds,
     handleAddCharacteristics,

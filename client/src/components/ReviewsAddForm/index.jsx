@@ -15,13 +15,8 @@ class ReviewsAddForm extends React.Component {
       reviewUsername: '',
       reviewSummary: '',
       reviewBody: '',
-      size: '',
-      width: '',
-      comfort: '',
-      quality: '',
-      length: '',
-      fit: '',
       recommended: true,
+      characteristics: {},
       summaryTextCount: 0,
       descriptionTextCount: 1000,
       uploadedFile: '',
@@ -56,8 +51,10 @@ class ReviewsAddForm extends React.Component {
     this.setState({ uploadedFile: event.target.files });
   }
 
-  handleAddCharacteristics(event, id, name) {
-    this.setState({ [name]: { [id]: event.target.value } });
+  handleAddCharacteristics(event, id) {
+    const charObject = {};
+    charObject[id] = event.target.value;
+    this.setState({ characteristics: charObject });
   }
 
   handleSubmit(event) {

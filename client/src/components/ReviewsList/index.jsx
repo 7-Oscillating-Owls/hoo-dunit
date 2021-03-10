@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
@@ -70,37 +71,37 @@ class ReviewsList extends React.Component {
   // This function sends post request with data from ReviewsAddForm
   // Notes: Characteristic ID and name are passed down as props
   // (2 separate arrays) and sent back as an object stored in state
+
+  // length: '',
+  // fit: '',
+
   addReview(formData) {
     const { currentProduct } = this.props;
-    console.log(formData);
+    console.log('This is form data: ', formData);
+
     this.setState({ displayModal: false });
     const reviewDataObject = {
       product_id: currentProduct || 14296, // Alt 14931, 14932, 14034, 14296, 14807,
-      rating: formData.overallRating,
+      rating: Number(formData.overallRating),
       summary: formData.reviewSummary || '',
       body: formData.reviewBody,
-      recommend: formData.recommended,
+      recommend: `${formData.recommended}`,
       name: formData.reviewUsername,
       email: formData.email,
       photos: formData.uploadedFile || '',
-      characteristics: {
-        sizeId: formData.size,
-        widthId: formData.width,
-        comfortId: formData.comfort,
-        qualityId: formData.quality,
-        productLengthId: formData.productLength,
-        fitId: formData.fit,
-      },
+      characteristics: formData.characteristics,
     };
+
+    console.log('This is reviewDataObject: ', reviewDataObject);
     // axios.post('/reviews', reviewDataObject)
-      // .then((response) => {
-      //   alert('Successfully added review');
-      //   console.log('Successfully added review: ', response.data);
-      //   this.getReviews();
-      // })
-      // .catch((error) => {
-      //   console.log('Error adding review: ', error);
-      // });
+    //   .then((response) => {
+    //     alert('Successfully added review');
+    //     console.log('Successfully added review: ', response.data);
+    //     this.getReviews();
+    //   })
+    //   .catch((error) => {
+    //     console.log('Error adding review: ', error);
+    //   });
   }
 
   openAddReviewModal() {
