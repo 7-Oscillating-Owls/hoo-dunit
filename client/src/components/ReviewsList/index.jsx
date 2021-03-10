@@ -67,12 +67,11 @@ class ReviewsList extends React.Component {
   }
 
   // This function sends post request with data from ReviewsAddForm
-  // Notes: Characteristic ID and name are passed down as props - will need to send in post request
-  // Name and id are stored at same index for each array
-  // characteristicNames and characteristicIds are both arrays
-  // const { characteristicNames, characteristicIds } = this.props;
+  // Notes: Characteristic ID and name are passed down as props
+  // (2 separate arrays) and sent back as an object stored in state
   addReview(formData) {
     const { currentProduct } = this.props;
+    console.log(formData);
     const reviewDataObject = {
       product_id: currentProduct || 14296, // Alt 14931, 14932, 14034, 14296, 14807,
       rating: formData.overallRating,
@@ -91,15 +90,15 @@ class ReviewsList extends React.Component {
         fitId: formData.fit,
       },
     };
-    axios.post('/reviews', reviewDataObject)
-      .then((response) => {
-        alert('Successfully added review');
-        console.log('Successfully added review: ', response.data);
-        this.getReviews();
-      })
-      .catch((error) => {
-        console.log('Error adding review: ', error);
-      });
+    // axios.post('/reviews', reviewDataObject)
+      // .then((response) => {
+      //   alert('Successfully added review');
+      //   console.log('Successfully added review: ', response.data);
+      //   this.getReviews();
+      // })
+      // .catch((error) => {
+      //   console.log('Error adding review: ', error);
+      // });
   }
 
   openAddReviewModal() {

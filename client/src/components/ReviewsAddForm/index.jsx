@@ -15,7 +15,12 @@ class ReviewsAddForm extends React.Component {
       reviewUsername: '',
       reviewSummary: '',
       reviewBody: '',
-      characteristics: {},
+      size: '',
+      width: '',
+      comfort: '',
+      quality: '',
+      length: '',
+      fit: '',
       recommended: true,
       summaryTextCount: 0,
       descriptionTextCount: 1000,
@@ -51,22 +56,23 @@ class ReviewsAddForm extends React.Component {
     this.setState({ uploadedFile: event.target.files });
   }
 
-  handleAddCharacteristics(id, name) {
+  handleAddCharacteristics(event, id, name) {
+    this.setState({ [name]: { [id]: event.target.value } });
     const {
-      characteristicNames,
+      characteristicIds,
     } = this.props;
-    const numberOfCharacteristics = characteristicNames.length;
+    const numberOfCharacteristics = characteristicIds.length;
     let handleCount = 0;
     const characteristicIdAndNames = {};
-    characteristicIdAndNames[id] = name;
-    handleCount += 1;
-    if (numberOfCharacteristics === handleCount
-      || numberOfCharacteristics - 1 === handleCount
-      || numberOfCharacteristics - 2 === handleCount
-      || numberOfCharacteristics - 3 === handleCount) {
-      this.setState({ characteristics: characteristicIdAndNames });
-    }
+    characteristicIdAndNames[id] = event.target.value;
   }
+  // handleCount += 1;
+  // if (numberOfCharacteristics === handleCount
+  //   || numberOfCharacteristics - 1 === handleCount
+  //   || numberOfCharacteristics - 2 === handleCount) {
+  //   this.setState({ characteristics: characteristicIdAndNames });
+  // }
+  // console.log('This is my count: ', handleCount); // count will continue to be 1
 
   handleSubmit(event) {
     const { addReview } = this.props;
