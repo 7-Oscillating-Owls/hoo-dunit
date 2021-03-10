@@ -15,13 +15,13 @@ app.use('/products/*', express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/qa', (request, response) => {
   const { productId } = request.query;
-  console.log(productId)
+  console.log(productId);
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', {
     headers: {
       Authorization: token,
     },
     params: {
-      product_id: `${productId}`
+      product_id: `${productId}`,
     },
   })
     .then((res) => {
@@ -159,14 +159,13 @@ app.post('/qa/postAnswer', (req, res) => {
     body,
     name,
     email,
-    questionId
+    questionId,
   } = req.body;
 
-
-  axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/{questionId}/answers`, {
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/{questionId}/answers', {
     headers: {
-      'Authorization' : token
-    }
+      Authorization: token,
+    },
   })
     .then((res) => {
       response.send('Successfuly posted');
@@ -174,20 +173,21 @@ app.post('/qa/postAnswer', (req, res) => {
     .catch((error) => {
       response.send('error posting');
     });
-})
-
+});
 
 /* post request to the api to create cart data */
 app.post('/cart', (request, response) => {
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/cart', {"sku_id":request.body.sku_id}, {headers: {
-      'Authorization': token
-     }})
-     .then(() => {
-       console.log("success");
-     })
-     .catch(() => {
-       console.log("error");
-     })
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/cart', { sku_id: request.body.sku_id }, {
+    headers: {
+      Authorization: token,
+    },
+  })
+    .then(() => {
+      response.status(404);
+    })
+    .catch(() => {
+      response.status(201);
+    });
 });
 
 app.listen(port, () => {
