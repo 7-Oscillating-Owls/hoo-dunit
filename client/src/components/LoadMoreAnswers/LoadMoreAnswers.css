@@ -1,13 +1,26 @@
 .loadmoreanswers {
-  font-size: 13px;
-  padding: 5px;
-  margin-left: 7px;
-  background-color: white;
-  border: 1px solid black;
-  margin: 11px;
+  font-size: 14px;
+  color: black;
+  font-weight: 700;
+  padding: .25em 1.125em;
+  min-height: 44px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  background-color: transparent;
+  border-style: solid;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .2s ease 0s;
+  margin-top: 32px;
+  min-width: 18.5em;
+  border-radius: 12px;
 }
 
 .loadmoreanswers:hover {
-  background: grey;
-  color: white;
+  color: grey;
+  font-weight: 700;
+
 }
