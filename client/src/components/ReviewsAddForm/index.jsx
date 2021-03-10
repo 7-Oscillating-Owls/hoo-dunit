@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import ReviewCharacteristicsAddForm from '../ReviewCharacteristicsAddForm';
@@ -14,11 +15,17 @@ class ReviewsAddForm extends React.Component {
       reviewUsername: '',
       reviewSummary: '',
       reviewBody: '',
+      sizeId: '',
       size: '',
+      widthId: '',
       width: '',
+      comfortId: '',
       comfort: '',
+      qualityId: '',
       quality: '',
+      productLengthId: '',
       productLength: '',
+      fitId: '',
       fit: '',
       recommended: true,
       summaryTextCount: 0,
@@ -31,6 +38,7 @@ class ReviewsAddForm extends React.Component {
     this.handleSummaryTextChange = this.handleSummaryTextChange.bind(this);
     this.handleDescriptionTextChange = this.handleDescriptionTextChange.bind(this);
     this.handleFileUpload = this.handleFileUpload.bind(this);
+    this.handleAddCharacteristics = this.handleAddCharacteristics.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -55,10 +63,33 @@ class ReviewsAddForm extends React.Component {
     this.setState({ uploadedFile: event.target.files });
   }
 
+  handleAddCharacteristics(id, name) {
+    console.log('YAY Charactierstic id and name', id, name);
+    if (name === 'Size') {
+      this.setState({ sizeId: id });
+    }
+    if (name === 'Width') {
+      this.setState({ widthId: id });
+    }
+    if (name === 'Comfort') {
+      this.setState({ comfortId: id });
+    }
+    if (name === 'Quality') {
+      this.setState({ qualityId: id });
+    }
+    if (name === 'Length') {
+      this.setState({ productLengthId: id });
+    }
+    if (name === 'Fit') {
+      this.setState({ fitId: id });
+    }
+  }
+
   handleSubmit(event) {
     const { addReview } = this.props;
     event.preventDefault();
     addReview(this.state);
+    addCharacteristics();
   }
 
   onStarClick(index) {
@@ -173,15 +204,20 @@ class ReviewsAddForm extends React.Component {
           />
           <div>
             <small>* Required | </small>
-            <small>Remaining Characters: {descriptionTextCount}</small>
+            <small>
+              Remaining Characters:
+              {' '}
+              {descriptionTextCount}
+            </small>
           </div>
           <br />
           <br />
-          <h4>Characteristics:</h4>
+          <br />
           <ReviewCharacteristicsAddForm
             handleChange={this.handleChange}
             characteristicNames={characteristicNames}
-            characteristicIds={characteristicNames}
+            characteristicIds={characteristicIds}
+            handleAddCharacteristics={this.handleAddCharacteristics}
           />
           <h4>Photos:</h4>
           <small>Upload Your Photos</small>
