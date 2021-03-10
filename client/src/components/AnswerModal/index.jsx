@@ -7,10 +7,10 @@ class AnswerModal extends React.Component {
     super(props);
     this.state = {
       answer: '',
-      nickname: '',
+      name: '',
       email: '',
       answerError: null,
-      nicknameError: null,
+      nameError: null,
       emailError: null,
       isCloseModal: false,
     };
@@ -31,34 +31,35 @@ class AnswerModal extends React.Component {
     this.setState({ isCloseModal: true });
     this.postAnswer();
     this.state.isCloseModal ? this.props.modalclose() : null
-
   }
 
   validate() {
-    const { answer, nickname, email } = this.state;
+    const { answer, name, email } = this.state;
 
     { answer.length < 1 ? this.setState({ answerError: 'Please enter a answer' }) : this.setState({ answerError: null }) }
-    { nickname.length < 1 ? this.setState({ nicknameError: 'Please enter a nickname' }) : this.setState({ nicknameError: null }) }
+    { name.length < 1 ? this.setState({ nameError: 'Please enter a name' }) : this.setState({ nameError: null }) }
     { !email.includes('@') ? this.setState({ emailError: 'Please enter valid email' }) : this.setState({ emailError: null }) }
   }
 
   postAnswer() {
-    const { answer, nickname, email } = this.state;
-
+    const { answer, name, email } = this.state;
+    const questionId = 84310
     axios.post('/qa/postAnswer', {
-      questionId: 84310,
       body: answer,
-      nickname,
+      name,
       email,
+      questionId,
 
     })
-      .then(() => {console.log('posted') })
+      .then(() => { console.log('posted') })
       .catch((err) => {
         console.log(err);
       });
   }
+
   closeModal() {
-    this.props.modalclose()
+    const { modalClose } = this.props;
+    modalClose();
   }
 
   render() {
@@ -79,15 +80,15 @@ class AnswerModal extends React.Component {
 
           <input
             type="text"
-            name="nickname"
+            name="name"
             placeholder="Example: jackson11!"
             maxLength="60"
             className={styles.questionfield}
           />
           <small>For authentication reasons, you will not be emailed</small>
-          <small className={styles.errors}>{this.state.nicknameError}</small>
+          <small className={styles.errors}>{this.state.nameError}</small>
           <input
-            type="email"
+            type="text"
             name="email"
             placeholder="enter email"
             maxLength="60"
