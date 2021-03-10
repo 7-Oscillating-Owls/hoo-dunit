@@ -30,19 +30,16 @@
 }
 
 .answer p {
-  color: rgb(9, 61, 146);
-  font-size: 20px;
-}
-
-.answer p {
-
-  font-size: 15px;
+  color: rgb(82, 79, 79);
+  font-size: 14px;
   padding-top: 10px;
   margin-left: 4px;
-
+  line-height: 1.75;
 }
 
 .footer small {
   font-size: 15px;
+  color: rgb(82, 79, 79);
+  margin-left: 14px;
 }
 
