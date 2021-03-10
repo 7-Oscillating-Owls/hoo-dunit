@@ -15,12 +15,7 @@ class ReviewsAddForm extends React.Component {
       reviewUsername: '',
       reviewSummary: '',
       reviewBody: '',
-      size: '',
-      width: '',
-      comfort: '',
-      quality: '',
-      productLength: '',
-      fit: '',
+      characteristics: {},
       recommended: true,
       summaryTextCount: 0,
       descriptionTextCount: 1000,
@@ -57,25 +52,20 @@ class ReviewsAddForm extends React.Component {
   }
 
   handleAddCharacteristics(id, name) {
-    console.log('YAY Charactierstic id and name', id, name);
-    // if (name === 'Size') {
-    //   this.setState({ size: id, name });
-    // }
-    // if (name === 'Width') {
-    //   this.setState({ width: id, name });
-    // }
-    // if (name === 'Comfort') {
-    //   this.setState({ comfort: id, name });
-    // }
-    // if (name === 'Quality') {
-    //   this.setState({ quality: id, name });
-    // }
-    // if (name === 'Length') {
-    //   this.setState({ productLength: id, name });
-    // }
-    // if (name === 'Fit') {
-    //   this.setState({ fit: id, name });
-    // }
+    const {
+      characteristicNames,
+    } = this.props;
+    const numberOfCharacteristics = characteristicNames.length;
+    let handleCount = 0;
+    const characteristicIdAndNames = {};
+    characteristicIdAndNames[id] = name;
+    handleCount += 1;
+    if (numberOfCharacteristics === handleCount
+      || numberOfCharacteristics - 1 === handleCount
+      || numberOfCharacteristics - 2 === handleCount
+      || numberOfCharacteristics - 3 === handleCount) {
+      this.setState({ characteristics: characteristicIdAndNames });
+    }
   }
 
   handleSubmit(event) {
@@ -178,7 +168,13 @@ class ReviewsAddForm extends React.Component {
             maxLength="60"
           />
           <div>
-            <small>Character Count: {summaryTextCount} of 60</small>
+            <small>
+              Character Count:
+              {' '}
+              {summaryTextCount}
+              {' '}
+              of 60
+            </small>
           </div>
           <br />
           <br />
@@ -204,13 +200,16 @@ class ReviewsAddForm extends React.Component {
           </div>
           <br />
           <br />
-          <br />
+          <h4>Characteristics:</h4>
           <ReviewCharacteristicsAddForm
+            className={styles.characteristicsTitle}
             handleChange={this.handleChange}
             characteristicNames={characteristicNames}
             characteristicIds={characteristicIds}
             handleAddCharacteristics={this.handleAddCharacteristics}
           />
+          <br />
+          <br />
           <h4>Photos:</h4>
           <small>Upload Your Photos</small>
           <div>
