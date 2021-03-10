@@ -154,7 +154,7 @@ app.get('/api/products/:productId/related', (request, response) => {
 // Questions and Answers--------------------------------------
 const headers = {
   headers: {
-    'Authorization' : token,
+    Authorization: token,
   },
 };
 
@@ -164,7 +164,7 @@ app.post('/qa/postQuestion', (req, res) => {
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', {
     body, name, email, productId,
   }, headers)
-    .then((response) => {
+    .then((res) => {
       res.send('posted question');
     })
     .catch((err) => {
