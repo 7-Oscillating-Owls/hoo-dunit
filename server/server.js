@@ -46,6 +46,7 @@ app.get('/answers', (request, response) => {
     });
 });
 
+// -------------------- RATINGS AND REVIEWS REQUESTS --------------------
 // Get product's review information
 app.get('/reviews', (request, response) => {
   const { productId, page } = request.query;
@@ -110,6 +111,8 @@ app.post('/reviews', (request, response) => {
       response.send('Server error posting review: ', error);
     });
 });
+
+// -------------------- END OF RATINGS AND REVIEWS REQUESTS --------------------
 
 app.get('/api/products/:productId', (request, response) => {
   const { productId } = request.params;
