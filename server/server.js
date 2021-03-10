@@ -143,8 +143,9 @@ app.get('/api/products/:productId/related', (request, response) => {
 
   return apiCall(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${productId}/related`)
     .then((relatedIds) => {
+      const uniqRelatedIds = [...new Set(relatedIds.data)];
       // eslint-disable-next-line arrow-body-style
-      const relatedProducts = relatedIds.data.map((relatedId) => {
+      const relatedProducts = uniqRelatedIds.map((relatedId) => {
         return fetchProductWithStyles(relatedId);
       });
 
