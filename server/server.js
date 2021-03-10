@@ -176,6 +176,27 @@ app.post('/qa/postQuestion', (req, res) => {
       res.status(500).send(err);
     });
 });
+app.post('/qa/postAnswer', (req, res) => {
+  const { body, name, email, questionId } = req.body;
+
+  const answerHeaders = {
+    headers: {
+      'User-Agent': 'request',
+      Authorization: token,
+    },
+    question_id: questionId,
+  };
+  axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/84310/answers`, {
+    body, name, email
+  }, answerHeaders)
+    .then(() => {
+      res.send('posted question');
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+});
+
 //Questions and Answers End------------------------------------
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);
