@@ -15,17 +15,11 @@ class ReviewsAddForm extends React.Component {
       reviewUsername: '',
       reviewSummary: '',
       reviewBody: '',
-      sizeId: '',
       size: '',
-      widthId: '',
       width: '',
-      comfortId: '',
       comfort: '',
-      qualityId: '',
       quality: '',
-      productLengthId: '',
       productLength: '',
-      fitId: '',
       fit: '',
       recommended: true,
       summaryTextCount: 0,
@@ -66,22 +60,22 @@ class ReviewsAddForm extends React.Component {
   handleAddCharacteristics(id, name) {
     console.log('YAY Charactierstic id and name', id, name);
     if (name === 'Size') {
-      this.setState({ sizeId: id });
+      this.setState({ size: id, name });
     }
     if (name === 'Width') {
-      this.setState({ widthId: id });
+      this.setState({ width: id, name });
     }
     if (name === 'Comfort') {
-      this.setState({ comfortId: id });
+      this.setState({ comfort: id, name });
     }
     if (name === 'Quality') {
-      this.setState({ qualityId: id });
+      this.setState({ quality: id, name });
     }
     if (name === 'Length') {
-      this.setState({ productLengthId: id });
+      this.setState({ productLength: id, name });
     }
     if (name === 'Fit') {
-      this.setState({ fitId: id });
+      this.setState({ fit: id, name });
     }
   }
 
@@ -89,7 +83,6 @@ class ReviewsAddForm extends React.Component {
     const { addReview } = this.props;
     event.preventDefault();
     addReview(this.state);
-    addCharacteristics();
   }
 
   onStarClick(index) {

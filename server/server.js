@@ -101,9 +101,9 @@ app.post('/reviews', (request, response) => {
       product_id: request.body.product_id,
     },
   })
-    .then((response) => {
+    .then((result) => {
       response.status(201);
-      response.send('Add review server response: ', response);
+      response.send('Add review server response: ', result);
     })
     .catch((error) => {
       response.status(404);

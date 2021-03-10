@@ -83,12 +83,12 @@ class ReviewsList extends React.Component {
       email: formData.email,
       photos: formData.uploadedFile || '',
       characteristics: {
-        sizeID: formData.size,
-        widthID: formData.width,
-        comfortID: formData.comfort,
-        qualityID: formData.quality,
-        productLengthID: formData.productLength,
-        fitID: formData.fit,
+        sizeId: formData.size,
+        widthId: formData.width,
+        comfortId: formData.comfort,
+        qualityId: formData.quality,
+        productLengthId: formData.productLength,
+        fitId: formData.fit,
       },
     };
     axios.post('/reviews', reviewDataObject)
