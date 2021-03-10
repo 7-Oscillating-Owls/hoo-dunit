@@ -12,6 +12,7 @@ class QuestionModal extends React.Component {
       questionError: null,
       nicknameError: null,
       emailError: null,
+      isCloseModal: false,
 
     };
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
@@ -24,9 +25,12 @@ class QuestionModal extends React.Component {
   handleSubmitClick(event) {
     event.preventDefault();
     this.validate();
+    this.setState({ isCloseModal: true });
     this.postQuestion();
-    this.closeModal();
-  }
+    this.state.isCloseModal ? this.closeModal() : null
+  };
+
+
 
   handleOnChange(event) {
     this.setState({ [event.target.name]: event.target.value });
