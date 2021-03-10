@@ -13,6 +13,7 @@ app.use('/static', express.static(path.join(__dirname, '/../client/dist')));
 app.use('/', express.static(path.join(__dirname, '..', 'public')));
 app.use('/products/*', express.static(path.join(__dirname, '..', 'public')));
 
+//Questions and Answers get_______________________________________
 app.get('/qa', (request, response) => {
   const { productId } = request.query;
   console.log(productId)
@@ -45,6 +46,8 @@ app.get('/answers', (request, response) => {
       response.send('error man');
     });
 });
+
+//Questions and Answers get End_______________________________________
 
 // Get product's review information
 app.get('/reviews', (request, response) => {
@@ -153,29 +156,27 @@ app.get('/api/products/:productId/related', (request, response) => {
     .then((relatedProducts) => response.send(relatedProducts))
     .catch((error) => response.status(400).send(error));
 });
+//Questions and Answers--------------------------------------
+const headers = {
+  headers: {
+    'Authorization' : token,
+  },
+};
 
-app.post('/qa/postAnswer', (req, res) => {
-  const {
-    body,
-    name,
-    email,
-    questionId
-  } = req.body;
-
-
-  axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/{questionId}/answers`, {
-    headers: {
-      'Authorization' : token
-    }
-  })
-    .then((res) => {
-      response.send('Successfuly posted');
+app.post('/qa/postQuestion', (req, res) => {
+  const { body, name, email, productId } = req.body;
+  console.log(req.body)
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', {
+    body, name, email, productId,
+  }, headers)
+    .then((response) => {
+      res.send('posted question');
     })
-    .catch((error) => {
-      response.send('error posting');
+    .catch((err) => {
+      res.status(500).send(err);
     });
-})
-
+});
+//Questions and Answers End------------------------------------
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);
 });
