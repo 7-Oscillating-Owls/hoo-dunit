@@ -72,6 +72,7 @@ class ReviewsList extends React.Component {
   addReview(formData) {
     const { currentProduct } = this.props;
     console.log(formData);
+    this.setState({ displayModal: false });
     const reviewDataObject = {
       product_id: currentProduct || 14296, // Alt 14931, 14932, 14034, 14296, 14807,
       rating: formData.overallRating,

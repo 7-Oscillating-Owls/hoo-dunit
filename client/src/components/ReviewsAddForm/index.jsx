@@ -58,21 +58,7 @@ class ReviewsAddForm extends React.Component {
 
   handleAddCharacteristics(event, id, name) {
     this.setState({ [name]: { [id]: event.target.value } });
-    const {
-      characteristicIds,
-    } = this.props;
-    const numberOfCharacteristics = characteristicIds.length;
-    let handleCount = 0;
-    const characteristicIdAndNames = {};
-    characteristicIdAndNames[id] = event.target.value;
   }
-  // handleCount += 1;
-  // if (numberOfCharacteristics === handleCount
-  //   || numberOfCharacteristics - 1 === handleCount
-  //   || numberOfCharacteristics - 2 === handleCount) {
-  //   this.setState({ characteristics: characteristicIdAndNames });
-  // }
-  // console.log('This is my count: ', handleCount); // count will continue to be 1
 
   handleSubmit(event) {
     const { addReview } = this.props;
