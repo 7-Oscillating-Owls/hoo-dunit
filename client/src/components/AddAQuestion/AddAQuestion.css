@@ -1,11 +1,27 @@
 .questionButton {
-  padding: 17px;
-  background-color: white;
-  border-radius: 4px;
+  font-size: 14px;
+  color: black;
+  font-weight: 700;
+  padding: .25em 1.125em;
+  min-height: 44px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  background-color: transparent;
+  border-style: solid;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .2s ease 0s;
+  margin-top: 32px;
+  min-width: 18.5em;
+  border-radius: 12px;
+
 }
 
 .questionButton:hover {
-  background-color: grey;
-  color: white;
-  border: rgb(9, 61, 146);
+  color: grey;
+  font-weight: 700;
+
 }
