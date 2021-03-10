@@ -58,7 +58,7 @@
   grid: p;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-  border: 1px solid#ebedee;
+  /* border: 1px solid#ebedee; */
   border-left: 1px solid #ebedee;
   flex-wrap: wrap;
   box-sizing: border-box;

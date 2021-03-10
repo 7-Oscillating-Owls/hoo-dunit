@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { AiFillStar } from 'react-icons/ai';
 import { GrDeliver } from 'react-icons/gr';
@@ -15,10 +16,12 @@ class Cart extends React.Component {
       selectedQuantity: 0,
       readyToBuy: false,
       sizeClicked: false,
+      sku: 0,
     };
     this.getSize = this.getSize.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.postCartData = this.postCartData.bind(this);
   }
 
   handleChange(event) {
@@ -32,13 +35,36 @@ class Cart extends React.Component {
     this.setState({
       readyToBuy: true,
     });
+    this.postCartData();
   }
 
-  getSize(selectedSize) {
+  getSize(selectedSize, sku) {
     this.setState({
       selectedSize,
       sizeClicked: true,
+      sku,
     });
+  }
+
+  postCartData(sku) {
+    sku = this.state.sku
+    axios.post('/cart', { "sku_id": sku })
+      .then(() => {
+        console.log('successessfully post cart data')
+      })
+      .catch(() => {
+        console.log("error while posting cart data");
+      });
+
+    // axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/cart', {"sku_id":sku}, {headers: {
+    //   'Authorization':"7bcafbd1f2f996b8bcb0e862a665cb99479e4546"
+    // }})
+    //  .then(() => {
+    //    console.log("success");
+    //  })
+    //  .catch(() => {
+    //    console.log("error");
+    //  })
   }
 
   closeModal() {
@@ -72,18 +98,19 @@ class Cart extends React.Component {
               ))
             }
           </select> */}
-          <h5 className={styles.selectSize}>Select size</h5>
-          {/* <div className={styles.allThingsSize}>
-
-            <span className={styles.guideRuler}>
-            <span className={styles.sizeGuide}>Size Guide</span>
-            <BiRuler className={styles.ruler} /></span>
-
-          </div> */}
+          {/* <h5 className={styles.selectSize}>Select size</h5> */}
+          <div className={styles.allThingsSize}>
+            <h5 className={styles.selectSize}>Select size</h5>
+            <div className={styles.sizeGuide}>
+              <BiRuler className={styles.ruler} />Size Guide
+            </div>
+            <div className={styles.outOfStock}>
+              <BiEnvelope className={styles.envelope} />Size out of stock?</div>
+          </div>
           <div className={styles.sizeBox}>
             {
               skuIds.map((item) => (
-                <button className={styles.sizeBtn} type="button" name="selectedSize" key={item} value={selectedSize} onClick={() => this.getSize(skus[item].size)}>
+                <button className={styles.sizeBtn} type="button" name="selectedSize" key={item} value={selectedSize} onClick={() => this.getSize(skus[item].size, item)}>
                   <span>{skus[item].size}</span>
                 </button>
               ))

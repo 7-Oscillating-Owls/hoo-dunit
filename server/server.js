@@ -176,6 +176,20 @@ app.post('/qa/postAnswer', (req, res) => {
     });
 })
 
+
+/* post request to the api to create cart data */
+app.post('/cart', (request, response) => {
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/cart', {"sku_id":request.body.sku_id}, {headers: {
+      'Authorization': token
+     }})
+     .then(() => {
+       console.log("success");
+     })
+     .catch(() => {
+       console.log("error");
+     })
+});
+
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);
 });
