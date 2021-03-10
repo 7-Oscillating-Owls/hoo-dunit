@@ -152,23 +152,23 @@ app.get('/api/products/:productId/related', (request, response) => {
 });
 
 // Questions and Answers--------------------------------------
-const headers = {
-  headers: {
-    Authorization: token,
-  },
-};
 
-app.post('/qa/postQuestion', (req, res) => {
-  const { body, name, email, productId } = req.body;
-  console.log('req.body', req.body)
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', {
-    body, name, email, productId,
-  }, headers)
-    .then((res) => {
-      res.send('posted question');
+app.post('/qa/postQuestion', (request, response) => {
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', request.body, {
+    headers: {
+      Authorization: token,
+    },
+    params: {
+      product_id: request.body.product_id
+    },
+  })
+    .then((result) => {
+      response.status(201);
+      response.send('Added a question');
     })
-    .catch((err) => {
-      res.status(500).send(err);
+    .catch((error) => {
+      response.status(404);
+      response.send("Error posting question");
     });
 });
 
