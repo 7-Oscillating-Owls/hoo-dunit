@@ -131,7 +131,7 @@ class ReviewsList extends React.Component {
       });
     } else if (reviewsList[numberOfReviewsDisplayed + 1]) {
       this.setState({
-        limitedReviewsList: reviewsList.slice(0),
+        limitedReviewsList: reviewsList,
         numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 1),
         displayMoreButton: false,
       });
