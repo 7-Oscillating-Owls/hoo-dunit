@@ -12,11 +12,13 @@ class AnswerModal extends React.Component {
       answerError: null,
       nicknameError: null,
       emailError: null,
+      isCloseModal: false,
     };
     this.validate = this.validate.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
     this.postAnswer = this.postAnswer.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   handleOnChange(event) {
@@ -26,7 +28,9 @@ class AnswerModal extends React.Component {
   handleSubmitClick(event) {
     event.preventDefault();
     this.validate();
+    this.setState({ isCloseModal: true });
     this.postAnswer();
+    this.state.isCloseModal ? this.props.modalclose() : null
 
   }
 
@@ -40,18 +44,23 @@ class AnswerModal extends React.Component {
 
   postAnswer() {
     const { answer, nickname, email } = this.state;
-    const { questionId } = this.props;
+
     axios.post('/qa/postAnswer', {
+      questionId: 84310,
       body: answer,
-      nickname: nickname,
+      nickname,
       email,
-      questionId,
+
     })
-      .then(() => { })
+      .then(() => {console.log('posted', questionId) })
       .catch((err) => {
         console.log(err);
       });
   }
+  closeModal() {
+    this.props.modalclose()
+  }
+
   render() {
     return (
 

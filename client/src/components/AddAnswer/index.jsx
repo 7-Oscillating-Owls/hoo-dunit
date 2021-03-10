@@ -18,7 +18,7 @@ class AddAnswer extends React.Component {
   }
 
   handleModalClose() {
-    this.setState({ showModal: false });
+    this.setState({ showAnswerModal: false });
   }
 
   render() {
