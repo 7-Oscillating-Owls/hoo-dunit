@@ -160,12 +160,13 @@ app.get('/api/products/:productId/related', (request, response) => {
 const headers = {
   headers: {
     'Authorization' : token,
+
   },
 };
 
 app.post('/qa/postQuestion', (req, res) => {
   const { body, name, email, productId } = req.body;
-  console.log('req.body', req.body)
+  console.log('req.body', req.body);
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', {
     body, name, email, productId,
   }, headers)
@@ -186,7 +187,7 @@ app.post('/qa/postAnswer', (req, res) => {
     question_id: questionId,
   };
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/84310/answers', {
-    body, name, email
+    body, name, email,
   }, answerHeaders)
     .then(() => { res.send('posted Answer') })
     .catch((err) => {

@@ -40,10 +40,10 @@ class QuestionModal extends React.Component {
     const { productId } = this.props;
     const { question, nickname, email } = this.state;
     axios.post('/qa/postQuestion', {
-      productId: productId,
       body: question,
       name: nickname,
       email,
+      productId,
     })
       .then(() => {console.log('posted', productId)})
       .catch((err) => {
