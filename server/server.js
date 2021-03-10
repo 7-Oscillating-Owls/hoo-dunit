@@ -154,6 +154,7 @@ app.get('/api/products/:productId/related', (request, response) => {
 // Questions and Answers--------------------------------------
 
 app.post('/qa/postQuestion', (request, response) => {
+  console.log(request.body)
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', request.body, {
     headers: {
       Authorization: token,
