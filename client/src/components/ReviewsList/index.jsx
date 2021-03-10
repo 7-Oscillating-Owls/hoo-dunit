@@ -221,8 +221,8 @@ class ReviewsList extends React.Component {
         <div>
           <div>
             {
-              limitedReviewsList.map((review) => (
-                <ReviewTiles review={review} key={review.review_id} />
+              limitedReviewsList.map((review, index) => (
+                <ReviewTiles review={review} key={review.review_id || `reviewTiles${index}`} />
               ))
             }
           </div>
