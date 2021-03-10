@@ -64,21 +64,20 @@ app.get('/reviews', (request, response) => {
       response.status(200);
     })
     .catch((error) => {
-      response.send('Error fetching reviews: ', error);
+      response.send('Server error fetching reviews: ', error);
       response.status(400);
     });
 });
 
 // Get product's review meta data
 app.get('/reviews/meta', (request, response) => {
-  // const productId = '14296'; // 14931, 14932, 14034, 14296, 14807
   const { productId } = request.query;
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta', {
     headers: {
       Authorization: token,
     },
     params: {
-      product_id: `${productId}`,
+      product_id: productId,
     },
   })
     .then((result) => {
@@ -86,25 +85,13 @@ app.get('/reviews/meta', (request, response) => {
       response.status(200);
     })
     .catch((error) => {
-      response.send('Error fetching server reviews meta data: ', error);
+      response.send('Server error fetching reviews meta data: ', error);
       response.status(400);
     });
 });
 
 // Reviews post request
 app.post('/reviews', (request, response) => {
-  // const {
-  //   product_id,
-  //   rating,
-  //   summary,
-  //   body,
-  //   recommend,
-  //   name,
-  //   email,
-  //   photos,
-  //   // Characteristics portion still needs work on - may need put request for characteristics
-  //   characteristics: characteristics,
-  // } = request.body;
   // console.log('This is request.body: ', request.body);
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', request.body, {
     headers: {
@@ -114,13 +101,13 @@ app.post('/reviews', (request, response) => {
       product_id: request.body.product_id,
     },
   })
-    .then((res) => {
-      res.status(201);
-      res.send('Add review server response: ', res);
+    .then((response) => {
+      response.status(201);
+      response.send('Add review server response: ', response);
     })
     .catch((error) => {
-      res.status(404);
-      res.send('Error with server review post request: ', error);
+      response.status(404);
+      response.send('Server error posting review: ', error);
     });
 });
 

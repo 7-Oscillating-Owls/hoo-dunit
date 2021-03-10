@@ -6,7 +6,12 @@ class ReviewCharacteristicsAddForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      sizeID: '',
+      widthID: '',
+      comfortID: '',
+      qualityID: '',
+      lengthID: '',
+      fitID: '',
     }
   }
 
