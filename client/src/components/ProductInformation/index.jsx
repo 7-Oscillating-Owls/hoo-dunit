@@ -40,7 +40,7 @@ const ProductInformation = (props) => {
       <div className={styles.name}>{name}</div>
       <div>{styleName}</div>
       {currentPrice}
-      <div className={styles.discount}>This product is excluded from all promotional discounts and offers</div>
+      <div className={styles.discount}>This product is excluded from all promotional discounts and offers.</div>
     </div>
   );
 };

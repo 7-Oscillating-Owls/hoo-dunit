@@ -2,7 +2,7 @@
   grid-area: d;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
-  width: 425px;
+  width: 375px;
   padding-left: 20px;
   padding-top: 10px;
   text-align: center;
@@ -14,12 +14,16 @@
   grid-template-areas:"o o"
                       "p q"
                       "r s";
-  grid-gap: 20px;
+  grid-gap: 15px;
+  width: 100%
   /* justify-items: center; */
 }
 
 .allThingsSize{
   grid-area: o;
+  display: grid;
+  grid-template-areas: "x x"
+                       "y z";
 }
 
 .guideRuler {
@@ -27,15 +31,31 @@
 }
 
 .sizeGuide {
+  grid-area: "y";
   font-size: 12px;
+  text-decoration: underline;
+  justify-self: left;
+  position: relative;
 }
 
-.ruler {
+.outOfStock {
+  grid-area: "z";
+  font-size: 12px;
+  text-decoration: underline;
+  justify-self: right;
+  position: relative;
+}
+
+.ruler, .envelope {
   height: 29px;
+  width: 20px;
+  position: absolute;
+  top: -8px;
+  right: -25px;
 }
 
 .selectSize {
-  grid-area: o;
+  grid-area: x;
   font-weight:600;
   font-size: 14px;
   justify-self: left;
@@ -119,6 +139,7 @@
   font-size: 13px;
   font-weight: 700px;
   letter-spacing: 2px;
+  outline: none;
 }
 
 .viewBag  {
@@ -133,6 +154,7 @@
   font-size: 13px;
   font-weight: 700px;
   letter-spacing: 2px;
+  outline: none;
 }
 
 .checkout {
@@ -147,6 +169,7 @@
   font-size: 13px;
   font-weight: 700px;
   letter-spacing: 2px;
+  outline: none;
 }
 
 .checkoutText {
@@ -209,11 +232,11 @@
 
 .star {
   grid-area: s;
-  /* box-sizing: border-box; */
-  /* border: 1px solid gray; */
+  box-sizing: border-box;
+  border: 1px solid gray;
   cursor: pointer;
-  height: 35px;
-  width: 40px;
+  height: 20px;
+  width: 39px;
   justify-self: left;
   outline: black;
 }
@@ -257,4 +280,8 @@
   align-items: start;
   margin: none;
 
+}
+
+.sizeInt {
+  justify-self: center;
 }

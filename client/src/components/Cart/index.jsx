@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineStar, AiOutlineHeart } from 'react-icons/ai';
 import { GrDeliver } from 'react-icons/gr';
 import { BiRuler, BiEnvelope } from 'react-icons/bi';
 import { CgArrowLongRight } from 'react-icons/cg';
@@ -47,24 +47,14 @@ class Cart extends React.Component {
   }
 
   postCartData(sku) {
-    sku = this.state.sku
-    axios.post('/cart', { "sku_id": sku })
+    sku = this.state.sku;
+    axios.post('/cart', { sku_id: sku })
       .then(() => {
-        console.log('successessfully post cart data')
+        console.log('successessfully post cart data');
       })
       .catch(() => {
-        console.log("error while posting cart data");
+        console.log('error while posting cart data');
       });
-
-    // axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/cart', {"sku_id":sku}, {headers: {
-    //   'Authorization':"7bcafbd1f2f996b8bcb0e862a665cb99479e4546"
-    // }})
-    //  .then(() => {
-    //    console.log("success");
-    //  })
-    //  .catch(() => {
-    //    console.log("error");
-    //  })
   }
 
   closeModal() {
@@ -102,10 +92,13 @@ class Cart extends React.Component {
           <div className={styles.allThingsSize}>
             <h5 className={styles.selectSize}>Select size</h5>
             <div className={styles.sizeGuide}>
-              <BiRuler className={styles.ruler} />Size Guide
+              <BiRuler className={styles.ruler} />
+              Size Guide
             </div>
             <div className={styles.outOfStock}>
-              <BiEnvelope className={styles.envelope} />Size out of stock?</div>
+              <BiEnvelope className={styles.envelope} />
+              Size out of stock?
+            </div>
           </div>
           <div className={styles.sizeBox}>
             {
@@ -120,7 +113,7 @@ class Cart extends React.Component {
             <option value="">Quantity</option>
             {
               displayQuantity && displayQuantity.map((item) => (
-                <option key={item} value={item}>{item}</option>
+                <option className={styles.sizeInt} key={item} value={item}>{item}</option>
               ))
             }
           </select>
@@ -129,7 +122,7 @@ class Cart extends React.Component {
             <span className={styles.addToBagText}>ADD TO BAG</span>
             <CgArrowLongRight className={styles.arrow} />
           </button>
-          <AiFillStar className={styles.star} />
+          <AiOutlineHeart className={styles.star} />
         </form>
 
         {
