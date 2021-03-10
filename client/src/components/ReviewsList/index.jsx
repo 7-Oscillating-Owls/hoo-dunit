@@ -56,9 +56,10 @@ class ReviewsList extends React.Component {
     })
       .then((response) => {
         const reviewsData = response.data.results;
+        // If reviewsData only has 1 - what should happen?
         this.setState({
           reviewsList: reviewsData,
-          limitedReviewsList: [reviewsData[0], reviewsData[1]],
+          limitedReviewsList: reviewsData.slice(0, 2),
         });
       })
       .catch((error) => {
