@@ -9,3 +9,19 @@
   text-transform: uppercase;
   margin-left: 20px;
 }
+
+.actionButton {
+  background: rgba(255, 255, 255, .4);
+  border: none;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+}
+.actionButton:hover {
+  background: rgba(255, 255, 255, .8);
+}
+.actionButton:focus {
+  outline: none;
+}

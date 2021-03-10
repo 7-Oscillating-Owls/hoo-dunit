@@ -21,6 +21,7 @@ class AppComponent extends React.Component {
 
     this.state = {
       product: undefined,
+      myOutfit: {},
       starRating: 5,
       totalNumberOfStars: 0,
       characteristicNames: [],
@@ -33,6 +34,22 @@ class AppComponent extends React.Component {
       twoStarTotal: '',
       oneStarTotal: '',
     };
+
+    // this.localStorage = storageAvailable() ? window.localStorage : ;
+    let storage;
+
+    try { // test if localStorage works
+      storage = window.localStorage;
+      storage.setItem('OO7', 'owls');
+      storage.getItem('007');
+      storage.removeItem('007');
+    } catch { // if not, no persistence
+      storage = {};
+    }
+    this.localStorage = storage;
+
+    this.addToMyOutfit = this.addToMyOutfit.bind(this);
+    this.removeFromMyOutfit = this.removeFromMyOutfit.bind(this);
     this.getMetaData = this.getMetaData.bind(this);
     this.getAverageRating = this.getAverageRating.bind(this);
     this.getCharacteristicId = this.getCharacteristicId.bind(this);
@@ -42,6 +59,13 @@ class AppComponent extends React.Component {
   componentDidMount() {
     this.fetchProductDetail();
     this.getMetaData();
+
+    if (this.localStorage.getItem) {
+      const myOutfit = this.localStorage.getItem('myOutfit') || '{}';
+      this.setState({
+        myOutfit: JSON.parse(myOutfit),
+      });
+    }
   }
 
   componentDidUpdate(prev) {
@@ -140,10 +164,45 @@ class AppComponent extends React.Component {
     }
   }
 
+  addToMyOutfit(product) {
+    const { myOutfit } = this.state;
+
+    const newOutfit = {
+      ...myOutfit,
+      [product.id]: product,
+    };
+
+    if (this.localStorage.getItem) {
+      this.localStorage.setItem('myOutfit', JSON.stringify(newOutfit));
+    }
+
+    this.setState({
+      myOutfit: newOutfit,
+    });
+  }
+
+  removeFromMyOutfit(product) {
+    const { myOutfit } = this.state;
+    const newOutfit = {
+      ...myOutfit,
+    };
+
+    delete newOutfit[product.id];
+
+    if (this.localStorage.getItem) {
+      this.localStorage.setItem('myOutfit', JSON.stringify(newOutfit));
+    }
+
+    this.setState({
+      myOutfit: newOutfit,
+    });
+  }
+
   render() {
     const { match } = this.props;
     const {
       product,
+      myOutfit,
       metaObject,
       starRating,
       recommendPercent,
@@ -159,7 +218,13 @@ class AppComponent extends React.Component {
     return (
       <>
         <Overview productId={match.params.productId} product={product} starRating={starRating} />
-        <RelatedProducts productId={match.params.productId} product={product} />
+        <RelatedProducts
+          productId={match.params.productId}
+          product={product}
+          myOutfit={myOutfit}
+          addOutfit={this.addToMyOutfit}
+          removeOutfit={this.removeFromMyOutfit}
+        />
         <ReviewsList
           currentProduct={match.params.productId}
           starRating={starRating}
