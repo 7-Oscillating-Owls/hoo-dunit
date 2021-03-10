@@ -52,7 +52,7 @@ class AnswerModal extends React.Component {
       email,
 
     })
-      .then(() => {console.log('posted', questionId) })
+      .then(() => {console.log('posted') })
       .catch((err) => {
         console.log(err);
       });
