@@ -160,7 +160,7 @@ app.post('/qa/postQuestion', (request, response) => {
       Authorization: token,
     },
     params: {
-      product_id: request.body.product_id
+      product_id: request.body.productId
     },
   })
     .then((result) => {
