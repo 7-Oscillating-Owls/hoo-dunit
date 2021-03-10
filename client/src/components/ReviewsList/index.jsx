@@ -56,11 +56,15 @@ class ReviewsList extends React.Component {
     })
       .then((response) => {
         const reviewsData = response.data.results;
-        // If reviewsData only has 1 - what should happen?
         this.setState({
           reviewsList: reviewsData,
           limitedReviewsList: reviewsData.slice(0, 2),
         });
+        if (reviewsData.length === 1) {
+          this.setState({
+            displayMoreButton: false,
+          });
+        }
       })
       .catch((error) => {
         console.log('Error fetching reviews: ', error);
@@ -122,17 +126,14 @@ class ReviewsList extends React.Component {
     const { totalNumberOfStars } = this.props;
     if (reviewsList[numberOfReviewsDisplayed + 2]) {
       this.setState({
-        limitedReviewsList: [
-          ...limitedReviewsList,
-          reviewsList[numberOfReviewsDisplayed + 1],
-          reviewsList[numberOfReviewsDisplayed + 2],
-        ],
+        limitedReviewsList: reviewsList.slice(0, (numberOfReviewsDisplayed + 2)),
         numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 2),
       });
     } else if (reviewsList[numberOfReviewsDisplayed + 1]) {
       this.setState({
-        limitedReviewsList: [...limitedReviewsList, reviewsList[numberOfReviewsDisplayed + 1]],
+        limitedReviewsList: reviewsList.slice(0),
         numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 1),
+        displayMoreButton: false,
       });
     } else {
       this.setState({
