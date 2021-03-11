@@ -9,6 +9,7 @@ class AnswerModal extends React.Component {
       answer: '',
       name: '',
       email: '',
+      photos: [],
       answerError: null,
       nameError: null,
       emailError: null,
@@ -42,8 +43,9 @@ class AnswerModal extends React.Component {
   }
 
   postAnswer() {
-    const { answer, name, email } = this.state;
+    const { answer, name, email, photos } = this.state;
     const questionId = 84310
+    console.log(answer, name, email, photos)
     axios.post('/qa/postAnswer', {
       body: answer,
       name,
