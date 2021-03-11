@@ -7,6 +7,7 @@ import ProductInformation from '../ProductInformation';
 import ProductDescription from '../ProductDescription';
 import Cart from '../Cart';
 import StyleSelector from '../StyleSelector';
+import { getAverageRating } from '../ReviewUtils';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -66,7 +67,7 @@ class Overview extends React.Component {
   }
 
   render() {
-    const { starRating } = this.props;
+    const { metaObject } = this.props;
     const {
       category, name, slogan, description, styleName, features, data, selectedStyleId,
     } = this.state;
@@ -78,6 +79,8 @@ class Overview extends React.Component {
         filteredStyle = style;
       }
     });
+
+    const { starRating } = getAverageRating(metaObject);
 
     return (
       <>
@@ -119,9 +122,17 @@ class Overview extends React.Component {
   }
 }
 
+Overview.defaultProps = {
+  metaObject: {
+    ratings: {},
+  },
+};
+
 Overview.propTypes = {
   productId: PropTypes.string.isRequired,
-  starRating: PropTypes.number.isRequired,
+  metaObject: PropTypes.shape({
+    ratings: PropTypes.shape(),
+  }),
 };
 
 export default Overview;
