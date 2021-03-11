@@ -13,7 +13,6 @@ app.use('/static', express.static(path.join(__dirname, '/../client/dist')));
 app.use('/', express.static(path.join(__dirname, '..', 'public')));
 app.use('/products/*', express.static(path.join(__dirname, '..', 'public')));
 
-//Questions and Answers get_______________________________________
 app.get('/qa', (request, response) => {
   const { productId } = request.query;
   console.log(productId);
@@ -46,12 +45,6 @@ app.get('/answers', (request, response) => {
       response.send('error man');
     });
 });
-//Questions and Answers get End_______________________________________
-
-// -------------------- RATINGS AND REVIEWS REQUESTS --------------------
-
-
-
 
 // Get product's review information
 app.get('/reviews', (request, response) => {
@@ -151,8 +144,6 @@ app.get('/api/products/:productId/related', (request, response) => {
     .catch((error) => response.status(400).send(error));
 });
 
-// Questions and Answers--------------------------------------
-
 app.post('/qa/postQuestion', (request, response) => {
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions',
     request.body,
@@ -171,8 +162,6 @@ app.post('/qa/postQuestion', (request, response) => {
       // response.send("Error posting question");
     });
 });
-
-// Questions and Answers End------------------------------------
 
 /* post request to the api to create cart data */
 app.post('/cart', (request, response) => {
@@ -210,7 +199,15 @@ app.post('/qa/postAnswer', (req, res) => {
     });
 });
 
-// Questions and Answers End------------------------------------
+app.post('/api/interactions', (request, response) => {
+  apiCall(
+    'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/interactions',
+    'post',
+    request.body,
+  )
+    .then(() => response.sendStatus(201))
+    .catch(() => response.sendStatus(422));
+});
 
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);
