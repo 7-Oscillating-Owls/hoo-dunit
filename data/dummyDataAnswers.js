@@ -55,3 +55,5 @@ const dummyAnswers = {
     }
   ]
 }
+
+export default dummyAnswers
