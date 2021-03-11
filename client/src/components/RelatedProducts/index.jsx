@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { FaRegStar } from 'react-icons/fa';
 
 import AppModal from '../AppModal';
+import { postInteraction } from '../Interactions';
 import RelatedProductsList from '../RelatedProductsList';
 import RelatedProductCard from '../RelatedProductCard';
 import RelatedProductCompare from '../RelatedProductCompare';
@@ -28,6 +29,19 @@ class RelatedProducts extends React.Component {
     if (prev.productId !== productId) {
       this.fetchRelatedProducts();
     }
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  handleInteraction(e) {
+    const element = e.target.className;
+    const widget = 'RelatedProducts';
+    const time = new Date().toISOString();
+
+    postInteraction({
+      element,
+      widget,
+      time,
+    });
   }
 
   setShowModal(shouldShowModal) {
@@ -98,7 +112,7 @@ class RelatedProducts extends React.Component {
     );
 
     return (
-      <section className={styles.relatedProducts}>
+      <section className={styles.relatedProducts} onClick={this.handleInteraction}>
         <h3 className={styles.listTitle}>Related Products</h3>
         <RelatedProductsList
           sizeOfScroll={270}

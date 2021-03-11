@@ -46,7 +46,6 @@ app.get('/answers', (request, response) => {
     });
 });
 
-// -------------------- RATINGS AND REVIEWS REQUESTS --------------------
 // Get product's review information
 app.get('/reviews', (request, response) => {
   const { productId, page } = request.query;
@@ -144,24 +143,22 @@ app.get('/api/products/:productId/related', (request, response) => {
     .catch((error) => response.status(400).send(error));
 });
 
-app.post('/qa/postAnswer', (req, res) => {
-  const {
-    body,
-    name,
-    email,
-    questionId,
-  } = req.body;
-
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/{questionId}/answers', {
-    headers: {
-      Authorization: token,
-    },
-  })
-    .then((res) => {
-      response.send('Successfuly posted');
+app.post('/qa/postQuestion', (request, response) => {
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions',
+    request.body,
+    {
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then((result) => {
+      console.log('post question success')
+      response.sendStatus(201);
+      // response.send('Added a question');
     })
     .catch((error) => {
-      response.send('error posting');
+      response.sendStatus(500);
+      // response.send("Error posting question");
     });
 });
 
@@ -178,6 +175,37 @@ app.post('/cart', (request, response) => {
     .catch(() => {
       response.status(201);
     });
+});
+
+app.post('/qa/postAnswer', (req, res) => {
+  console.log(req.body)
+  const { body, name, email, questionId, photos } = req.body;
+  console.log(req.query)
+  const answerHeaders = {
+    headers: {
+      'User-Agent': 'request',
+      Authorization: token,
+    },
+    question_id: questionId,
+  };
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/84310/answers', {
+    body, name, email, photos
+  }, answerHeaders)
+
+    .then(() => { res.send('posted Answer') })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+});
+
+app.post('/api/interactions', (request, response) => {
+  apiCall(
+    'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/interactions',
+    'post',
+    request.body,
+  )
+    .then(() => response.sendStatus(201))
+    .catch(() => response.sendStatus(422));
 });
 
 app.listen(port, () => {

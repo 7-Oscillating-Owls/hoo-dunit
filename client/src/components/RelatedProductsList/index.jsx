@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { postInteraction } from '../Interactions';
 
 import styles from './RelatedProductsList.css';
 
@@ -28,6 +29,19 @@ class RelatedProductsList extends Component {
     }
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  handleInteraction(e) {
+    const element = e.target.className;
+    const widget = 'RelatedProducts';
+    const time = new Date().toISOString();
+
+    postInteraction({
+      element,
+      widget,
+      time,
+    });
+  }
+
   makeScrollHandler() {
     let timerId = null;
     return () => {
@@ -41,6 +55,8 @@ class RelatedProductsList extends Component {
   }
 
   scrollCarousel(e, x) {
+    this.handleInteraction(e);
+
     e.stopPropagation();
 
     this.carousel.scroll({

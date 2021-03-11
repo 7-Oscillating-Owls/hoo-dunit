@@ -1,12 +1,15 @@
 .answer {
+  font-family:Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   padding: 1px;
   margin: 1px 2px;
-  font-size: 12px;
+  font-size: 14px;
   box-sizing: border-box;
   justify-items: left;
   border-radius: 2px;
+  font-weight: 500;
+  overflow-wrap: break-world;
 }
 .answer:hover,
 .answer:focus {
@@ -14,11 +17,11 @@
 }
 
 .answer:hover:nth-child(odd) {
-  background-color: rgb(223, 239, 242);
+  background-color: rgba(223, 239, 242, 0.544);
   border-radius: 4px;
 }
 .answer:hover:nth-child(even) {
-  background-color: rgb(215, 215, 215);
+  background-color: rgba(215, 215, 215, 0.484);
   border-radius: 4px;
 }
 
@@ -30,8 +33,9 @@
 }
 
 .answer p {
-  color: rgb(9, 61, 146);
-  font-size: 20px;
+  color: black;
+  font-size: 14px;
+  font-weight: 500px;
 }
 
 .answer p {
