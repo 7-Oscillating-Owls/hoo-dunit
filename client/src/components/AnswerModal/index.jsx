@@ -44,6 +44,7 @@ class AnswerModal extends React.Component {
 
   postAnswer() {
     const { answer, name, email, photos } = this.state;
+    console.log(answer,name, email, photos)
     const questionId = 84310
     console.log(answer, name, email, photos)
     axios.post('/qa/postAnswer', {

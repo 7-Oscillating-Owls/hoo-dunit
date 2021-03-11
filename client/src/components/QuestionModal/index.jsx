@@ -42,10 +42,10 @@ class QuestionModal extends React.Component {
       body: question,
       name: nickname,
       email,
-      productId,
+      product_id: Number(productId),
     })
 
-      .then(() => {})
+      .then(() => {console.log('success')})
       .catch((err) => {
         console.log(err);
       });

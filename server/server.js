@@ -160,16 +160,16 @@ app.post('/qa/postQuestion', (request, response) => {
       Authorization: token,
     },
     params: {
-      product_id: request.body.productId
+      product_id: request.body.product_id
     },
   })
     .then((result) => {
-      response.status(201);
-      response.send('Added a question');
+      response.sendStatus(201);
+      // response.send('Added a question');
     })
     .catch((error) => {
-      response.status(404);
-      response.send("Error posting question");
+      response.sendStatus(500);
+      // response.send("Error posting question");
     });
 });
 
@@ -191,7 +191,8 @@ app.post('/cart', (request, response) => {
 });
 
 app.post('/qa/postAnswer', (req, res) => {
-  const { body, name, email, questionId } = req.body;
+  console.log(req.body)
+  const { body, name, email, questionId, photos } = req.body;
   const answerHeaders = {
     headers: {
       'User-Agent': 'request',
@@ -200,8 +201,9 @@ app.post('/qa/postAnswer', (req, res) => {
     question_id: questionId,
   };
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/84310/answers', {
-    body, name, email
+    body, name, email, photos
   }, answerHeaders)
+
     .then(() => { res.send('posted Answer') })
     .catch((err) => {
       res.status(500).send(err);
