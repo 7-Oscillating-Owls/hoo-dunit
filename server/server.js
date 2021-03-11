@@ -101,12 +101,11 @@ app.post('/reviews', (request, response) => {
     },
   })
     .then((result) => {
-      response.status(201);
-      response.send('Add review server response: ', result);
+      response.status(201).send('Add review server response: ', result);
     })
     .catch((error) => {
-      response.status(404);
-      response.send('Server error posting review: ', error);
+      response.status(404).send(error);
+      // response.send('Server error posting review: ', error);
     });
 });
 
