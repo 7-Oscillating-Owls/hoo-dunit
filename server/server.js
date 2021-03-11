@@ -193,6 +193,7 @@ app.post('/cart', (request, response) => {
 app.post('/qa/postAnswer', (req, res) => {
   console.log(req.body)
   const { body, name, email, questionId, photos } = req.body;
+  console.log(req.query)
   const answerHeaders = {
     headers: {
       'User-Agent': 'request',
