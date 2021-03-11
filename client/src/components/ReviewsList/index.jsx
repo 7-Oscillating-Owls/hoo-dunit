@@ -79,19 +79,14 @@ class ReviewsList extends React.Component {
     console.log('This is formData: ', formData);
     this.setState({ displayModal: false });
 
-
-    // quality
-    // length
-    // fit
-
     const charObject = {};
     if (formData.Size) {
       const sizeKey = Object.keys(formData.Size)[0];
-      charObject[sizeKey] = formData.Size[sizeKey];
+      charObject[sizeKey] = Number(formData.Size[sizeKey]);
     }
     if (formData.Width) {
       const widthKey = Object.keys(formData.Width)[0];
-      charObject[widthKey] = formData.Width[widthKey];
+      charObject[widthKey] = Number(formData.Width[widthKey]);
     }
     if (formData.Comfort) {
       const comfortKey = Object.keys(formData.Comfort)[0];
@@ -99,30 +94,36 @@ class ReviewsList extends React.Component {
     }
     if (formData.Quality) {
       const qualityKey = Object.keys(formData.Quality)[0];
-      charObject[qualityKey] = formData.Quality[qualityKey];
+      charObject[qualityKey] = Number(formData.Quality[qualityKey]);
     }
     if (formData.Length) {
       const lengthKey = Object.keys(formData.Length)[0];
-      charObject[lengthKey] = formData.Length[lengthKey];
+      charObject[lengthKey] = Number(formData.Length[lengthKey]);
     }
     if (formData.Fit) {
       const fitKey = Object.keys(formData.Fit)[0];
-      charObject[fitKey] = formData.Fit[fitKey];
+      charObject[fitKey] = Number(formData.Fit[fitKey]);
+    }
+
+    let wasRecommended;
+    if (formData.recommended === 'false') {
+      wasRecommended = false;
+    } else {
+      wasRecommended = true;
     }
 
     const reviewDataObject = {
-      product_id: currentProduct || 14296, // Alt 14931, 14932, 14034, 14296, 14807,
-      rating: formData.overallRating,
+      product_id: Number(currentProduct) || 14296, // Alt 14931, 14932, 14034, 14296, 14807,
+      rating: Number(formData.overallRating),
       summary: formData.reviewSummary || '',
       body: formData.reviewBody,
-      recommend: formData.recommended,
+      recommend: wasRecommended,
       name: formData.reviewUsername,
       email: formData.email,
-      photos: formData.uploadedFile || '',
+      // photos: formData.uploadedFile || [],
       characteristics: charObject,
     };
     console.log('This is reviewDataObject: ', reviewDataObject);
-    console.log('This is charObject: ', charObject);
     axios.post('/reviews', reviewDataObject)
       .then((response) => {
         alert('Successfully added review');

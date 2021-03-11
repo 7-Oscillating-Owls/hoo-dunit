@@ -52,7 +52,6 @@ class ReviewsAddForm extends React.Component {
 
   handleAddCharacteristics(event, id, name) {
     this.setState({ [name]: { [id]: event.target.value } });
-    console.log('This is Review Add Form state: ', this.state);
   }
 
   handleSubmit(event) {
