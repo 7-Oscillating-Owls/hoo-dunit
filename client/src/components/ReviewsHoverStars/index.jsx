@@ -14,7 +14,7 @@ const ReviewsHoverStars = (props) => (
               type="radio"
               name="overallRating"
               value={ratingValue}
-              key={`Hover stars ${index} ${(Math.random() * 20)}`}
+              key={`${index}${(Math.random() * 20)}`}
             />
             <FaStar
               className={styles.star}

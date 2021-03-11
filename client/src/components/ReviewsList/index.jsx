@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
@@ -57,11 +56,15 @@ class ReviewsList extends React.Component {
     })
       .then((response) => {
         const reviewsData = response.data.results;
-        // If reviewsData only has 1 - what should happen?
         this.setState({
           reviewsList: reviewsData,
           limitedReviewsList: reviewsData.slice(0, 2),
         });
+        if (reviewsData.length === 1) {
+          this.setState({
+            displayMoreButton: false,
+          });
+        }
       })
       .catch((error) => {
         console.log('Error fetching reviews: ', error);
@@ -71,37 +74,64 @@ class ReviewsList extends React.Component {
   // This function sends post request with data from ReviewsAddForm
   // Notes: Characteristic ID and name are passed down as props
   // (2 separate arrays) and sent back as an object stored in state
-
-  // length: '',
-  // fit: '',
-
   addReview(formData) {
     const { currentProduct } = this.props;
-    console.log('This is form data: ', formData);
-
+    console.log('This is formData: ', formData);
     this.setState({ displayModal: false });
+
+
+    // quality
+    // length
+    // fit
+
+    const charObject = {};
+    if (formData.Size) {
+      const sizeKey = Object.keys(formData.Size)[0];
+      charObject[sizeKey] = formData.Size[sizeKey];
+    }
+    if (formData.Width) {
+      const widthKey = Object.keys(formData.Width)[0];
+      charObject[widthKey] = formData.Width[widthKey];
+    }
+    if (formData.Comfort) {
+      const comfortKey = Object.keys(formData.Comfort)[0];
+      charObject[comfortKey] = Number(formData.Comfort[comfortKey]);
+    }
+    if (formData.Quality) {
+      const qualityKey = Object.keys(formData.Quality)[0];
+      charObject[qualityKey] = formData.Quality[qualityKey];
+    }
+    if (formData.Length) {
+      const lengthKey = Object.keys(formData.Length)[0];
+      charObject[lengthKey] = formData.Length[lengthKey];
+    }
+    if (formData.Fit) {
+      const fitKey = Object.keys(formData.Fit)[0];
+      charObject[fitKey] = formData.Fit[fitKey];
+    }
+
     const reviewDataObject = {
       product_id: currentProduct || 14296, // Alt 14931, 14932, 14034, 14296, 14807,
-      rating: Number(formData.overallRating),
+      rating: formData.overallRating,
       summary: formData.reviewSummary || '',
       body: formData.reviewBody,
-      recommend: `${formData.recommended}`,
+      recommend: formData.recommended,
       name: formData.reviewUsername,
       email: formData.email,
       photos: formData.uploadedFile || '',
-      characteristics: formData.characteristics,
+      characteristics: charObject,
     };
-
     console.log('This is reviewDataObject: ', reviewDataObject);
-    // axios.post('/reviews', reviewDataObject)
-    //   .then((response) => {
-    //     alert('Successfully added review');
-    //     console.log('Successfully added review: ', response.data);
-    //     this.getReviews();
-    //   })
-    //   .catch((error) => {
-    //     console.log('Error adding review: ', error);
-    //   });
+    console.log('This is charObject: ', charObject);
+    axios.post('/reviews', reviewDataObject)
+      .then((response) => {
+        alert('Successfully added review');
+        console.log('Successfully added review: ', response.data);
+        this.getReviews();
+      })
+      .catch((error) => {
+        console.log('Error adding review: ', error);
+      });
   }
 
   openAddReviewModal() {
@@ -123,17 +153,14 @@ class ReviewsList extends React.Component {
     const { totalNumberOfStars } = this.props;
     if (reviewsList[numberOfReviewsDisplayed + 2]) {
       this.setState({
-        limitedReviewsList: [
-          ...limitedReviewsList,
-          reviewsList[numberOfReviewsDisplayed + 1],
-          reviewsList[numberOfReviewsDisplayed + 2],
-        ],
+        limitedReviewsList: reviewsList.slice(0, (numberOfReviewsDisplayed + 2)),
         numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 2),
       });
     } else if (reviewsList[numberOfReviewsDisplayed + 1]) {
       this.setState({
-        limitedReviewsList: [...limitedReviewsList, reviewsList[numberOfReviewsDisplayed + 1]],
+        limitedReviewsList: reviewsList.slice(0),
         numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 1),
+        displayMoreButton: false,
       });
     } else {
       this.setState({
