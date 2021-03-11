@@ -27,7 +27,7 @@ export const getRecommendPercent = ({ recommended = {} }) => {
   let percent = '0';
 
   if (totalVotes !== 0) {
-    percent = ((recommended.true / totalVotes) * 100).toFixed(2);
+    percent = Math.round((recommended.true / totalVotes) * 100).toString();
   }
 
   return {

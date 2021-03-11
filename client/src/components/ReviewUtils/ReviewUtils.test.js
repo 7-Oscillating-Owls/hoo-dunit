@@ -47,10 +47,10 @@ test('test ReviewUitls.getRecommendPercent', () => {
   };
 
   const result = getRecommendPercent(metaData);
-  expect(result.recommendPercent).toBe('50.00');
+  expect(result.recommendPercent).toBe('50');
   expect(result.totalNumberOfStars).toBe(40);
   expect(getRecommendPercent(allRecommend)).toEqual({
-    recommendPercent: '100.00',
+    recommendPercent: '100',
     totalNumberOfStars: 1,
   });
 });

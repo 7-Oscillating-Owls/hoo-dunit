@@ -22,20 +22,11 @@ class AppComponent extends React.Component {
     this.state = {
       product: undefined,
       myOutfit: {},
-      starRating: 5,
-      totalNumberOfStars: 0,
       characteristicNames: [],
       characteristicIds: [],
-      recommendPercent: 100,
       metaObject: {},
-      fiveStarTotal: '',
-      fourStarTotal: '',
-      threeStarTotal: '',
-      twoStarTotal: '',
-      oneStarTotal: '',
     };
 
-    // this.localStorage = storageAvailable() ? window.localStorage : ;
     let storage;
 
     try { // test if localStorage works
@@ -51,9 +42,7 @@ class AppComponent extends React.Component {
     this.addToMyOutfit = this.addToMyOutfit.bind(this);
     this.removeFromMyOutfit = this.removeFromMyOutfit.bind(this);
     this.getMetaData = this.getMetaData.bind(this);
-    this.getAverageRating = this.getAverageRating.bind(this);
     this.getCharacteristicId = this.getCharacteristicId.bind(this);
-    this.getRecommendPercent = this.getRecommendPercent.bind(this);
   }
 
   componentDidMount() {
@@ -90,35 +79,12 @@ class AppComponent extends React.Component {
     })
       .then((response) => {
         this.setState({ metaObject: response.data });
-        this.getAverageRating();
         this.getCharacteristicId();
-        this.getRecommendPercent();
       })
       .catch((error) => {
         console.log('Error fetching meta data: ', error);
         throw (error);
       });
-  }
-
-  getAverageRating() {
-    const { metaObject } = this.state;
-    const metaRatings = metaObject.ratings;
-    let starSubtotal = 0;
-    let starTotal = 0;
-    if (metaRatings) {
-      for (const key in metaRatings) {
-        starSubtotal += Number(key * metaRatings[key]);
-        starTotal += Number(metaRatings[key]);
-      }
-    }
-    this.setState({
-      starRating: ((starSubtotal / starTotal).toFixed(1)),
-      fiveStarTotal: metaRatings['5'],
-      fourStarTotal: metaRatings['4'],
-      threeStarTotal: metaRatings['3'],
-      twoStarTotal: metaRatings['2'],
-      oneStarTotal: metaRatings['1'],
-    });
   }
 
   getCharacteristicId() {
@@ -135,19 +101,6 @@ class AppComponent extends React.Component {
     this.setState({
       characteristicNames: names,
       characteristicIds: id,
-    });
-  }
-
-  getRecommendPercent() {
-    const { metaObject } = this.state;
-    const { recommended } = metaObject;
-    const totalStars = (Number(recommended.true) + Number(recommended.false));
-    const recommendedPercentage = (
-      (recommended.true / totalStars).toFixed(2) * 100
-    );
-    this.setState({
-      recommendPercent: recommendedPercentage,
-      totalNumberOfStars: totalStars,
     });
   }
 
@@ -204,14 +157,6 @@ class AppComponent extends React.Component {
       product,
       myOutfit,
       metaObject,
-      starRating,
-      recommendPercent,
-      totalNumberOfStars,
-      fiveStarTotal,
-      fourStarTotal,
-      threeStarTotal,
-      twoStarTotal,
-      oneStarTotal,
       characteristicNames,
       characteristicIds,
     } = this.state;
@@ -227,15 +172,7 @@ class AppComponent extends React.Component {
         />
         <ReviewsList
           currentProduct={match.params.productId}
-          starRating={starRating}
           metaObject={metaObject}
-          recommendPercent={recommendPercent}
-          totalNumberOfStars={totalNumberOfStars}
-          fiveStarTotal={fiveStarTotal}
-          fourStarTotal={fourStarTotal}
-          threeStarTotal={threeStarTotal}
-          twoStarTotal={twoStarTotal}
-          oneStarTotal={oneStarTotal}
           characteristicNames={characteristicNames}
           characteristicIds={characteristicIds}
         />

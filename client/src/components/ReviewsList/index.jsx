@@ -10,6 +10,7 @@ import ReviewCharacteristics from '../ReviewCharacteristics';
 import ReviewTiles from '../ReviewTiles';
 import ReviewAddFormModal from '../ReviewAddFormModal';
 import ReviewsMoreReviews from '../ReviewsMoreReviews';
+import { getAverageRating, getRecommendPercent } from '../ReviewUtils';
 import styles from './ReviewsList.css';
 
 class ReviewsList extends React.Component {
@@ -123,7 +124,11 @@ class ReviewsList extends React.Component {
       numberOfReviewsDisplayed,
       currentPage,
     } = this.state;
-    const { totalNumberOfStars } = this.props;
+
+    const { metaObject } = this.props;
+
+    const { totalNumberOfStars } = getRecommendPercent(metaObject);
+
     if (reviewsList[numberOfReviewsDisplayed + 2]) {
       this.setState({
         limitedReviewsList: reviewsList.slice(0, (numberOfReviewsDisplayed + 2)),
@@ -155,17 +160,23 @@ class ReviewsList extends React.Component {
   render() {
     const {
       metaObject,
-      recommendPercent,
-      totalNumberOfStars,
-      starRating,
-      fiveStarTotal,
-      fourStarTotal,
-      threeStarTotal,
-      twoStarTotal,
-      oneStarTotal,
       characteristicNames,
       characteristicIds,
     } = this.props;
+
+    const {
+      starRating,
+      oneStarTotal,
+      twoStarTotal,
+      threeStarTotal,
+      fourStarTotal,
+      fiveStarTotal,
+    } = getAverageRating(metaObject);
+
+    const {
+      recommendPercent,
+      totalNumberOfStars,
+    } = getRecommendPercent(metaObject);
 
     const {
       displayModal,
