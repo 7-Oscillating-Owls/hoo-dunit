@@ -91,23 +91,26 @@ app.get('/reviews/meta', (request, response) => {
 });
 
 // Reviews post request
-app.post('/reviews', (request, response) => {
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', request.body, {
-    headers: {
-      Authorization: token,
-    },
-    params: {
-      product_id: request.body.product_id,
-    },
-  })
-    .then((result) => {
-      response.status(201).send('Add review server response: ', result);
+app.post('/reviews', ((request, response) => (
+  new Promise((resolve, reject) => {
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', request.body, {
+      headers: {
+        Authorization: token,
+      },
+      params: {
+        product_id: request.body.product_id,
+      },
     })
-    .catch((error) => {
-      response.status(404).send(error);
-      // response.send('Server error posting review: ', error);
-    });
-});
+      .then((res) => {
+        console.log('Server successfully added review: ', res);
+        resolve(res);
+      })
+      .catch((error) => {
+        console.log('Server error posting review: ', error);
+        reject(error);
+      });
+  })
+)));
 
 app.get('/api/products/:productId', (request, response) => {
   const { productId } = request.params;
