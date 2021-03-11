@@ -154,16 +154,15 @@ app.get('/api/products/:productId/related', (request, response) => {
 // Questions and Answers--------------------------------------
 
 app.post('/qa/postQuestion', (request, response) => {
-  console.log(request.body)
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', request.body, {
-    headers: {
-      Authorization: token,
-    },
-    params: {
-      product_id: request.body.product_id
-    },
-  })
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions',
+    request.body,
+    {
+      headers: {
+        Authorization: token,
+      },
+    })
     .then((result) => {
+      console.log('post question success')
       response.sendStatus(201);
       // response.send('Added a question');
     })
