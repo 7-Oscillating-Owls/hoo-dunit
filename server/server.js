@@ -110,8 +110,6 @@ app.post('/reviews', (request, response) => {
     });
 });
 
-// -------------------- END OF RATINGS AND REVIEWS REQUESTS --------------------
-
 app.get('/api/products/:productId', (request, response) => {
   const { productId } = request.params;
 
