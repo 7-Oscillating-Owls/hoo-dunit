@@ -2,12 +2,13 @@
 const axios = require('axios');
 const token = require('../token.js');
 
-const apiCall = (url, method = 'get') => axios({
+const apiCall = (url, method = 'get', data) => axios({
   url,
   method,
   headers: {
     Authorization: token,
   },
+  data,
 });
 
 const fetchProductWithStyles = (productId) => {
