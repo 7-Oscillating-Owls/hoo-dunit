@@ -29,6 +29,7 @@ test('test ReviewUtils.getAverageRating', () => {
   ).toBe(29);
 
   expect(getAverageRating(foursOnly).starRating).toBe('4.0');
+  expect(getAverageRating({}).starRating).toBe('0.0');
 });
 
 test('test ReviewUitls.getRecommendPercent', () => {

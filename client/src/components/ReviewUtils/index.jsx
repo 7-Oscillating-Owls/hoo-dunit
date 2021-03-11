@@ -7,7 +7,7 @@ export const getAverageRating = ({ ratings = {} }) => {
     totalReviews += Number(ratings[key]);
   });
 
-  const starRating = totalReviews > 0 ? (totalStars / totalReviews).toFixed(1) : 0;
+  const starRating = totalReviews > 0 ? (totalStars / totalReviews).toFixed(1) : '0.0';
 
   return {
     starRating,
