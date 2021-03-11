@@ -1,7 +1,5 @@
-/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import styles from './ReviewsAverageOverviewStars.css';
-// import images from '/static/images';
 
 const ReviewsAverageOverviewStars = (props) => {
   const starRating = props.starRating;
@@ -35,21 +33,21 @@ const ReviewsAverageOverviewStars = (props) => {
 
   if (starRating === 5) {
     starRender = (
-      [...Array(5)].map((star, index) => <img src="/images/FilledStar.png" className={styles.stars} alt="Solid Star" key={`Solid Star: ${index} ${star}`} />)
+      [...Array(5)].map(() => <img src="/images/FilledStar.png" className={styles.stars} alt="Solid Star" key={`SolidStar${(Math.random() * 20)}`} />)
     );
   } else if (starRating === 0) {
     starRender = (
-      [...Array(5)].map((star, index) => <img src="/images/UnfilledStar.png" className={styles.stars} alt="Unfilled Star" key={`Unfilled Star: ${index} ${star}`} />)
+      [...Array(5)].map(() => <img src="/images/UnfilledStar.png" className={styles.stars} alt="Unfilled Star" key={`UnfilledStar${(Math.random() * 20)}`} />)
     );
   } else {
     starRender = (
       <div>
         {
-          [...Array(solidStars)].map((star, index) => <img src="/images/FilledStar.png" className={styles.stars} alt="Solid Star" key={`Solid Star: ${index} ${star}`} />)
+          [...Array(solidStars)].map(() => <img src="/images/FilledStar.png" className={styles.stars} alt="Solid Star" key={`SolidStar${(Math.random() * 20)}`} />)
         }
         {partialStars}
         {
-          [...Array(remainingStars)].map((star, index) => <img src="/images/UnfilledStar.png" className={styles.stars} alt="Unfilled Star" key={`Unfilled Star: ${index} ${star}`} />)
+          [...Array(remainingStars)].map(() => <img src="/images/UnfilledStar.png" className={styles.stars} alt="Unfilled Star" key={`UnfilledStar${(Math.random() * 20)}`} />)
         }
       </div>
     );

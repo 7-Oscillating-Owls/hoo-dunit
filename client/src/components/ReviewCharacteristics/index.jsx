@@ -186,9 +186,3 @@ const ReviewCharacteristics = (props) => {
 };
 
 export default ReviewCharacteristics;
-
-// Notes and Experimentation:
-
-// Need to get characteristics from data and display as slider
-// Could have 5 separate divs as sliders based on percentage
-// <input className={styles.slider} type="range" min="0" max="100" value={`${comfortPercent}`} />

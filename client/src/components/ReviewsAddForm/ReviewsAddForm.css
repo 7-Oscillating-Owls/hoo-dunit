@@ -77,6 +77,10 @@ textarea {
   height: 50px;
 }
 
+.descriptionText {
+  margin-bottom: 50px;
+}
+
 .fileInput {
   margin: 10px 0px 30px 10px;
 }

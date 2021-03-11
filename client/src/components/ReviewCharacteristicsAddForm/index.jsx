@@ -1,10 +1,7 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/prop-types */
 import React from 'react';
 
 const ReviewCharacteristicsAddForm = (props) => {
   const {
-    handleChange,
     characteristicNames,
     characteristicIds,
     handleAddCharacteristics,
@@ -142,17 +139,11 @@ const ReviewCharacteristicsAddForm = (props) => {
   return (
     <div>
       {sizeRender}
-      <br />
       {widthRender}
-      <br />
       {comfortRender}
-      <br />
       {qualityRender}
-      <br />
       {lengthRender}
-      <br />
       {fitRender}
-      <br />
     </div>
   );
 };

@@ -1,7 +1,3 @@
-/* eslint-disable no-alert */
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/sort-comp */
 import React from 'react';
 import axios from 'axios';
 import ReviewsAverageOverviewStars from '../ReviewsAverageOverviewStars';
@@ -72,55 +68,10 @@ class ReviewsList extends React.Component {
       });
   }
 
-  // This function sends post request with data from ReviewsAddForm
-  // Notes: Characteristic ID and name are passed down as props
-  // (2 separate arrays) and sent back as an object stored in state
-  addReview(formData) {
-    const { currentProduct } = this.props;
-    console.log(formData);
-    this.setState({ displayModal: false });
-    const reviewDataObject = {
-      product_id: currentProduct || 14296, // Alt 14931, 14932, 14034, 14296, 14807,
-      rating: formData.overallRating,
-      summary: formData.reviewSummary || '',
-      body: formData.reviewBody,
-      recommend: formData.recommended,
-      name: formData.reviewUsername,
-      email: formData.email,
-      photos: formData.uploadedFile || '',
-      characteristics: {
-        sizeId: formData.size,
-        widthId: formData.width,
-        comfortId: formData.comfort,
-        qualityId: formData.quality,
-        productLengthId: formData.productLength,
-        fitId: formData.fit,
-      },
-    };
-    // axios.post('/reviews', reviewDataObject)
-      // .then((response) => {
-      //   alert('Successfully added review');
-      //   console.log('Successfully added review: ', response.data);
-      //   this.getReviews();
-      // })
-      // .catch((error) => {
-      //   console.log('Error adding review: ', error);
-      // });
-  }
-
-  openAddReviewModal() {
-    this.setState({ displayModal: true });
-  }
-
-  closeAddReviewModal() {
-    this.setState({ displayModal: false });
-  }
-
   // Display two more reviews each time more review button is clicked
   getMoreReviews() {
     const {
       reviewsList,
-      limitedReviewsList,
       numberOfReviewsDisplayed,
       currentPage,
     } = this.state;
@@ -152,9 +103,77 @@ class ReviewsList extends React.Component {
     }
     if (!reviewsList[numberOfReviewsDisplayed + 2] && !reviewsList[numberOfReviewsDisplayed + 1]) {
       this.setState({ currentPage: (currentPage + 1) });
-      // Need to fine tune this later
-      // this.getReviews();
     }
+  }
+
+  // Function sends post request with data from ReviewsAddForm
+  addReview(formData) {
+    const { currentProduct } = this.props;
+    this.setState({ displayModal: false });
+
+    const charObject = {};
+    if (formData.Size) {
+      const sizeKey = Object.keys(formData.Size)[0];
+      charObject[sizeKey] = Number(formData.Size[sizeKey]);
+    }
+    if (formData.Width) {
+      const widthKey = Object.keys(formData.Width)[0];
+      charObject[widthKey] = Number(formData.Width[widthKey]);
+    }
+    if (formData.Comfort) {
+      const comfortKey = Object.keys(formData.Comfort)[0];
+      charObject[comfortKey] = Number(formData.Comfort[comfortKey]);
+    }
+    if (formData.Quality) {
+      const qualityKey = Object.keys(formData.Quality)[0];
+      charObject[qualityKey] = Number(formData.Quality[qualityKey]);
+    }
+    if (formData.Length) {
+      const lengthKey = Object.keys(formData.Length)[0];
+      charObject[lengthKey] = Number(formData.Length[lengthKey]);
+    }
+    if (formData.Fit) {
+      const fitKey = Object.keys(formData.Fit)[0];
+      charObject[fitKey] = Number(formData.Fit[fitKey]);
+    }
+
+    let wasRecommended;
+    if (formData.recommended === 'false') {
+      wasRecommended = false;
+    } else {
+      wasRecommended = true;
+    }
+
+    const reviewDataObject = {
+      product_id: Number(currentProduct) || 14296, // Alt 14931, 14932, 14034, 14296, 14807,
+      rating: Number(formData.overallRating),
+      summary: formData.reviewSummary || '',
+      body: formData.reviewBody,
+      recommend: wasRecommended,
+      name: formData.reviewUsername,
+      email: formData.email,
+      photos: formData.uploadedFile || [],
+      characteristics: charObject,
+    };
+
+    axios.post('/reviews', reviewDataObject)
+      .then((response) => {
+        console.log('Successfully added review: ', response.data);
+        this.getReviews();
+      })
+      .catch((error) => {
+        console.log('Error adding review: ', error);
+      });
+  }
+
+  // Display modal with add review form
+  openAddReviewModal() {
+    this.setState({ displayModal: true });
+  }
+
+  // Close add review modal
+  closeAddReviewModal() {
+    this.setState({ displayModal: false });
   }
 
   render() {
@@ -255,27 +274,3 @@ class ReviewsList extends React.Component {
 }
 
 export default ReviewsList;
-
-// Slightly unclear regarding characteristics post request instructions in Learn
-// How do we get ID?
-
-// characteristics: {
-//   size: {
-//     value: formData.size,
-//   },
-//   width: {
-//     value: formData.width,
-//   },
-//   comfort: {
-//     value: formData.comfort,
-//   },
-//   quality: {
-//     value: formData.quality,
-//   },
-//   productLength: {
-//     value: formData.productLength,
-//   },
-//   fit: {
-//     value: formData.fit,
-//   },
-// },
