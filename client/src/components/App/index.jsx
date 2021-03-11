@@ -1,5 +1,3 @@
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -72,8 +70,6 @@ class AppComponent extends React.Component {
     const { match } = this.props;
     axios.get('/reviews/meta', {
       params: {
-        // Alt 14931, 14932, 14034, 14296, 14807
-        // Will need to update code later to account for undefined
         productId: match.params.productId || 14296,
       },
     })
@@ -92,12 +88,12 @@ class AppComponent extends React.Component {
     const id = [];
     const { metaObject } = this.state;
     const { characteristics } = metaObject;
-    for (const key in characteristics) {
+    Object.keys(characteristics).forEach((key) => {
       if (characteristics[key]) {
         names.push(key);
         id.push(characteristics[key]);
       }
-    }
+    });
     this.setState({
       characteristicNames: names,
       characteristicIds: id,

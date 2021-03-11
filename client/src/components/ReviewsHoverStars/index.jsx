@@ -8,17 +8,17 @@ const ReviewsHoverStars = (props) => (
       [...Array(5)].map((star, index) => {
         const ratingValue = index + 1;
         return (
-          <label  className={styles.radioStar}>
+          <label className={styles.radioStar}>
             <input
               className={styles.radio}
               type="radio"
               name="overallRating"
               value={ratingValue}
-              key={`${index}${(Math.random() * 20)}`}
+              key={`HoverStar${(Math.random() * 20)}`}
             />
             <FaStar
               className={styles.star}
-              color={ratingValue <= (props.hoverRating || props.overallRating) ? "#404040" : "#E6E6E6"}
+              color={ratingValue <= (props.hoverRating || props.overallRating) ? '#404040' : '#E6E6E6'}
               size={50}
               onMouseEnter={() => props.starHover(ratingValue)}
               onMouseLeave={props.starNotHover}

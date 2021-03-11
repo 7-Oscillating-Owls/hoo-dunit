@@ -2,8 +2,11 @@ import React from 'react';
 import styles from './ReviewsMoreReviews.css';
 
 const ReviewsMoreReviews = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const { openAddReviewModal, getMoreReviews, displayMoreButton } = props;
+  const {
+    openAddReviewModal,
+    getMoreReviews,
+    displayMoreButton
+  } = props;
   let moreReviewButton;
   if (displayMoreButton === true) {
     moreReviewButton = <button onClick={getMoreReviews} className={styles.moreButton} type="submit">More Reviews</button>;

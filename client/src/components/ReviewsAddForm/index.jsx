@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import ReviewCharacteristicsAddForm from '../ReviewCharacteristicsAddForm';
 import ReviewsHoverStars from '../ReviewsHoverStars';
@@ -186,14 +184,15 @@ class ReviewsAddForm extends React.Component {
           </div>
           <br />
           <br />
-          <h4>Characteristics:</h4>
-          <ReviewCharacteristicsAddForm
-            className={styles.characteristicsTitle}
-            handleChange={this.handleChange}
-            characteristicNames={characteristicNames}
-            characteristicIds={characteristicIds}
-            handleAddCharacteristics={this.handleAddCharacteristics}
-          />
+          <div>
+            <h4>Characteristics:</h4>
+            <ReviewCharacteristicsAddForm
+              handleChange={this.handleChange}
+              characteristicNames={characteristicNames}
+              characteristicIds={characteristicIds}
+              handleAddCharacteristics={this.handleAddCharacteristics}
+            />
+          </div>
           <br />
           <br />
           <h4>Photos:</h4>

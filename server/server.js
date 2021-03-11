@@ -93,7 +93,6 @@ app.get('/reviews/meta', (request, response) => {
 
 // Reviews post request
 app.post('/reviews', (request, response) => {
-  console.log('This is request.body: ', request.body);
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', request.body, {
     headers: {
       Authorization: token,

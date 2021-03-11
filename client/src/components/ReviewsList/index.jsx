@@ -1,7 +1,3 @@
-/* eslint-disable no-alert */
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/sort-comp */
 import React from 'react';
 import axios from 'axios';
 import ReviewsAverageOverviewStars from '../ReviewsAverageOverviewStars';
@@ -72,12 +68,47 @@ class ReviewsList extends React.Component {
       });
   }
 
-  // This function sends post request with data from ReviewsAddForm
-  // Notes: Characteristic ID and name are passed down as props
-  // (2 separate arrays) and sent back as an object stored in state
+  // Display two more reviews each time more review button is clicked
+  getMoreReviews() {
+    const {
+      reviewsList,
+      numberOfReviewsDisplayed,
+      currentPage,
+    } = this.state;
+
+    const { metaObject } = this.props;
+
+    const { totalNumberOfStars } = getRecommendPercent(metaObject);
+
+    if (reviewsList[numberOfReviewsDisplayed + 2]) {
+      this.setState({
+        limitedReviewsList: reviewsList.slice(0, (numberOfReviewsDisplayed + 2)),
+        numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 2),
+      });
+    } else if (reviewsList[numberOfReviewsDisplayed + 1]) {
+      this.setState({
+        limitedReviewsList: reviewsList,
+        numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 1),
+        displayMoreButton: false,
+      });
+    } else {
+      this.setState({
+        limitedReviewsList: reviewsList,
+        numberOfReviewsDisplayed: reviewsList.length,
+        displayMoreButton: false,
+      });
+    }
+    if (numberOfReviewsDisplayed === totalNumberOfStars) {
+      this.setState({ displayMoreButton: false });
+    }
+    if (!reviewsList[numberOfReviewsDisplayed + 2] && !reviewsList[numberOfReviewsDisplayed + 1]) {
+      this.setState({ currentPage: (currentPage + 1) });
+    }
+  }
+
+  // Function sends post request with data from ReviewsAddForm
   addReview(formData) {
     const { currentProduct } = this.props;
-    console.log('This is formData: ', formData);
     this.setState({ displayModal: false });
 
     const charObject = {};
@@ -121,13 +152,12 @@ class ReviewsList extends React.Component {
       recommend: wasRecommended,
       name: formData.reviewUsername,
       email: formData.email,
-      // photos: formData.uploadedFile || [],
+      photos: formData.uploadedFile || [],
       characteristics: charObject,
     };
-    console.log('This is reviewDataObject: ', reviewDataObject);
+
     axios.post('/reviews', reviewDataObject)
       .then((response) => {
-        alert('Successfully added review');
         console.log('Successfully added review: ', response.data);
         this.getReviews();
       })
@@ -136,53 +166,14 @@ class ReviewsList extends React.Component {
       });
   }
 
+  // Display modal with add review form
   openAddReviewModal() {
     this.setState({ displayModal: true });
   }
 
+  // Close add review modal
   closeAddReviewModal() {
     this.setState({ displayModal: false });
-  }
-
-  // Display two more reviews each time more review button is clicked
-  getMoreReviews() {
-    const {
-      reviewsList,
-      limitedReviewsList,
-      numberOfReviewsDisplayed,
-      currentPage,
-    } = this.state;
-
-    const { metaObject } = this.props;
-
-    const { totalNumberOfStars } = getRecommendPercent(metaObject);
-
-    if (reviewsList[numberOfReviewsDisplayed + 2]) {
-      this.setState({
-        limitedReviewsList: reviewsList.slice(0, (numberOfReviewsDisplayed + 2)),
-        numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 2),
-      });
-    } else if (reviewsList[numberOfReviewsDisplayed + 1]) {
-      this.setState({
-        limitedReviewsList: reviewsList,
-        numberOfReviewsDisplayed: (numberOfReviewsDisplayed + 1),
-        displayMoreButton: false,
-      });
-    } else {
-      this.setState({
-        limitedReviewsList: reviewsList,
-        numberOfReviewsDisplayed: reviewsList.length,
-        displayMoreButton: false,
-      });
-    }
-    if (numberOfReviewsDisplayed === totalNumberOfStars) {
-      this.setState({ displayMoreButton: false });
-    }
-    if (!reviewsList[numberOfReviewsDisplayed + 2] && !reviewsList[numberOfReviewsDisplayed + 1]) {
-      this.setState({ currentPage: (currentPage + 1) });
-      // Need to fine tune this later
-      // this.getReviews();
-    }
   }
 
   render() {
@@ -283,27 +274,3 @@ class ReviewsList extends React.Component {
 }
 
 export default ReviewsList;
-
-// Slightly unclear regarding characteristics post request instructions in Learn
-// How do we get ID?
-
-// characteristics: {
-//   size: {
-//     value: formData.size,
-//   },
-//   width: {
-//     value: formData.width,
-//   },
-//   comfort: {
-//     value: formData.comfort,
-//   },
-//   quality: {
-//     value: formData.quality,
-//   },
-//   productLength: {
-//     value: formData.productLength,
-//   },
-//   fit: {
-//     value: formData.fit,
-//   },
-// },

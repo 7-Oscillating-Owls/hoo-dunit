@@ -1,11 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ReviewTileStars from '../ReviewTileStars';
 import ReviewTileDate from '../ReviewTileDate';
 import styles from './ReviewTiles.css';
 
 const ReviewTiles = ({ review }) => {
-  const { rating, reviewer_name, date, summary, body, helpfulness } = review;
+  const {
+    rating,
+    reviewer_name,
+    date,
+    summary,
+    body,
+    helpfulness,
+  } = review;
   return (
     <div className={styles.reviewTiles}>
       <div className={styles.tileHeader}>
@@ -26,6 +32,4 @@ const ReviewTiles = ({ review }) => {
   );
 };
 
-// Taking out propTypes for now
-// ReviewTiles.propTypes = { review: PropTypes.objectOf().isRequired };
 export default ReviewTiles;

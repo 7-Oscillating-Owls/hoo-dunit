@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
-import ReviewsAddForm from '../ReviewsAddForm';
 import { GrClose } from 'react-icons/gr';
+import ReviewsAddForm from '../ReviewsAddForm';
 import styles from './ReviewAddFormModal.css';
 
 const ReviewAddFormModal = (props) => {
@@ -13,19 +12,19 @@ const ReviewAddFormModal = (props) => {
     characteristicIds,
   } = props;
   return (
-  <div className={styles.modal}>
-    <div>
-      <GrClose className={styles.GrClose} onClick={closeAddReviewModal} />
-      <ReviewsAddForm
-        className={styles.modalContent}
-        addReview={addReview}
-        closeModalButton={closeModalButton}
-        closeAddReviewModal={closeAddReviewModal}
-        characteristicNames={characteristicNames}
-        characteristicIds={characteristicIds}
-      />
+    <div className={styles.modal}>
+      <div>
+        <GrClose className={styles.GrClose} onClick={closeAddReviewModal} />
+        <ReviewsAddForm
+          className={styles.modalContent}
+          addReview={addReview}
+          closeModalButton={closeModalButton}
+          closeAddReviewModal={closeAddReviewModal}
+          characteristicNames={characteristicNames}
+          characteristicIds={characteristicIds}
+        />
+      </div>
     </div>
-  </div>
   );
 };
 
