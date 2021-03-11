@@ -8,3 +8,8 @@ it('should exist', () => {
   const wrapper = shallow(<Answerlist />);
   expect(wrapper.exists()).toBe(true);
 });
+
+it('should exist', () => {
+  const wrapper = shallow(<Answerlist answer={dummyAnswers} />);
+  expect(wrapper.exists()).toBe(true);
+});
