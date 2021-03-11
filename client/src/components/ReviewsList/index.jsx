@@ -10,6 +10,7 @@ import ReviewCharacteristics from '../ReviewCharacteristics';
 import ReviewTiles from '../ReviewTiles';
 import ReviewAddFormModal from '../ReviewAddFormModal';
 import ReviewsMoreReviews from '../ReviewsMoreReviews';
+import { getAverageRating } from '../ReviewUtils';
 import styles from './ReviewsList.css';
 
 class ReviewsList extends React.Component {
@@ -157,15 +158,18 @@ class ReviewsList extends React.Component {
       metaObject,
       recommendPercent,
       totalNumberOfStars,
-      starRating,
-      fiveStarTotal,
-      fourStarTotal,
-      threeStarTotal,
-      twoStarTotal,
-      oneStarTotal,
       characteristicNames,
       characteristicIds,
     } = this.props;
+
+    const {
+      starRating,
+      oneStarTotal,
+      twoStarTotal,
+      threeStarTotal,
+      fourStarTotal,
+      fiveStarTotal,
+    } = getAverageRating(metaObject);
 
     const {
       displayModal,
