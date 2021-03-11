@@ -28,9 +28,7 @@ class QuestionModal extends React.Component {
     this.setState({ isCloseModal: true });
     this.postQuestion();
     this.state.isCloseModal ? this.closeModal() : null
-  };
-
-
+  }
 
   handleOnChange(event) {
     this.setState({ [event.target.name]: event.target.value });
@@ -39,7 +37,7 @@ class QuestionModal extends React.Component {
   postQuestion() {
     const { productId } = this.props;
     const { question, nickname, email } = this.state;
-    console.log(productId, question, nickname, email)
+
     axios.post('/qa/postQuestion', {
       body: question,
       name: nickname,
@@ -47,7 +45,7 @@ class QuestionModal extends React.Component {
       productId,
     })
 
-      .then(() => {console.log('posted question')})
+      .then(() => {})
       .catch((err) => {
         console.log(err);
       });

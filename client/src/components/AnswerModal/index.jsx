@@ -48,6 +48,7 @@ class AnswerModal extends React.Component {
       body: answer,
       name,
       email,
+      photos: [],
       questionId,
 
     })
