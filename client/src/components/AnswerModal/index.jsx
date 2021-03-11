@@ -7,16 +7,19 @@ class AnswerModal extends React.Component {
     super(props);
     this.state = {
       answer: '',
-      nickname: '',
+      name: '',
       email: '',
+      photos: [],
       answerError: null,
-      nicknameError: null,
+      nameError: null,
       emailError: null,
+      isCloseModal: false,
     };
     this.validate = this.validate.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
     this.postAnswer = this.postAnswer.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   handleOnChange(event) {
@@ -26,32 +29,44 @@ class AnswerModal extends React.Component {
   handleSubmitClick(event) {
     event.preventDefault();
     this.validate();
+    this.setState({ isCloseModal: true });
     this.postAnswer();
-
+    this.state.isCloseModal ? this.props.modalclose() : null
   }
 
   validate() {
-    const { answer, nickname, email } = this.state;
+    const { answer, name, email } = this.state;
 
     { answer.length < 1 ? this.setState({ answerError: 'Please enter a answer' }) : this.setState({ answerError: null }) }
-    { nickname.length < 1 ? this.setState({ nicknameError: 'Please enter a nickname' }) : this.setState({ nicknameError: null }) }
+    { name.length < 1 ? this.setState({ nameError: 'Please enter a name' }) : this.setState({ nameError: null }) }
     { !email.includes('@') ? this.setState({ emailError: 'Please enter valid email' }) : this.setState({ emailError: null }) }
   }
 
   postAnswer() {
-    const { answer, nickname, email } = this.state;
-    const { questionId } = this.props;
+    const { answer, name, email, photos } = this.state;
+    console.log(answer,name, email, photos)
+    const questionId = 84310
     axios.post('/qa/postAnswer', {
       body: answer,
-      nickname: nickname,
+      name,
       email,
-      questionId,
+      photos: [],
+      params: {
+        question_id: Number(questionId),
+      },
+
     })
-      .then(() => { })
+      .then(() => { console.log('posted') })
       .catch((err) => {
         console.log(err);
       });
   }
+
+  closeModal() {
+    const { modalClose } = this.props;
+    modalClose();
+  }
+
   render() {
     return (
 
@@ -70,15 +85,15 @@ class AnswerModal extends React.Component {
 
           <input
             type="text"
-            name="nickname"
+            name="name"
             placeholder="Example: jackson11!"
             maxLength="60"
             className={styles.questionfield}
           />
           <small>For authentication reasons, you will not be emailed</small>
-          <small className={styles.errors}>{this.state.nicknameError}</small>
+          <small className={styles.errors}>{this.state.nameError}</small>
           <input
-            type="email"
+            type="text"
             name="email"
             placeholder="enter email"
             maxLength="60"

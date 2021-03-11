@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './QuestionModal.css';
+import axios from 'axios'
 
 class QuestionModal extends React.Component {
   constructor(props) {
@@ -11,22 +12,43 @@ class QuestionModal extends React.Component {
       questionError: null,
       nicknameError: null,
       emailError: null,
+      isCloseModal: false,
 
     };
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
     this.validate = this.validate.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.postQuestion = this.postQuestion.bind(this);
   }
 
   handleSubmitClick(event) {
     event.preventDefault();
     this.validate();
-    this.closeModal();
+    this.setState({ isCloseModal: true });
+    this.postQuestion();
+    this.state.isCloseModal ? this.closeModal() : null
   }
 
   handleOnChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+  }
+
+  postQuestion() {
+    const { productId } = this.props;
+    const { question, nickname, email } = this.state;
+
+    axios.post('/qa/postQuestion', {
+      body: question,
+      name: nickname,
+      email,
+      product_id: Number(productId),
+    })
+
+      .then(() => {console.log('success')})
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   closeModal() {

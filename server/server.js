@@ -13,6 +13,7 @@ app.use('/static', express.static(path.join(__dirname, '/../client/dist')));
 app.use('/', express.static(path.join(__dirname, '..', 'public')));
 app.use('/products/*', express.static(path.join(__dirname, '..', 'public')));
 
+//Questions and Answers get_______________________________________
 app.get('/qa', (request, response) => {
   const { productId } = request.query;
   console.log(productId);
@@ -45,8 +46,13 @@ app.get('/answers', (request, response) => {
       response.send('error man');
     });
 });
+//Questions and Answers get End_______________________________________
 
 // -------------------- RATINGS AND REVIEWS REQUESTS --------------------
+
+
+
+
 // Get product's review information
 app.get('/reviews', (request, response) => {
   const { productId, page } = request.query;
@@ -145,26 +151,28 @@ app.get('/api/products/:productId/related', (request, response) => {
     .catch((error) => response.status(400).send(error));
 });
 
-app.post('/qa/postAnswer', (req, res) => {
-  const {
-    body,
-    name,
-    email,
-    questionId,
-  } = req.body;
+// Questions and Answers--------------------------------------
 
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/{questionId}/answers', {
-    headers: {
-      Authorization: token,
-    },
-  })
-    .then((res) => {
-      response.send('Successfuly posted');
+app.post('/qa/postQuestion', (request, response) => {
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions',
+    request.body,
+    {
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then((result) => {
+      console.log('post question success')
+      response.sendStatus(201);
+      // response.send('Added a question');
     })
     .catch((error) => {
-      response.send('error posting');
+      response.sendStatus(500);
+      // response.send("Error posting question");
     });
 });
+
+// Questions and Answers End------------------------------------
 
 /* post request to the api to create cart data */
 app.post('/cart', (request, response) => {
@@ -180,6 +188,29 @@ app.post('/cart', (request, response) => {
       response.status(201);
     });
 });
+
+app.post('/qa/postAnswer', (req, res) => {
+  console.log(req.body)
+  const { body, name, email, questionId, photos } = req.body;
+  console.log(req.query)
+  const answerHeaders = {
+    headers: {
+      'User-Agent': 'request',
+      Authorization: token,
+    },
+    question_id: questionId,
+  };
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/84310/answers', {
+    body, name, email, photos
+  }, answerHeaders)
+
+    .then(() => { res.send('posted Answer') })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+});
+
+// Questions and Answers End------------------------------------
 
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);

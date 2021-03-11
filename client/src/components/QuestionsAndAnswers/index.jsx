@@ -73,7 +73,7 @@ class QuestionsAndAnswers extends React.Component {
 
         <div className={styles.button}>
           <MoreAnsweredQuestions click={this.handleMoreClick} />
-          <AddAQuestion />
+          <AddAQuestion productId ={this.props.productId} />
         </div>
       </div>
     );

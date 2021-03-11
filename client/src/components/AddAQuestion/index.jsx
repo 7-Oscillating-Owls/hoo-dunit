@@ -32,7 +32,7 @@ class AddAQuestion extends React.Component {
         >
           ADD A QUESTION +
         </button>
-        {this.state.showModal ? <QuestionModal modalclose={this.handleModalClose}/> : null}
+        {this.state.showModal ? <QuestionModal modalclose={this.handleModalClose} productId ={this.props.productId }/> : null}
       </div>
     );
   }
