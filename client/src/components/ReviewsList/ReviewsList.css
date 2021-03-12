@@ -93,13 +93,10 @@
 
 .newestButton:hover,
 .newestButton:focus,
-.newestButton:active,
 .relevantButton:hover,
 .relevantButton:focus,
-.relevantButton:active,
 .helpfulButton:hover,
-.helpfulButton:focus,
-.helpfulButton:active {
+.helpfulButton:focus {
   background-position: right;
   outline: none;
   transform: scale(1.02, 1.05);
