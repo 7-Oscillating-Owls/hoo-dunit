@@ -15,7 +15,6 @@ app.use('/products/*', express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/qa', (request, response) => {
   const { productId } = request.query;
-  console.log(productId);
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', {
     headers: {
       Authorization: token,
@@ -48,7 +47,7 @@ app.get('/answers', (request, response) => {
 
 // Get product's review information
 app.get('/reviews', (request, response) => {
-  const { productId, page } = request.query;
+  const { productId, page, sort } = request.query;
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', {
     headers: {
       Authorization: token,
@@ -57,6 +56,7 @@ app.get('/reviews', (request, response) => {
       product_id: `${productId}`,
       count: 100,
       page: `${page}`,
+      sort: `${sort}`,
     },
   })
     .then((result) => {

@@ -7,7 +7,8 @@
   justify-items: space-between;
   align-items: stretch;
   padding: 35px;
-  margin-top: 50px;
+  padding-top: 2px;
+  margin-top: 2px;
   margin-bottom: 100px;
 }
 
@@ -59,4 +60,46 @@
   font-weight: 800;
   font-size: 14px;
   margin: 8px auto;
+}
+
+.sort {
+  margin-top: 50px;
+  padding: 35px;
+  padding-bottom: 2px;
+  display: grid;
+  grid-template-columns: 32.5% auto;
+}
+
+.newestButton,
+.relevantButton,
+.helpfulButton {
+  padding: 10px 30px;
+  margin: 1px 2px;
+  margin-right: 20px;
+  justify-content: center;
+  font-family: "montserrat", sans-serif;
+  font-weight: 700;
+  border: none;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  background-image: linear-gradient(to right, #a1b6b8 0%, #87ccde  51%, #CC95C0  100%);
+  background-size: 300%;
+  transition: 0.5s;
+  box-shadow: 2px 2px 7px 2px #BFBFBF;
+  outline: none;
+  width: 30%;
+  justify-content: center;
+}
+
+.newestButton:hover,
+.newestButton:focus,
+.relevantButton:hover,
+.relevantButton:focus,
+.helpfulButton:hover,
+.helpfulButton:focus {
+  background-position: right;
+  outline: none;
+  border: none;
 }

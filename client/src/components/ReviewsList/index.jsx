@@ -15,11 +15,13 @@ class ReviewsList extends React.Component {
     this.state = {
       reviewsList: [],
       limitedReviewsList: [],
+      sortList: "newest",
       displayModal: false,
       displayMoreButton: true,
       numberOfReviewsDisplayed: 2,
       currentPage: 1,
     };
+    this.handleSort = this.handleSort.bind(this);
     this.handleHelpfulnessClick = this.handleHelpfulnessClick.bind(this);
     this.handleReport = this.handleReport.bind(this);
     this.getReviews = this.getReviews.bind(this);
@@ -33,12 +35,23 @@ class ReviewsList extends React.Component {
     this.getReviews();
   }
 
-  componentDidUpdate(prev) {
+  componentDidUpdate(prev, previousState) {
     const { currentProduct } = this.props;
+    const { sortList } = this.state;
     const { currentProduct: previousProduct } = prev;
+    const { sortList:  priorSortList } = previousState;
     if (currentProduct !== previousProduct) {
       this.getReviews();
     }
+    if (sortList !== priorSortList) {
+      this.getReviews();
+    }
+  }
+
+  handleSort(event) {
+    event.preventDefault();
+    console.log(event.target.value);
+    this.setState({ sortList: event.target.value });
   }
 
   // Increment when someone clicks yes to helpfulness
@@ -76,11 +89,13 @@ class ReviewsList extends React.Component {
     const { currentProduct } = this.props;
     const {
       currentPage,
+      sortList,
     } = this.state;
     axios.get('/reviews', {
       params: {
         productId: currentProduct,
         page: currentPage,
+        sort: sortList,
       },
     })
       .then((response) => {
@@ -252,58 +267,89 @@ class ReviewsList extends React.Component {
     }
 
     return (
-      <div className={styles.reviewsList}>
-        <div>
-          <div className={styles.ratingsOverview}>
-            <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
-            <div className={styles.overallRating}>{starRating}</div>
-            <div className={styles.starRating}>
-              <ReviewsAverageOverviewStars starRating={starRating} />
-            </div>
-            <div className={styles.recommendOverview}>
-              <div className={styles.recommendedPercent}>
-                {recommendPercent}
-                %
-              </div>
-              {' '}
-              of reviewers recommend this product
-            </div>
-            <ReviewRatingDistribution
-              className={styles.ratingDistribution}
-              reviewCount={totalNumberOfStars}
-              fiveStarTotal={Number(fiveStarTotal)}
-              fourStarTotal={Number(fourStarTotal)}
-              threeStarTotal={Number(threeStarTotal)}
-              twoStarTotal={Number(twoStarTotal)}
-              oneStarTotal={Number(oneStarTotal)}
-            />
-            <div className={styles.reviewTotal}>
-              {totalNumberOfStars}
-              {' '}
-              Total Reviews
-            </div>
-            <ReviewCharacteristics metaObject={metaObject} />
+      <div>
+        <div className={styles.sort}>
+          <div> </div>
+          <div>
+            <button
+              className={styles.newestButton}
+              type="submit"
+              onClick={this.handleSort}
+              value="newest"
+            >
+              Newest
+            </button>
+            <button
+              className={styles.relevantButton}
+              type="submit"
+              onClick={this.handleSort}
+              value="relevant"
+            >
+              Relevant
+            </button>
+            <button
+              className={styles.helpfulButton}
+              type="submit"
+              onClick={this.handleSort}
+              value="helpful"
+            >
+              Helpful
+            </button>
           </div>
         </div>
-        <div>
+        <div className={styles.reviewsList}>
           <div>
-            {
-              limitedReviewsList.map((review) => (
-                <ReviewTiles
-                  handleHelpfulnessClick={this.handleHelpfulnessClick}
-                  handleReport={this.handleReport}
-                  review={review}
-                  key={review.review_id}
-                />
-              ))
-            }
+            <div className={styles.ratingsOverview}>
+              <h3 className={styles.ratingsAndReviewsTitle}>Reviews and Ratings</h3>
+              <div className={styles.overallRating}>{starRating}</div>
+              <div className={styles.starRating}>
+                <ReviewsAverageOverviewStars starRating={starRating} />
+              </div>
+              <div className={styles.recommendOverview}>
+                <div className={styles.recommendedPercent}>
+                  {recommendPercent}
+                  %
+                </div>
+                {' '}
+                of reviewers recommend this product
+              </div>
+              <ReviewRatingDistribution
+                className={styles.ratingDistribution}
+                reviewCount={totalNumberOfStars}
+                fiveStarTotal={Number(fiveStarTotal)}
+                fourStarTotal={Number(fourStarTotal)}
+                threeStarTotal={Number(threeStarTotal)}
+                twoStarTotal={Number(twoStarTotal)}
+                oneStarTotal={Number(oneStarTotal)}
+              />
+              <div className={styles.reviewTotal}>
+                {totalNumberOfStars}
+                {' '}
+                Total Reviews
+              </div>
+              <ReviewCharacteristics metaObject={metaObject} />
+            </div>
           </div>
-          {ReviewModalRender}
-          <ReviewsMoreReviews
-            openAddReviewModal={this.openAddReviewModal}
-            getMoreReviews={this.getMoreReviews}
-            displayMoreButton={displayMoreButton}
-          />
+          <div>
+            <div>
+              {
+                limitedReviewsList.map((review) => (
+                  <ReviewTiles
+                    handleHelpfulnessClick={this.handleHelpfulnessClick}
+                    handleReport={this.handleReport}
+                    review={review}
+                    key={review.review_id}
+                  />
+                ))
+              }
+            </div>
+            {ReviewModalRender}
+            <ReviewsMoreReviews
+              openAddReviewModal={this.openAddReviewModal}
+              getMoreReviews={this.getMoreReviews}
+              displayMoreButton={displayMoreButton}
+            />
+          </div>
         </div>
       </div>
     );
