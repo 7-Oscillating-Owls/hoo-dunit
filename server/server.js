@@ -101,7 +101,7 @@ app.post('/reviews', ((request, response) => {
     },
   })
     .then((res) => {
-      console.log('Server successfully added review');
+      console.log('Server successfully added review: ', res);
       response.sendStatus(201);
     })
     .catch((error) => {
@@ -118,7 +118,7 @@ app.put('/reviews/:review_id/helpful', ((request, response) => {
     },
   })
     .then((res) => {
-      console.log('Server successfully updated review helpfulness');
+      console.log('Server successfully updated review helpfulness: ', res);
       response.sendStatus(204);
     })
     .catch((error) => {
@@ -135,7 +135,7 @@ app.put('/reviews/:review_id/report', ((request, response) => {
     },
   })
     .then((res) => {
-      console.log('Server successfully reported review');
+      console.log('Server successfully reported review: ', res);
       response.sendStatus(204);
     })
     .catch((error) => {

@@ -201,7 +201,7 @@ class ReviewsList extends React.Component {
 
     axios.post('/reviews', reviewDataObject)
       .then((response) => {
-        console.log('Successfully added review', response);
+        console.log('Successfully added review: ', response);
         this.getReviews();
       })
       .catch((error) => {
