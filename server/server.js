@@ -15,7 +15,6 @@ app.use('/products/*', express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/qa', (request, response) => {
   const { productId } = request.query;
-  console.log(productId);
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', {
     headers: {
       Authorization: token,
@@ -48,7 +47,7 @@ app.get('/answers', (request, response) => {
 
 // Get product's review information
 app.get('/reviews', (request, response) => {
-  const { productId, page } = request.query;
+  const { productId, page, sort } = request.query;
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', {
     headers: {
       Authorization: token,
@@ -57,6 +56,7 @@ app.get('/reviews', (request, response) => {
       product_id: `${productId}`,
       count: 100,
       page: `${page}`,
+      sort: `${sort}`,
     },
   })
     .then((result) => {
@@ -90,8 +90,8 @@ app.get('/reviews/meta', (request, response) => {
     });
 });
 
-// Reviews post request
-app.post('/reviews', (request, response) => {
+// Reviews post request - adding review
+app.post('/reviews', ((request, response) => {
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', request.body, {
     headers: {
       Authorization: token,
@@ -100,15 +100,49 @@ app.post('/reviews', (request, response) => {
       product_id: request.body.product_id,
     },
   })
-    .then((result) => {
-      response.status(201);
-      response.send('Add review server response: ', result);
+    .then((res) => {
+      console.log('Server successfully added review: ', res);
+      response.sendStatus(201);
     })
     .catch((error) => {
-      response.status(404);
-      response.send('Server error posting review: ', error);
+      console.log('Server error posting review: ', error);
+      response.sendStatus(500);
     });
-});
+}));
+
+// Reviews put request - incrementing helpfulness
+app.put('/reviews/:review_id/helpful', ((request, response) => {
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/${request.body.reviewId}/helpful`, null, {
+    headers: {
+      Authorization: token,
+    },
+  })
+    .then((res) => {
+      console.log('Server successfully updated review helpfulness: ', res);
+      response.sendStatus(204);
+    })
+    .catch((error) => {
+      console.log('Server error updating review helpfulness: ', error);
+      response.sendStatus(500);
+    });
+}));
+
+// Reviews put request - reporting
+app.put('/reviews/:review_id/report', ((request, response) => {
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/${request.body.reviewId}/report`, null, {
+    headers: {
+      Authorization: token,
+    },
+  })
+    .then((res) => {
+      console.log('Server successfully reported review: ', res);
+      response.sendStatus(204);
+    })
+    .catch((error) => {
+      console.log('Server error with review reporting: ', error);
+      response.sendStatus(500);
+    });
+}));
 
 app.get('/api/products/:productId', (request, response) => {
   const { productId } = request.params;
