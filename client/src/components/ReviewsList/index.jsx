@@ -15,7 +15,7 @@ class ReviewsList extends React.Component {
     this.state = {
       reviewsList: [],
       limitedReviewsList: [],
-      sortList: "newest",
+      sortList: 'newest',
       displayModal: false,
       displayMoreButton: true,
       numberOfReviewsDisplayed: 2,
@@ -60,7 +60,7 @@ class ReviewsList extends React.Component {
     const helpfulData = {};
     helpfulData.reviewId = reviewIdInput;
     axios.put(`/reviews/${reviewIdInput}/helpful`, helpfulData)
-      .then((response) => {
+      .then(() => {
         console.log('Successfully incremented helpfulness');
         this.getReviews();
       })
@@ -75,12 +75,12 @@ class ReviewsList extends React.Component {
     const reportData = {};
     reportData.reviewId = reviewIdInput;
     axios.put(`/reviews/${reviewIdInput}/report`, reportData)
-      .then((response) => {
+      .then(() => {
         console.log('Successfully reported review');
         this.getReviews();
       })
       .catch((error) => {
-        console.log('Error resporting review');
+        console.log('Error resporting review: ', error);
       });
   }
 
@@ -104,11 +104,7 @@ class ReviewsList extends React.Component {
           reviewsList: reviewsData,
           limitedReviewsList: reviewsData.slice(0, 2),
         });
-        if (reviewsData.length === 1) {
-          this.setState({
-            displayMoreButton: false,
-          });
-        }
+        reviewsData.length < 2 ? this.setState({ displayMoreButton: false }) : this.setState({ displayMoreButton: true });
       })
       .catch((error) => {
         console.log('Error fetching reviews: ', error);

@@ -73,33 +73,34 @@
 .newestButton,
 .relevantButton,
 .helpfulButton {
-  padding: 10px 30px;
-  margin: 1px 2px;
-  margin-right: 20px;
+  padding: 15px 30px;
+  margin: 1px 0px;
   justify-content: center;
   font-family: "montserrat", sans-serif;
-  font-weight: 700;
-  border: none;
+  font-weight: 500;
   text-transform: uppercase;
-  border-radius: 5px;
+  border-radius: 1px;
   cursor: pointer;
-  color: white;
-  background-image: linear-gradient(to right, #a1b6b8 0%, #87ccde  51%, #CC95C0  100%);
-  background-size: 300%;
-  transition: 0.5s;
-  box-shadow: 2px 2px 7px 2px #BFBFBF;
+  color: black;
+  background-size: 200%;
+  transition: 0.25s;
+  box-shadow: 1px 1px 3px 1px #BFBFBF;
   outline: none;
-  width: 30%;
-  justify-content: center;
+  width: 32.5%;
+  background: white;
+  border: none;
 }
 
 .newestButton:hover,
 .newestButton:focus,
+.newestButton:active,
 .relevantButton:hover,
 .relevantButton:focus,
+.relevantButton:active,
 .helpfulButton:hover,
-.helpfulButton:focus {
+.helpfulButton:focus,
+.helpfulButton:active {
   background-position: right;
   outline: none;
-  border: none;
+  transform: scale(1.02, 1.05);
 }
