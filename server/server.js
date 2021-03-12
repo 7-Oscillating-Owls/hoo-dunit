@@ -90,27 +90,43 @@ app.get('/reviews/meta', (request, response) => {
     });
 });
 
-// Reviews post request
-app.post('/reviews', ((request, response) => (
-  new Promise((resolve, reject) => {
-    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', request.body, {
-      headers: {
-        Authorization: token,
-      },
-      params: {
-        product_id: request.body.product_id,
-      },
-    })
-      .then((res) => {
-        console.log('Server successfully added review: ', res);
-        resolve(res);
-      })
-      .catch((error) => {
-        console.log('Server error posting review: ', error);
-        reject(error);
-      });
+// Reviews post request - adding review
+app.post('/reviews', ((request, response) => {
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews', request.body, {
+    headers: {
+      Authorization: token,
+    },
+    params: {
+      product_id: request.body.product_id,
+    },
   })
-)));
+    .then((res) => {
+      console.log('Server successfully added review');
+      response.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log('Server error posting review: ', error);
+      response.sendStatus(500);
+    });
+}));
+
+// Reviews put request - incrementing helpfulness
+app.put('/reviews/:review_id/helpful', ((request, response) => {
+  console.log('Request.body: ', request.body);
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/${request.body.reviewId}/helpful`, null, {
+    headers: {
+      Authorization: token,
+    },
+  })
+    .then((res) => {
+      console.log('Server successfully updated helpfulness');
+      response.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log('Server error updating helpfulness: ', error);
+      response.sendStatus(500);
+    });
+}));
 
 app.get('/api/products/:productId', (request, response) => {
   const { productId } = request.params;

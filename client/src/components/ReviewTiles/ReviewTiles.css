@@ -39,3 +39,7 @@
   color: #9C9C9C;
 }
 
+.helped {
+  cursor: pointer;
+  text-decoration: underline;
+}

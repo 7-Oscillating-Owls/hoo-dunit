@@ -20,6 +20,7 @@ class ReviewsList extends React.Component {
       numberOfReviewsDisplayed: 2,
       currentPage: 1,
     };
+    this.handleHelpfulnessClick = this.handleHelpfulnessClick.bind(this);
     this.getReviews = this.getReviews.bind(this);
     this.addReview = this.addReview.bind(this);
     this.openAddReviewModal = this.openAddReviewModal.bind(this);
@@ -37,6 +38,21 @@ class ReviewsList extends React.Component {
     if (currentProduct !== previousProduct) {
       this.getReviews();
     }
+  }
+
+  // Increment when someone clicks yes to helpfulness
+  handleHelpfulnessClick(event, reviewIdInput) {
+    event.preventDefault();
+    const data = {};
+    data.reviewId = reviewIdInput;
+    axios.put(`/reviews/${reviewIdInput}/helpful`, data)
+      .then((response) => {
+        console.log('Successfully incremented helpfulness');
+        this.getReviews();
+      })
+      .catch((error) => {
+        console.log('Error incrementing helpfulness: ', error);
+      });
   }
 
   // Send current product id from App with get request and retrieve reviews list
@@ -145,7 +161,7 @@ class ReviewsList extends React.Component {
     }
 
     const reviewDataObject = {
-      product_id: Number(currentProduct) || 14296, // Alt 14931, 14932, 14034, 14296, 14807,
+      product_id: Number(currentProduct) || 14296,
       rating: Number(formData.overallRating),
       summary: formData.reviewSummary || '',
       body: formData.reviewBody,
@@ -158,7 +174,7 @@ class ReviewsList extends React.Component {
 
     axios.post('/reviews', reviewDataObject)
       .then((response) => {
-        console.log('Successfully added review: ', response.data);
+        console.log('Successfully added review', response);
         this.getReviews();
       })
       .catch((error) => {
@@ -257,7 +273,11 @@ class ReviewsList extends React.Component {
           <div>
             {
               limitedReviewsList.map((review) => (
-                <ReviewTiles review={review} key={review.review_id} />
+                <ReviewTiles
+                  handleHelpfulnessClick={this.handleHelpfulnessClick}
+                  review={review}
+                  key={review.review_id}
+                />
               ))
             }
           </div>
