@@ -21,6 +21,7 @@ class ReviewsList extends React.Component {
       currentPage: 1,
     };
     this.handleHelpfulnessClick = this.handleHelpfulnessClick.bind(this);
+    this.handleReport = this.handleReport.bind(this);
     this.getReviews = this.getReviews.bind(this);
     this.addReview = this.addReview.bind(this);
     this.openAddReviewModal = this.openAddReviewModal.bind(this);
@@ -43,15 +44,30 @@ class ReviewsList extends React.Component {
   // Increment when someone clicks yes to helpfulness
   handleHelpfulnessClick(event, reviewIdInput) {
     event.preventDefault();
-    const data = {};
-    data.reviewId = reviewIdInput;
-    axios.put(`/reviews/${reviewIdInput}/helpful`, data)
+    const helpfulData = {};
+    helpfulData.reviewId = reviewIdInput;
+    axios.put(`/reviews/${reviewIdInput}/helpful`, helpfulData)
       .then((response) => {
         console.log('Successfully incremented helpfulness');
         this.getReviews();
       })
       .catch((error) => {
         console.log('Error incrementing helpfulness: ', error);
+      });
+  }
+
+  // Handles reporting when 'Report' is clicked
+  handleReport(event, reviewIdInput) {
+    event.preventDefault();
+    const reportData = {};
+    reportData.reviewId = reviewIdInput;
+    axios.put(`/reviews/${reviewIdInput}/report`, reportData)
+      .then((response) => {
+        console.log('Successfully reported review');
+        this.getReviews();
+      })
+      .catch((error) => {
+        console.log('Error resporting review');
       });
   }
 
@@ -275,6 +291,7 @@ class ReviewsList extends React.Component {
               limitedReviewsList.map((review) => (
                 <ReviewTiles
                   handleHelpfulnessClick={this.handleHelpfulnessClick}
+                  handleReport={this.handleReport}
                   review={review}
                   key={review.review_id}
                 />

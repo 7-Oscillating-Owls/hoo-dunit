@@ -11,12 +11,18 @@ class ReviewTiles extends React.Component {
       helpful: this.props.review.helpfulness,
     };
     this.handleYesClick = this.handleYesClick.bind(this);
+    this.handleReportClick = this.handleReportClick.bind(this);
   }
 
   handleYesClick(event) {
     const { handleHelpfulnessClick } = this.props;
     handleHelpfulnessClick(event, this.state.reviewId);
     this.setState({ helpful: (this.state.helpful + 1) });
+  }
+
+  handleReportClick(event) {
+    const { handleReport } = this.props;
+    handleReport(event, this.state.reviewId);
   }
 
   render() {
@@ -47,7 +53,7 @@ class ReviewTiles extends React.Component {
           Helpful?
           {' '}
           <span
-            className={styles.helped}
+            className={styles.helpedAndReport}
             onClick={this.handleYesClick}
           >
             Yes
@@ -55,7 +61,14 @@ class ReviewTiles extends React.Component {
           {' '}
           (
           {helpful}
-          )
+          ) |
+          {' '}
+          <span
+            className={styles.helpedAndReport}
+            onClick={this.handleReportClick}
+          >
+            Report
+          </span>
         </div>
       </div>
     );

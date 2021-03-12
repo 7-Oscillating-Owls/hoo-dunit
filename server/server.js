@@ -112,18 +112,34 @@ app.post('/reviews', ((request, response) => {
 
 // Reviews put request - incrementing helpfulness
 app.put('/reviews/:review_id/helpful', ((request, response) => {
-  console.log('Request.body: ', request.body);
   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/${request.body.reviewId}/helpful`, null, {
     headers: {
       Authorization: token,
     },
   })
     .then((res) => {
-      console.log('Server successfully updated helpfulness');
-      response.sendStatus(201);
+      console.log('Server successfully updated review helpfulness');
+      response.sendStatus(204);
     })
     .catch((error) => {
-      console.log('Server error updating helpfulness: ', error);
+      console.log('Server error updating review helpfulness: ', error);
+      response.sendStatus(500);
+    });
+}));
+
+// Reviews put request - reporting
+app.put('/reviews/:review_id/report', ((request, response) => {
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/${request.body.reviewId}/report`, null, {
+    headers: {
+      Authorization: token,
+    },
+  })
+    .then((res) => {
+      console.log('Server successfully reported review');
+      response.sendStatus(204);
+    })
+    .catch((error) => {
+      console.log('Server error with review reporting: ', error);
       response.sendStatus(500);
     });
 }));
