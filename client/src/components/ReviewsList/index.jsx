@@ -39,11 +39,15 @@ class ReviewsList extends React.Component {
     const { currentProduct } = this.props;
     const { sortList } = this.state;
     const { currentProduct: previousProduct } = prev;
-    const { sortList:  priorSortList } = previousState;
+    const { sortList: priorSortList } = previousState;
+    let shouldGetReviews = false;
     if (currentProduct !== previousProduct) {
-      this.getReviews();
+      shouldGetReviews = true;
     }
     if (sortList !== priorSortList) {
+      shouldGetReviews = true;
+    }
+    if (shouldGetReviews === true) {
       this.getReviews();
     }
   }
@@ -121,7 +125,7 @@ class ReviewsList extends React.Component {
 
     const { metaObject } = this.props;
 
-    const { totalNumberOfStars } = getRecommendPercent(metaObject);
+    const { totalReviews } = getRecommendPercent(metaObject);
 
     if (reviewsList[numberOfReviewsDisplayed + 2]) {
       this.setState({
@@ -141,7 +145,7 @@ class ReviewsList extends React.Component {
         displayMoreButton: false,
       });
     }
-    if (numberOfReviewsDisplayed === totalNumberOfStars) {
+    if (numberOfReviewsDisplayed === totalReviews) {
       this.setState({ displayMoreButton: false });
     }
     if (!reviewsList[numberOfReviewsDisplayed + 2] && !reviewsList[numberOfReviewsDisplayed + 1]) {
@@ -233,6 +237,7 @@ class ReviewsList extends React.Component {
       threeStarTotal,
       fourStarTotal,
       fiveStarTotal,
+      totalReviews,
     } = getAverageRating(metaObject);
 
     const {
@@ -311,7 +316,7 @@ class ReviewsList extends React.Component {
               </div>
               <ReviewRatingDistribution
                 className={styles.ratingDistribution}
-                reviewCount={totalNumberOfStars}
+                reviewCount={totalReviews}
                 fiveStarTotal={Number(fiveStarTotal)}
                 fourStarTotal={Number(fourStarTotal)}
                 threeStarTotal={Number(threeStarTotal)}
@@ -319,7 +324,7 @@ class ReviewsList extends React.Component {
                 oneStarTotal={Number(oneStarTotal)}
               />
               <div className={styles.reviewTotal}>
-                {totalNumberOfStars}
+                {totalReviews}
                 {' '}
                 Total Reviews
               </div>
