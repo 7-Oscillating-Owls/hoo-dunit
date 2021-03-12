@@ -166,7 +166,7 @@ RelatedProducts.defaultProps = {
 
 RelatedProducts.propTypes = {
   addOutfit: PropTypes.func.isRequired,
-  myOutfit: PropTypes.objectOf(PropTypes.shape(productShape)),
+  myOutfit: PropTypes.objectOf(productShape),
   removeOutfit: PropTypes.func.isRequired,
   productId: PropTypes.string.isRequired,
   product: PropTypes.shape({
