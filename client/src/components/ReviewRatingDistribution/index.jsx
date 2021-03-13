@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ReviewRatingDistribution.css';
-import { getAverageRating, getRecommendPercent } from '../ReviewUtils';
+import { getAverageRating } from '../ReviewUtils';
 
 const ReviewRatingDistribution = (props) => {
   const { metaObject } = props;
@@ -12,7 +12,6 @@ const ReviewRatingDistribution = (props) => {
     fiveStarTotal,
     totalReviews,
   } = getAverageRating(metaObject);
-  console.log(totalReviews, oneStarTotal);
 
   const fiveStarDistribution = (fiveStarTotal / totalReviews).toFixed(2) * 100;
   const fourStarDistribution = (fourStarTotal / totalReviews).toFixed(2) * 100;
