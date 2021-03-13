@@ -37,6 +37,10 @@ export const getRecommendPercent = ({ recommended = {} }) => {
   };
 };
 
+export const getDistribution = (totalStar, totalReview) => (
+  ((totalStar / totalReview).toFixed(2) * 100)
+);
+
 const ReviewUtils = {
   getAverageRating,
   getRecommendPercent,

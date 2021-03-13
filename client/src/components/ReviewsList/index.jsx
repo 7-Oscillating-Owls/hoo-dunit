@@ -15,7 +15,6 @@ class ReviewsList extends React.Component {
     this.state = {
       reviewsList: [],
       limitedReviewsList: [],
-      sortList: 'relevant',
       displayModal: false,
       displayMoreButton: true,
       numberOfReviewsDisplayed: 2,
@@ -35,26 +34,17 @@ class ReviewsList extends React.Component {
     this.getReviews();
   }
 
-  componentDidUpdate(prev, previousState) {
+  componentDidUpdate(prev) {
     const { currentProduct } = this.props;
-    const { sortList } = this.state;
     const { currentProduct: previousProduct } = prev;
-    const { sortList: priorSortList } = previousState;
-    let shouldGetReviews = false;
     if (currentProduct !== previousProduct) {
-      shouldGetReviews = true;
-    }
-    if (sortList !== priorSortList) {
-      shouldGetReviews = true;
-    }
-    if (shouldGetReviews === true) {
       this.getReviews();
     }
   }
 
   handleSort(event) {
     event.preventDefault();
-    this.setState({ sortList: event.target.value });
+    this.getReviews(event.target.value);
   }
 
   // Increment when someone clicks yes to helpfulness
@@ -88,24 +78,21 @@ class ReviewsList extends React.Component {
   }
 
   // Send current product id from App with get request and retrieve reviews list
-  getReviews() {
+  getReviews(...sortData) {
     const { currentProduct } = this.props;
-    const {
-      currentPage,
-      sortList,
-    } = this.state;
+    const { currentPage, numberOfReviewsDisplayed } = this.state;
     axios.get('/reviews', {
       params: {
         productId: currentProduct,
         page: currentPage,
-        sort: sortList,
+        sort: sortData || 'relevant',
       },
     })
       .then((response) => {
         const reviewsData = response.data.results;
         this.setState({
           reviewsList: reviewsData,
-          limitedReviewsList: reviewsData.slice(0, 2),
+          limitedReviewsList: reviewsData.slice(0, numberOfReviewsDisplayed),
         });
         reviewsData.length < 2 ? this.setState({ displayMoreButton: false }) : this.setState({ displayMoreButton: true });
       })
