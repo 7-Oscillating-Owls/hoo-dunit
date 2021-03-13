@@ -6,7 +6,7 @@ Tasked with to creating a _product detail page_ for an e-commerce site undergoin
 The _product detail page_ consists of 4 distinct modules:
 1. product overview - focusing on the product from the url,
    - image gallery
-   - sttyles selection
+   - styles selection
    - add to cart
 1. related products & my outfit
    - presents related products defined by company
