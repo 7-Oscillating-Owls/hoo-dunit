@@ -47,6 +47,9 @@
   text-decoration: none;
   color:rgb(90, 90, 90);
 }
+.productLink:hover {
+  color: rgb(55, 55, 55);
+}
 
 .productCategory {
   composes: productText;
