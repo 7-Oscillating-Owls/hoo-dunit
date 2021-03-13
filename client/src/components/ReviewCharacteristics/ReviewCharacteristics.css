@@ -31,13 +31,14 @@ h3 {
 .scale {
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-gap: 5px;
+  grid-gap: 3px;
   margin-bottom: 25px;
 }
 
 .scaleRange {
   color: #6E6E6E;
   font-size: 12px;
+  justify-content: space-between;
   text-align: center;
   font-weight: 500;
 }

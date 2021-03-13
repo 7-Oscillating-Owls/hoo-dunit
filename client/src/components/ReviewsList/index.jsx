@@ -15,7 +15,7 @@ class ReviewsList extends React.Component {
     this.state = {
       reviewsList: [],
       limitedReviewsList: [],
-      sortList: 'newest',
+      sortList: 'relevant',
       displayModal: false,
       displayMoreButton: true,
       numberOfReviewsDisplayed: 2,
