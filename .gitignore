@@ -106,6 +106,8 @@ dist
 # macOS
 .DS_Store
 
-
 #token
 token.js
+
+#PEM file
+FEC.pem
