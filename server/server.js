@@ -202,10 +202,10 @@ app.post('/cart', (request, response) => {
     },
   })
     .then(() => {
-      response.status(404);
+      response.status(201);
     })
     .catch(() => {
-      response.status(201);
+      response.status(404);
     });
 });
 
