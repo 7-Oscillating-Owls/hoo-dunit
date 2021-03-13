@@ -36,8 +36,8 @@ class ThumbnailSelector extends React.Component {
   expand() {
     // reference to the node becomes available at the "current" attribute
     this.setState({
-      height: this.imageRef.current.clientHeight + 20,
-      width: this.imageRef.current.clientWidth + 20,
+      height: this.imageRef.current.clientHeight + 10,
+      width: this.imageRef.current.clientWidth + 10,
       clicked: false,
     });
   }

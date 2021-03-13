@@ -11,12 +11,20 @@
 
 .cartWrapper {
   display: grid;
-  grid-template-areas:"o o"
-                      "p q"
+  grid-template-areas:"o j"
+                      "p k"
                       "r s";
   grid-gap: 15px;
   width: 100%
   /* justify-items: center; */
+}
+
+.empty {
+  grid-area: j;
+}
+
+.emptyAgain {
+  grid-area: k;
 }
 
 .allThingsSize{

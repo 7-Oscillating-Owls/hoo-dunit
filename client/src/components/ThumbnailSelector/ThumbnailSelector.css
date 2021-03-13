@@ -17,7 +17,7 @@
 .expandedImage {
   width: 80%;
   height: 80%;
-  object-fit: contain;
+  object-fit: cover;
   justify-content: center;
 }
 
