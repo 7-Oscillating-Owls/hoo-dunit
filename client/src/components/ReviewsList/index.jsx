@@ -80,7 +80,7 @@ class ReviewsList extends React.Component {
   // Send current product id from App with get request and retrieve reviews list
   getReviews(...sortData) {
     const { currentProduct } = this.props;
-    const { currentPage } = this.state;
+    const { currentPage, numberOfReviewsDisplayed } = this.state;
     axios.get('/reviews', {
       params: {
         productId: currentProduct,
@@ -92,7 +92,7 @@ class ReviewsList extends React.Component {
         const reviewsData = response.data.results;
         this.setState({
           reviewsList: reviewsData,
-          limitedReviewsList: reviewsData.slice(0, 2),
+          limitedReviewsList: reviewsData.slice(0, numberOfReviewsDisplayed),
         });
         reviewsData.length < 2 ? this.setState({ displayMoreButton: false }) : this.setState({ displayMoreButton: true });
       })

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ReviewRatingDistribution.css';
-import { getAverageRating } from '../ReviewUtils';
+import { getAverageRating, getDistribution } from '../ReviewUtils';
 
 const ReviewRatingDistribution = (props) => {
   const { metaObject } = props;
@@ -13,11 +13,12 @@ const ReviewRatingDistribution = (props) => {
     totalReviews,
   } = getAverageRating(metaObject);
 
-  const fiveStarDistribution = (fiveStarTotal / totalReviews).toFixed(2) * 100;
-  const fourStarDistribution = (fourStarTotal / totalReviews).toFixed(2) * 100;
-  const threeStarDistribution = (threeStarTotal / totalReviews).toFixed(2) * 100;
-  const twoStarDistribution = (twoStarTotal / totalReviews).toFixed(2) * 100;
-  const oneStarDistribution = (oneStarTotal / totalReviews).toFixed(2) * 100;
+  const fiveStarDistribution = getDistribution(fiveStarTotal, totalReviews);
+  const fourStarDistribution = getDistribution(fourStarTotal, totalReviews);
+  const threeStarDistribution = getDistribution(threeStarTotal, totalReviews);
+  const twoStarDistribution = getDistribution(twoStarTotal, totalReviews);
+  const oneStarDistribution = getDistribution(oneStarTotal, totalReviews);
+
   return (
     <div className={styles.ratingDistribution}>
       <div className={styles.distributionWrapper}>
