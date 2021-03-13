@@ -55,6 +55,7 @@ class ReviewsList extends React.Component {
   handleSort(event) {
     event.preventDefault();
     this.setState({ sortList: event.target.value });
+    this.getReviews(event.target.value);
   }
 
   // Increment when someone clicks yes to helpfulness
@@ -88,7 +89,7 @@ class ReviewsList extends React.Component {
   }
 
   // Send current product id from App with get request and retrieve reviews list
-  getReviews() {
+  getReviews(...sortData) {
     const { currentProduct } = this.props;
     const {
       currentPage,
@@ -98,7 +99,7 @@ class ReviewsList extends React.Component {
       params: {
         productId: currentProduct,
         page: currentPage,
-        sort: sortList,
+        sort: sortData || sortList,
       },
     })
       .then((response) => {
