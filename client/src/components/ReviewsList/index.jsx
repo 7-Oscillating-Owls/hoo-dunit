@@ -38,7 +38,7 @@ class ReviewsList extends React.Component {
     const { currentProduct } = this.props;
     const { currentProduct: previousProduct } = prev;
     if (currentProduct !== previousProduct) {
-      this.getReviews();
+      this.getReviews('relevant', 2);
     }
   }
 
@@ -78,9 +78,9 @@ class ReviewsList extends React.Component {
   }
 
   // Send current product id from App with get request and retrieve reviews list
-  getReviews(...sortData) {
+  getReviews(sortData = 'relevant', reviewsDisplayed = this.state.numberOfReviewsDisplayed) {
     const { currentProduct } = this.props;
-    const { currentPage, numberOfReviewsDisplayed } = this.state;
+    const { currentPage } = this.state;
     axios.get('/reviews', {
       params: {
         productId: currentProduct,
@@ -92,7 +92,8 @@ class ReviewsList extends React.Component {
         const reviewsData = response.data.results;
         this.setState({
           reviewsList: reviewsData,
-          limitedReviewsList: reviewsData.slice(0, numberOfReviewsDisplayed),
+          limitedReviewsList: reviewsData.slice(0, reviewsDisplayed),
+          numberOfReviewsDisplayed: reviewsDisplayed,
         });
         reviewsData.length < 2 ? this.setState({ displayMoreButton: false }) : this.setState({ displayMoreButton: true });
       })
