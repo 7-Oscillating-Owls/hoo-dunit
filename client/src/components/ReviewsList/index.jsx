@@ -315,12 +315,7 @@ class ReviewsList extends React.Component {
               </div>
               <ReviewRatingDistribution
                 className={styles.ratingDistribution}
-                reviewCount={totalReviews}
-                fiveStarTotal={Number(fiveStarTotal)}
-                fourStarTotal={Number(fourStarTotal)}
-                threeStarTotal={Number(threeStarTotal)}
-                twoStarTotal={Number(twoStarTotal)}
-                oneStarTotal={Number(oneStarTotal)}
+                metaObject={metaObject}
               />
               <div className={styles.reviewTotal}>
                 {totalReviews}

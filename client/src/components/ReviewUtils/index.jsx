@@ -11,6 +11,7 @@ export const getAverageRating = ({ ratings = {} }) => {
 
   return {
     starRating,
+    totalReviews,
     fiveStarTotal: ratings['5'] || 0,
     fourStarTotal: ratings['4'] || 0,
     threeStarTotal: ratings['3'] || 0,
