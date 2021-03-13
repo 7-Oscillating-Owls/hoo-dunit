@@ -28,6 +28,13 @@
   object-fit: cover;
 }
 
+.productImagePlaceholder {
+  composes: productImage;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 .productText {
   color:rgb(90, 90, 90);
   font-size: 12px;

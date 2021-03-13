@@ -107,7 +107,7 @@ class RelatedProducts extends React.Component {
 
     const addProductCard = (
       <RelatedProductCard key={'add' + product.id} product={product}>
-        <button type="button" className={styles.addToOutfitButton} onClick={() => addOutfit(product)}>Test</button>
+        <button type="button" className={styles.addToOutfitButton} onClick={() => addOutfit(product)}>+</button>
       </RelatedProductCard>
     );
 
