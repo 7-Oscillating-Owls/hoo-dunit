@@ -54,7 +54,6 @@ class ReviewsList extends React.Component {
 
   handleSort(event) {
     event.preventDefault();
-    console.log(event.target.value);
     this.setState({ sortList: event.target.value });
   }
 
