@@ -15,7 +15,7 @@ class ReviewsList extends React.Component {
     this.state = {
       reviewsList: [],
       limitedReviewsList: [],
-      sortList: 'newest',
+      sortList: 'relevant',
       displayModal: false,
       displayMoreButton: true,
       numberOfReviewsDisplayed: 2,
@@ -315,12 +315,7 @@ class ReviewsList extends React.Component {
               </div>
               <ReviewRatingDistribution
                 className={styles.ratingDistribution}
-                reviewCount={totalReviews}
-                fiveStarTotal={Number(fiveStarTotal)}
-                fourStarTotal={Number(fourStarTotal)}
-                threeStarTotal={Number(threeStarTotal)}
-                twoStarTotal={Number(twoStarTotal)}
-                oneStarTotal={Number(oneStarTotal)}
+                metaObject={metaObject}
               />
               <div className={styles.reviewTotal}>
                 {totalReviews}
