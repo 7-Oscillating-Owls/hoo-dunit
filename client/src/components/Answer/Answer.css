@@ -17,11 +17,11 @@
 }
 
 .answer:hover:nth-child(odd) {
-  background-color: rgba(223, 239, 242, 0.303);
+  background-color: rgba(215, 215, 214, 0.249);
   border-radius: 4px;
 }
 .answer:hover:nth-child(even) {
-  background-color: rgba(215, 215, 215, 0.249);
+  background-color: rgba(215, 215, 214, 0.249);
   border-radius: 4px;
 }
 
