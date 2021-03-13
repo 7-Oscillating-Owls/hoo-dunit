@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ReviewsAverageOverviewStars.css';
 
 const ReviewsAverageOverviewStars = (props) => {
-  const starRating = props.starRating;
+  const starRating = Number(props.starRating) || 0;
   const solidStars = Math.floor(starRating);
   let starDifference = starRating - solidStars;
   let partialStars;

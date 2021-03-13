@@ -51,7 +51,7 @@ ProductInformation.propTypes = {
   styleName: PropTypes.string.isRequired,
   originalPrice: PropTypes.string.isRequired,
   salePrice: PropTypes.number,
-  starRating: PropTypes.number.isRequired,
+  starRating: PropTypes.string.isRequired,
 };
 
 ProductInformation.defaultProps = {

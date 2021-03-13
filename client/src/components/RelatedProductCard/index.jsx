@@ -42,19 +42,26 @@ const RelatedProductCard = ({
     </div>
   );
 
+  let photoEle;
+
+  if (cardInfo.photo) {
+    photoEle = (
+      <img
+        className={styles.productImage}
+        src={cardInfo.photo}
+        alt={`${name} ${description}`}
+      />
+    );
+  } else {
+    photoEle = (
+      <div className={styles.productImagePlaceholder}>no image</div>
+    );
+  }
+
   return (
     <article className={styles.relatedProductCard}>
       {children}
-      {
-        cardInfo.photo
-        && (
-          <img
-            className={styles.productImage}
-            src={cardInfo.photo}
-            alt={`${name} ${description}`}
-          />
-        )
-      }
+      {photoEle}
       <div className={styles.productCategory}>{category}</div>
       <div className={styles.productName}><Link to={`/products/${id}`} className={styles.productLink}>{name}</Link></div>
       {priceEle}
