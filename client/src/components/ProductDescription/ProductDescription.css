@@ -10,6 +10,7 @@
                        "a b"
                        "a .";
   width: 100%;
+  grid-gap: 10px;
 }
 
 .details {

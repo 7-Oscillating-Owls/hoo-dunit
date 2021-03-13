@@ -78,17 +78,8 @@ class Cart extends React.Component {
     return (
       <div className={styles.addToCart}>
         <form className={styles.cartWrapper} onSubmit={this.handleSubmit}>
-          {/* <select className={styles.size} name="selectedSize" value={selectedSize} onChange={this.handleChange}>
-            <option value="">SELECT A SIZE</option>
-            {
-              skuIds.map((item) => (
-                <option key={item} value={skus[item].size}>
-                  {skus[item].size}
-                </option>
-              ))
-            }
-          </select> */}
-          {/* <h5 className={styles.selectSize}>Select size</h5> */}
+          <div className={styles.empty} />
+          <div className={styles.emptyAgain} />
           <div className={styles.allThingsSize}>
             <h5 className={styles.selectSize}>Select size</h5>
             <div className={styles.sizeGuide}>
@@ -109,20 +100,21 @@ class Cart extends React.Component {
               ))
             }
           </div>
-          <select className={styles.quantity} name="selectedQuantity" value={selectedQuantity} onChange={this.handleChange}>
+
+          <br />
+          <button className={styles.submitCart} type="submit" value="ADD TO BAG">
+            <span className={styles.addToBagText}>ADD TO BAG</span>
+            <CgArrowLongRight className={styles.arrow} />
+          </button>
+          {/* <AiOutlineHeart className={styles.star} /> */}
+          {/* <select className={styles.quantity} name="selectedQuantity" value={selectedQuantity} onChange={this.handleChange}>
             <option value="">Quantity</option>
             {
               displayQuantity && displayQuantity.map((item) => (
                 <option className={styles.sizeInt} key={item} value={item}>{item}</option>
               ))
             }
-          </select>
-          <br />
-          <button className={styles.submitCart} type="submit" value="ADD TO BAG">
-            <span className={styles.addToBagText}>ADD TO BAG</span>
-            <CgArrowLongRight className={styles.arrow} />
-          </button>
-          <AiOutlineHeart className={styles.star} />
+          </select> */}
         </form>
 
         {
