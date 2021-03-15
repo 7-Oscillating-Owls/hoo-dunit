@@ -78,8 +78,8 @@ class Cart extends React.Component {
     return (
       <div className={styles.addToCart}>
         <form className={styles.cartWrapper} onSubmit={this.handleSubmit}>
-          <div className={styles.empty} />
-          <div className={styles.emptyAgain} />
+          {/* <div className={styles.empty} /> */}
+          {/* <div className={styles.emptyAgain} /> */}
           <div className={styles.allThingsSize}>
             <h5 className={styles.selectSize}>Select size</h5>
             <div className={styles.sizeGuide}>
@@ -107,14 +107,14 @@ class Cart extends React.Component {
             <CgArrowLongRight className={styles.arrow} />
           </button>
           {/* <AiOutlineHeart className={styles.star} /> */}
-          {/* <select className={styles.quantity} name="selectedQuantity" value={selectedQuantity} onChange={this.handleChange}>
+          <select className={styles.quantity} name="selectedQuantity" value={selectedQuantity} onChange={this.handleChange}>
             <option value="">Quantity</option>
             {
               displayQuantity && displayQuantity.map((item) => (
                 <option className={styles.sizeInt} key={item} value={item}>{item}</option>
               ))
             }
-          </select> */}
+          </select>
         </form>
 
         {

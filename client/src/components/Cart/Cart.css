@@ -11,8 +11,8 @@
 
 .cartWrapper {
   display: grid;
-  grid-template-areas:"o j"
-                      "p k"
+  grid-template-areas:"o o"
+                      "p q"
                       "r s";
   grid-gap: 15px;
   width: 100%
