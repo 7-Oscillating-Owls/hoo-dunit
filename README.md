@@ -3,6 +3,9 @@ Tasked with to creating a _product detail page_ for an e-commerce site undergoin
 
 ![](giphy.gif)
 
+![FEC - Reviews and Ratings](https://user-images.githubusercontent.com/69405223/117336402-05556a80-ae51-11eb-96e3-961261a00388.gif)
+
+
 The _product detail page_ consists of 4 distinct modules:
 1. Product overview - focusing on the product from the url,
    - image gallery
